@@ -22,7 +22,17 @@ export const COMBAT_CONFIG = {
     // Player (Blackrush)
     player: {
         maxShield: 100,
-        invulnerabilityWindow: 350, // ms
+        startingShield: 100,
+        maxHearts: 6,
+        startingHearts: 6,
+        invulnerabilityWindow: 350, // ms for ordinary hits
+        regenDelay: 4000, // ms
+        regenRate: 12, // pts per second
+        respawnDelay: 1200, // ms
+        respawnInvulnerability: 3000, // ms
+        lowHeartThreshold: 2,
+        twoHeartWarnInterval: 8000, // ms
+        oneHeartWarnInterval: 4000, // ms
     },
 
     // Weapons

@@ -74,6 +74,9 @@ export default class TimelineDebugPanel {
                 <div class="debug-row">Player Screen: <span id="diag-player-screen">-</span></div>
                 <div class="debug-row">Speed: <span id="diag-speed">0</span></div>
                 <div class="debug-row">Shield: <span id="diag-shield">0</span></div>
+                <div class="debug-row">Hearts: <span id="diag-hearts">0</span></div>
+                <div class="debug-row">Regen: <span id="diag-regen">-</span></div>
+                <div class="debug-row">Respawn: <span id="diag-respawn">NO</span></div>
                 <div class="debug-row">Invuln: <span id="diag-invuln">NO</span></div>
                 <div class="debug-row">Score: <span id="diag-score">0</span></div>
                 <div class="debug-row">Projectiles: <span id="diag-projectiles">0</span></div>
@@ -86,6 +89,15 @@ export default class TimelineDebugPanel {
                     <button id="btn-reset-shield">RESET SHIELD</button>
                     <button id="btn-clear-robots">CLEAR ROBOTS</button>
                 </div>
+                <div style="margin-top: 5px; font-weight: bold;">SET SHIELD:</div>
+                <div class="debug-controls">
+                    <button class="btn-set-shield" data-value="100">100</button>
+                    <button class="btn-set-shield" data-value="75">75</button>
+                    <button class="btn-set-shield" data-value="50">50</button>
+                    <button class="btn-set-shield" data-value="25">25</button>
+                    <button class="btn-set-shield" data-value="5">5</button>
+                    <button class="btn-set-shield" data-value="0">0</button>
+                </div>
                 <div class="debug-controls" style="margin-top: 5px;">
                     <button id="btn-spawn-pursuer">SPAWN PURSUER</button>
                     <button id="btn-spawn-sentinel">SPAWN SENTINEL</button>
@@ -93,6 +105,13 @@ export default class TimelineDebugPanel {
                 </div>
                 <div class="debug-controls" style="margin-top: 5px;">
                     <button id="btn-toggle-invuln">TOGGLE INVULN</button>
+                </div>
+                <div style="margin-top: 5px; font-weight: bold;">SET HEARTS:</div>
+                <div class="debug-controls">
+                    <button class="btn-set-hearts" data-value="6">6</button>
+                    <button class="btn-set-hearts" data-value="2">2</button>
+                    <button class="btn-set-hearts" data-value="1">1</button>
+                    <button id="btn-trigger-heart-loss">LOSE HEART</button>
                 </div>
             </div>
         `;
@@ -210,6 +229,35 @@ export default class TimelineDebugPanel {
             }
         };
 
+        this.container.querySelectorAll('.btn-set-shield').forEach(btn => {
+            btn.onclick = () => {
+                const gs = getGameScene();
+                if (gs && gs.player) {
+                    const val = parseFloat(btn.dataset.value);
+                    gs.player.shield = val;
+                    gs.hud.setShield(gs.player.shield, gs.player.maxShield);
+                }
+            };
+        });
+
+        this.container.querySelectorAll('.btn-set-hearts').forEach(btn => {
+            btn.onclick = () => {
+                const gs = getGameScene();
+                if (gs && gs.player) {
+                    const val = parseInt(btn.dataset.value);
+                    gs.player.hearts = val;
+                    gs.hud.setHearts(gs.player.hearts, gs.player.maxHearts);
+                }
+            };
+        });
+
+        $('#btn-trigger-heart-loss').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.player) {
+                gs.handlePlayerDefeat();
+            }
+        };
+
         $('#btn-clear-robots').onclick = () => {
             const gs = getGameScene();
             if (gs && gs.robotGroup) {
@@ -312,7 +360,13 @@ export default class TimelineDebugPanel {
                     $('#diag-player-world').textContent = `${Math.round(p.x)}, ${Math.round(p.y)}`;
                     $('#diag-player-screen').textContent = `${Math.round(p.x)}, ${Math.round(p.y - cam.scrollY)}`;
                     $('#diag-speed').textContent = Math.round(p.body.speed);
-                    $('#diag-shield').textContent = Math.round(p.shield);
+                    $('#diag-shield').textContent = `${Math.round(p.shield)} / ${p.maxShield}`;
+                    $('#diag-hearts').textContent = `${p.hearts} / ${p.maxHearts}`;
+                    
+                    const regenWait = Math.max(0, (p.combatConfig.regenDelay - (this.game.loop.now - p.lastDamageTime)) / 1000).toFixed(1);
+                    $('#diag-regen').textContent = p.shield < p.maxShield ? (regenWait > 0 ? `WAIT ${regenWait}s` : 'ACTIVE') : 'FULL';
+                    
+                    $('#diag-respawn').textContent = p.isRespawning ? 'YES' : 'NO';
                     $('#diag-invuln').textContent = p.isInvulnerable() ? 'YES' : 'NO';
                 }
                 $('#diag-score').textContent = gameScene.score || 0;

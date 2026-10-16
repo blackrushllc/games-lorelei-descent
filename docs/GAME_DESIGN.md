@@ -44,7 +44,12 @@ The game follows a fixed-duration, music-driven timeline. Progression is automat
 - **Giant Super-Robot:** Final boss.
 
 ## Combat Mechanics
-- **Shield System:** Blackrush has 100 shield points. Taking damage from contact or lasers reduces the shield. When depleted, the player is defeated.
+- **Shield System:** Blackrush has 100 shield points. Taking damage from contact or lasers reduces the shield. When depleted, the player loses one heart.
+- **Survival Model:** 
+    - **Shield Regeneration:** If Blackrush avoids damage for 4 seconds, the shield begins regenerating at 12 points per second.
+    - **Hearts:** Blackrush has 6 hearts (lives). Losing all hearts results in final defeat.
+    - **Automatic Respawn:** If hearts remain after shield depletion, Blackrush automatically respawns in a safe position after 1.2 seconds with 3 seconds of invulnerability.
+    - **Low-Life Warning:** A Nintendo-style two-note electronic warning repeats when 2 hearts remain (every 8s) or 1 heart remains (every 4s).
 - **Energy Bolts:** Rapid-fire projectiles. Effective against unarmored robots but bounce off armor.
 - **Throwing Axe:** Heavy weapon that penetrates ordinary robots and strips armor from Armored Pursuers. Applies significant knockback.
 - **AI Behaviors:** Robots feature a state-machine AI (Idle, Pursue, Target, Firing, Staggered).

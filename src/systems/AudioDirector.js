@@ -13,6 +13,69 @@ export default class AudioDirector {
         this.currentSound = null;
         this.currentTrackId = null;
         this.onCompleteCallback = null;
+
+        // Procedural Audio Context
+        this.ctx = this.game.sound.context;
+    }
+
+    /**
+     * Plays a procedural survival sound effect.
+     * @param {string} type - 'heartLoss' or 'lowLife'
+     */
+    playSurvivalSound(type) {
+        if (!this.ctx) return;
+
+        if (type === 'heartLoss') {
+            this.playHeartLossSound();
+        } else if (type === 'lowLife') {
+            this.playLowLifeWarning();
+        }
+    }
+
+    playHeartLossSound() {
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sawtooth';
+        // Descending tone: 400Hz to 100Hz
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(100, now + 0.5);
+
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.5);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.5);
+    }
+
+    playLowLifeWarning() {
+        const now = this.ctx.currentTime;
+        
+        // Two-note electronic warning
+        const playNote = (freq, startTime, duration) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(freq, startTime);
+            
+            gain.gain.setValueAtTime(0.1, startTime);
+            gain.gain.linearRampToValueAtTime(0, startTime + duration);
+            
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.start(startTime);
+            osc.stop(startTime + duration);
+        };
+
+        // Two notes: E5 and C5 approx
+        playNote(659.25, now, 0.1);
+        playNote(523.25, now + 0.15, 0.1);
     }
 
     /**

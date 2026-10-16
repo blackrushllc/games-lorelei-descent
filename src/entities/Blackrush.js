@@ -42,9 +42,18 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         this.add([this.bodyGraphic, this.headGraphic, this.aimIndicator, this.label, this.shieldGraphic]);
 
         // 2. Combat State
-        this.shield = this.combatConfig.maxShield;
-        this.isDestroyed = false;
+        this.maxShield = this.combatConfig.maxShield;
+        this.shield = this.maxShield;
+        this.maxHearts = this.combatConfig.maxHearts;
+        this.hearts = this.combatConfig.startingHearts;
+        
+        this.isDestroyed = false; // Currently defeated (this life)
+        this.isRespawning = false;
+        this.isFinalDefeat = false;
+        
         this.invulnerabilityTimer = 0;
+        this.lastDamageTime = 0;
+        this.regenTimer = 0;
 
         // 3. Physics
         scene.add.existing(this);
@@ -64,17 +73,33 @@ export default class Blackrush extends Phaser.GameObjects.Container {
     }
 
     update(inputState, delta) {
-        if (this.isDestroyed) {
-            this.body.setAcceleration(0, 0);
-            this.body.setVelocity(0, 0);
+        if (this.isFinalDefeat) return;
+
+        if (this.isDestroyed || this.isRespawning) {
+            if (this.body) {
+                this.body.setAcceleration(0, 0);
+                this.body.setVelocity(0, 0);
+            }
             return;
         }
 
+        // 0. Timers and Regeneration
         if (this.invulnerabilityTimer > 0) {
             this.invulnerabilityTimer -= delta;
             this.setAlpha(Math.sin(this.scene.time.now / 50) > 0 ? 0.5 : 1.0);
         } else {
             this.setAlpha(1.0);
+        }
+
+        // Shield Regeneration
+        const now = this.scene.time.now;
+        if (this.shield < this.maxShield && now - this.lastDamageTime >= this.combatConfig.regenDelay) {
+            const regenAmount = (this.combatConfig.regenRate * delta) / 1000;
+            this.shield = Math.min(this.maxShield, this.shield + regenAmount);
+            this.scene.hud.setShield(this.shield, this.maxShield);
+            
+            // Subtle regen visual (pulsing eye or glow?)
+            this.showRegenEffect();
         }
 
         if (!inputState) return;
@@ -113,6 +138,9 @@ export default class Blackrush extends Phaser.GameObjects.Container {
     }
 
     onHit() {
+        // Update damage timer for regen delay
+        this.lastDamageTime = this.scene.time.now;
+
         // Visual shield flash
         this.shieldGraphic.clear();
         this.shieldGraphic.lineStyle(4, 0x00ffff, 0.8);
@@ -140,6 +168,21 @@ export default class Blackrush extends Phaser.GameObjects.Container {
 
         // Set invulnerability
         this.invulnerabilityTimer = this.combatConfig.invulnerabilityWindow;
+    }
+
+    showRegenEffect() {
+        // Subtle cyan pulse on the head
+        if (!this.regenTween || !this.regenTween.isPlaying()) {
+            this.regenTween = this.scene.tweens.add({
+                targets: this.headGraphic,
+                alpha: 0.5,
+                duration: 200,
+                yoyo: true,
+                onComplete: () => {
+                    this.headGraphic.setAlpha(1);
+                }
+            });
+        }
     }
 
     die() {

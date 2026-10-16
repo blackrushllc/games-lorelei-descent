@@ -49,7 +49,7 @@ Serves the production build locally.
 - `docs/`: Project documentation.
 
 ## Current Milestone
-**Step 5: Robot combat and destruction** (Completed)
+**Step 5.4: Shield HUD Repair, Regeneration, Hearts, and Respawning** (Completed)
 
 ## Browser Compatibility
 Compatible with modern versions of Chrome, Firefox, Safari, and Edge.

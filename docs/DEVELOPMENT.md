@@ -14,6 +14,7 @@
 5.1 **Maintenance: Robot Visuals, Crashes, and Game Over** (Completed)
 5.2 **Maintenance: Combat Repair and Restart Lifecycle** (Completed)
 5.3 **Maintenance: Mission Lifecycle, Player Restoration, and Shield HUD** (Completed)
+5.4 **Shield HUD Repair, Regeneration, Hearts, and Respawning** (Completed)
 6.  **Scrolling chamber and defenses**
 7.  **Encounter director and difficulty**
 8.  **Opening chase**
@@ -68,6 +69,31 @@
 7. **Diagnostics**:
     - Open **TECHNICAL DIAGNOSTICS**; verify Session ID, Active Scene, and Physics status are correct.
 8. **Tests**: Run `npm test` and verify all 34 tests pass (including new Step 5.3 lifecycle tests).
+
+### Step 5.4 Maintenance Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Shield HUD**:
+    - Verify the shield bar shows numerical values (e.g., `SHIELD 100 / 100`).
+    - Use **COMBAT TOOLS** -> **SET SHIELD** (100, 75, 50, 25, 5, 0).
+    - Confirm proportional width and color changes (Green > 60%, Yellow 60-31%, Red <= 30%).
+    - Confirm bar is empty at 0.
+4. **Regeneration**:
+    - Set shield to 50.
+    - Wait 4 seconds; verify shield begins refilling (12 pts/s).
+    - Verify HUD and developer diagnostics (`Regen: ACTIVE`) update.
+5. **Hearts and Respawn**:
+    - Use **LOSE HEART** in debug panel.
+    - Verify shield collapse effect, temporary player removal, and 1.2s delay.
+    - Verify respawn at a safe position with full shield and 3s invulnerability.
+    - Verify heart icons in HUD update (lost hearts are dark/outlined).
+6. **Survival Alarms**:
+    - Set hearts to 2; verify low-life warning sound plays every 8 seconds.
+    - Set hearts to 1; verify low-life warning sound plays every 4 seconds.
+7. **Final Defeat**:
+    - Lose all 6 hearts; verify **SHIELD DEPLETED** screen appears and music pauses.
+    - Click **RESTART MISSION**; verify 6 hearts and 100 shield are restored.
+8. **Tests**: Run `npm test` and verify all 40 tests pass.
 
 ### Development Build
 Run the following command to start the development server:

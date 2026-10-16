@@ -1,642 +1,738 @@
 # JUNIE TASK — LORELEI: DESCENT
-## Step 5.3: Repair Mission Lifecycle, Player Restoration, Enemy Encounters, and Shield State
+## Step 5.4: Shield HUD Repair, Regeneration, Hearts, Automatic Respawning, and Low-Life Warning
 
-### 1. Project context
+### 1. Project Context
 
-We are developing LORELEI: DESCENT, a browser-based, music-driven arcade shooter using:
+We are developing **LORELEI: DESCENT**, a browser-based, music-driven arcade shooter using JavaScript, Phaser 3.88.2, Vite, and Phaser Arcade Physics.
 
-- JavaScript ES modules
-- Phaser 3.88.2
-- Phaser Arcade Physics
-- Vite 8.3.4
-- Node.js 24
-- 640 × 960 logical resolution
+Steps 1 through 5.3 are complete.
 
-Steps 1–5.2 have been implemented.
+The developer has personally verified that the following now work correctly:
 
-The game now supports:
-
-- Music-synchronized gameplay.
-- Automatic descent and a fixed boss arena.
+- Game initialization.
 - Classic and Assisted movement.
-- Energy bolts and throwing axes.
-- Three robot archetypes.
-- Robot combat and armor destruction.
-- Shield damage and Game Over.
-- Developer timeline seeking.
-- Multiple scene transitions.
+- Weapons and robot combat.
+- Armored robot damage.
+- Enemy targeting lasers.
+- Player damage and defeat.
+- Mission restart.
+- Developer musical seeking.
+- Scene transitions.
+- Encounter restoration.
+- Repeated mission sessions.
 
-The developer reports that fresh gameplay works reasonably well, but restarting and seeking corrupt gameplay state.
+Step 5.3 established centralized mission lifecycle management in `src/main.js`, including session IDs and transition guards.
 
-**This is a stabilization milestone. Do not implement new gameplay mechanics.**
+**Preserve this architecture.**
 
-Before making changes, inspect the actual implementation and relevant Git history.
+There is one outstanding defect: the shield bar still does not visually indicate remaining shield strength correctly.
 
-Do not assume previously reported fixes are correct merely because unit tests passed.
+The developer also wants to expand the survival system with regenerating shields and six hearts.
 
-### 2. Observed defects
+Implement this milestone in two stages, verifying the first before starting the second.
 
-The developer reports all of the following:
+Do not implement Step 6 or later gameplay features.
 
-1. Using RESTART during gameplay from the developer tools sometimes causes Blackrush to disappear.
+---
 
-2. Restarting after Blackrush dies also causes Blackrush to disappear.
+# PART A — REPAIR THE SHIELD HUD
 
-3. During the first game session, robot combat works. Ordinary robots die, and an axe removes armored plating so an energy bolt can destroy the exposed robot. After the initial test encounters, no additional robots appear. The latter is acceptable for Step 5.
+### 2. Diagnose the actual shield rendering problem
 
-4. Restarting before dying sometimes restores Blackrush but no robots appear.
+Despite previous changes, the developer reports that the shield indicator starts green, becomes red after the first hit, and does not provide a useful visual indication of remaining strength.
 
-5. Restarting after dying sometimes places robots much farther down the chamber than expected.
+Step 5.3 reportedly implemented proportional width and color thresholds, but the observed behavior is still wrong.
 
-6. When Blackrush disappears after restart, using the developer controls to jump to another musical location can restore him.
+Inspect the current implementation of:
 
-7. After jumping away and returning to CHASE, Blackrush appears and the robots may be positioned correctly, but Blackrush can no longer die.
-
-8. His shield still flashes when hit, but shield depletion no longer results in defeat.
-
-9. The HUD shield indicator begins green, changes entirely to red after the first hit, and remains red even after a restart.
-
-These symptoms suggest inconsistent state initialization, session ownership, scene lifecycle behavior, and shield rendering.
-
-Investigate each symptom, but seek common root causes rather than applying unrelated patches.
-
-### 3. Required preliminary audit
-
-Inspect at least:
-
-- `src/main.js`
-- `src/scenes/TitleScene.js`
-- `src/scenes/GameScene.js`
-- `src/scenes/GameOverScene.js`
-- `src/scenes/EndingScene.js`
-- `src/entities/Blackrush.js`
-- `src/entities/Robot.js`
-- `src/systems/TimelineDirector.js`
-- `src/systems/AudioDirector.js`
-- `src/systems/DescentController.js`
-- `src/systems/CombatSystem.js`
-- `src/systems/WeaponSystem.js`
-- `src/systems/ChamberBuilder.js`
 - `src/ui/Hud.js`
-- `src/ui/TimelineDebugPanel.js`
-- Existing encounter configuration and tests
+- `src/entities/Blackrush.js`
+- `src/scenes/GameScene.js`
+- Shield-related combat configuration
+- All calls to `Hud.setShield()`
 
-Trace the complete call paths for:
+Identify whether the error originates in:
 
-- START GAME.
-- RESTART MISSION.
-- REPLAY.
-- Developer RESTART.
-- Developer timeline seek.
-- Shield depletion.
-- GameScene shutdown and startup.
-- Robot encounter initialization.
+- Incorrect shield values.
+- Incorrect arguments passed to the HUD.
+- Mismatched current/max shield values.
+- Incorrect percentage calculations.
+- Graphics drawing or clearing behavior.
+- Graphics origin or coordinate positioning.
+- Incorrect colors or layering.
+- HUD updates being overwritten by stale data.
 
-Determine which objects own session state and which operations trigger scene transitions.
+Do not guess at the cause.
 
-Identify duplicated or conflicting ownership.
+### 3. Shield rendering requirements
 
-Report the actual causes.
+Display a shield bar representing the actual current shield value.
 
-### 4. Establish explicit mission lifecycle ownership
+Starting values:
 
-A mission is a complete gameplay session beginning at Synth 0:00.
+- Maximum shield: 100.
+- Initial shield: 100.
 
-Its state includes:
+The bar should consist of:
 
-- Blackrush.
-- Player shield.
-- Score.
-- Camera progression.
-- Robot encounters.
-- Robot AI state.
-- Weapons and projectiles.
-- Combat state.
-- Input handling.
-- Defeat state.
-- Temporary effects.
+1. A fixed-width background or frame.
+2. A foreground fill whose width represents the current shield percentage.
+3. A numerical value showing the current and maximum shield.
 
-Persistent application systems include:
+Example:
 
-- TimelineDirector.
-- AudioDirector.
-- Developer tools.
-- Phaser game instance.
+`SHIELD 75 / 100`
 
-Introduce a small, clearly defined mission lifecycle controller or equivalent application-level coordination mechanism if necessary.
+Color thresholds:
 
-Avoid a large architectural rewrite.
+- Above 60%: Cyan/green.
+- 31% through 60%: Amber/yellow.
+- 1% through 30%: Red.
+- 0%: Empty.
 
-The lifecycle controller should own the sequence for starting, restarting, and ending a mission.
+The foreground width must shrink proportionally as shield decreases.
 
-**Only one application-level component may initiate gameplay scene transitions in response to starting a mission or changing musical tracks.**
+A shield value of 50 must produce a bar approximately half as wide as a shield value of 100.
 
-Other components should request a transition through that controller rather than independently calling competing scene-start operations.
+Do not color the entire background red when the shield is damaged.
 
-Preserve the existing global timeline update architecture where possible.
+Do not redraw the bar using incorrectly accumulated graphical transformations.
 
-### 5. Distinguish the four operations
+Ensure that the bar updates correctly when the shield increases as well as decreases.
 
-These operations must be explicitly different.
+### 4. Verify the shield display independently
 
-#### NEW MISSION
+Before implementing hearts or regeneration, provide a developer-only test method for explicitly setting shield values.
 
-Used by:
+Test:
 
-- START GAME.
-- RESTART MISSION.
-- REPLAY.
-- Developer RESTART MISSION, if provided.
+- 100
+- 80
+- 60
+- 40
+- 20
+- 5
+- 0
+
+For each value, confirm:
+
+- Correct numerical display.
+- Correct filled width.
+- Correct color.
+- Correct empty background.
+
+The developer should be able to perform this test without being attacked by robots.
+
+Add the necessary debug controls to the existing developer panel, or another small temporary developer-only interface.
+
+Use the same HUD code that normal gameplay uses.
+
+Do not create a separate mock shield bar that could pass testing while the actual HUD remains broken.
+
+**Part A must be verified before continuing with Part B.**
+
+---
+
+# PART B — HEARTS AND REGENERATING SHIELDS
+
+### 5. Survival model
+
+We are introducing three distinct survival concepts.
+
+**Shield**
+
+A regenerating energy barrier that absorbs ordinary damage.
+
+**Hearts**
+
+A limited number of lives that persist across the entire mission.
+
+**Final defeat**
+
+The mission ends only when Blackrush loses his last heart.
+
+Hearts are not hit points.
+
+Blackrush can take several attacks before losing one heart.
+
+When shield reaches zero, Blackrush loses exactly one heart.
+
+If hearts remain, he automatically respawns with a full shield.
+
+If no hearts remain, the existing Game Over sequence occurs.
+
+### 6. Initial configuration
+
+Add configurable survival parameters, preferably in an existing gameplay or combat configuration module.
+
+Use these initial values:
+
+| Parameter | Value |
+|---|---|
+| Maximum shield | 100 |
+| Starting shield | 100 |
+| Maximum hearts | 6 |
+| Starting hearts | 6 |
+| Shield regeneration delay | 4 seconds |
+| Shield regeneration rate | 12 points/second |
+| Respawn delay | 1.2 seconds |
+| Respawn invulnerability | 3 seconds |
+| Low-heart warning threshold | 2 hearts |
+| Two-heart warning interval | 8 seconds |
+| One-heart warning interval | 4 seconds |
+
+These values are provisional and must be easy to adjust.
+
+Do not scatter them across unrelated classes.
+
+### 7. State ownership
+
+This is particularly important given the lifecycle problems corrected in Steps 5.2 and 5.3.
+
+There must be one authoritative survival state for each mission.
+
+That state includes:
+
+- Current shield.
+- Maximum shield.
+- Remaining hearts.
+- Maximum hearts.
+- Whether Blackrush is temporarily respawning.
+- Whether Blackrush is invulnerable.
+- Time of the most recent damage.
+- Whether final defeat has occurred.
+
+Keep this state associated with the current mission and player.
+
+The HUD must display this state, not maintain independent gameplay values.
+
+Do not introduce conflicting mutable copies of shield or heart counts.
+
+If the existing Blackrush class is the appropriate owner, retain it. If a small SurvivalComponent or equivalent object would simplify the code, that is acceptable.
+
+Avoid unnecessary architectural refactoring.
+
+### 8. Shield regeneration
+
+Regeneration begins four seconds after Blackrush last takes actual shield damage.
+
+Once regeneration begins:
+
+- Restore 12 shield points per second.
+- Stop at maximum shield.
+- Update the HUD continuously.
+- Display a subtle visual indication of regeneration.
+
+Any new successful damage immediately cancels regeneration and restarts the four-second delay.
+
+Blocked attacks and attacks received during invulnerability should not count as actual damage and should not reset the regeneration timer.
+
+Regeneration must be frame-rate independent.
+
+Regeneration must stop while gameplay is paused.
+
+Do not use an untracked JavaScript timeout or interval for regeneration.
+
+Use the existing gameplay simulation timing conventions.
+
+After respawn, shield begins at 100 and does not need to regenerate.
+
+### 9. Heart loss
+
+When shield reaches zero:
+
+1. Prevent further damage to the current life.
+2. Decrement remaining hearts exactly once.
+3. Update the heart display.
+4. Trigger a shield-collapse effect.
+5. Trigger a heart-loss sound.
+6. Temporarily remove Blackrush from combat.
+7. Begin the respawn sequence if hearts remain.
+
+Do not allow multiple simultaneous laser hits or physics callbacks to remove several hearts in a single defeat.
+
+A heart-loss event must be atomic.
+
+Once heart loss begins, additional incoming damage must be ignored until respawn protection ends.
+
+Do not reset score.
+
+Do not reset the camera.
+
+Do not restart the soundtrack.
+
+Do not recreate the entire game session.
+
+Do not reset or regenerate the robots merely because Blackrush lost a heart.
+
+### 10. Automatic respawn
+
+If at least one heart remains:
+
+- Wait approximately 1.2 seconds.
+- Respawn Blackrush within the visible gameplay area.
+- Restore shield to 100.
+- Restore movement and firing.
+- Apply three seconds of invulnerability.
+
+The soundtrack continues uninterrupted throughout the sequence.
+
+The camera continues following the musical timeline.
+
+Robots continue their encounter behavior as appropriate.
+
+If Blackrush is temporarily absent, enemies should avoid operating on a destroyed or invalid player reference.
+
+Their targeting may pause or become invalid during the respawn delay.
+
+Do not allow their targeting code to throw exceptions.
+
+### 11. Safe respawn placement
+
+Respawn relative to the current camera position, never an obsolete world position.
+
+Preferred location:
+
+- Approximately central horizontally.
+- Within the safe vertical gameplay region.
+- Away from solid obstacles where practical.
+- Away from the nearest robots where a reasonable alternative exists.
+
+For Step 5.4, use a simple deterministic candidate-position search.
+
+Do not implement sophisticated pathfinding.
+
+The later obstacle-collision milestone may expand the safety checks.
+
+If no sufficiently safe position exists, use a fallback position within the viewport and rely on respawn invulnerability.
+
+Do not spawn Blackrush outside the current camera viewport.
+
+This must work in both DESCENT and ARENA camera modes.
+
+### 12. Respawn presentation
+
+Use simple procedural visual effects.
+
+Suggested sequence:
+
+**Shield collapse**
+
+- Bright blue-white flash.
+- Brief electrical burst.
+- Blackrush fades or breaks into particles.
+
+**Reappearance**
+
+- Small blue electrical flash.
+- Blackrush reappears.
+- Shield returns to full.
+- Blackrush flashes or pulses during invulnerability.
+
+Do not permanently destroy the player object if this complicates existing physics and session lifecycle behavior.
+
+You may temporarily disable and reactivate the player entity, provided all physics bodies, input handlers, and state are restored correctly.
+
+Keep the implementation simple.
+
+### 13. Respawn invulnerability
+
+For three seconds after respawning:
+
+- Blackrush can move.
+- Blackrush can aim.
+- Blackrush can fire.
+- Blackrush cannot receive shield damage.
+- Contact damage is ignored.
+- Laser damage is ignored.
+
+Display a visible protective effect.
+
+The player should understand that they are temporarily protected.
+
+Do not make Blackrush invisible for the entire invulnerability interval.
+
+Do not accidentally leave invulnerability enabled permanently after a seek or restart.
+
+For this milestone, do not implement a damaging respawn shockwave.
+
+### 14. Hearts HUD
+
+Add a row of six hearts to the existing HUD.
+
+Use simple Phaser-generated graphics or compatible icon shapes.
+
+Do not download artwork.
+
+The display should clearly distinguish remaining and lost hearts.
+
+Suggested appearance:
+
+- Remaining hearts: Bright red.
+- Lost hearts: Dark gray or outlined.
+
+Example:
+
+`♥ ♥ ♥ ♥ ♡ ♡`
+
+Do not rely on a font that may lack heart symbols. Procedural vector hearts or generated textures are acceptable.
+
+The hearts should be legible at the game's 640 × 960 resolution and remain visible when the canvas scales down.
+
+Avoid covering the playable area unnecessarily.
+
+Do not enlarge the existing HUD excessively.
+
+### 15. Low-heart warning sound
+
+Introduce a simple, original, procedural warning sound.
+
+The developer particularly likes the classic Nintendo feeling of a gentle repeating warning when lives are low.
+
+Do not copy or recreate the exact audio of any existing commercial game.
+
+Instead, produce a distinctive 1980s science-fiction-inspired two-note electronic warning.
 
 Behavior:
 
-- End and clean up the previous mission.
-- Reset all session state.
-- Initialize fresh GameScene objects.
-- Position the camera at the starting depth.
-- Create Blackrush.
+**Three or more hearts**
+
+No repeating low-life warning.
+
+**Two hearts**
+
+Warning approximately every eight seconds.
+
+**One heart**
+
+Warning approximately every four seconds.
+
+The warning should be quiet enough not to compete with the original Lorelei soundtrack.
+
+Use Web Audio or the existing compatible audio infrastructure.
+
+Do not add a sound-generation dependency.
+
+The low-life warning must:
+
+- Stop when the mission ends.
+- Stop when the player returns to Title.
+- Pause when gameplay is paused.
+- Reset its timing appropriately after developer seeking.
+- Never create overlapping repeating alarms.
+- Respect browser audio restrictions.
+
+### 16. Heart-loss sound
+
+Create a distinct, brief sound effect for losing a heart.
+
+Suggested character:
+
+- Descending electronic tone.
+- Slight electrical distortion.
+- Approximately 0.3–0.6 seconds.
+
+Do not make it excessively loud.
+
+Use a separate effect from the repeating low-heart warning.
+
+Where practical, keep sound effects under a separately configurable sound-effects volume rather than hardwiring them to the music volume.
+
+Do not implement a complete sound-settings screen.
+
+### 17. Final defeat
+
+When the sixth heart is lost:
+
+- Stop normal gameplay.
+- Pause the musical timeline.
+- Stop or suspend active combat.
+- Transition to the existing GameOverScene.
+- Display the existing restart and title buttons.
+
+The final defeat must occur exactly once.
+
+No automatic respawn should occur when hearts reach zero.
+
+Do not modify the working centralized restart architecture established in Step 5.3.
+
+### 18. Restart and replay
+
+A new mission must always initialize:
+
+- Shield: 100.
+- Hearts: 6.
+- Score: 0.
+- Respawning: false.
+- Invulnerability: false.
+- Final defeat: false.
+- Regeneration delay reset.
+- Low-heart warning state reset.
+
+START GAME, RESTART MISSION, and REPLAY must produce the same valid initial survival state.
+
+The previously corrected player visibility, physics-body, and encounter-restoration behavior must remain intact.
+
+Do not introduce independent scene-start calls that conflict with the central session controller.
+
+### 19. Developer seeking
+
+Preserve all existing developer timeline jumps.
+
+For development purposes, a seek may reset survival state to:
+
+- Full shield.
+- Six hearts.
+- No respawn pending.
+- No invulnerability.
+- No defeat state.
+
+Use this as the default deterministic test policy.
+
+Clearly distinguish this from normal musical progression, during which hearts and shield must persist across phases.
+
+A normal transition from Synth to Cathedral must **not** restore hearts.
+
+A normal transition into the Proxy arena must **not** restore hearts.
+
+A developer seek can reconstruct fresh testing state.
+
+Document these semantics.
+
+### 20. Development tools
+
+Extend the developer panel with survival testing controls.
+
+Include:
+
 - Set shield to 100.
-- Set score to zero.
-- Recreate initial test encounters.
-- Begin Synth at 0:00.
-- Preserve the player's selected control mode.
+- Set shield to 75.
+- Set shield to 50.
+- Set shield to 25.
+- Set shield to 5.
+- Set remaining hearts to 6.
+- Set remaining hearts to 2.
+- Set remaining hearts to 1.
+- Trigger one heart-loss event.
+- Toggle temporary invulnerability, if convenient.
 
-#### RESTART CURRENT TRACK
+Display:
 
-The current developer panel already has a RESTART control.
+- Current shield.
+- Maximum shield.
+- Regeneration state.
+- Remaining hearts.
+- Respawn state.
+- Invulnerability state.
 
-Inspect its intended semantics and document them.
+These controls must be development-only.
 
-If the command means restart the current musical track, preserve that meaning.
+Do not allow developer-panel clicks to trigger weapons or Assisted movement.
 
-Restarting Cathedral should not accidentally create a new mission at Synth 0:00 unless that is explicitly the documented behavior.
+### 21. Important gameplay timing rules
 
-Restarting a track should restore a consistent test state at that track's beginning, including the correct player and encounter state.
+The musical timeline remains authoritative for scripted game progression.
 
-Consider adding an explicitly named RESTART MISSION developer command if needed to eliminate ambiguity.
+The following must continue during an ordinary heart-loss and respawn sequence:
 
-#### DEVELOPER SEEK
+- Music playback.
+- Camera progression.
+- Musical event dispatch.
+- Global gameplay timeline.
 
-Jump directly to a musical position.
+The following are temporarily disabled for Blackrush while respawning:
 
-- Restore the correct gameplay scene.
-- Restore the correct camera position.
-- Restore Blackrush.
-- Restore the appropriate encounter fixtures.
-- Reset transient combat objects.
-- Maintain consistent shield and defeat state.
+- Movement input.
+- Weapon firing.
+- Receiving damage.
 
-Do not simulate every preceding encounter.
+During a full game pause, all combat simulation and survival timers must stop.
 
-For development, it is acceptable to restore shield to 100 and clear defeat state on every seek.
+During final defeat, the soundtrack and gameplay stop as already established.
 
-Document this policy.
+Do not use the global mission clock to infer that Blackrush should respawn at an earlier world position.
 
-#### RETURN TO TITLE
+### 22. Automated tests
 
-- Stop music.
-- Dispose the gameplay session.
-- Remove scene-owned entities and listeners.
-- Show TitleScene.
-- Preserve control preferences.
-
-Do not leave paused GameScene instances or hidden overlays intercepting input.
-
-### 6. Fix Blackrush disappearing
-
-Trace Blackrush creation, registration, positioning, activation, and destruction.
-
-Investigate:
-
-- Whether Blackrush is recreated when GameScene restarts.
-- Whether a prior Blackrush instance remains referenced.
-- Whether scene shutdown destroys the object after a new scene starts.
-- Whether physics bodies are disabled or destroyed.
-- Whether a player is being positioned outside the camera viewport.
-- Whether the player is created before the camera is restored.
-- Whether scene lifecycle callbacks run in an unexpected order.
-- Whether an old Game Over state immediately disables a newly created player.
-
-After every normal mission start, verify:
-
-- `GameScene` is active.
-- Exactly one Blackrush gameplay entity exists.
-- Blackrush is active and visible.
-- Its physics body is enabled.
-- It is within the camera's visible playable area.
-- Input is enabled.
-- The shield is initialized.
-- Defeat state is false.
-
-Do not merely call `setVisible(true)` on a stale player object.
-
-Correct the underlying creation and ownership issue.
-
-### 7. Fix robot encounter restoration
-
-The initial test encounter should be identical after every new mission start.
-
-It currently contains approximately seven robots.
-
-Inspect encounter initialization and offscreen activation/deactivation logic.
-
-The previous Step 5.2 fix increased the look-ahead distance to 3000 pixels.
-
-Determine whether that was addressing the actual bug or merely postponing it.
-
-Introduce clear distinctions between:
-
-- Not yet encountered.
-- Active.
-- Temporarily inactive.
-- Destroyed.
-- Removed at the end of a session.
-
-Do not permanently delete future encounter definitions simply because their robots are not currently visible.
-
-Separate immutable encounter definitions from runtime robot instances.
-
-Use deterministic world positions.
-
-On a new mission, discard old runtime encounter state and recreate the full expected initial population.
-
-On developer seek, reconstruct the relevant encounter from its definitions.
-
-Ensure encounter position calculations use the correct world coordinates and camera depth.
-
-Do not accumulate camera offsets across restarts.
-
-Avoid adding more robots or implementing full wave spawning.
-
-### 8. Fix shield and defeat lifecycle
-
-Audit all shield-related state in:
-
-- Blackrush.
-- CombatSystem.
-- GameScene.
-- GameOverScene.
-- Hud.
-
-Establish one authoritative shield value for the current Blackrush.
-
-Confirm:
-
-- New mission starts with 100/100 shield.
-- Laser and contact hits reduce shield correctly.
-- Invulnerability frames expire as intended.
-- Shield never becomes negative.
-- Defeat triggers exactly once when shield reaches zero.
-- Defeat state resets on new mission.
-- Developer seeks restore a clearly documented test state.
-- Invulnerability and death flags do not leak between sessions.
-
-The developer reports that after seeking away and back, Blackrush can be hit but cannot die.
-
-Investigate whether this is caused by:
-
-- A stale `isDead` flag.
-- A stale `isGameOver` flag.
-- Persistent invulnerability.
-- A damaged combat callback.
-- A missing scene listener.
-- Damage affecting one player object while HUD or defeat logic references another.
-- Paused physics or timer state surviving the seek.
-
-Use the actual code to determine the cause.
-
-Do not solve immortality by forcing defeat after a fixed number of hits.
-
-### 9. Fix HUD shield visualization
-
-The shield HUD currently behaves incorrectly.
-
-It begins green, then becomes entirely red after the first hit.
-
-Implement a clear proportional shield display.
-
-Suggested behavior:
-
-- 100–61%: Green/cyan.
-- 60–31%: Yellow/amber.
-- 30–1%: Red.
-- 0%: Empty/depleted.
-
-The bar's filled width must be proportional to:
-
-`currentShield / maximumShield`
-
-Clamp the ratio between zero and one.
-
-The filled portion should shrink as damage accumulates.
-
-Do not simply recolor the entire full-width bar when shield decreases.
-
-Use Phaser Graphics or compatible display objects.
-
-The HUD must update when:
-
-- Blackrush takes damage.
-- Shield is restored.
-- A new mission starts.
-- Developer seeking resets shield.
-- The scene is recreated.
-
-Do not let the HUD maintain a competing authoritative shield value.
-
-It should display current player/session data supplied through a defined interface.
-
-Example expected behavior:
-
-| Shield | Bar width | Color |
-|---|---|---|
-| 100 | 100% | Green/cyan |
-| 75 | 75% | Green/cyan |
-| 50 | 50% | Yellow/amber |
-| 20 | 20% | Red |
-| 0 | 0% | Empty |
-
-### 10. Preserve functioning combat
-
-The developer confirms that the following currently work in a fresh session:
-
-- Energy bolts destroy ordinary robots.
-- Throwing axes damage or destroy robots.
-- Axes strip armored robot plating.
-- Exposed armored robots are destroyed by one energy bolt.
-- Robot destruction effects work.
-
-Preserve these behaviors.
-
-Do not rebalance damage, weapon speeds, or enemy health.
-
-Do not redesign Classic or Assisted movement.
-
-Do not change the music schedule.
-
-### 11. Centralize scene transition requests
-
-Previous maintenance discovered duplicate scene-start operations between GameOverScene and `main.js`.
-
-Audit again for similar duplication.
-
-No restart path should cause:
-
-- Two GameScene starts.
-- Two Blackrush instances.
-- Two encounter initializations.
-- Two active soundtracks.
-- Conflicting camera restoration.
-- A late shutdown callback from the old scene affecting the new session.
-
-Make new-session requests idempotent while a transition is in progress.
-
-An accidental rapid double-click on RESTART MISSION must not create competing missions.
-
-Use an explicit transition-in-progress guard or comparable mechanism.
-
-### 12. Pause and physics state
-
-When the shield is depleted, the music and gameplay pause.
-
-Check whether restart correctly restores:
-
-- Phaser Arcade Physics simulation.
-- Scene update processing.
-- Input processing.
-- Player movement.
-- Robot AI.
-- Projectile physics.
-- Laser timers.
-- Local gameplay clock.
-
-A restarted game must not inherit a paused physics world or inactive simulation state.
-
-Developer seeking must likewise restore a playable simulation state when appropriate.
-
-Do not automatically resume a mission that the player intentionally paused unless required by the selected restart or seek operation.
-
-### 13. Add lifecycle diagnostics
-
-Extend the existing developer diagnostics modestly.
-
-During debug mode, log major session transitions:
-
-- SESSION_START
-- SESSION_STOP
-- GAME_SCENE_CREATE
-- GAME_SCENE_SHUTDOWN
-- PLAYER_CREATED
-- ENCOUNTER_INITIALIZED
-- PLAYER_DEFEATED
-- SESSION_RESTART
-- DEVELOPER_SEEK
-
-Include a monotonically increasing session identifier.
-
-For example:
-
-`[SESSION 4] PLAYER_CREATED`
-
-This will help identify whether stale callbacks from Session 3 are accidentally affecting Session 4.
-
-Display or log:
-
-- Current session ID.
-- Active Phaser scene.
-- Whether GameScene is active.
-- Blackrush active/visible state.
-- Blackrush world coordinates.
-- Blackrush shield.
-- Blackrush defeated state.
-- Number of active robots.
-- Number of pending encounter definitions.
-- Physics simulation paused/running state.
-
-Do not log every frame.
-
-Avoid exposing development diagnostics in the normal production interface.
-
-### 14. Automated regression tests
-
-Extend the existing Node.js tests.
+Extend the current Node.js test suite.
 
 At minimum, test:
 
-1. New mission resets shield to 100.
-2. New mission resets score to zero.
-3. New mission resets defeat state.
-4. New mission resets camera depth.
-5. New mission restores initial encounter definitions.
-6. Repeated new missions produce identical encounter definitions.
-7. Session identifiers advance correctly.
-8. Duplicate restart requests do not create competing sessions.
-9. Player state is correctly initialized after restart.
-10. Developer seek reconstructs player test state.
-11. Developer seek resets defeat and invulnerability state according to policy.
-12. Robot encounter positioning uses the correct camera depth.
-13. HUD shield ratio is correctly calculated.
-14. HUD color thresholds behave correctly.
-15. Shield decreases through intermediate values.
-16. Shield depletion triggers defeat exactly once.
-17. Defeat can occur in a second newly created mission.
-18. Defeat can occur after a developer seek.
-19. No score or damage state survives a new mission unexpectedly.
-20. Track restarting and mission restarting have distinct, documented semantics.
+1. Initial shield is 100.
+2. Initial hearts are 6.
+3. Shield damage reduces the shield correctly.
+4. Shield regeneration does not begin before four seconds.
+5. Shield regeneration begins after the configured delay.
+6. Regeneration proceeds at 12 points per second.
+7. Regeneration never exceeds maximum shield.
+8. New damage resets the regeneration delay.
+9. Blocked damage does not reset the delay.
+10. Pausing freezes regeneration.
+11. Shield reaching zero removes exactly one heart.
+12. Simultaneous hits cannot remove multiple hearts.
+13. A nonfinal heart loss initiates respawn.
+14. Respawn restores shield to 100.
+15. Respawn does not restore lost hearts.
+16. Respawn protection prevents damage.
+17. Invulnerability expires after three seconds.
+18. Player becomes vulnerable again afterward.
+19. Low-heart warning activates at two hearts.
+20. Warning cadence increases at one heart.
+21. Warning stops after returning to Title.
+22. Losing the final heart triggers Game Over exactly once.
+23. Restart restores six hearts and full shield.
+24. Normal phase transitions preserve survival state.
+25. Developer seeking restores consistent test state.
+26. HUD shield ratios render correctly at representative values.
+27. Heart display correctly reflects remaining lives.
+28. Repeated restarts do not accumulate warning timers or listeners.
+29. Blackrush remains visible and damageable after restarting.
+30. Encounter state remains valid after heart loss.
 
-Use real application logic and configuration values in these tests.
+Use actual project configuration values.
 
-Avoid duplicating implementation formulas in the test suite merely to obtain passing tests.
+Do not change test assertions merely to conceal runtime failures.
 
-### 15. Browser-level acceptance tests — mandatory to report separately
+### 23. Manual browser verification
 
-Previous milestones had passing unit tests while the browser game remained broken.
+After implementation, test the following:
 
-Therefore, distinguish automated unit tests from actual runtime verification.
+**Shield HUD**
 
-Perform browser tests if automation is available.
+- Set shield to 100, 75, 50, 25, 5, and 0.
+- Verify fill width, numerical display, and color.
+- Confirm the shield visually refills during regeneration.
 
-If not, supply an explicit manual test plan and do not claim these behaviors were verified.
+**Heart loss**
 
-#### Test A — Normal mission
+- Start with six hearts.
+- Allow shield to deplete.
+- Confirm exactly one heart is lost.
+- Confirm Blackrush respawns.
+- Confirm music never stops.
+- Confirm shield returns to 100.
+- Confirm temporary invulnerability expires.
 
-1. Refresh browser.
-2. Start Game.
-3. Confirm Blackrush is visible.
-4. Confirm seven initial robots or the configured initial population are present.
-5. Destroy at least one Pursuer.
-6. Break an armored robot's plating.
-7. Destroy its exposed core.
-8. Take damage and observe gradual shield depletion.
-9. Allow Blackrush to die.
+**Multiple deaths**
 
-#### Test B — Restart after defeat
+- Lose several hearts consecutively.
+- Confirm the counter decreases one at a time.
+- Confirm the warning begins at two hearts.
+- Confirm the warning accelerates at one heart.
+- Confirm losing the last heart triggers Game Over.
 
-10. Select RESTART MISSION.
-11. Confirm Synth begins at 0:00.
-12. Confirm Blackrush is present.
-13. Confirm shield is 100.
-14. Confirm score is zero.
-15. Confirm robot population has been restored.
-16. Confirm robots move and attack.
-17. Confirm player weapons work.
-18. Allow Blackrush to die a second time.
-19. Confirm Game Over works again.
+**Restart**
 
-#### Test C — Multiple restarts
+- Restart after Game Over.
+- Confirm six hearts and full shield.
+- Confirm Blackrush is visible.
+- Confirm robots are restored.
+- Confirm weapons and collisions work.
+- Repeat multiple times.
 
-20. Restart again.
-21. Verify Blackrush and all initial encounter robots.
-22. Repeat at least three consecutive mission restarts.
-23. Confirm there is exactly one active Blackrush each time.
+**Timeline**
 
-#### Test D — Developer tools
+- Begin Synth.
+- Lose one or more hearts.
+- Allow a normal transition into Cathedral.
+- Confirm remaining hearts are preserved.
+- Use developer seeking.
+- Confirm the documented seek reset behavior.
+- Jump to Victory and replay.
+- Confirm a fresh mission begins correctly.
 
-24. Start a mission.
-25. Use developer RESTART CURRENT TRACK.
-26. Verify correct track and reconstructed gameplay state.
-27. Jump to PROXY.
-28. Jump to CATHEDRAL.
-29. Jump to VICTORY.
-30. Jump backward to CHASE.
-31. Confirm Blackrush reappears.
-32. Confirm shield and defeat logic work.
-33. Allow Blackrush to die.
-34. Restart and verify normal gameplay.
-
-#### Test E — Navigation
-
-35. Return to Title.
-36. Start a new game.
-37. Verify Blackrush and the initial encounters.
-38. Repeat in Assisted mode.
-39. Verify developer-panel clicks do not trigger player movement or weapons.
+Test both Classic and Assisted controls.
 
 No browser console exceptions should occur.
 
-### 16. Build verification
-
-Run:
-
-`npm test`
-
-`npm run build`
-
-Both must succeed.
-
-Report actual test counts.
-
-Do not interpret successful unit tests or a successful production build as proof that Phaser scenes, physics, and browser rendering work correctly.
-
-### 17. Documentation
+### 24. Documentation
 
 Update:
 
+- `docs/GAME_DESIGN.md`
 - `docs/DEVELOPMENT.md`
-- `docs/GAME_DESIGN.md` if session semantics need clarification.
-- `README.md` if the developer controls change.
+- `README.md`
 
 Document:
 
-- The root causes of each discovered defect.
-- Mission/session ownership.
-- Start, restart, replay, and seek semantics.
-- Encounter restoration behavior.
-- Shield reset policy.
-- Shield bar rendering.
-- Defeat lifecycle.
-- Developer lifecycle diagnostics.
-- Testing performed.
-- Any unresolved issues.
+- Shield regeneration.
+- Heart mechanics.
+- Respawn behavior.
+- Low-heart warning.
+- Final defeat.
+- Survival-state ownership.
+- Developer seeking semantics.
+- Developer testing controls.
+- Configuration parameters.
+- Actual test results.
+- Known limitations.
 
-### 18. Scope restrictions
+### 25. Scope restrictions
 
 Do not implement:
 
-- New robots.
-- New attack patterns.
-- Additional encounter waves.
-- Obstacle collision response.
-- Shield regeneration or pickups.
-- Proxy boss.
-- Super-robot.
-- Panzer.
-- Grenade sequence.
-- Lorelei NPC.
-- Mobile gameplay.
+- Shield pickups.
+- Extra-heart pickups.
+- Bonus lives.
+- New robot types.
+- Music-controlled enemy waves.
+- Obstacle collisions.
+- Boss fights.
+- Grenade mechanics.
+- Panzer tank.
+- Lorelei companion.
+- Mobile controls.
 - New artwork.
-- Sound effects.
+- Additional background music.
+- Permanent character upgrades.
 - Additional weapons.
 
-Do not change the original MP3 files.
+Do not change the existing Classic or Assisted movement behavior.
+
+Do not modify original musical recordings.
 
 Do not change musical cue timestamps.
 
-Do not redesign working player controls.
+Do not implement Step 6.
 
-Do not move to Step 6.
+### 26. Definition of done
 
-### 19. Definition of done
+Step 5.4 is complete when:
 
-Step 5.3 is complete when:
-
-- Every mission start creates a valid Blackrush.
-- Blackrush is visible, active, and controllable.
-- Initial robots consistently reappear.
-- Robot positions are correct.
-- Robot AI and combat work after restart.
-- Shield state resets correctly.
-- Shield display shows proportional depletion.
-- Blackrush can die repeatedly across multiple sessions.
-- Developer seeking restores a valid, damageable Blackrush.
-- Restart Current Track behaves consistently.
-- New Mission, Restart, Replay, and Return to Title have reliable lifecycle behavior.
-- No duplicate scene transitions occur.
-- No old session callbacks corrupt a new session.
+- The shield bar correctly displays proportional depletion.
+- Numerical shield values are visible.
+- Shield regeneration works.
+- Six hearts are displayed.
+- Each shield depletion removes exactly one heart.
+- Blackrush automatically respawns while hearts remain.
+- Respawning does not interrupt the music.
+- Temporary invulnerability works and expires.
+- Low-heart warnings function correctly.
+- Final heart loss triggers Game Over.
+- Restart restores the full initial state.
+- Normal musical progression preserves remaining hearts.
+- Developer seeking produces a consistent test state.
+- Existing combat mechanics remain functional.
+- Both control modes work.
 - Automated tests pass.
 - Production build succeeds.
-- Browser verification passes or remaining manual verification is explicitly identified.
+- Browser testing passes, or any remaining manual testing is clearly identified.
 
-Provide a detailed completion report listing actual root causes, modified files, test results, browser verification, and remaining limitations.
+### 27. Completion report
 
-Stop after Step 5.3.
+Provide:
+
+1. Exact shield HUD defect and correction.
+2. Survival system implementation.
+3. State ownership and lifecycle.
+4. Respawn implementation.
+5. Low-heart warning implementation.
+6. Developer testing controls.
+7. New or modified files.
+8. Automated test results.
+9. Browser verification results.
+10. Remaining limitations.
+
+Stop after Step 5.4.
+
+Do not begin Step 6 without authorization.

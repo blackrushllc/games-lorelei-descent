@@ -57,9 +57,13 @@ export default class GameScene extends Phaser.Scene {
 
         // 7. Add HUD
         this.hud = new Hud(this);
+        this.hud.setHearts(this.player.hearts, this.player.maxHearts);
 
         // 8. Event Listeners for Combat
         this.setupCombatEvents();
+
+        // 9. Survival Warning Timer
+        this.survivalWarningTimer = 0;
 
         // 9. Back to Title Button (Dev purposes)
         const backButton = this.add.text(width - 20, height - 20, 'BACK TO TITLE', {
@@ -186,20 +190,20 @@ export default class GameScene extends Phaser.Scene {
             this.hud.setShield(player.shield, player.maxShield);
 
             if (result === COMBAT_CONFIG.results.TARGET_DESTROYED) {
-                this.handleGameOver();
+                this.handlePlayerDefeat();
             }
         }
     }
 
     setupCombatEvents() {
         this.events.on('robotAttack', (attackData) => {
-            if (this.player.isDestroyed) return;
+            if (this.player.isDestroyed || this.player.isRespawning) return;
             const result = CombatSystem.processAttack(attackData, this.player);
             if (result !== COMBAT_CONFIG.results.NO_DAMAGE) {
                 this.player.onHit();
                 this.hud.setShield(this.player.shield, this.player.maxShield);
                 if (result === COMBAT_CONFIG.results.TARGET_DESTROYED) {
-                    this.handleGameOver();
+                    this.handlePlayerDefeat();
                 }
             }
         });
@@ -222,11 +226,104 @@ export default class GameScene extends Phaser.Scene {
         this.hud.setScore(this.score);
     }
 
+    handlePlayerDefeat() {
+        if (this.player.isDestroyed || this.player.isRespawning || this.isGameOver) return;
+        
+        // 1. Decrement hearts
+        this.player.hearts--;
+        this.hud.setHearts(this.player.hearts, this.player.maxHearts);
+        
+        // 2. Sound Effects (Part B requirement)
+        this.playSurvivalSound('heartLoss');
+
+        if (this.player.hearts <= 0) {
+            // Final Defeat
+            this.handleGameOver();
+        } else {
+            // Normal Defeat -> Respawn
+            this.initiateRespawn();
+        }
+    }
+
+    initiateRespawn() {
+        this.player.isRespawning = true;
+        
+        // Shield collapse effect
+        this.createShieldCollapseEffect(this.player.x, this.player.y);
+        
+        // Temporarily remove player
+        this.player.setVisible(false);
+        if (this.player.body) this.player.body.enable = false;
+
+        // Respawn delay (1.2s)
+        this.time.delayedCall(this.player.combatConfig.respawnDelay, () => {
+            this.performRespawn();
+        });
+    }
+
+    performRespawn() {
+        // Safe position search
+        const spawnPos = this.findSafeRespawnPosition();
+        
+        this.player.setPosition(spawnPos.x, spawnPos.y);
+        this.player.setVisible(true);
+        if (this.player.body) {
+            this.player.body.enable = true;
+            this.player.body.reset(spawnPos.x, spawnPos.y);
+        }
+        
+        this.player.shield = this.player.maxShield;
+        this.hud.setShield(this.player.shield, this.player.maxShield);
+        
+        this.player.isRespawning = false;
+        this.player.invulnerabilityTimer = this.player.combatConfig.respawnInvulnerability;
+        
+        // Reappearance effect
+        this.createReappearanceEffect(spawnPos.x, spawnPos.y);
+    }
+
+    findSafeRespawnPosition() {
+        const cam = this.cameras.main;
+        const centerX = 320;
+        const centerY = cam.scrollY + 480;
+        
+        // Candidates: Center, slightly left, slightly right, slightly up, slightly down
+        const candidates = [
+            { x: centerX, y: centerY },
+            { x: centerX - 100, y: centerY },
+            { x: centerX + 100, y: centerY },
+            { x: centerX, y: centerY - 150 },
+            { x: centerX, y: centerY + 150 }
+        ];
+
+        // Simple distance-based safety check against robots
+        let bestCandidate = candidates[0];
+        let maxMinDist = -1;
+
+        candidates.forEach(c => {
+            let minDist = 10000;
+            this.robotGroup.getChildren().forEach(r => {
+                if (r.active) {
+                    const d = Phaser.Math.Distance.Between(c.x, c.y, r.x, r.y);
+                    if (d < minDist) minDist = d;
+                }
+            });
+
+            if (minDist > maxMinDist) {
+                maxMinDist = minDist;
+                bestCandidate = c;
+            }
+        });
+
+        return bestCandidate;
+    }
+
     handleGameOver() {
         if (this.isGameOver) return;
         this.isGameOver = true;
+        this.player.isFinalDefeat = true;
 
-        console.log(`[SESSION ${this.sessionID}] PLAYER_DEFEATED`);
+        console.log(`[SESSION ${this.sessionID}] PLAYER_DEFEATED_FINAL`);
         this.player.die();
         this.timeline.pause();
         
@@ -235,6 +332,55 @@ export default class GameScene extends Phaser.Scene {
     }
 
     // Effect implementations
+    playSurvivalSound(type) {
+        // Part B: implemented via procedural audio later
+        this.events.emit('playSurvivalSound', type);
+    }
+
+    createShieldCollapseEffect(x, y) {
+        // Bright blue-white flash + electrical burst
+        const flash = this.add.graphics();
+        flash.fillStyle(0xffffff, 1);
+        flash.fillCircle(x, y, 50);
+        this.tweens.add({
+            targets: flash,
+            alpha: 0,
+            scale: 2,
+            duration: 200,
+            onComplete: () => flash.destroy()
+        });
+
+        // Electrical burst
+        for (let i = 0; i < 8; i++) {
+            const arc = this.add.graphics();
+            arc.lineStyle(2, 0x00ffff, 1);
+            const angle = Math.random() * Math.PI * 2;
+            arc.beginPath();
+            arc.moveTo(x, y);
+            arc.lineTo(x + Math.cos(angle) * 60, y + Math.sin(angle) * 60);
+            arc.strokePath();
+            this.tweens.add({
+                targets: arc,
+                alpha: 0,
+                duration: 400,
+                onComplete: () => arc.destroy()
+            });
+        }
+    }
+
+    createReappearanceEffect(x, y) {
+        const flash = this.add.graphics();
+        flash.fillStyle(0x00ffff, 1);
+        flash.fillCircle(x, y, 30);
+        this.tweens.add({
+            targets: flash,
+            alpha: 0,
+            scale: 1.5,
+            duration: 300,
+            onComplete: () => flash.destroy()
+        });
+    }
+
     createImpactSparks(x, y, angle, isAxe) {
         const count = isAxe ? 8 : 4;
         for (let i = 0; i < count; i++) {
@@ -354,16 +500,28 @@ export default class GameScene extends Phaser.Scene {
             this.reconcilePlayerWithCamera();
             this.spawnTestEncounter();
             
-            this.player.shield = this.player.combatConfig.maxShield;
+            // Survival state reset
+            this.player.maxShield = this.player.combatConfig.maxShield;
+            this.player.shield = this.player.maxShield;
+            this.player.hearts = this.player.combatConfig.startingHearts;
+            this.player.maxHearts = this.player.combatConfig.maxHearts;
             this.player.isDestroyed = false;
+            this.player.isRespawning = false;
+            this.player.isFinalDefeat = false;
+            this.player.invulnerabilityTimer = 0;
+            this.player.lastDamageTime = 0;
+            this.survivalWarningTimer = 0;
+
             if (this.player.body) {
                 this.player.body.enable = true;
             }
             this.player.setAlpha(1);
             this.player.setScale(1);
+            this.player.setVisible(true);
             this.isGameOver = false;
             
             this.hud.setShield(this.player.shield, this.player.combatConfig.maxShield);
+            this.hud.setHearts(this.player.hearts, this.player.maxHearts);
             this.score = 0;
             this.hud.setScore(0);
         };
@@ -380,17 +538,27 @@ export default class GameScene extends Phaser.Scene {
             this.reconcilePlayerWithCamera();
             this.spawnTestEncounter();
             
-            // Reset combat stats for dev purposes as per policy (Step 5.3 section 8)
-            this.player.shield = this.player.combatConfig.maxShield;
+            // Reset combat stats for dev purposes as per policy
+            this.player.maxShield = this.player.combatConfig.maxShield;
+            this.player.shield = this.player.maxShield;
+            this.player.hearts = this.player.combatConfig.startingHearts;
             this.player.isDestroyed = false;
+            this.player.isRespawning = false;
+            this.player.isFinalDefeat = false;
+            this.player.invulnerabilityTimer = 0;
+            this.player.lastDamageTime = 0;
+            this.survivalWarningTimer = 0;
+
             if (this.player.body) {
                 this.player.body.enable = true;
             }
             this.player.setAlpha(1);
             this.player.setScale(1);
+            this.player.setVisible(true);
             this.isGameOver = false;
             
             this.hud.setShield(this.player.shield, this.player.combatConfig.maxShield);
+            this.hud.setHearts(this.player.hearts, this.player.maxHearts);
             this.score = 0;
             this.hud.setScore(0);
         };
@@ -399,10 +567,17 @@ export default class GameScene extends Phaser.Scene {
             this.returnToTitle();
         };
 
+        this.onPlaySurvivalSound = (type) => {
+            if (this.game.audioDirector) {
+                this.game.audioDirector.playSurvivalSound(type);
+            }
+        };
+
         this.timeline.on('phaseChange', this.onPhaseChange);
         this.timeline.on('trackStart', this.onTrackStart);
         this.timeline.on('seek', this.onSeek);
         this.timeline.on('debugReturnToTitle', this.onDebugReturnToTitle);
+        this.events.on('playSurvivalSound', this.onPlaySurvivalSound);
     }
 
     cleanupTimelineListeners() {
@@ -412,6 +587,7 @@ export default class GameScene extends Phaser.Scene {
             this.timeline.off('seek', this.onSeek);
             this.timeline.off('debugReturnToTitle', this.onDebugReturnToTitle);
         }
+        this.events.off('playSurvivalSound', this.onPlaySurvivalSound);
         this.events.off('robotAttack');
         this.events.off('robotDestroyed');
         this.events.off('robotArmorHit');
@@ -464,6 +640,9 @@ export default class GameScene extends Phaser.Scene {
         // 5. Update Robots (AI and depth cleanup)
         this.robotGroup.getChildren().forEach(r => r.update(time, delta));
 
+        // 5.5 Survival Warning
+        this.updateSurvivalWarning(delta);
+
         // 6. Update HUD
         this.hud.setWeaponStatus('energy', 'READY');
         const axeCooldown = this.weaponSystem.getAxeCooldownStatus();
@@ -471,6 +650,26 @@ export default class GameScene extends Phaser.Scene {
 
         // 7. Update Technical Diagnostics (if debug enabled)
         this.updateDiagnostics();
+    }
+
+    updateSurvivalWarning(delta) {
+        if (!this.player || this.player.isFinalDefeat || this.isGameOver) return;
+
+        const hearts = this.player.hearts;
+        if (hearts > this.player.combatConfig.lowHeartThreshold) {
+            this.survivalWarningTimer = 0;
+            return;
+        }
+
+        const interval = hearts === 1 
+            ? this.player.combatConfig.oneHeartWarnInterval 
+            : this.player.combatConfig.twoHeartWarnInterval;
+
+        this.survivalWarningTimer += delta;
+        if (this.survivalWarningTimer >= interval) {
+            this.playSurvivalSound('lowLife');
+            this.survivalWarningTimer = 0;
+        }
     }
 
     updateDiagnostics() {
