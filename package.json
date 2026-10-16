@@ -1,0 +1,19 @@
+{
+  "name": "lorelei-descent",
+  "version": "0.1.0",
+  "description": "LORELEI: DESCENT - A browser-based, top-down, vertically scrolling arcade shooter.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/*.test.js"
+  },
+  "private": true,
+  "dependencies": {
+    "phaser": "^3.88.2"
+  },
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}

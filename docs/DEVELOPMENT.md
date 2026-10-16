@@ -1,0 +1,194 @@
+# Development Roadmap - LORELEI: DESCENT
+
+## Milestones
+
+1.  **Project setup and prerequisites** (Completed)
+2.  **Game skeleton and scenes** (Completed)
+3.  **Music integration and master timeline** (Completed)
+3.1 **Maintenance: Lifecycle, Debug Panel, and Centering** (Completed)
+4.  **Blackrush movement and weapons** (Completed)
+4.1 **Maintenance: Projectile Physics and Startup Fixes** (Completed)
+4.2 **Fixed Boss Arena and Mouse-Assisted Movement** (Completed)
+4.3 **Maintenance: Assisted Movement Crash Fix** (Completed)
+5.  **Robot combat and destruction** (Completed)
+5.1 **Maintenance: Robot Visuals, Crashes, and Game Over** (Completed)
+5.2 **Maintenance: Combat Repair and Restart Lifecycle** (Completed)
+5.3 **Maintenance: Mission Lifecycle, Player Restoration, and Shield HUD** (Completed)
+6.  **Scrolling chamber and defenses**
+7.  **Encounter director and difficulty**
+8.  **Opening chase**
+9.  **Proxy boss and German soldier**
+10. **Super-robot and Panzer**
+11. **Ending and promotion**
+12. **Character and environment artwork**
+13. **Sound effects and visual/audio polish**
+14. **Mobile controls and playtesting**
+15. **Production deployment**
+
+## Verification
+
+### Step 5.2 Maintenance Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. Click **START GAME**.
+4. **Combat Verification**:
+    - Shoot Pursuers once; verify they explode and are removed.
+    - Shoot Sentinels twice; verify they explode.
+    - Hit Armored Pursuers with an axe; verify armor breaks.
+    - Shoot exposed core; verify it is destroyed by 1 bolt.
+5. **Restart Verification**:
+    - Allow shield to deplete or click RESTART in debug panel.
+    - Click **RESTART MISSION** in game over screen.
+    - Verify all initial robots are present and active (moving/attacking).
+    - Verify music restarts at 0:00.
+    - Verify no persistent white beams from previous session.
+6. **Diagnostics**:
+    - Open browser console (F12) while in debug mode.
+    - Verify combat logs appear: `[COMBAT] Attack: ...`, `[COLLISION] ...`, etc.
+7. **Tests**: Run `npm test` and verify all 34 tests pass.
+
+### Step 5.3 Maintenance Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Mission Lifecycle**:
+    - Start game; note **Session: 1** in debug panel.
+    - Click **RESTART** in debug panel; verify Session remains 1 (track restart).
+    - Click **RESTART MISSION** after defeat; verify Session becomes 2 (new mission).
+4. **Player Restoration**:
+    - Allow Blackrush to die.
+    - Click **RESTART MISSION** or use debug panel to seek.
+    - Verify Blackrush is visible, active, and can be damaged again (not immortal).
+5. **Encounter Restoration**:
+    - Seek forward to **PROXY**.
+    - Seek back to **CHASE**.
+    - Verify robots appear at the start of the chamber, not thousands of pixels away.
+6. **Shield HUD**:
+    - Take damage; verify the shield bar shrinks proportionally.
+    - Verify color changes: Green (>60%) -> Yellow (60-31%) -> Red (<=30%).
+7. **Diagnostics**:
+    - Open **TECHNICAL DIAGNOSTICS**; verify Session ID, Active Scene, and Physics status are correct.
+8. **Tests**: Run `npm test` and verify all 34 tests pass (including new Step 5.3 lifecycle tests).
+
+### Development Build
+Run the following command to start the development server:
+```bash
+npm run dev
+```
+The application will be available at `http://localhost:3000`.
+
+### Production Build
+Run the following command to generate a production build:
+```bash
+npm run build
+```
+The output will be in the `dist/` directory.
+
+### Step 3 Verification
+1. Run `npm install` and `npm run dev`.
+2. Open `http://localhost:3000/?debug=1` in your browser.
+3. Click **START GAME**.
+4. Observe the **DEVELOPMENT TOOLS** panel on the right.
+5. Verify that:
+    - The Synth track starts playing.
+    - The phase label in the HUD and debug panel changes at 45s and 300s.
+    - Seeking using the slider or jump buttons updates the phase correctly.
+    - Pausing stops both music and timeline.
+    - Resuming continues from the same position.
+    - Transitions to Cathedral and Studio are automatic.
+    - EndingScene displays credits and promotion at the correct times.
+    - The game canvas is horizontally and vertically centered.
+
+### Step 3.1 Maintenance
+- **Lifecycle Bug**: Fixed `TypeError` after Victory by properly unregistering timeline listeners in `GameScene` and `EndingScene` using the `shutdown` event.
+- **Debug Panel**: Moved timeline and debug updates to a global loop in `main.js` to prevent the panel from freezing during scene transitions.
+- **Canvas Centering**: Replaced Phaser's `autoCenter` with CSS Flexbox centering for better reliability and fixed the right-side offset.
+- **Scene Reconciliation**: Implemented global track-based scene management to support seamless transitions and seeking between gameplay and ending tracks.
+
+### Step 4 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. Click **START GAME**.
+4. **Movement**: Use WASD or Arrow keys to move Blackrush. Verify movement is smooth and diagonal speed is normalized.
+5. **Aiming**: Move the mouse; verify the yellow triangle on Blackrush points toward the cursor.
+6. **Energy Weapon**: Hold Left Mouse Button. Verify rapid cyan bolts fire toward the cursor.
+7. **Throwing Axe**: Click Right Mouse Button. Verify a spinning axe is thrown. Check the HUD for "AXE: %" recharge status.
+8. **Descent**: Observe that the camera scrolls downward automatically at 75 px/s.
+9. **Boundaries**: Try to move off-screen or above the HUD. Blackrush should be constrained.
+10. **Pause/Resume**: Click PAUSE in the debug panel. Verify both music and player movement stop.
+11. **Seeking**: Jump to different phases (e.g., SWARM, PANZER). Verify the camera jumps to the correct depth and projectiles are cleared.
+12. **Technical Diagnostics**: Click "[+] TECHNICAL DIAGNOSTICS" in the debug panel to see real-time coordinates and object counts.
+
+### Step 4.1 Maintenance Verification
+1. Run `npm run dev`.
+2. Click **START GAME**. Verify the Title Scene disappears and Game Scene becomes visible immediately.
+3. Verify music starts and no console errors appear.
+4. Verify that Blackrush does NOT fire immediately upon entering the scene.
+5. Hold Left Mouse Button. Verify energy bolts fire and travel correctly.
+6. Verify technical diagnostics show projectile count increasing while firing and decreasing as they expire.
+7. Click Right Mouse Button. Verify axe is thrown and recharges.
+8. Seek to different tracks and verify no physics errors occur.
+
+### Step 4.2 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Control Mode Selection**: On the Title Scene, verify you can toggle between CLASSIC and ASSISTED modes. The selection should persist after a page refresh.
+4. Click **START GAME**.
+5. **Assisted Movement**: If in ASSISTED mode, move the mouse away from Blackrush. Verify he follows the cursor when it's outside the dead zone (110px).
+6. **Keyboard Override**: While Blackrush is moving toward the mouse, press WASD. Keyboard input must take priority.
+7. **Arena Transition**: Use the debug panel to jump to the PROXY phase (Synth 5:00).
+8. Observe the camera: It should smoothly decelerate starting at 4:57 and stop completely at 5:00.
+9. **Arena Visuals**: Verify the environment changes to an open industrial arena with markings and side supports.
+10. **Fixed Camera**: Move Blackrush around the arena. The camera should remain stationary.
+11. **Cathedral Sync**: Verify the camera remains in the arena during the entire Cathedral track.
+12. **Seeking**: Seek back to 2:00 (SWARM). The camera should restore its descending state and depth correctly.
+
+### Step 4.3 Maintenance Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. Select **ASSISTED** control mode on the Title Scene.
+4. Click **START GAME**. Verify no Javascript error occurs.
+5. Verify Blackrush moves toward the mouse when it is outside the 110px dead zone.
+6. Verify Blackrush stops moving when the mouse is inside the dead zone or outside the canvas.
+7. Verify WASD keys override mouse-assisted movement immediately.
+8. Verify Right-Click axe throwing suppresses assisted movement immediately.
+9. Verify diagnostics in the debug panel correctly show "Assisted Active: YES/NO".
+10. Verify seeking to different tracks and returning from Victory work without exceptions.
+11. Run `npm test` to verify all project tests pass.
+
+### Step 5 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. Click **START GAME**.
+4. **Combat**: Fire energy bolts at robots.
+    - Pursuers (Red) should be destroyed by 1 bolt.
+    - Sentinels (Red with glow) should require 2 bolts.
+    - Armored Pursuers (Gray plates) should resist bolts.
+5. **Axe**: Throw an axe (Right-Click).
+    - Ordinary robots should be destroyed instantly.
+    - Armored robots should lose their plates and become orange/vulnerable.
+6. **AI**:
+    - Pursuers should follow you.
+    - Sentinels should stop, project a red line, and fire a beam.
+7. **Shield**: Verify the HUD shield bar decreases when you are hit. Invulnerability flashes should occur.
+8. **Defeat**: Let your shield reach zero. Verify the "SHIELD DEPLETED" overlay appears and music/gameplay pauses.
+9. **Scoring**: Verify the score increases (Pursuer: 100, Sentinel: 200, Armored: 300, Armor Break: 50).
+10. **Destruction**: Observe fragments and sparks when robots explode.
+11. **Debug Tools**: Open "[+] COMBAT TOOLS". Test resetting shield, clearing robots, and spawning specific archetypes.
+12. **Tests**: Run `npm test` to verify all 33 combat and regression tests pass.
+
+### Step 5.1 Maintenance Verification
+1. Run `npm run dev`.
+2. **Archetype Visuals**: Verify robot types are distinct:
+    - **Pursuer**: Small, red, single eye.
+    - **Sentinel**: Antennae, larger eye, distinct ranged behavior.
+    - **Armored Pursuer**: 25% larger, bulky gray plates, dark red body.
+3. **Armor Break**: Hit an Armored Pursuer with an axe. Verify:
+    - Gray plates disappear.
+    - Body becomes orange/yellow.
+    - Robot remains alive but vulnerable to one energy bolt.
+4. **No Crashes**: Hit robots (especially Armored with axe) and confirm no `setTint` TypeError in console.
+5. **Game Over Buttons**: Allow shield to reach zero.
+    - Verify "SHIELD DEPLETED" screen appears.
+    - Click **RESTART MISSION**: Verify game restarts from 0:00 with full shield and score reset.
+    - Click **BACK TO TITLE**: Verify game returns to title screen.
+6. **Tests**: Run `npm test` and verify all 31 tests pass (including new Step 5.1 tests).
