@@ -88,6 +88,6 @@ test('Step 5.4: Low-heart warning activation', async (t) => {
 
     assert.strictEqual(getInterval(6), null);
     assert.strictEqual(getInterval(3), null);
-    assert.strictEqual(getInterval(2), 8000);
-    assert.strictEqual(getInterval(1), 4000);
+    assert.strictEqual(getInterval(2), 4000);
+    assert.strictEqual(getInterval(1), 2000);
 });

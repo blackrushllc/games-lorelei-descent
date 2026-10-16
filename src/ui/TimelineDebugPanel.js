@@ -105,6 +105,7 @@ export default class TimelineDebugPanel {
                 </div>
                 <div class="debug-controls" style="margin-top: 5px;">
                     <button id="btn-toggle-invuln">TOGGLE INVULN</button>
+                    <button id="btn-toggle-physics-debug">TOGGLE COLLISION</button>
                 </div>
                 <div style="margin-top: 5px; font-weight: bold;">SET HEARTS:</div>
                 <div class="debug-controls">
@@ -268,10 +269,9 @@ export default class TimelineDebugPanel {
         const spawnRobot = (type) => {
             const gs = getGameScene();
             if (gs && gs.player) {
-                const rx = gs.player.x + (Math.random() - 0.5) * 400;
-                const ry = gs.player.y - 300 - Math.random() * 200;
+                const pos = gs.findSafeRobotSpawnPosition();
                 const Robot = gs.robotGroup.classType;
-                const robot = new Robot(gs, rx, ry, type);
+                const robot = new Robot(gs, pos.x, pos.y, type);
                 gs.robotGroup.add(robot);
             }
         };
@@ -291,6 +291,18 @@ export default class TimelineDebugPanel {
                         return this.debugInvulnerable || this.originalIsInvulnerable();
                     };
                 }
+            }
+        };
+
+        $('#btn-toggle-physics-debug').onclick = () => {
+            const gs = getGameScene();
+            if (gs) {
+                const debug = gs.physics.world.drawDebug;
+                gs.physics.world.drawDebug = !debug;
+                if (!gs.physics.world.debugGraphic) {
+                    gs.physics.world.createDebugGraphic();
+                }
+                gs.physics.world.debugGraphic.clear();
             }
         };
     }

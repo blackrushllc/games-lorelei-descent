@@ -210,6 +210,34 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         const camera = this.scene.cameras.main;
         const bounds = this.config.bounds;
 
+        // Vertical boundaries (relative to camera)
+        const topBound = camera.scrollY + bounds.top;
+        const bottomBound = camera.scrollY + bounds.bottom;
+
+        if (this.y < topBound) {
+            this.y = topBound;
+            
+            // Viewport-forced collision resolution:
+            // If pushed into an obstacle by the camera, try to escape forward
+            const obstacles = this.scene.environment.obstacles;
+            const walls = this.scene.environment.walls;
+            
+            if (this.scene.physics.world.overlap(this, obstacles) || this.scene.physics.world.overlap(this, walls)) {
+                // Trapped! Attempt forward escape
+                for (let offset = 5; offset <= 60; offset += 5) {
+                    this.y = topBound + offset;
+                    if (!this.scene.physics.world.overlap(this, obstacles) && !this.scene.physics.world.overlap(this, walls)) {
+                        break;
+                    }
+                }
+            }
+            
+            if (this.body.velocity.y < 0) this.body.velocity.y = 0;
+        } else if (this.y > bottomBound) {
+            this.y = bottomBound;
+            if (this.body.velocity.y > 0) this.body.velocity.y = 0;
+        }
+
         // Horizontal boundaries
         if (this.x < bounds.left) {
             this.x = bounds.left;
@@ -217,18 +245,6 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         } else if (this.x > bounds.right) {
             this.x = bounds.right;
             this.body.velocity.x = Math.min(0, this.body.velocity.x);
-        }
-
-        // Vertical boundaries (relative to camera)
-        const topBound = camera.scrollY + bounds.top;
-        const bottomBound = camera.scrollY + bounds.bottom;
-
-        if (this.y < topBound) {
-            this.y = topBound;
-            if (this.body.velocity.y < 0) this.body.velocity.y = 0;
-        } else if (this.y > bottomBound) {
-            this.y = bottomBound;
-            if (this.body.velocity.y > 0) this.body.velocity.y = 0;
         }
     }
 }

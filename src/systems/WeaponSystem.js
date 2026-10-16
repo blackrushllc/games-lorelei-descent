@@ -102,8 +102,12 @@ export default class WeaponSystem {
      * Resets all weapon states and clears active projectiles.
      */
     reset() {
-        this.energyProjectiles.clear(true, true);
-        this.axes.clear(true, true);
+        if (this.energyProjectiles && this.energyProjectiles.scene) {
+            this.energyProjectiles.clear(true, true);
+        }
+        if (this.axes && this.axes.scene) {
+            this.axes.clear(true, true);
+        }
         this.lastEnergyFireTime = 0;
         this.lastAxeFireTime = 0;
     }

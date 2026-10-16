@@ -66,5 +66,15 @@ The game follows a fixed-duration, music-driven timeline. Progression is automat
 - **Secondary Weapon**: Right Mouse Button throws a spinning axe (cooldown required).
 - **Descent**: The game scrolls downward at a constant rate during the Synth track, smoothly decelerating into the fixed Boss Arena at 5:00.
 
-## Core Objective
+## Environment & Obstacles
+- **Deterministic Generation**: The underground complex is generated using a seeded random algorithm, ensuring the same layout for every playthrough.
+- **Chunked Loading**: To maintain performance, only obstacles near the camera are active in the physics world.
+- **Obstacle Types**:
+    - **Pillars & Machine Blocks**: Solid rectangular obstacles that block movement, projectiles, and lasers.
+    - **Industrial Tanks**: Solid circular obstacles (approximated as rectangles for physics).
+    - **Perimeter Walls**: Solid boundaries that keep the action within the 640px wide corridor.
+- **Cover Mechanics**: Both the player and robots can use solid obstacles as cover. Lasers and projectiles terminate upon hitting an obstacle.
+- **Friendly Fire**: Sentinel lasers can damage other robots if they are in the line of fire.
+
+## core Objective
 Survival and combat against waves of robots while descending into the Gamora complex. The game is intended to be fun, accessible, and visually satisfying.

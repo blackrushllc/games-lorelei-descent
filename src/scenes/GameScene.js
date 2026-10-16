@@ -30,6 +30,9 @@ export default class GameScene extends Phaser.Scene {
         this.chamberBuilder = new ChamberBuilder(this);
         this.environment = this.chamberBuilder.build();
 
+        // 1.5 Call initial update to populate starting obstacles
+        this.chamberBuilder.update(0);
+
         // Set world bounds to match the large descent (50,000 pixels)
         this.cameras.main.setBounds(0, 0, 640, 50000);
 
@@ -119,10 +122,47 @@ export default class GameScene extends Phaser.Scene {
         
         // Player vs Robots (Contact damage)
         this.physics.add.overlap(this.player, this.robotGroup, this.handlePlayerRobotCollision, null, this);
+
+        // New: Solid Obstacles and Walls
+        this.physics.add.collider(this.player, this.environment.obstacles);
+        this.physics.add.collider(this.player, this.environment.walls);
+        this.physics.add.collider(this.robotGroup, this.environment.obstacles);
+        this.physics.add.collider(this.robotGroup, this.environment.walls);
+        
+        // Projectiles vs Obstacles/Walls
+        this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.environment.obstacles, this.handleProjectileObstacleCollision, null, this);
+        this.physics.add.overlap(this.weaponSystem.axes, this.environment.obstacles, this.handleProjectileObstacleCollision, null, this);
+        this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.environment.walls, this.handleProjectileObstacleCollision, null, this);
+        this.physics.add.overlap(this.weaponSystem.axes, this.environment.walls, this.handleProjectileObstacleCollision, null, this);
+    }
+
+    handleProjectileObstacleCollision(projectile, obstacle) {
+        if (!projectile.active) return;
+
+        const isAxe = projectile.texture.key === 'axe';
+        const direction = projectile.rotation - Math.PI / 2;
+
+        // Visual effects
+        this.createImpactSparks(projectile.x, projectile.y, direction, isAxe);
+
+        if (isAxe) {
+            // Stronger metallic impact
+            this.createAxeImpactEffect(projectile.x, projectile.y);
+        }
+
+        projectile.deactivate();
     }
 
     handleProjectileRobotCollision(projectile, robot) {
         if (robot.isDestroyed || !projectile.active || projectile.hitTargets.has(robot)) return;
+        
+        // New: Check if robot is behind cover relative to the projectile's path
+        const ray = new Phaser.Geom.Line(projectile.x - projectile.body.deltaX(), projectile.y - projectile.body.deltaY(), projectile.x, projectile.y);
+        const hit = this.getNearestObstacleAlongRay(ray.x1, ray.y1, projectile.rotation - Math.PI / 2, 100);
+        if (hit && hit.distance < Phaser.Math.Distance.Between(ray.x1, ray.y1, robot.x, robot.y)) {
+            // Projectile hit an obstacle before the robot (Arcade overlap can be imprecise)
+            return;
+        }
 
         const isDebug = window.location.search.includes('debug=1');
         const isAxe = projectile.texture.key === 'axe';
@@ -221,6 +261,41 @@ export default class GameScene extends Phaser.Scene {
         });
     }
 
+    handleFriendlyFire(attackData, targetRobot) {
+        if (targetRobot.isDestroyed || !targetRobot.active) return;
+        
+        const isDebug = window.location.search.includes('debug=1');
+        const result = CombatSystem.processAttack(attackData, targetRobot);
+        
+        if (result !== COMBAT_CONFIG.results.NO_DAMAGE) {
+            // No score for friendly fire
+            if (result === COMBAT_CONFIG.results.TARGET_DESTROYED) {
+                if (isDebug) console.log(`[FRIENDLY FIRE] Robot destroyed.`);
+                targetRobot.die();
+                this.createFriendlyFireIndicator(targetRobot.x, targetRobot.y);
+            } else {
+                targetRobot.onHit(result);
+            }
+        }
+    }
+
+    createFriendlyFireIndicator(x, y) {
+        const text = this.add.text(x, y - 40, 'FRIENDLY FIRE', {
+            fontSize: '10px',
+            fill: '#ff0000',
+            fontFamily: 'monospace',
+            fontWeight: 'bold'
+        }).setOrigin(0.5);
+
+        this.tweens.add({
+            targets: text,
+            y: y - 80,
+            alpha: 0,
+            duration: 800,
+            onComplete: () => text.destroy()
+        });
+    }
+
     addScore(points) {
         this.score += points;
         this.hud.setScore(this.score);
@@ -290,17 +365,32 @@ export default class GameScene extends Phaser.Scene {
         // Candidates: Center, slightly left, slightly right, slightly up, slightly down
         const candidates = [
             { x: centerX, y: centerY },
-            { x: centerX - 100, y: centerY },
-            { x: centerX + 100, y: centerY },
+            { x: centerX - 120, y: centerY },
+            { x: centerX + 120, y: centerY },
             { x: centerX, y: centerY - 150 },
             { x: centerX, y: centerY + 150 }
         ];
 
+        // Filter out positions overlapping solid obstacles
+        const validCandidates = candidates.filter(c => {
+            const rect = new Phaser.Geom.Rectangle(c.x - 20, c.y - 20, 40, 40);
+            let hit = false;
+            this.environment.obstacles.getChildren().forEach(obj => {
+                if (Phaser.Geom.Intersects.RectangleToRectangle(rect, obj.getBounds())) hit = true;
+            });
+            this.environment.walls.getChildren().forEach(obj => {
+                if (Phaser.Geom.Intersects.RectangleToRectangle(rect, obj.getBounds())) hit = true;
+            });
+            return !hit;
+        });
+
+        const pool = validCandidates.length > 0 ? validCandidates : candidates;
+
         // Simple distance-based safety check against robots
-        let bestCandidate = candidates[0];
+        let bestCandidate = pool[0];
         let maxMinDist = -1;
 
-        candidates.forEach(c => {
+        pool.forEach(c => {
             let minDist = 10000;
             this.robotGroup.getChildren().forEach(r => {
                 if (r.active) {
@@ -316,6 +406,33 @@ export default class GameScene extends Phaser.Scene {
         });
 
         return bestCandidate;
+    }
+
+    findSafeRobotSpawnPosition() {
+        const cam = this.cameras.main;
+        const player = this.player;
+        
+        // Try several positions below or beside player
+        for (let i = 0; i < 20; i++) {
+            const rx = 60 + Math.random() * 520;
+            const ry = cam.scrollY + 200 + Math.random() * 700;
+            
+            // Check distance from player (don't spawn too close)
+            if (player && Phaser.Math.Distance.Between(rx, ry, player.x, player.y) < 200) continue;
+            
+            // Check if blocked by obstacles
+            const rect = new Phaser.Geom.Rectangle(rx - 25, ry - 25, 50, 50);
+            let blocked = false;
+            this.environment.obstacles.getChildren().forEach(obj => {
+                if (Phaser.Geom.Intersects.RectangleToRectangle(rect, obj.getBounds())) blocked = true;
+            });
+            if (blocked) continue;
+            
+            return { x: rx, y: ry };
+        }
+        
+        // Fallback
+        return { x: 320, y: cam.scrollY + 600 };
     }
 
     handleGameOver() {
@@ -379,6 +496,80 @@ export default class GameScene extends Phaser.Scene {
             duration: 300,
             onComplete: () => flash.destroy()
         });
+    }
+
+    createAxeImpactEffect(x, y) {
+        // Stronger metallic impact: group of gray/white sparks
+        for (let i = 0; i < 12; i++) {
+            const spark = this.add.graphics();
+            spark.fillStyle(0xcccccc, 1);
+            spark.fillRect(-2, -2, 4, 4);
+            spark.x = x;
+            spark.y = y;
+            
+            const angle = Math.random() * Math.PI * 2;
+            const dist = 30 + Math.random() * 50;
+            
+            this.tweens.add({
+                targets: spark,
+                x: x + Math.cos(angle) * dist,
+                y: y + Math.sin(angle) * dist,
+                alpha: 0,
+                scale: 0.2,
+                duration: 400,
+                onComplete: () => spark.destroy()
+            });
+        }
+    }
+
+    getNearestObstacleAlongRay(startX, startY, angle, maxLength, exclude = null) {
+        const line = new Phaser.Geom.Line(
+            startX, startY, 
+            startX + Math.cos(angle) * maxLength, 
+            startY + Math.sin(angle) * maxLength
+        );
+
+        let minDist = maxLength;
+        let nearestPoint = null;
+        let nearestTarget = null;
+
+        const checkGroup = (group) => {
+            group.getChildren().forEach(obj => {
+                if (obj === exclude || !obj.active) return;
+                
+                // Get bounds for intersection
+                let bounds;
+                if (obj.body) {
+                    bounds = new Phaser.Geom.Rectangle(obj.body.x, obj.body.y, obj.body.width, obj.body.height);
+                } else if (obj.getBounds) {
+                    bounds = obj.getBounds();
+                } else {
+                    return;
+                }
+
+                const out = [];
+                if (Phaser.Geom.Intersects.GetLineToRectangle(line, bounds, out)) {
+                    out.forEach(p => {
+                        const d = Phaser.Math.Distance.Between(startX, startY, p.x, p.y);
+                        if (d < minDist) {
+                            minDist = d;
+                            nearestPoint = p;
+                            nearestTarget = obj;
+                        }
+                    });
+                }
+            });
+        };
+
+        if (this.environment) {
+            checkGroup(this.environment.obstacles);
+            checkGroup(this.environment.walls);
+        }
+
+        if (nearestPoint) {
+            return { x: nearestPoint.x, y: nearestPoint.y, distance: minDist, target: nearestTarget };
+        }
+        return null;
     }
 
     createImpactSparks(x, y, angle, isAxe) {
@@ -486,17 +677,26 @@ export default class GameScene extends Phaser.Scene {
 
     setupTimelineListeners() {
         this.onPhaseChange = (phase) => {
+            if (!this.scene.isActive()) return;
             if (this.hud) {
                 this.hud.setPhaseLabel(phase.label);
             }
         };
 
         this.onTrackStart = (trackKey) => {
+            // Guard: Studio is for EndingScene
+            if (trackKey === 'STUDIO') return;
+
+            // Guard: Ensure scene is active and valid
+            if (!this.scene.isActive()) return;
+
             console.log(`[SESSION ${this.sessionID}] TRACK_START: ${trackKey}`);
             
             // Full reset for track restart
             this.weaponSystem.reset();
-            this.robotGroup.clear(true, true);
+            if (this.robotGroup && this.robotGroup.scene) {
+                this.robotGroup.clear(true, true);
+            }
             this.reconcilePlayerWithCamera();
             this.spawnTestEncounter();
             
@@ -527,12 +727,21 @@ export default class GameScene extends Phaser.Scene {
         };
 
         this.onSeek = () => {
+            // Guard: Only handle while in a gameplay track and scene is active
+            const state = this.timeline.getState();
+            const trackKey = state.track;
+            const isGameplayTrack = (trackKey === 'SYNTH' || trackKey === 'CATHEDRAL');
+            
+            if (!isGameplayTrack || !this.scene.isActive()) return;
+
             const isDebug = window.location.search.includes('debug=1');
             if (isDebug) console.log(`[SESSION ${this.sessionID}] DEVELOPER_SEEK`);
             
             // Requirement 18: Reset transient state after seeking
             this.weaponSystem.reset();
-            this.robotGroup.clear(true, true);
+            if (this.robotGroup && this.robotGroup.scene) {
+                this.robotGroup.clear(true, true);
+            }
             
             // Reconcile camera first so spawnTestEncounter uses correct scrollY
             this.reconcilePlayerWithCamera();
@@ -564,10 +773,12 @@ export default class GameScene extends Phaser.Scene {
         };
 
         this.onDebugReturnToTitle = () => {
+            if (!this.scene.isActive()) return;
             this.returnToTitle();
         };
 
         this.onPlaySurvivalSound = (type) => {
+            if (!this.scene.isActive()) return;
             if (this.game.audioDirector) {
                 this.game.audioDirector.playSurvivalSound(type);
             }
@@ -598,6 +809,12 @@ export default class GameScene extends Phaser.Scene {
         const targetScrollY = this.descentController.getTargetScrollY();
         this.cameras.main.setScroll(0, targetScrollY);
         
+        // Update environment for the new position
+        if (this.chamberBuilder) {
+            this.chamberBuilder.clear();
+            this.chamberBuilder.update(targetScrollY);
+        }
+
         this.player.y = targetScrollY + 450;
         this.player.body.reset(this.player.x, this.player.y);
     }
@@ -627,6 +844,9 @@ export default class GameScene extends Phaser.Scene {
         // 1. Update Camera Descent
         const targetScrollY = this.descentController.getTargetScrollY();
         this.cameras.main.scrollY = targetScrollY;
+
+        // 1.5 Update Environment (Chunking)
+        this.chamberBuilder.update(targetScrollY);
 
         // 2. Update Controls
         this.controls.update();

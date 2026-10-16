@@ -15,7 +15,7 @@
 5.2 **Maintenance: Combat Repair and Restart Lifecycle** (Completed)
 5.3 **Maintenance: Mission Lifecycle, Player Restoration, and Shield HUD** (Completed)
 5.4 **Shield HUD Repair, Regeneration, Hearts, and Respawning** (Completed)
-6.  **Scrolling chamber and defenses**
+6.  **Solid Obstacles, Environmental Cover, and Robot Navigation** (Completed)
 7.  **Encounter director and difficulty**
 8.  **Opening chase**
 9.  **Proxy boss and German soldier**
@@ -70,6 +70,29 @@
     - Open **TECHNICAL DIAGNOSTICS**; verify Session ID, Active Scene, and Physics status are correct.
 8. **Tests**: Run `npm test` and verify all 34 tests pass (including new Step 5.3 lifecycle tests).
 
+### Step 6 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Collision Geometry**:
+    - Toggle **TOGGLE COLLISION** in the debug panel; verify hitboxes are visible for obstacles, player, and robots.
+    - Confirm obstacles are chunk-loaded (appear below the camera and disappear far above).
+4. **Cover and Blocking**:
+    - Position Blackrush behind a machine block or column.
+    - Confirm Sentinel targeting lines stop at the obstacle.
+    - Confirm destructive lasers stop at the obstacle and do no damage.
+5. **Friendly Fire**:
+    - Lure a Pursuer into the path of a Sentinel laser.
+    - Confirm the laser damages or destroys the Pursuer.
+    - Confirm "FRIENDLY FIRE" indicator appears and no player points are awarded.
+6. **Robot Navigation**:
+    - Observe robots trying to reach the player; confirm they steer perpendicularly when blocked by obstacles.
+7. **Respawn Safety**:
+    - Lose a heart; confirm Blackrush respawns in a position that does not overlap obstacles.
+8. **Warning Cadence**:
+    - Set hearts to 2; confirm warning sound every 4 seconds.
+    - Set hearts to 1; confirm warning sound every 2 seconds.
+9. **Tests**: Run `npm test` and verify all 45 tests pass.
+
 ### Step 5.4 Maintenance Verification
 1. Run `npm run dev`.
 2. Open `http://localhost:3000/?debug=1`.
@@ -94,6 +117,24 @@
     - Lose all 6 hearts; verify **SHIELD DEPLETED** screen appears and music pauses.
     - Click **RESTART MISSION**; verify 6 hearts and 100 shield are restored.
 8. **Tests**: Run `npm test` and verify all 40 tests pass.
+
+### Step 6.1 Maintenance Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Transition Verification**:
+    - Jump to **PANZER 2** (near the end of Cathedral).
+    - Allow the track to finish naturally.
+    - Verify the game switches to **EndingScene** (MISSION COMPLETE) correctly.
+    - Confirm NO `TypeError: Cannot read properties of undefined (reading 'size')` appears in the console.
+4. **Seeking Robustness**:
+    - Jump directly to **VICTORY**.
+    - Jump back to **SWARM** or **CHASE**.
+    - Confirm combat still works and Blackrush is fully functional.
+    - Jump back to **VICTORY** again.
+5. **Repeated Missions**:
+    - Complete a mission, then click **REPLAY**.
+    - Verify the new mission starts correctly and transitions to victory again at the end.
+6. **Tests**: Run `npm test` and verify all 47 tests pass (including new lifecycle safety tests).
 
 ### Development Build
 Run the following command to start the development server:

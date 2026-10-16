@@ -195,10 +195,22 @@ export default class Robot extends Phaser.GameObjects.Container {
         const speed = this.combatConfig.speed;
         
         if (dist > 20) {
-            this.body.setAcceleration(Math.cos(angle) * 600, Math.sin(angle) * 600);
-            this.body.setMaxVelocity(speed);
+            // Simple obstacle avoidance: check if we are moving much slower than intended
+            const isBlocked = this.body.speed < speed * 0.3 && (this.body.acceleration.x !== 0 || this.body.acceleration.y !== 0);
+            
+            let targetAngle = angle;
+            if (isBlocked) {
+                // Attempt to steer perpendicular to the target
+                const timeFactor = Math.floor(this.scene.time.now / 800);
+                const steerDir = (timeFactor % 2 === 0) ? 1 : -1;
+                targetAngle += (Math.PI / 2) * steerDir;
+            }
+
+            this.body.setAcceleration(Math.cos(targetAngle) * 600, Math.sin(targetAngle) * 600);
+            this.body.setMaxSpeed(speed);
         } else {
             this.body.setAcceleration(0, 0);
+            this.body.setVelocity(0, 0);
         }
     }
 
@@ -206,25 +218,37 @@ export default class Robot extends Phaser.GameObjects.Container {
         const prefDist = this.combatConfig.preferredDistance;
         const angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
         
-        if (dist > prefDist + 50) {
-            this.body.setVelocity(Math.cos(angle) * this.combatConfig.speed, Math.sin(angle) * this.combatConfig.speed);
-        } else if (dist < prefDist - 50) {
-            this.body.setVelocity(-Math.cos(angle) * this.combatConfig.speed, -Math.sin(angle) * this.combatConfig.speed);
-        } else {
-            this.body.setVelocity(0, 0);
-        }
-
         this.stateTimer += delta;
-        
-        this.laserGraphic.clear();
-        this.laserGraphic.lineStyle(1, 0xff0000, 0.4);
-        
         if (this.stateTimer < this.combatConfig.warningTime * 0.8) {
             this.laserAngle = angle;
         }
 
-        const lx = Math.cos(this.laserAngle) * 800;
-        const ly = Math.sin(this.laserAngle) * 800;
+        // Ray-based laser blocking check
+        const hit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, 1000);
+        const distToPlayer = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+        const isPlayerBlocked = hit && hit.distance < distToPlayer - 20;
+        const laserLen = hit ? hit.distance : 1000;
+
+        // Movement logic: maintain distance + steer if blocked
+        if (dist > prefDist + 50) {
+            this.body.setVelocity(Math.cos(angle) * this.combatConfig.speed, Math.sin(angle) * this.combatConfig.speed);
+        } else if (dist < prefDist - 50) {
+            this.body.setVelocity(-Math.cos(angle) * this.combatConfig.speed, -Math.sin(angle) * this.combatConfig.speed);
+        } else if (isPlayerBlocked) {
+            // Reposition sideways if line of sight is blocked
+            const timeFactor = Math.floor(this.scene.time.now / 1000);
+            const steerDir = (timeFactor % 2 === 0) ? 1 : -1;
+            const sideAngle = this.laserAngle + (Math.PI / 2) * steerDir;
+            this.body.setVelocity(Math.cos(sideAngle) * this.combatConfig.speed, Math.sin(sideAngle) * this.combatConfig.speed);
+        } else {
+            this.body.setVelocity(0, 0);
+        }
+
+        this.laserGraphic.clear();
+        this.laserGraphic.lineStyle(1, 0xff0000, 0.4);
+        
+        const lx = Math.cos(this.laserAngle) * laserLen;
+        const ly = Math.sin(this.laserAngle) * laserLen;
         this.laserGraphic.moveTo(0, 0);
         this.laserGraphic.lineTo(lx, ly);
         this.laserGraphic.strokePath();
@@ -239,12 +263,17 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.stateTimer += delta;
         this.body.setVelocity(0, 0);
 
+        // New: Ray-based laser blocking for destructive beam
+        // Also checks for robots (friendly fire) and player
+        const result = this.calculateLaserImpact();
+        const laserLen = result.distance;
+
         this.laserGraphic.clear();
         this.laserGraphic.lineStyle(6, 0xff0000, 1);
         this.laserGraphic.strokeCircle(0, 0, 4); 
         
-        const lx = Math.cos(this.laserAngle) * 1000;
-        const ly = Math.sin(this.laserAngle) * 1000;
+        const lx = Math.cos(this.laserAngle) * laserLen;
+        const ly = Math.sin(this.laserAngle) * laserLen;
         
         this.laserGraphic.lineStyle(10, 0xff6600, 0.3);
         this.laserGraphic.moveTo(0, 0);
@@ -257,7 +286,7 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.laserGraphic.strokePath();
 
         if (this.stateTimer < delta * 2) { 
-            this.checkLaserDamage();
+            this.applyLaserDamage(result);
         }
 
         if (this.stateTimer >= this.combatConfig.fireTime) {
@@ -267,21 +296,73 @@ export default class Robot extends Phaser.GameObjects.Container {
         }
     }
 
-    checkLaserDamage() {
-        const player = this.scene.player;
-        if (!player || player.isDestroyed) return;
+    calculateLaserImpact() {
+        const maxLength = 1000;
+        const ray = new Phaser.Geom.Line(this.x, this.y, this.x + Math.cos(this.laserAngle) * maxLength, this.y + Math.sin(this.laserAngle) * maxLength);
+        
+        let nearestHit = { distance: maxLength, target: null, type: 'NONE' };
 
-        const line = new Phaser.Geom.Line(this.x, this.y, this.x + Math.cos(this.laserAngle) * 1000, this.y + Math.sin(this.laserAngle) * 1000);
-        const playerCircle = new Phaser.Geom.Circle(player.x, player.y, 25); 
-
-        if (Phaser.Geom.Intersects.LineToCircle(line, playerCircle)) {
-            this.scene.events.emit('robotAttack', {
-                type: 'LASER',
-                damage: this.combatConfig.laserDamage,
-                direction: this.laserAngle,
-                attacker: this
-            });
+        // 1. Check Obstacles
+        const obsHit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, maxLength);
+        if (obsHit) {
+            nearestHit = { distance: obsHit.distance, target: obsHit.target, type: 'OBSTACLE' };
         }
+
+        // 2. Check Player
+        const player = this.scene.player;
+        if (player && !player.isDestroyed && !player.isRespawning) {
+            const playerCircle = new Phaser.Geom.Circle(player.x, player.y, 25);
+            const points = [];
+            if (Phaser.Geom.Intersects.GetLineToCircle(ray, playerCircle, points)) {
+                points.forEach(p => {
+                    const d = Phaser.Math.Distance.Between(this.x, this.y, p.x, p.y);
+                    if (d < nearestHit.distance) {
+                        nearestHit = { distance: d, target: player, type: 'PLAYER' };
+                    }
+                });
+            }
+        }
+
+        // 3. Check Other Robots (Friendly Fire)
+        this.scene.robotGroup.getChildren().forEach(other => {
+            if (other === this || other.isDestroyed || !other.active) return;
+            
+            const radius = other.type === 'ARMORED_PURSUER' ? 22 : 18;
+            const otherCircle = new Phaser.Geom.Circle(other.x, other.y, radius);
+            const points = [];
+            if (Phaser.Geom.Intersects.GetLineToCircle(ray, otherCircle, points)) {
+                points.forEach(p => {
+                    const d = Phaser.Math.Distance.Between(this.x, this.y, p.x, p.y);
+                    if (d < nearestHit.distance) {
+                        nearestHit = { distance: d, target: other, type: 'ROBOT' };
+                    }
+                });
+            }
+        });
+
+        return nearestHit;
+    }
+
+    applyLaserDamage(hit) {
+        if (!hit.target) return;
+
+        const attackData = {
+            type: 'LASER',
+            damage: this.combatConfig.laserDamage,
+            direction: this.laserAngle,
+            attacker: this
+        };
+
+        if (hit.type === 'PLAYER') {
+            this.scene.events.emit('robotAttack', attackData);
+        } else if (hit.type === 'ROBOT') {
+            // Friendly Fire
+            this.scene.handleFriendlyFire(attackData, hit.target);
+        }
+    }
+
+    checkLaserDamage() {
+        // Deprecated: logic moved to handleFiring and applyLaserDamage
     }
 
     handleCooldown(delta) {

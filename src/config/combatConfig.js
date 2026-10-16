@@ -31,8 +31,8 @@ export const COMBAT_CONFIG = {
         respawnDelay: 1200, // ms
         respawnInvulnerability: 3000, // ms
         lowHeartThreshold: 2,
-        twoHeartWarnInterval: 8000, // ms
-        oneHeartWarnInterval: 4000, // ms
+        twoHeartWarnInterval: 4000, // ms
+        oneHeartWarnInterval: 2000, // ms
     },
 
     // Weapons
