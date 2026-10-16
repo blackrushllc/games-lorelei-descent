@@ -26,6 +26,16 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.stateTimer = 0;
         this.lastAttackTime = 0;
         this.hitFlashTween = null;
+        this.creationTime = scene.time.now;
+
+        // Catch-up burst state
+        this.isBursting = false;
+        this.burstTimer = 0;
+        this.burstCooldown = 0;
+        
+        // Retreat state
+        this.retreatX = 0;
+        this.retreatY = 0;
 
         // 2. Visuals
         this.createVisuals();
@@ -148,6 +158,15 @@ export default class Robot extends Phaser.GameObjects.Container {
 
         const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
 
+        // Update burst/cooldown timers
+        if (this.isBursting) {
+            this.burstTimer -= delta;
+            if (this.burstTimer <= 0) this.isBursting = false;
+        }
+        if (this.burstCooldown > 0) {
+            this.burstCooldown -= delta;
+        }
+
         // State machine
         switch (this.aiState) {
             case 'IDLE':
@@ -178,22 +197,87 @@ export default class Robot extends Phaser.GameObjects.Container {
                     this.aiState = this.type === 'SENTINEL' ? 'ACQUIRING_TARGET' : 'PURSUING';
                 }
                 break;
+            
+            case 'RETREATING':
+                this.handleRetreat(delta);
+                break;
         }
 
         // Cleanup if way off screen
         const camY = this.scene.cameras.main.scrollY;
-        // Only cleanup if it's ABOVE the camera (passed) or VERY far below
-        if (this.y < camY - 400 || this.y > camY + 3000) {
+        
+        // If retreating, we can be removed if we are off to the sides
+        const isOffSides = this.x < -100 || this.x > 740;
+        
+        // Only cleanup if it's ABOVE the camera (passed) or VERY far below, or off sides during retreat
+        if (this.y < camY - 400 || this.y > camY + 3000 || (this.aiState === 'RETREATING' && isOffSides)) {
             this.setActive(false).setVisible(false);
             if (this.body) this.body.enable = false;
             this.laserGraphic.clear();
         }
     }
 
+    handleRetreat(delta) {
+        // Move towards retreat target
+        const angle = Phaser.Math.Angle.Between(this.x, this.y, this.retreatX, this.retreatY);
+        const speed = this.combatConfig.speed * 1.5; // Increased speed during retreat
+        
+        // Obstacle avoidance (reuse logic)
+        const isBlocked = this.body.speed < speed * 0.3 && (this.body.acceleration.x !== 0 || this.body.acceleration.y !== 0);
+        let targetAngle = angle;
+        if (isBlocked) {
+            const timeFactor = Math.floor(this.scene.time.now / 400); // Faster steering
+            const steerDir = (timeFactor % 2 === 0) ? 1 : -1;
+            targetAngle += (Math.PI / 2) * steerDir;
+        }
+
+        this.body.setAcceleration(Math.cos(targetAngle) * 800, Math.sin(targetAngle) * 800);
+        this.body.setMaxSpeed(speed);
+
+        // Cancel any active laser
+        this.laserGraphic.clear();
+    }
+
+    retreat() {
+        if (this.aiState === 'RETREATING' || this.isDestroyed) return;
+        
+        this.aiState = 'RETREATING';
+        
+        // Determine exit: closest side
+        const isLeftCloser = this.x < 320;
+        this.retreatX = isLeftCloser ? -150 : 790;
+        // Keep current Y or follow camera slightly
+        this.retreatY = this.y;
+        
+        // Cancel firing
+        if (this.fireTween) {
+            this.fireTween.stop();
+            this.fireTween = null;
+        }
+        this.laserGraphic.clear();
+    }
+
+    maybeTriggerCatchUp(multiplier) {
+        if (this.aiState === 'RETREATING' || this.aiState === 'IDLE' || this.isDestroyed) return;
+        if (this.isBursting || this.burstCooldown > 0) return;
+
+        // 20% chance per check (if EncounterDirector calls it periodically)
+        if (Math.random() > 0.8) {
+            this.isBursting = true;
+            this.burstTimer = 800 + Math.random() * 700; // 0.8 - 1.5s
+            this.burstCooldown = 5000 + Math.random() * 5000; // 5-10s cooldown
+            this.burstMultiplier = multiplier;
+        }
+    }
+
     handlePursue(player, dist) {
         const angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
-        const speed = this.combatConfig.speed;
+        let speed = this.combatConfig.speed;
         
+        if (this.isBursting) {
+            speed *= this.burstMultiplier;
+        }
+
         if (dist > 20) {
             // Simple obstacle avoidance: check if we are moving much slower than intended
             const isBlocked = this.body.speed < speed * 0.3 && (this.body.acceleration.x !== 0 || this.body.acceleration.y !== 0);

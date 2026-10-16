@@ -7,39 +7,28 @@ LORELEI: DESCENT is a browser-based, top-down, vertically scrolling arcade shoot
 - Top-down view.
 - Vertically scrolling playfield (scrolling downwards, creating the appearance of moving deeper underground).
 
-## Gameplay Progression
-The game follows a fixed-duration, music-driven timeline. Progression is automatic based on the soundtrack, rather than player-controlled.
-
-### Two-Stage Environment
-1. **The Descent (Synth 0:00 - 5:00)**: The camera scrolls downward automatically as Blackrush fights through the complex.
-2. **The Boss Arena (Synth 5:00 - Cathedral End)**: The camera stops and locks into a fixed combat arena for the Proxy and Super-Robot boss battles.
-
-## Musical Timeline
+## Musical Timeline & Encounters
+The game follows a fixed-duration, music-driven timeline. Progression and enemy encounters are choreographed to the soundtrack.
 
 ### 1. Below Gamorrah Synth (0:00 - 6:00)
 - **0:00–0:45:** Opening sequence; Nadine is captured; Blackrush pursues the Proxy robots underground.
-- **0:45–5:00:** Increasing robot swarm; survival combat (Descent Mode).
-- **5:00–6:00:** Proxy boss fight; German soldier's grenade; Proxy destruction; ceiling collapse (Arena Mode).
+- **0:45–5:00:** Choreographed robot swarm; dramatic peaks and valleys synced with the music (Descent Mode).
+- **5:00–6:02:** Fixed Proxy boss arena.
 
-### 2. Below Gamorrah Cathedral (0:00 - 4:00)
-- **0:00:** Giant super-robot boss appears (Arena Mode).
-- **~3:00:** Panzer fires first shell.
-- **~3:30:** Panzer fires second shell.
-- **Final sequence:** Exposed weak points; destruction of boss; Nadine emerges.
-
-### 3. Below Gamorrah Studio (~4:00)
-- Ending sequence.
-- Credits.
-- Lorelei book promotion.
-- Share and replay options.
+### Encounter Choreography
+Encounters are not random but follow a data-driven "score" that defines specific cues:
+- **SPAWN:** Coordinated formations (Patrol, Fan, Pincer, Sentinel Wall, Mixed Swarm).
+- **PRESSURE:** Adjustments to the active robot population cap (Soft cap 16, Hard cap 36).
+- **RETREAT:** Survival drama where surviving robots abandon the fight by fleeing toward side exits.
+- **LULL:** Scripted valleys to provide dramatic contrast.
+- **CLEAR_FOR_BOSS:** Final evacuation of all ordinary enemies before the boss arena.
 
 ## Characters & Entities
-- **Blackrush:** The playable character. Equipped with a primary energy weapon and a secondary throwing axe. Features a shield that protects against damage.
-- **Nadine:** Captured ally to be rescued.
+- **Blackrush:** The playable character. Equipped with a primary energy weapon and a secondary throwing axe.
 - **Robot Archetypes:**
-    - **Pursuer:** Basic close-range enemy. One-hit kill.
-    - **Sentinel:** Ranged attacker. Projects a red targeting laser before firing a destructive beam. Requires two hits to destroy.
-    - **Armored Pursuer:** Tougher enemy with heavy plates. Armor must be stripped by an axe before the robot becomes vulnerable to energy bolts.
+    - **Pursuer:** Basic close-range enemy. One-hit kill. Features "Catch-up Bursts" to stay near the player.
+    - **Sentinel:** Ranged attacker with targeting lasers. Can be deployed in massive "Sentinel Walls".
+    - **Armored Pursuer:** Tougher enemy with heavy plates requiring axe hits to expose the core.
 - **The Old Man's Proxy:** Mid-game boss.
 - **Giant Super-Robot:** Final boss.
 

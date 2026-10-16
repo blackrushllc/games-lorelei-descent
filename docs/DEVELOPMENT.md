@@ -16,7 +16,7 @@
 5.3 **Maintenance: Mission Lifecycle, Player Restoration, and Shield HUD** (Completed)
 5.4 **Shield HUD Repair, Regeneration, Hearts, and Respawning** (Completed)
 6.  **Solid Obstacles, Environmental Cover, and Robot Navigation** (Completed)
-7.  **Encounter director and difficulty**
+7.  **Encounter Director, choreographed encounters, and tactical retreats** (Completed)
 8.  **Opening chase**
 9.  **Proxy boss and German soldier**
 10. **Super-robot and Panzer**
@@ -27,6 +27,30 @@
 15. **Production deployment**
 
 ## Verification
+
+### Step 7 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Choreographed Encounters**:
+    - Start game; observe robots spawning at scripted times (0:45, 1:05, etc.).
+    - Verify that intensity rises and falls (peaks and valleys).
+    - Observe the "Sentinel Wall" at 2:05 and 4:20; verify impressive laser count.
+4. **Tactical Retreat**:
+    - Observe robots abandoning the fight at 2:20 and 3:40.
+    - Confirm they move toward side exits and do not phase through obstacles.
+    - Confirm retreating robots stop attacking.
+5. **Catch-up Bursts**:
+    - Watch Pursuers that fall behind the camera.
+    - Confirm they occasionally accelerate to catch up to the playable area.
+6. **Boss Boundary**:
+    - Seek to 4:40.
+    - Watch the final swarm transition into evacuation starting at 4:51.
+    - Verify that by 5:00, all ordinary robots have left the field and spawning is disabled.
+7. **Developer Controls**:
+    - Open **ENCOUNTER TOOLS** in the debug panel.
+    - Test **PATROL**, **SENTINEL WALL**, **PARTIAL RETREAT**, and **FULL RETREAT** buttons.
+    - Verify they trigger the expected behavior immediately.
+8. **Tests**: Run `npm test` and verify all 53 tests pass (including new Step 7 encounter tests).
 
 ### Step 5.2 Maintenance Verification
 1. Run `npm run dev`.

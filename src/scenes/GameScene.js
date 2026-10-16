@@ -7,6 +7,7 @@ import DescentController from '../systems/DescentController.js';
 import DesktopControls from '../controls/DesktopControls.js';
 import WeaponSystem from '../systems/WeaponSystem.js';
 import CombatSystem from '../systems/CombatSystem.js';
+import EncounterDirector from '../systems/EncounterDirector.js';
 import { COMBAT_CONFIG } from '../config/combatConfig.js';
 
 export default class GameScene extends Phaser.Scene {
@@ -51,8 +52,8 @@ export default class GameScene extends Phaser.Scene {
             runChildUpdate: true
         });
 
-        // 5. Initial Test Encounter
-        this.spawnTestEncounter();
+        // 5. Encounter Orchestration
+        this.encounterDirector = new EncounterDirector(this);
         console.log(`[SESSION ${this.sessionID}] ENCOUNTER_INITIALIZED`);
 
         // 6. Collisions
@@ -84,35 +85,53 @@ export default class GameScene extends Phaser.Scene {
         // Cleanup on shutdown
         this.events.once('shutdown', () => {
             this.cleanupTimelineListeners();
+            if (this.encounterDirector) {
+                this.encounterDirector.destroy();
+            }
         });
 
         console.log('GameScene: Step 5 Combat Prototype loaded.');
     }
 
-    spawnTestEncounter() {
-        const isDebug = window.location.search.includes('debug=1');
-        if (isDebug) console.log(`[SESSION ${this.sessionID}] Spawning test encounter...`);
-        
-        // Deterministic placements for testing relative to current camera scroll
-        // Use descentController to get authoritative depth even before first camera update
-        const cameraY = this.descentController ? this.descentController.getTargetScrollY() : 0;
-        const startY = cameraY + 300;
-        const encounters = [
-            { x: 150, y: startY, type: 'PURSUER' },
-            { x: 500, y: startY + 100, type: 'PURSUER' },
-            { x: 320, y: startY + 400, type: 'SENTINEL' },
-            { x: 100, y: startY + 800, type: 'ARMORED_PURSUER' },
-            { x: 550, y: startY + 1100, type: 'PURSUER' },
-            { x: 200, y: startY + 1400, type: 'SENTINEL' },
-            { x: 450, y: startY + 1800, type: 'ARMORED_PURSUER' }
+    spawnRobotAt(x, y, type) {
+        const robot = new Robot(this, x, y, type);
+        this.robotGroup.add(robot);
+        return robot;
+    }
+
+    findSafeSpawnPosition(suggestedX, suggestedY) {
+        // Try to find a safe position near the suggested one
+        const attempts = [
+            { x: suggestedX, y: suggestedY },
+            { x: suggestedX + 40, y: suggestedY },
+            { x: suggestedX - 40, y: suggestedY },
+            { x: suggestedX, y: suggestedY + 40 },
+            { x: suggestedX, y: suggestedY - 40 },
+            { x: suggestedX + 80, y: suggestedY },
+            { x: suggestedX - 80, y: suggestedY }
         ];
 
-        encounters.forEach(e => {
-            const robot = new Robot(this, e.x, e.y, e.type);
-            this.robotGroup.add(robot);
-        });
+        for (const pos of attempts) {
+            // Keep within horizontal bounds
+            if (pos.x < 50) pos.x = 50;
+            if (pos.x > 590) pos.x = 590;
 
-        if (isDebug) console.log(`[SESSION ${this.sessionID}] Spawned ${this.robotGroup.getLength()} robots.`);
+            const rect = new Phaser.Geom.Rectangle(pos.x - 20, pos.y - 20, 40, 40);
+            let blocked = false;
+            
+            // Check obstacles
+            this.environment.obstacles.getChildren().forEach(obj => {
+                if (Phaser.Geom.Intersects.RectangleToRectangle(rect, obj.getBounds())) blocked = true;
+            });
+            if (blocked) continue;
+
+            // Check player
+            if (this.player && Phaser.Math.Distance.Between(pos.x, pos.y, this.player.x, this.player.y) < 100) continue;
+
+            return pos;
+        }
+
+        return { x: suggestedX, y: suggestedY }; // Fallback
     }
 
     setupCollisions() {
@@ -406,33 +425,6 @@ export default class GameScene extends Phaser.Scene {
         });
 
         return bestCandidate;
-    }
-
-    findSafeRobotSpawnPosition() {
-        const cam = this.cameras.main;
-        const player = this.player;
-        
-        // Try several positions below or beside player
-        for (let i = 0; i < 20; i++) {
-            const rx = 60 + Math.random() * 520;
-            const ry = cam.scrollY + 200 + Math.random() * 700;
-            
-            // Check distance from player (don't spawn too close)
-            if (player && Phaser.Math.Distance.Between(rx, ry, player.x, player.y) < 200) continue;
-            
-            // Check if blocked by obstacles
-            const rect = new Phaser.Geom.Rectangle(rx - 25, ry - 25, 50, 50);
-            let blocked = false;
-            this.environment.obstacles.getChildren().forEach(obj => {
-                if (Phaser.Geom.Intersects.RectangleToRectangle(rect, obj.getBounds())) blocked = true;
-            });
-            if (blocked) continue;
-            
-            return { x: rx, y: ry };
-        }
-        
-        // Fallback
-        return { x: 320, y: cam.scrollY + 600 };
     }
 
     handleGameOver() {
@@ -859,6 +851,9 @@ export default class GameScene extends Phaser.Scene {
 
         // 5. Update Robots (AI and depth cleanup)
         this.robotGroup.getChildren().forEach(r => r.update(time, delta));
+
+        // 5.1 Update Encounters
+        this.encounterDirector.update(time, delta);
 
         // 5.5 Survival Warning
         this.updateSurvivalWarning(delta);

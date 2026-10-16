@@ -115,6 +115,27 @@ export default class TimelineDebugPanel {
                     <button id="btn-trigger-heart-loss">LOSE HEART</button>
                 </div>
             </div>
+
+            <div id="debug-encounter-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] ENCOUNTER TOOLS</div>
+            <div id="debug-encounter" style="display: none; margin-top: 5px; font-size: 10px; color: #aaa; border-top: 1px solid #333; padding-top: 5px;">
+                <div class="debug-row">Cue: <span id="diag-cue">-</span></div>
+                <div class="debug-row">Robots (Active): <span id="diag-robots-active">0</span></div>
+                <div class="debug-row">Robots (Retreating): <span id="diag-robots-retreat">0</span></div>
+                <div class="debug-row">Cap: <span id="diag-pop-cap">0</span></div>
+                <div class="debug-row">Pending: <span id="diag-pending-form">0</span></div>
+                
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-toggle-encounter">TOGGLE AUTO</button>
+                    <button id="btn-toggle-catchup">TOGGLE CATCHUP</button>
+                </div>
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-spawn-patrol">PATROL</button>
+                    <button id="btn-spawn-wall">SENTINEL WALL</button>
+                    <button id="btn-partial-retreat">PARTIAL RETREAT</button>
+                    <button id="btn-full-retreat">FULL RETREAT</button>
+                    <button id="btn-clear-boss">CLEAR FOR BOSS</button>
+                </div>
+            </div>
         `;
         
         document.body.appendChild(this.container);
@@ -219,6 +240,13 @@ export default class TimelineDebugPanel {
             $('#debug-combat-toggle').textContent = isHidden ? '[-] COMBAT TOOLS' : '[+] COMBAT TOOLS';
         };
 
+        $('#debug-encounter-toggle').onclick = () => {
+            const encounter = $('#debug-encounter');
+            const isHidden = encounter.style.display === 'none';
+            encounter.style.display = isHidden ? 'block' : 'none';
+            $('#debug-encounter-toggle').textContent = isHidden ? '[-] ENCOUNTER TOOLS' : '[+] ENCOUNTER TOOLS';
+        };
+
         // Combat tool actions
         const getGameScene = () => this.game.scene.getScenes(true).find(s => s.scene.key === 'GameScene');
         
@@ -305,6 +333,81 @@ export default class TimelineDebugPanel {
                 gs.physics.world.debugGraphic.clear();
             }
         };
+
+        // Encounter tool actions
+        $('#btn-toggle-encounter').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.encounterDirector) {
+                gs.encounterDirector.enabled = !gs.encounterDirector.enabled;
+            }
+        };
+
+        $('#btn-toggle-catchup').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.encounterDirector) {
+                gs.encounterDirector.catchUpEnabled = !gs.encounterDirector.catchUpEnabled;
+            }
+        };
+
+        $('#btn-spawn-patrol').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.encounterDirector) {
+                gs.encounterDirector.executeCue({
+                    id: 'DEBUG_PATROL',
+                    type: 'SPAWN',
+                    formation: 'PATROL',
+                    robotTypes: ['PURSUER'],
+                    counts: { PURSUER: 4 },
+                    spawnRegion: 'TOP_RANDOM'
+                }, true);
+            }
+        };
+
+        $('#btn-spawn-wall').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.encounterDirector) {
+                gs.encounterDirector.executeCue({
+                    id: 'DEBUG_WALL',
+                    type: 'SPAWN',
+                    formation: 'SENTINEL_WALL',
+                    robotTypes: ['SENTINEL'],
+                    counts: { SENTINEL: 12 },
+                    spawnRegion: 'TOP_ARC'
+                }, true);
+            }
+        };
+
+        $('#btn-partial-retreat').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.encounterDirector) {
+                gs.encounterDirector.executeCue({
+                    id: 'DEBUG_PARTIAL_RETREAT',
+                    type: 'RETREAT',
+                    retreatFraction: 0.5
+                });
+            }
+        };
+
+        $('#btn-full-retreat').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.encounterDirector) {
+                gs.encounterDirector.executeCue({
+                    id: 'DEBUG_FULL_RETREAT',
+                    type: 'RETREAT',
+                    retreatFraction: 1.0
+                });
+            }
+        };
+
+        $('#btn-clear-boss').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.encounterDirector) {
+                gs.encounterDirector.executeCue({
+                    id: 'DEBUG_CLEAR_BOSS',
+                    type: 'CLEAR_FOR_BOSS'
+                });
+            }
+        };
     }
 
     update() {
@@ -385,6 +488,21 @@ export default class TimelineDebugPanel {
                 if (ws) {
                     $('#diag-projectiles').textContent = ws.getActiveProjectileCount();
                     $('#diag-axes').textContent = ws.getActiveAxeCount();
+                }
+
+                // Encounter Diagnostics
+                if (gameScene.encounterDirector) {
+                    const ed = gameScene.encounterDirector;
+                    const retreatingCount = gameScene.robotGroup.getChildren().filter(r => r.active && r.aiState === 'RETREATING').length;
+                    
+                    $('#diag-cue').textContent = [...ed.activeCues].pop() || 'NONE';
+                    $('#diag-robots-active').textContent = ed.getActiveCount() - retreatingCount;
+                    $('#diag-robots-retreat').textContent = retreatingCount;
+                    $('#diag-pop-cap').textContent = ed.maxActive;
+                    $('#diag-pending-form').textContent = ed.pendingFormations.length;
+                    
+                    $('#btn-toggle-encounter').style.color = ed.enabled ? '#00ff00' : '#ff0000';
+                    $('#btn-toggle-catchup').style.color = ed.catchUpEnabled ? '#00ff00' : '#ff0000';
                 }
             } else {
                 const otherScene = activeScenes.length > 0 ? activeScenes[0].scene.key : 'NONE';
