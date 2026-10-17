@@ -10,7 +10,7 @@ import { OBSTACLE_CONFIG } from '../config/obstacleConfig.js';
 export default class ChamberBuilder {
     constructor(scene) {
         this.scene = scene;
-        this.worldWidth = 640;
+        this.worldWidth = 1280;
         this.worldHeight = 50000; 
         
         this.floor = null;
@@ -171,8 +171,10 @@ export default class ChamberBuilder {
         // 1. Arena Floor Markings
         const arenaG = this.scene.add.graphics();
         arenaG.lineStyle(2, cfg.accentColor, 0.5);
-        arenaG.strokeRect(100, y + 150, 440, 660);
-        arenaG.strokeCircle(320, y + 480, 200);
+        // Center arena markings in the wider world
+        const centerX = this.worldWidth / 2;
+        arenaG.strokeRect(centerX - 220, y + 150, 440, 660);
+        arenaG.strokeCircle(centerX, y + 480, 200);
         this.addActiveObject(chunkIndex, arenaG);
 
         // 2. Fixed obstacles from config
@@ -187,7 +189,7 @@ export default class ChamberBuilder {
         });
 
         // 3. Southern boundary (future debris)
-        const south = this.scene.add.rectangle(320, y + 930, 640, 60, 0x000000, 0.5);
+        const south = this.scene.add.rectangle(centerX, y + 930, this.worldWidth, 60, 0x000000, 0.5);
         this.wallGroup.add(south);
         this.addActiveObject(chunkIndex, south);
     }
@@ -206,9 +208,16 @@ export default class ChamberBuilder {
             for (let i = 0; i < numObstacles; i++) {
                 const randType = nextRand();
                 const type = randType > 0.66 ? 'PILLAR' : (randType > 0.33 ? 'MACHINE' : 'TANK');
-                const ox = 60 + nextRand() * (this.worldWidth - 160);
+                let ox = 60 + nextRand() * (this.worldWidth - 160);
                 const oy = y + nextRand() * (segmentHeight - 140);
                 
+                // Ensure opening corridor is clear for Proxy escape (X=worldWidth/2, Y=0-2500)
+                const centerX = this.worldWidth / 2;
+                if (oy < 2500 && Math.abs(ox - centerX) < 70) {
+                    ox = (ox < centerX) ? ox - 70 : ox + 70;
+                    ox = Phaser.Math.Clamp(ox, 60, this.worldWidth - 60);
+                }
+
                 const obj = this.addProceduralObstacle(type, ox, oy, nextRand);
                 if (obj) this.addActiveObject(chunkIndex, obj);
             }

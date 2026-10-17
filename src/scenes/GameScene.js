@@ -2,6 +2,11 @@ import Phaser from 'phaser';
 import ChamberBuilder from '../systems/ChamberBuilder.js';
 import Blackrush from '../entities/Blackrush.js';
 import Robot from '../entities/Robot.js';
+import Heart from '../entities/Heart.js';
+import Proxy from '../entities/Proxy.js';
+import ProxyBoss from '../entities/ProxyBoss.js';
+import GermanSoldier from '../entities/GermanSoldier.js';
+import Grenade from '../entities/Grenade.js';
 import Hud from '../ui/Hud.js';
 import DescentController from '../systems/DescentController.js';
 import DesktopControls from '../controls/DesktopControls.js';
@@ -9,6 +14,8 @@ import WeaponSystem from '../systems/WeaponSystem.js';
 import CombatSystem from '../systems/CombatSystem.js';
 import EncounterDirector from '../systems/EncounterDirector.js';
 import { COMBAT_CONFIG } from '../config/combatConfig.js';
+import { PROXY_CONFIG } from '../config/proxyConfig.js';
+import { PROXY_BOSS_CONFIG } from '../config/proxyBossConfig.js';
 
 export default class GameScene extends Phaser.Scene {
     constructor() {
@@ -26,6 +33,8 @@ export default class GameScene extends Phaser.Scene {
         this.timeline = this.game.timelineDirector;
         this.score = 0;
         this.isGameOver = false;
+        this.playerHasGrenade = false;
+        this.grenadeResolved = false;
 
         // 1. Build Chamber
         this.chamberBuilder = new ChamberBuilder(this);
@@ -35,7 +44,8 @@ export default class GameScene extends Phaser.Scene {
         this.chamberBuilder.update(0);
 
         // Set world bounds to match the large descent (50,000 pixels)
-        this.cameras.main.setBounds(0, 0, 640, 50000);
+        // Part B: World width is now 1280. We use a wide horizontal range to allow centering on wide monitors.
+        this.cameras.main.setBounds(-2000, 0, 5280, 50000);
 
         // 2. Initialize Gameplay Systems
         this.descentController = new DescentController(this.timeline);
@@ -43,7 +53,8 @@ export default class GameScene extends Phaser.Scene {
         this.weaponSystem = new WeaponSystem(this);
 
         // 3. Add Blackrush (Player)
-        this.player = new Blackrush(this, 320, 450);
+        // Center player in the wider world
+        this.player = new Blackrush(this, 640, 450);
         console.log(`[SESSION ${this.sessionID}] PLAYER_CREATED`);
 
         // 4. Robot Group
@@ -51,6 +62,16 @@ export default class GameScene extends Phaser.Scene {
             classType: Robot,
             runChildUpdate: true
         });
+
+        this.heartGroup = this.physics.add.group({
+            classType: Heart,
+            runChildUpdate: true
+        });
+
+        this.bossComponentGroup = this.physics.add.group();
+
+        // 4.5 Opening Proxy (Scripted Escape)
+        this.openingProxy = new Proxy(this, PROXY_CONFIG.opening);
 
         // 5. Encounter Orchestration
         this.encounterDirector = new EncounterDirector(this);
@@ -82,24 +103,89 @@ export default class GameScene extends Phaser.Scene {
         // Timeline Event Listeners
         this.setupTimelineListeners();
 
+        // PART B: Handle resize and initial camera scale
+        this.scale.on('resize', this.onResize, this);
+        this.onResize();
+
         // Cleanup on shutdown
         this.events.once('shutdown', () => {
             this.cleanupTimelineListeners();
             if (this.encounterDirector) {
                 this.encounterDirector.destroy();
             }
+            if (this.controls) {
+                this.controls.destroy();
+            }
+            if (this.proxyBoss) {
+                this.proxyBoss.destroy();
+            }
+            if (this.germanSoldier) {
+                this.germanSoldier.destroy();
+            }
+            if (this.grenade) {
+                this.grenade.destroy();
+            }
         });
 
         console.log('GameScene: Step 5 Combat Prototype loaded.');
     }
 
-    spawnRobotAt(x, y, type) {
+    onResize() {
+        const { width, height } = this.scale;
+        
+        // Target logical height: 960
+        const logicalHeight = 960;
+        const zoom = height / logicalHeight;
+        
+        this.cameras.main.setZoom(zoom);
+        
+        // Logical viewport width
+        const logicalWidth = width / zoom;
+        
+        if (this.hud) {
+            this.hud.resize(logicalWidth, logicalHeight);
+        }
+    }
+
+    updateHorizontalCamera(delta) {
+        if (!this.player || this.player.isDestroyed) return;
+
+        const cam = this.cameras.main;
+        const zoom = cam.zoom;
+        const logicalWidth = this.scale.width / zoom;
+
+        // If the viewport width is >= world width, center the camera
+        if (logicalWidth >= 1280) {
+            // Allow negative scrollX to center the 1280px world
+            // scrollX = (WorldWidth - ViewportWidth) / 2
+            cam.scrollX = (1280 - logicalWidth) / 2;
+        } else {
+            // Target center X is player position
+            const targetX = this.player.x - (logicalWidth / 2);
+            
+            // Smoothly lerp towards targetX
+            const lerpFactor = 0.1;
+            cam.scrollX = Phaser.Math.Linear(cam.scrollX, targetX, lerpFactor);
+            
+            // Clamp to world bounds (0 to 1280 - logicalWidth)
+            cam.scrollX = Phaser.Math.Clamp(cam.scrollX, 0, 1280 - logicalWidth);
+        }
+    }
+
+    spawnRobotAt(x, y, type, cueID = null) {
         const robot = new Robot(this, x, y, type);
+        robot.cueID = cueID;
         this.robotGroup.add(robot);
         return robot;
     }
 
-    findSafeSpawnPosition(suggestedX, suggestedY) {
+    spawnHeartAt(x, y) {
+        const heart = new Heart(this, x, y);
+        this.heartGroup.add(heart);
+        return heart;
+    }
+
+    findSafeSpawnPosition(suggestedX, suggestedY, permittedRegion = null) {
         // Try to find a safe position near the suggested one
         const attempts = [
             { x: suggestedX, y: suggestedY },
@@ -108,13 +194,20 @@ export default class GameScene extends Phaser.Scene {
             { x: suggestedX, y: suggestedY + 40 },
             { x: suggestedX, y: suggestedY - 40 },
             { x: suggestedX + 80, y: suggestedY },
-            { x: suggestedX - 80, y: suggestedY }
+            { x: suggestedX - 80, y: suggestedY },
+            { x: suggestedX, y: suggestedY + 80 },
+            { x: suggestedX, y: suggestedY - 80 }
         ];
 
         for (const pos of attempts) {
-            // Keep within horizontal bounds
+            // Keep within horizontal bounds (World is 1280px wide)
             if (pos.x < 50) pos.x = 50;
-            if (pos.x > 590) pos.x = 590;
+            if (pos.x > 1230) pos.x = 1230;
+
+            // Respect permitted region if provided
+            if (permittedRegion && !permittedRegion.contains(pos.x, pos.y)) {
+                continue;
+            }
 
             const rect = new Phaser.Geom.Rectangle(pos.x - 20, pos.y - 20, 40, 40);
             let blocked = false;
@@ -125,22 +218,42 @@ export default class GameScene extends Phaser.Scene {
             });
             if (blocked) continue;
 
+            // Check walls
+            this.environment.walls.getChildren().forEach(obj => {
+                if (Phaser.Geom.Intersects.RectangleToRectangle(rect, obj.getBounds())) blocked = true;
+            });
+            if (blocked) continue;
+
             // Check player
-            if (this.player && Phaser.Math.Distance.Between(pos.x, pos.y, this.player.x, this.player.y) < 100) continue;
+            if (this.player && Phaser.Math.Distance.Between(pos.x, pos.y, this.player.x, this.player.y) < 120) continue;
 
             return pos;
         }
 
-        return { x: suggestedX, y: suggestedY }; // Fallback
+        return null; // Return null if no safe location found
+    }
+
+    findSafeRobotSpawnPosition() {
+        const cam = this.cameras.main;
+        const view = cam.worldView;
+        // Search in the viewport
+        const x = view.x + 100 + Math.random() * (view.width - 200);
+        const y = view.y + 100 + Math.random() * (view.height - 200);
+        return this.findSafeSpawnPosition(x, y) || { x, y }; // Fallback for manual debug
     }
 
     setupCollisions() {
         // Projectiles vs Robots
         this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.robotGroup, this.handleProjectileRobotCollision, null, this);
         this.physics.add.overlap(this.weaponSystem.axes, this.robotGroup, this.handleProjectileRobotCollision, null, this);
+
+        // Projectiles vs Boss Components
+        this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.bossComponentGroup, this.handleProjectileBossCollision, null, this);
+        this.physics.add.overlap(this.weaponSystem.axes, this.bossComponentGroup, this.handleProjectileBossCollision, null, this);
         
         // Player vs Robots (Contact damage)
         this.physics.add.overlap(this.player, this.robotGroup, this.handlePlayerRobotCollision, null, this);
+        this.physics.add.overlap(this.player, this.heartGroup, this.handlePlayerHeartCollision, null, this);
 
         // New: Solid Obstacles and Walls
         this.physics.add.collider(this.player, this.environment.obstacles);
@@ -153,6 +266,37 @@ export default class GameScene extends Phaser.Scene {
         this.physics.add.overlap(this.weaponSystem.axes, this.environment.obstacles, this.handleProjectileObstacleCollision, null, this);
         this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.environment.walls, this.handleProjectileObstacleCollision, null, this);
         this.physics.add.overlap(this.weaponSystem.axes, this.environment.walls, this.handleProjectileObstacleCollision, null, this);
+    }
+
+    handlePlayerHeartCollision(player, heart) {
+        if (player.isDestroyed || player.isFinalDefeat) return;
+
+        // Restore 1 heart
+        if (player.hearts < player.maxHearts) {
+            player.hearts++;
+            this.hud.setHearts(player.hearts, player.maxHearts);
+            
+            this.playSurvivalSound('heartGain');
+            
+            // Visual effect
+            this.createHeartPickupEffect(heart.x, heart.y);
+            
+            heart.destroy();
+            console.log(`[SESSION ${this.sessionID}] HEART_PICKUP. Hearts: ${player.hearts}`);
+        }
+    }
+
+    createHeartPickupEffect(x, y) {
+        const ring = this.add.graphics();
+        ring.lineStyle(2, 0xff3366, 1);
+        ring.strokeCircle(x, y, 10);
+        this.tweens.add({
+            targets: ring,
+            alpha: 0,
+            scale: 4,
+            duration: 500,
+            onComplete: () => ring.destroy()
+        });
     }
 
     handleProjectileObstacleCollision(projectile, obstacle) {
@@ -243,14 +387,141 @@ export default class GameScene extends Phaser.Scene {
             knockback: 200
         };
 
-        const result = CombatSystem.processAttack(attack, player);
+        this.handlePlayerDamage(attack);
+    }
+
+    handlePlayerDamage(attack) {
+        if (!this.player || this.player.isDestroyed || this.player.isRespawning || this.player.isInvulnerable()) return;
+
+        const result = CombatSystem.processAttack(attack, this.player);
         if (result !== COMBAT_CONFIG.results.NO_DAMAGE) {
-            player.onHit();
-            this.hud.setShield(player.shield, player.maxShield);
+            this.player.onHit();
+            this.hud.setShield(this.player.shield, this.player.maxShield);
 
             if (result === COMBAT_CONFIG.results.TARGET_DESTROYED) {
                 this.handlePlayerDefeat();
             }
+        }
+    }
+
+    handleProjectileBossCollision(projectile, component) {
+        if (!projectile.active || projectile.hitTargets.has(component)) return;
+        
+        const isAxe = projectile.texture.key === 'axe';
+        const weaponCfg = isAxe ? COMBAT_CONFIG.weapons.axe : COMBAT_CONFIG.weapons.energy;
+        
+        const attack = {
+            type: isAxe ? COMBAT_CONFIG.types.AXE : COMBAT_CONFIG.types.ENERGY,
+            damage: weaponCfg.damage,
+            armorBreaking: weaponCfg.armorBreaking,
+            direction: projectile.rotation - Math.PI / 2,
+            knockback: 0
+        };
+
+        const result = component.boss.onComponentHit(component, attack);
+        
+        if (result !== COMBAT_CONFIG.results.NO_DAMAGE) {
+            projectile.hitTargets.add(component);
+            this.createImpactSparks(projectile.x, projectile.y, attack.direction, isAxe);
+            
+            if (!isAxe) projectile.deactivate();
+            
+            if (result === COMBAT_CONFIG.results.TARGET_DESTROYED) {
+                this.addScore(500); 
+            }
+        }
+    }
+
+    handleProxyReleaseNadine() {
+        if (this.openingProxy) {
+            this.openingProxy.destroy();
+            this.openingProxy = null;
+        }
+        
+        const arenaY = this.descentController.getArenaPosition();
+        this.proxyBoss = new ProxyBoss(this, 640, arenaY + 300);
+        
+        this.proxyBoss.components.forEach(comp => {
+            this.bossComponentGroup.add(comp);
+        });
+        
+        console.log(`[SESSION ${this.sessionID}] PROXY_BOSS_SPAWNED`);
+    }
+
+    handleProxyAttackStart() {
+        if (this.proxyBoss) {
+            this.proxyBoss.state = 'IDLE'; // Re-enable if it was waiting
+            console.log(`[SESSION ${this.sessionID}] PROXY_BOSS_ACTIVE`);
+        }
+    }
+
+    handleGermanSoldierArrival() {
+        const arenaY = this.descentController.getArenaPosition();
+        // Soldier appears from a side entrance
+        this.germanSoldier = new GermanSoldier(this, 100, arenaY + 800);
+        console.log(`[SESSION ${this.sessionID}] GERMAN_SOLDIER_ARRIVED`);
+    }
+
+    handleGrenadeSequence() {
+        if (!this.germanSoldier || !this.proxyBoss) return;
+        
+        this.germanSoldier.throwGrenade(this.proxyBoss.x, this.proxyBoss.y, () => {
+            const grenade = new Grenade(this, this.germanSoldier.x, this.germanSoldier.y);
+            this.grenade = grenade;
+            
+            // Player can catch it
+            this.physics.add.overlap(this.player, grenade, this.handlePlayerCatchGrenade, null, this);
+            
+            grenade.launch(this.proxyBoss.x, this.proxyBoss.y, 1500, () => {
+                this.resolveGrenadeHit(false);
+            });
+        });
+    }
+
+    handlePlayerCatchGrenade(player, grenade) {
+        if (grenade.isCaught) return;
+        grenade.catch();
+        console.log(`[SESSION ${this.sessionID}] PLAYER_CAUGHT_GRENADE`);
+        
+        // Attach to player (visual follow in update)
+        this.playerHasGrenade = true;
+
+        // Player now has the grenade. If they touch the Proxy, they deliver it.
+        this.physics.add.overlap(this.player, this.bossComponentGroup, () => {
+            if (this.playerHasGrenade) {
+                this.resolveGrenadeHit(true);
+            }
+        }, null, this);
+    }
+
+    resolveGrenadeHit(byPlayer) {
+        if (this.grenadeResolved) return;
+        this.grenadeResolved = true;
+        this.playerHasGrenade = false;
+
+        if (this.grenade) {
+            this.grenade.destroy();
+            this.grenade = null;
+        }
+
+        if (this.proxyBoss) {
+            this.proxyBoss.state = 'STAGGERED';
+            console.log(`[SESSION ${this.sessionID}] GRENADE_HIT (byPlayer=${byPlayer})`);
+        }
+    }
+
+    handleProxyCollapse() {
+        if (this.proxyBoss) {
+            this.resolveGrenadeHit(false); // Ensure it's hit if missed
+            this.proxyBoss.die();
+            
+            // Clear soldier
+            if (this.germanSoldier) {
+                this.germanSoldier.destroy();
+                this.germanSoldier = null;
+            }
+
+            console.log(`[SESSION ${this.sessionID}] PROXY_BOSS_COLLAPSED`);
         }
     }
 
@@ -667,6 +938,21 @@ export default class GameScene extends Phaser.Scene {
         });
     }
 
+    spawnTestEncounter() {
+        if (!this.encounterDirector || !this.encounterDirector.enabled) return;
+        
+        // Spawn a small starting group immediately
+        this.encounterDirector.executeCue({
+            id: 'STARTING_ENCOUNTER',
+            type: 'SPAWN',
+            formation: 'PATROL',
+            robotTypes: ['PURSUER'],
+            counts: { PURSUER: 3 },
+            spawnRegion: 'TOP_RANDOM',
+            seed: 'START_' + this.sessionID
+        }, true);
+    }
+
     setupTimelineListeners() {
         this.onPhaseChange = (phase) => {
             if (!this.scene.isActive()) return;
@@ -734,6 +1020,9 @@ export default class GameScene extends Phaser.Scene {
             if (this.robotGroup && this.robotGroup.scene) {
                 this.robotGroup.clear(true, true);
             }
+
+            // PART F: Reconstruct Boss State based on time
+            this.reconstructBossState(state.time);
             
             // Reconcile camera first so spawnTestEncounter uses correct scrollY
             this.reconcilePlayerWithCamera();
@@ -776,9 +1065,32 @@ export default class GameScene extends Phaser.Scene {
             }
         };
 
+        this.onEvent = (eventID, eventData) => {
+            if (!this.scene.isActive()) return;
+
+            switch (eventID) {
+                case 'PROXY_RELEASES_NADINE':
+                    this.handleProxyReleaseNadine();
+                    break;
+                case 'PROXY_ATTACK':
+                    this.handleProxyAttackStart();
+                    break;
+                case 'GERMAN_SOLDIER_APPEARS':
+                    this.handleGermanSoldierArrival();
+                    break;
+                case 'GRENADE_SEQUENCE':
+                    this.handleGrenadeSequence();
+                    break;
+                case 'PROXY_COLLAPSE':
+                    this.handleProxyCollapse();
+                    break;
+            }
+        };
+
         this.timeline.on('phaseChange', this.onPhaseChange);
         this.timeline.on('trackStart', this.onTrackStart);
         this.timeline.on('seek', this.onSeek);
+        this.timeline.on('event', this.onEvent);
         this.timeline.on('debugReturnToTitle', this.onDebugReturnToTitle);
         this.events.on('playSurvivalSound', this.onPlaySurvivalSound);
     }
@@ -788,6 +1100,7 @@ export default class GameScene extends Phaser.Scene {
             this.timeline.off('phaseChange', this.onPhaseChange);
             this.timeline.off('trackStart', this.onTrackStart);
             this.timeline.off('seek', this.onSeek);
+            this.timeline.off('event', this.onEvent);
             this.timeline.off('debugReturnToTitle', this.onDebugReturnToTitle);
         }
         this.events.off('playSurvivalSound', this.onPlaySurvivalSound);
@@ -797,10 +1110,63 @@ export default class GameScene extends Phaser.Scene {
         this.events.off('playerDestroyed');
     }
 
+    reconstructBossState(time) {
+        // Clear existing boss/soldier/grenade
+        if (this.proxyBoss) {
+            this.proxyBoss.destroy();
+            this.proxyBoss = null;
+        }
+        if (this.germanSoldier) {
+            this.germanSoldier.destroy();
+            this.germanSoldier = null;
+        }
+        if (this.grenade) {
+            this.grenade.destroy();
+            this.grenade = null;
+        }
+        if (this.bossComponentGroup) {
+            this.bossComponentGroup.clear(true, true);
+        }
+        this.playerHasGrenade = false;
+        this.grenadeResolved = false;
+
+        const cfg = PROXY_BOSS_CONFIG.timing;
+        const trackKey = this.timeline.getState().track;
+
+        if (trackKey === 'SYNTH' && time >= cfg.releaseNadine && time < cfg.bossCollapse) {
+            this.handleProxyReleaseNadine();
+            
+            // Adjust health/components based on time for "representative" state
+            if (time > cfg.bossActive + 20) {
+                // Simulate some head damage
+                const head = this.proxyBoss.components.get('HEAD');
+                if (head) head.takeDamage({ damage: 10, armorBreaking: true });
+            }
+            
+            if (time >= cfg.soldierAppears) {
+                this.handleGermanSoldierArrival();
+            }
+            
+            if (time >= cfg.grenadeSequence) {
+                this.proxyBoss.state = 'STAGGERED';
+            }
+        }
+    }
+
     reconcilePlayerWithCamera() {
         const targetScrollY = this.descentController.getTargetScrollY();
-        this.cameras.main.setScroll(0, targetScrollY);
+        this.cameras.main.scrollY = targetScrollY;
         
+        // Center camera horizontally on player for the seek
+        const zoom = this.cameras.main.zoom;
+        const logicalWidth = this.scale.width / zoom;
+        if (logicalWidth < 1280) {
+            this.cameras.main.scrollX = Phaser.Math.Clamp(this.player.x - logicalWidth / 2, 0, 1280 - logicalWidth);
+        } else {
+            // Center the camera on wide screens
+            this.cameras.main.scrollX = (1280 - logicalWidth) / 2;
+        }
+
         // Update environment for the new position
         if (this.chamberBuilder) {
             this.chamberBuilder.clear();
@@ -808,7 +1174,9 @@ export default class GameScene extends Phaser.Scene {
         }
 
         this.player.y = targetScrollY + 450;
-        this.player.body.reset(this.player.x, this.player.y);
+        if (this.player.body) {
+            this.player.body.reset(this.player.x, this.player.y);
+        }
     }
 
     returnToTitle() {
@@ -837,11 +1205,30 @@ export default class GameScene extends Phaser.Scene {
         const targetScrollY = this.descentController.getTargetScrollY();
         this.cameras.main.scrollY = targetScrollY;
 
+        // 1.5 Horizontal Camera tracking (Part B)
+        this.updateHorizontalCamera(delta);
+
         // 1.5 Update Environment (Chunking)
         this.chamberBuilder.update(targetScrollY);
 
         // 2. Update Controls
         this.controls.update();
+
+        // 2.5 Update Proxy Escape Sequence
+        if (this.openingProxy) {
+            this.openingProxy.updateFromTime(state.track, state.time);
+        }
+
+        // 2.6 Update Proxy Boss (Part C)
+        if (this.proxyBoss) {
+            this.proxyBoss.update(this.player, delta);
+        }
+
+        // 2.7 Update Grenade (if held by player - Part D)
+        if (this.playerHasGrenade && this.grenade && this.player) {
+            this.grenade.x = this.player.x;
+            this.grenade.y = this.player.y - 40;
+        }
 
         // 3. Update Player
         this.player.update(this.controls.getState(), delta);

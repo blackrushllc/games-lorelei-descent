@@ -43,14 +43,14 @@ export const OBSTACLE_CONFIG = {
             { type: 'MACHINE', x: 20, y: 530, w: 40, h: 60 },
             { type: 'MACHINE', x: 20, y: 830, w: 40, h: 60 },
             // Right supports
-            { type: 'MACHINE', x: 580, y: 230, w: 40, h: 60 },
-            { type: 'MACHINE', x: 580, y: 530, w: 40, h: 60 },
-            { type: 'MACHINE', x: 580, y: 830, w: 40, h: 60 },
+            { type: 'MACHINE', x: 1220, y: 230, w: 40, h: 60 },
+            { type: 'MACHINE', x: 1220, y: 530, w: 40, h: 60 },
+            { type: 'MACHINE', x: 1220, y: 830, w: 40, h: 60 },
             // Machinery near boundaries
             { type: 'MACHINE', x: 70, y: 80, w: 80, h: 60 },
-            { type: 'MACHINE', x: 490, y: 80, w: 80, h: 60 },
+            { type: 'MACHINE', x: 1130, y: 80, w: 80, h: 60 },
             { type: 'TANK', x: 80, y: 850, r: 35 },
-            { type: 'TANK', x: 560, y: 850, r: 35 }
+            { type: 'TANK', x: 1200, y: 850, r: 35 }
         ]
     }
 };

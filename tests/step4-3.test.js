@@ -24,11 +24,13 @@ import DesktopControls from '../src/controls/DesktopControls.js';
 function createMockScene() {
     return {
         input: {
+            on: () => {},
             keyboard: {
                 addKeys: () => ({
                     up: { isDown: false }, down: { isDown: false }, left: { isDown: false }, right: { isDown: false },
                     arrowUp: { isDown: false }, arrowDown: { isDown: false }, arrowLeft: { isDown: false }, arrowRight: { isDown: false }
-                })
+                }),
+                resetKeys: () => {}
             },
             mouse: {
                 disableContextMenu: () => {}
@@ -40,7 +42,9 @@ function createMockScene() {
             }
         },
         player: { x: 320, y: 480 },
+        scale: { width: 640, height: 960 },
         game: {
+            events: { on: () => {} },
             config: { width: 640, height: 960 }
         }
     };

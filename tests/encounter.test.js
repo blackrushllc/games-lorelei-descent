@@ -1,5 +1,21 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
+
+// Global mock for Phaser
+global.Phaser = {
+    Geom: {
+        Rectangle: class {
+            constructor(x, y, w, h) {
+                this.x = x; this.y = y; this.width = w; this.height = h;
+                this.bottom = y + h;
+            }
+            contains(x, y) {
+                return x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height;
+            }
+        }
+    }
+};
+
 import EncounterDirector from '../src/systems/EncounterDirector.js';
 import { ENCOUNTER_SCORE } from '../src/config/encounterScore.js';
 
@@ -36,6 +52,7 @@ class MockGroup {
     }
     add(child) { this.children.push(child); }
     getLength() { return this.children.filter(c => c.active).length; }
+    countActive(active) { return this.children.filter(c => c.active === active).length; }
     getChildren() { return this.children; }
 }
 
@@ -53,22 +70,29 @@ class MockTimeline {
 
 class MockScene {
     constructor() {
+        this.scene = { isActive: () => true };
         this.sessionID = 1;
         this.game = {
             timelineDirector: new MockTimeline(),
             loop: { now: Date.now() }
         };
         this.robotGroup = new MockGroup();
-        this.cameras = { main: { scrollY: 0 } };
-        this.player = { x: 320, y: 450, shield: 100, maxShield: 100, hearts: 6, maxHearts: 6, combatConfig: { lowHeartThreshold: 2 } };
+        this.cameras = { 
+            main: { 
+                scrollY: 0,
+                worldView: { x: 0, y: 0, width: 1280, height: 960, bottom: 960, right: 1280, centerX: 640 }
+            } 
+        };
+        this.player = { x: 640, y: 450, shield: 100, maxShield: 100, hearts: 6, maxHearts: 6, combatConfig: { lowHeartThreshold: 2 } };
         this.time = { now: Date.now() };
     }
-    spawnRobotAt(x, y, type) {
+    spawnRobotAt(x, y, type, cueID = null) {
         const robot = new MockRobot(this, x, y, type);
+        robot.cueID = cueID;
         this.robotGroup.add(robot);
         return robot;
     }
-    findSafeSpawnPosition(x, y) { return { x, y }; }
+    findSafeSpawnPosition(x, y, permittedRegion = null) { return { x, y }; }
 }
 
 test('EncounterDirector: Initialization and Score Validation', async (t) => {
@@ -124,7 +148,7 @@ test('EncounterDirector: Seeking Reconstructs State', async (t) => {
     
     // 1. Should have registered previous cues
     assert.ok(ed.activeCues.has('FIRST_SPECTACLE'));
-    assert.ok(ed.activeCues.has('FIRST_PATROL'));
+    assert.ok(ed.activeCues.has('FIRST_PATROL1'));
     
     // 2. Should have adjusted population cap (FIRST_SPECTACLE sets maxActive to 24)
     assert.strictEqual(ed.maxActive, 24);

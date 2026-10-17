@@ -6,7 +6,13 @@ export default class GameOverScene extends Phaser.Scene {
     }
 
     create() {
-        const { width, height } = this.game.config;
+        this.createUI();
+        this.scale.on('resize', this.onResize, this);
+    }
+
+    createUI() {
+        this.children.removeAll();
+        const { width, height } = this.scale;
         this.timeline = this.game.timelineDirector;
 
         // Overlay background
@@ -54,6 +60,10 @@ export default class GameOverScene extends Phaser.Scene {
         .on('pointerdown', () => this.returnToTitle())
         .on('pointerover', () => titleBtn.setStyle({ backgroundColor: '#444444' }))
         .on('pointerout', () => titleBtn.setStyle({ backgroundColor: '#333333' }));
+    }
+
+    onResize() {
+        this.createUI();
     }
 
     restartGame() {

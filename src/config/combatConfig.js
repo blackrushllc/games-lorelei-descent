@@ -55,7 +55,7 @@ export const COMBAT_CONFIG = {
             type: 'PURSUER',
             maxHealth: 1,
             maxArmor: 0,
-            speed: 90,
+            speed: 110,
             chaseRange: 450,
             contactDamage: 8,
             contactCooldown: 1000,
@@ -67,8 +67,9 @@ export const COMBAT_CONFIG = {
             type: 'SENTINEL',
             maxHealth: 2,
             maxArmor: 0,
-            speed: 45,
+            speed: 80,
             preferredDistance: 250,
+            contactDamage: 5,
             laserDamage: 15,
             warningTime: 700, // ms
             fireTime: 150, // ms
@@ -82,7 +83,7 @@ export const COMBAT_CONFIG = {
             type: 'ARMORED_PURSUER',
             maxHealth: 1,
             maxArmor: 1,
-            speed: 60,
+            speed: 90,
             contactDamage: 12,
             contactCooldown: 1000,
             score: 300,

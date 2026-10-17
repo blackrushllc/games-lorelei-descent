@@ -189,11 +189,42 @@ export default class TimelineDirector extends EventEmitter {
         return 0;
     }
 
+    getTotalDuration() {
+        return TIMELINE_CONFIG.sequence.reduce((total, key) => total + this.getEstimatedDuration(key), 0);
+    }
+
     // Public API for developer controls
     seek(seconds) {
         this.isExplicitSeeking = true;
         this.audioDirector.seek(seconds);
         // update() will catch the jump in the next frame
+    }
+
+    seekGlobal(globalSeconds) {
+        let total = 0;
+        for (const trackKey of TIMELINE_CONFIG.sequence) {
+            const duration = this.getEstimatedDuration(trackKey);
+            if (globalSeconds >= total && globalSeconds < total + duration) {
+                const relativeTime = globalSeconds - total;
+                if (this.currentTrackKey === trackKey) {
+                    this.seek(relativeTime);
+                } else {
+                    this.startTrack(trackKey);
+                    // Need a slight delay to ensure sound is ready to seek
+                    // In a production app, we'd wait for the sound to be 'decoded'
+                    setTimeout(() => this.seek(relativeTime), 50);
+                }
+                return;
+            }
+            total += duration;
+        }
+        
+        // If we seek past the end, go to the last track's end
+        const lastTrack = TIMELINE_CONFIG.sequence[TIMELINE_CONFIG.sequence.length - 1];
+        if (this.currentTrackKey !== lastTrack) {
+            this.startTrack(lastTrack);
+        }
+        setTimeout(() => this.seek(this.getEstimatedDuration(lastTrack)), 50);
     }
 
     pause() {
@@ -221,6 +252,7 @@ export default class TimelineDirector extends EventEmitter {
             time: this.audioDirector.getCurrentTime(),
             duration: this.audioDirector.getDuration(),
             globalTime: this.globalTime,
+            totalDuration: this.getTotalDuration(),
             isPlaying: this.audioDirector.isPlaying(),
             isPaused: this.audioDirector.isPaused()
         };

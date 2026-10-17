@@ -12,7 +12,7 @@ export default class BootScene extends Phaser.Scene {
         this.load.audio('studio', 'assets/audio/music/below-gamorrah-studio.mp3');
 
         // Loading indicator
-        const { width, height } = this.game.config;
+        const { width, height } = this.scale;
         const loadingText = this.add.text(width / 2, height / 2, 'Loading Audio...', {
             fontSize: '20px',
             fill: '#ffffff'

@@ -21,10 +21,24 @@ export default class CombatSystem {
             return results.NO_DAMAGE;
         }
 
+        // Damage safety: ensure it's a number
+        const damage = typeof attack.damage === 'number' ? attack.damage : 0;
+        if (typeof attack.damage !== 'number') {
+            console.warn(`[COMBAT] Attack damage is not a number:`, attack);
+        }
+
         // Diagnostic data
         const isDebug = typeof window !== 'undefined' && window.location.search.includes('debug=1');
         const initialArmor = target.armor || 0;
-        const initialHealth = isPlayerTarget(target) ? (target.shield || 0) : (target.health || 0);
+        
+        // Ensure shield/health are numbers
+        if (isPlayerTarget(target)) {
+            if (typeof target.shield !== 'number' || isNaN(target.shield)) target.shield = 100;
+        } else {
+            if (typeof target.health !== 'number' || isNaN(target.health)) target.health = 1;
+        }
+        
+        const initialHealth = isPlayerTarget(target) ? target.shield : target.health;
 
         // 2. Armor Logic (For Robots)
         let result = results.NO_DAMAGE;
@@ -39,10 +53,10 @@ export default class CombatSystem {
         } else {
             // 3. Health/Shield Logic
             if (isPlayerTarget(target)) {
-                target.shield = Math.max(0, target.shield - attack.damage);
+                target.shield = Math.max(0, target.shield - damage);
                 result = target.shield <= 0 ? results.TARGET_DESTROYED : results.HEALTH_DAMAGED;
             } else {
-                target.health = Math.max(0, target.health - attack.damage);
+                target.health = Math.max(0, target.health - damage);
                 result = target.health <= 0 ? results.TARGET_DESTROYED : results.HEALTH_DAMAGED;
             }
         }
@@ -53,7 +67,7 @@ export default class CombatSystem {
             const finalHealth = isPlayerTarget(target) ? (target.shield || 0) : (target.health || 0);
             
             console.log(`[COMBAT] Attack: ${attack.type} -> ${targetType}`);
-            console.log(`[COMBAT] Damage: ${attack.damage}, Armor: ${initialArmor}->${finalArmor}, Health/Shield: ${initialHealth}->${finalHealth}`);
+            console.log(`[COMBAT] Damage: ${damage}, Armor: ${initialArmor}->${finalArmor}, Health/Shield: ${initialHealth}->${finalHealth}`);
             console.log(`[COMBAT] Result: ${result}`);
         }
 

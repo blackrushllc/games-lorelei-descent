@@ -8,12 +8,11 @@ export default class Hud extends Phaser.GameObjects.Container {
         super(scene, 0, 0);
 
         const { width } = scene.game.config;
+        this.logicalWidth = width;
 
         // Background for HUD top area
-        const bg = scene.add.graphics();
-        bg.fillStyle(0x000000, 0.5);
-        bg.fillRect(0, 0, width, 80);
-        this.add(bg);
+        this.bg = scene.add.graphics();
+        this.add(this.bg);
 
         // Shield Label and Bar
         this.shieldText = scene.add.text(20, 15, 'SHIELD 100 / 100', { 
@@ -25,7 +24,6 @@ export default class Hud extends Phaser.GameObjects.Container {
         this.add(this.shieldText);
         
         this.shieldBar = scene.add.graphics();
-        this.updateShieldBar(100, 100);
         this.add(this.shieldBar);
 
         // Score
@@ -63,6 +61,10 @@ export default class Hud extends Phaser.GameObjects.Container {
         // Hearts
         this.heartIcons = [];
         this.createHearts(width);
+
+        // Initial Layout
+        this.resize(width, 960);
+        this.updateShieldBar(100, 100);
 
         // Fix to camera
         this.setScrollFactor(0);
@@ -127,30 +129,62 @@ export default class Hud extends Phaser.GameObjects.Container {
         }
     }
 
+    resize(width, height) {
+        this.logicalWidth = width;
+        const playingWidth = 1280;
+        const offset = width > playingWidth ? (width - playingWidth) / 2 : 0;
+
+        // Redraw/Reposition HUD elements based on new logical width
+        this.bg.clear();
+        this.bg.fillStyle(0x000000, 0.5);
+        this.bg.fillRect(offset, 0, 1280, 80);
+
+        this.shieldText.setX(offset + 20);
+        this.scoreText.setX(width - offset - 20);
+        this.phaseLabel.setX(width / 2);
+
+        this.weaponText.setX(offset + 20);
+        this.axeText.setX(offset + 200);
+
+        // Reposition Hearts
+        const startX = width - offset - 150;
+        const spacing = 24;
+        for (let i = 0; i < this.heartIcons.length; i++) {
+            this.heartIcons[i].x = startX + (i * spacing);
+        }
+
+        // Redraw bar to match new offset
+        const player = this.scene.player;
+        if (player) {
+            this.updateShieldBar(player.shield, player.maxShield);
+        } else {
+            this.updateShieldBar(100, 100);
+        }
+    }
+
     updateShieldBar(value, maximum) {
-        const percentage = maximum > 0 ? Phaser.Math.Clamp(value / maximum, 0, 1) : 0;
+        const playingWidth = 1280;
+        const offset = this.logicalWidth > playingWidth ? (this.logicalWidth - playingWidth) / 2 : 0;
+        const barX = offset + 160;
+
+        const percentage = (maximum > 0 && !isNaN(value)) ? Phaser.Math.Clamp(value / maximum, 0, 1) : 0;
         
         // Update Text
         if (this.shieldText) {
-            this.shieldText.setText(`SHIELD ${Math.ceil(value)} / ${maximum}`);
+            const displayValue = isNaN(value) ? 0 : Math.ceil(value);
+            this.shieldText.setText(`SHIELD ${displayValue} / ${maximum}`);
         }
 
         this.shieldBar.clear();
         
         // Background (Dark Gray/Black Frame)
         this.shieldBar.fillStyle(0x222222, 1);
-        this.shieldBar.fillRect(160, 15, 200, 15);
+        this.shieldBar.fillRect(barX, 15, 200, 15);
         
         // Determine color based on thresholds
-        // Above 60%: Cyan/green.
-        // 31% through 60%: Amber/yellow.
-        // 1% through 30%: Red.
-        // 0%: Empty.
         let color = 0x00ffff; // Cyan/Green default
         
-        if (percentage <= 0) {
-            // Fill is empty
-        } else {
+        if (percentage > 0) {
             if (percentage <= 0.3) {
                 color = 0xff0000; // Red
             } else if (percentage <= 0.6) {
@@ -159,12 +193,12 @@ export default class Hud extends Phaser.GameObjects.Container {
 
             // Fill (Proportional width)
             this.shieldBar.fillStyle(color, 1);
-            this.shieldBar.fillRect(160, 15, 200 * percentage, 15);
+            this.shieldBar.fillRect(barX, 15, 200 * percentage, 15);
         }
         
         // Border
         this.shieldBar.lineStyle(2, 0xffffff, 1);
-        this.shieldBar.strokeRect(160, 15, 200, 15);
+        this.shieldBar.strokeRect(barX, 15, 200, 15);
     }
 
     setShield(value, maximum) {

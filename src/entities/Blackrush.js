@@ -94,12 +94,18 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         // Shield Regeneration
         const now = this.scene.time.now;
         if (this.shield < this.maxShield && now - this.lastDamageTime >= this.combatConfig.regenDelay) {
-            const regenAmount = (this.combatConfig.regenRate * delta) / 1000;
-            this.shield = Math.min(this.maxShield, this.shield + regenAmount);
-            this.scene.hud.setShield(this.shield, this.maxShield);
+            // Safety: Ensure delta and shield are numbers
+            const d = typeof delta === 'number' ? delta : 0;
+            const regenAmount = (this.combatConfig.regenRate * d) / 1000;
             
-            // Subtle regen visual (pulsing eye or glow?)
-            this.showRegenEffect();
+            if (!isNaN(regenAmount)) {
+                this.shield = Math.min(this.maxShield, this.shield + regenAmount);
+                if (isNaN(this.shield)) this.shield = this.maxShield; // Emergency recovery
+                this.scene.hud.setShield(this.shield, this.maxShield);
+                
+                // Subtle regen visual
+                this.showRegenEffect();
+            }
         }
 
         if (!inputState) return;

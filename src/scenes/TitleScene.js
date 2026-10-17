@@ -6,10 +6,21 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     create() {
-        const { width, height } = this.game.config;
+        this.createUI();
+
+        // Handle resize
+        this.scale.on('resize', this.onResize, this);
+    }
+
+    createUI() {
+        this.children.removeAll();
+
+        const { width, height } = this.scale;
+        const centerX = width / 2;
+        const centerY = height / 2;
 
         // Title
-        this.add.text(width / 2, height / 2 - 120, 'LORELEI: DESCENT', {
+        this.add.text(centerX, centerY - 120, 'LORELEI: DESCENT', {
             fontSize: '48px',
             fill: '#ffffff',
             fontFamily: 'Arial',
@@ -17,14 +28,14 @@ export default class TitleScene extends Phaser.Scene {
         }).setOrigin(0.5);
 
         // Subtitle
-        this.add.text(width / 2, height / 2 - 60, 'Below Gamora Pharmaceuticals', {
+        this.add.text(centerX, centerY - 60, 'Below Gamora Pharmaceuticals', {
             fontSize: '24px',
             fill: '#cccccc',
             fontFamily: 'Arial'
         }).setOrigin(0.5);
 
         // Control Mode Selection
-        this.add.text(width / 2, height / 2 + 20, 'SELECT CONTROL MODE:', {
+        this.add.text(centerX, centerY + 20, 'SELECT CONTROL MODE:', {
             fontSize: '18px',
             fill: '#888888',
             fontFamily: 'Arial'
@@ -32,7 +43,7 @@ export default class TitleScene extends Phaser.Scene {
 
         const currentMode = localStorage.getItem('lorelei_descent_control_mode') || 'CLASSIC';
         
-        const classicBtn = this.add.text(width / 2 - 100, height / 2 + 60, 'CLASSIC', {
+        const classicBtn = this.add.text(centerX - 100, centerY + 60, 'CLASSIC', {
             fontSize: '20px',
             fill: currentMode === 'CLASSIC' ? '#00ff00' : '#ffffff',
             fontFamily: 'Arial',
@@ -47,7 +58,7 @@ export default class TitleScene extends Phaser.Scene {
             assistedBtn.setStyle({ fill: '#ffffff' });
         });
 
-        const assistedBtn = this.add.text(width / 2 + 100, height / 2 + 60, 'ASSISTED', {
+        const assistedBtn = this.add.text(centerX + 100, centerY + 60, 'ASSISTED', {
             fontSize: '20px',
             fill: currentMode === 'ASSISTED' ? '#00ff00' : '#ffffff',
             fontFamily: 'Arial',
@@ -62,14 +73,14 @@ export default class TitleScene extends Phaser.Scene {
             classicBtn.setStyle({ fill: '#ffffff' });
         });
 
-        this.add.text(width / 2, height / 2 + 100, 'Classic: WASD to move. Assisted: Mouse-follow.', {
+        this.add.text(centerX, centerY + 100, 'Classic: WASD to move. Assisted: Mouse-follow.', {
             fontSize: '14px',
             fill: '#666666',
             fontFamily: 'Arial'
         }).setOrigin(0.5);
 
         // Start Button
-        const startButton = this.add.text(width / 2, height / 2 + 180, 'START GAME', {
+        const startButton = this.add.text(centerX, centerY + 180, 'START GAME', {
             fontSize: '32px',
             fill: '#00ff00',
             fontFamily: 'Arial',
@@ -79,18 +90,20 @@ export default class TitleScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
-            // Start the timeline with the first track. 
-            // The trackStart listener in main.js will handle starting GameScene.
             this.game.timelineDirector.startTrack('SYNTH');
         })
         .on('pointerover', () => startButton.setStyle({ fill: '#ffffff' }))
         .on('pointerout', () => startButton.setStyle({ fill: '#00ff00' }));
 
         // Version Indicator
-        this.add.text(width / 2, height - 40, 'Prototype — Step 4.2', {
+        this.add.text(centerX, height - 40, 'Prototype — Step 9', {
             fontSize: '16px',
             fill: '#888888',
             fontFamily: 'Arial'
         }).setOrigin(0.5);
+    }
+
+    onResize() {
+        this.createUI();
     }
 }

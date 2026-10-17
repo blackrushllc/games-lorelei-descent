@@ -40,6 +40,11 @@ export default class DesktopControls {
 
         // Prevent input carry-over from scene transitions (e.g. START GAME click)
         this.ignoreInitialClick = true;
+
+        // Listen for focus/resume to reset states
+        this.onResume = () => this.reset();
+        this.scene.game.events.on('resume', this.onResume);
+        this.scene.input.on('pointerover', this.onResume);
     }
 
     loadControlMode() {
@@ -55,6 +60,22 @@ export default class DesktopControls {
         try {
             localStorage.setItem('lorelei_descent_control_mode', mode);
         } catch (e) {}
+    }
+
+    /**
+     * Resets input states (e.g. after focus regain or scene start)
+     */
+    reset() {
+        this.moveX = 0;
+        this.moveY = 0;
+        this.isFiringPrimary = false;
+        this.isFiringSecondary = false;
+        this.ignoreInitialClick = true; // Wait for release after focus regain
+        
+        // Reset keyboard states to prevent stuck keys after focus loss
+        if (this.scene.input && this.scene.input.keyboard) {
+            this.scene.input.keyboard.resetKeys();
+        }
     }
 
     /**
@@ -114,10 +135,10 @@ export default class DesktopControls {
         const deadZone = this.config.assistedMovementRadius;
         const fullSpeedZone = this.config.assistedMovementFullSpeedRadius;
 
-        // Reliable boundary check using logical game dimensions
-        const gameWidth = this.scene.game.config.width;
-        const gameHeight = this.scene.game.config.height;
-        const isInsideCanvas = pointer.x >= 0 && pointer.x <= gameWidth && pointer.y >= 0 && pointer.y <= gameHeight;
+        // Reliable boundary check using actual viewport dimensions
+        const viewportWidth = this.scene.scale.width;
+        const viewportHeight = this.scene.scale.height;
+        const isInsideCanvas = pointer.x >= 0 && pointer.x <= viewportWidth && pointer.y >= 0 && pointer.y <= viewportHeight;
 
         if (dist <= deadZone || !isInsideCanvas) {
             this.moveX = 0;
@@ -147,5 +168,11 @@ export default class DesktopControls {
             isFiringSecondary: this.isFiringSecondary,
             controlMode: this.controlMode
         };
+    }
+
+    destroy() {
+        if (this.scene && this.scene.game) {
+            this.scene.game.events.off('resume', this.onResume);
+        }
     }
 }

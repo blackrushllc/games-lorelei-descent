@@ -6,7 +6,13 @@ export default class EndingScene extends Phaser.Scene {
     }
 
     create() {
-        const { width, height } = this.game.config;
+        this.createUI();
+        this.scale.on('resize', this.onResize, this);
+    }
+
+    createUI() {
+        this.children.removeAll();
+        const { width, height } = this.scale;
         this.timeline = this.game.timelineDirector;
 
         // Title
@@ -53,7 +59,7 @@ export default class EndingScene extends Phaser.Scene {
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
             this.timeline.startTrack('SYNTH');
-            this.scene.start('GameScene');
+            // scene switching handled by trackStart listener in main.js
         });
 
         const backButton = this.add.text(width / 2, height - 80, 'BACK TO TITLE', {
@@ -79,6 +85,10 @@ export default class EndingScene extends Phaser.Scene {
         });
 
         console.log('EndingScene: Loaded.');
+    }
+
+    onResize() {
+        this.createUI();
     }
 
     setupTimelineListeners() {

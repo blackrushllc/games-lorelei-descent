@@ -9,14 +9,14 @@ import EndingScene from '../scenes/EndingScene.js';
  * Logical resolution and scaling configuration.
  */
 export const GAME_CONFIG = {
-    width: 640,
+    width: 1280,
     height: 960,
     backgroundColor: '#10151f',
     parent: 'game-container',
     type: Phaser.AUTO,
     scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.NO_CENTER,
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     physics: {
         default: 'arcade',

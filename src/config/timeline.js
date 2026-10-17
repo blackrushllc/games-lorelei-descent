@@ -1,7 +1,15 @@
+import { ENCOUNTER_SCORE } from './encounterScore.js';
+
 /**
  * Musical tracks, phases, and scheduled events for LORELEI: DESCENT.
  * All timestamps are in seconds.
  */
+
+// Convert encounter score to timeline events for the SYNTH track
+const encounterEvents = ENCOUNTER_SCORE.map(cue => ({
+    time: cue.time,
+    id: cue.id
+}));
 
 export const TIMELINE_CONFIG = {
     tracks: {
@@ -16,6 +24,7 @@ export const TIMELINE_CONFIG = {
             events: [
                 { time: 0, id: 'CHASE_START' },
                 { time: 45, id: 'SWARM_START' },
+                ...encounterEvents,
                 { time: 120, id: 'SWARM_INTENSIFY_1' },
                 { time: 210, id: 'SWARM_INTENSIFY_2' },
                 { time: 270, id: 'SWARM_CLIMAX' },

@@ -17,8 +17,9 @@
 5.4 **Shield HUD Repair, Regeneration, Hearts, and Respawning** (Completed)
 6.  **Solid Obstacles, Environmental Cover, and Robot Navigation** (Completed)
 7.  **Encounter Director, choreographed encounters, and tactical retreats** (Completed)
-8.  **Opening chase**
-9.  **Proxy boss and German soldier**
+7.3 **Ambient Resistance and Offscreen Spawning** (Completed)
+8.  **Opening chase** (Completed)
+9.  **Proxy boss and German soldier** (Completed)
 10. **Super-robot and Panzer**
 11. **Ending and promotion**
 12. **Character and environment artwork**
@@ -27,6 +28,35 @@
 15. **Production deployment**
 
 ## Verification
+
+### Step 9 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Heart Drops**:
+    - Reduce hearts to 2 (using **COMBAT TOOLS**).
+    - Seek to 155s.
+    - Observe `HEART_1` triggering at 160s.
+    - Collect the heart; verify it restores 1 life.
+    - Verify collecting with 6 hearts does nothing but consumes the item.
+4. **Expanded Battlefield**:
+    - Observe the 1280px wide arena and descent corridor.
+    - Verify camera tracks player horizontally when the window is narrow.
+    - Verify mouse aiming and assisted movement work at the edges of the 1280px world.
+5. **Proxy Boss**:
+    - Seek to **PROXY** (300s).
+    - Observe the Proxy releasing Nadine and becoming active at 315s.
+    - Attack the Proxy; verify components (HEAD, ARMS) can be damaged.
+    - Verify Core is exposed after 2 components are broken.
+    - Observe Proxy laser attacks and tactical moves.
+6. **Soldier & Grenade**:
+    - Observe German Soldier appearing at 340s.
+    - At 350s, watch the soldier throw the grenade.
+    - Attempt to intercept the grenade; if successful, deliver it to the boss.
+    - Observe `PROXY_COLLAPSE` at 358s.
+7. **Reinforcements**:
+    - Verify small groups of robots spawn during the boss battle.
+    - Confirm all robots are cleared at 350s for the finale.
+8. **Tests**: Run `npm test` and verify all 71 tests pass (including new Step 9 tests).
 
 ### Step 7 Verification
 1. Run `npm run dev`.
@@ -283,3 +313,48 @@ The output will be in the `dist/` directory.
     - Click **RESTART MISSION**: Verify game restarts from 0:00 with full shield and score reset.
     - Click **BACK TO TITLE**: Verify game returns to title screen.
 6. **Tests**: Run `npm test` and verify all 31 tests pass (including new Step 5.1 tests).
+
+### Step 7.3 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Ambient Resistance**:
+    - Start game; wait until 0:45.
+    - Observe small numbers of robots (3-6) spawning between major cues.
+    - Verify `Ambient (Active)` in the debug panel reflects these robots.
+4. **Offscreen Spawning**:
+    - Observe all scheduled spawns (Ambient and Scripted).
+    - Confirm they enter from below the viewport naturally.
+    - No robots should visibly materialize inside the playfield during descent.
+5. **Population Tracking**:
+    - Check **ENCOUNTER TOOLS** diagnostics.
+    - `Inactive/Pooled` count should increase as robots die, while `Scripted/Ambient` counts should reflect only live robots.
+6. **Seeking Reconstruction**:
+    - Seek to various points in the Synth track.
+    - Confirm that swarms are reconstructed correctly based on the intensity of the musical section.
+7. **Lull Suppression**:
+    - During scripted lulls (e.g., 2:20), verify that ambient spawning stops.
+8. **Boss Evacuation**:
+    - Seek to 4:50.
+    - Confirm that all spawning stops after the `EVACUATION` cue at 4:51.
+9. **Tests**: Run `npm test` and verify all 58 tests pass (including new Step 7.3 tests).
+
+### Step 8 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. Click **START GAME**.
+4. **Opening Escape**:
+    - Immediately at 0:00, observe the **PROXY (NADINE)** entity (purple placeholder) ahead of Blackrush.
+    - Verify the Proxy flees straight downward at high speed.
+    - Verify the Proxy leaves the screen within ~3.5 seconds.
+5. **Interaction**:
+    - Fire energy bolts and throw axes at the Proxy; verify they have no effect (bolts pass through or hit background).
+    - Verify the Proxy does not damage Blackrush or block his movement.
+6. **Corridor Safety**:
+    - Observe the environment during the escape. Verify the central vertical corridor (X=320) remains clear of machinery until the Proxy has passed.
+7. **Seeking**:
+    - Seek to 0:00, 0:01, 0:02. Verify the Proxy's position is restored deterministically.
+    - Seek past 0:04. Verify the Proxy is gone.
+    - Seek backward from 0:10 to 0:00. Verify the Proxy reappears.
+8. **Diagnostics**:
+    - Check the `Opening Proxy` diagnostic in the debug panel. It should show `ACTIVE` while visible and `INACTIVE` otherwise.
+9. **Tests**: Run `npm test` and verify all 63 tests pass (including new Step 8 tests).

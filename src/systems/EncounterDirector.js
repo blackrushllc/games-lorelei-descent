@@ -1,4 +1,4 @@
-import { ENCOUNTER_SCORE } from '../config/encounterScore.js';
+import { ENCOUNTER_SCORE, AMBIENT_POLICY } from '../config/encounterScore.js';
 import { COMBAT_CONFIG } from '../config/combatConfig.js';
 
 /**
@@ -23,6 +23,10 @@ export default class EncounterDirector {
         this.isLull = false;
         this.lullEndTime = 0;
         
+        // Ambient Resistance State
+        this.nextAmbientTime = 0;
+        this.ambientSeed = 42;
+        
         // Catch-up burst settings
         this.catchUpEnabled = true;
         this.catchUpMultiplier = 1.8;
@@ -37,6 +41,14 @@ export default class EncounterDirector {
         this.onTrackStart = this.onTrackStart.bind(this);
         
         this.setupListeners();
+
+        // PART A: Validate encounter score for duplicate IDs
+        this.validateEncounterScore();
+
+        // Check if we are already in a track (e.g. initialization after track start)
+        if (this.timeline.currentTrackKey) {
+            this.onTrackStart(this.timeline.currentTrackKey);
+        }
     }
 
     setupListeners() {
@@ -49,31 +61,37 @@ export default class EncounterDirector {
         this.timeline.off('event', this.onEvent);
         this.timeline.off('seek', this.onSeek);
         this.timeline.off('trackStart', this.onTrackStart);
-        this.pendingFormations = [];
+        this.cancelAllPending();
     }
 
     onTrackStart(trackKey) {
+        if (!this.scene || !this.scene.scene || !this.scene.scene.isActive()) return;
+
         if (trackKey === 'SYNTH') {
             this.reset();
         } else {
             // Stop spawning for CATHEDRAL and STUDIO tracks
             this.enabled = false;
+            this.cancelAllPending();
             this.clearAll();
         }
     }
 
     reset() {
         this.activeCues.clear();
-        this.pendingFormations = [];
+        this.cancelAllPending();
         this.enabled = true;
         this.maxActive = 16;
         this.isLull = false;
         this.lullEndTime = 0;
         this.lastTrackTime = 0;
+        this.nextAmbientTime = AMBIENT_POLICY.startTime;
+        this.ambientSeed = 42 + (this.sessionID * 100);
     }
 
     onEvent(eventID, eventData) {
-        if (!this.enabled || this.timeline.currentTrackKey !== 'SYNTH') return;
+        if (!this.scene || !this.scene.scene || !this.scene.scene.isActive()) return;
+        if (this.timeline.currentTrackKey !== 'SYNTH') return;
         
         // We only handle events defined in ENCOUNTER_SCORE (or those matching our cues)
         const cue = ENCOUNTER_SCORE.find(c => c.id === eventID);
@@ -82,9 +100,46 @@ export default class EncounterDirector {
         }
     }
 
+    validateEncounterScore() {
+        const ids = new Set();
+        const duplicates = [];
+
+        ENCOUNTER_SCORE.forEach(cue => {
+            if (!cue.id) {
+                console.warn(`[ENCOUNTER] Cue at time ${cue.time} is missing an ID!`);
+                cue.id = `AUTO_ID_${Math.floor(cue.time * 100)}`;
+            }
+
+            if (ids.has(cue.id)) {
+                const originalID = cue.id;
+                let newID = originalID;
+                let counter = 1;
+                while (ids.has(newID)) {
+                    newID = `${originalID}_DUP${counter++}`;
+                }
+                console.warn(`[ENCOUNTER] Duplicate ID found: "${originalID}". Renaming to "${newID}".`);
+                cue.id = newID;
+                duplicates.push({ original: originalID, renamed: newID });
+            }
+            ids.add(cue.id);
+
+            // Validate HEART_DROP fields
+            if (cue.type === 'HEART_DROP') {
+                if (typeof cue.ifHeartsBelow !== 'number') {
+                    console.error(`[ENCOUNTER] HEART_DROP cue "${cue.id}" missing ifHeartsBelow numeric condition!`);
+                }
+            }
+        });
+
+        return duplicates;
+    }
+
     onSeek(newTime) {
+        if (!this.scene || !this.scene.scene || !this.scene.scene.isActive()) return;
+
         if (this.timeline.currentTrackKey !== 'SYNTH') {
             this.clearAll();
+            this.cancelAllPending();
             return;
         }
 
@@ -92,9 +147,10 @@ export default class EncounterDirector {
         
         // 1. Reset state
         this.activeCues.clear();
-        this.pendingFormations = [];
+        this.cancelAllPending();
         this.isLull = false;
         this.lullEndTime = 0;
+        this.enabled = true;
         
         // 2. Clear current robots
         this.clearAll();
@@ -121,10 +177,17 @@ export default class EncounterDirector {
             }
         });
 
-        // 4. Create a "representative fixture" if we seek into a swarm
-        // Find the most recent SPAWN cue within the last 5 seconds
-        const recentSpawn = [...pastCues].reverse().find(c => c.type === 'SPAWN' && (newTime - c.time) <= 5);
-        if (recentSpawn && this.enabled) {
+        // 4. Ambient state reconstruction
+        this.nextAmbientTime = AMBIENT_POLICY.startTime;
+        while (this.nextAmbientTime < newTime - 5) {
+            const interval = this.getSeededAmbientInterval(this.nextAmbientTime);
+            this.nextAmbientTime += interval;
+        }
+
+        // 5. Create a "representative fixture" if we seek into a swarm
+        // Intensity-aware reconstruction: Find the most recent SPAWN cue in this musical section
+        const recentSpawn = [...pastCues].reverse().find(c => c.type === 'SPAWN' && (newTime - c.time) <= 20);
+        if (recentSpawn && this.enabled && !this.isLull) {
             console.log(`[ENCOUNTER] Seeker spawned representative fixture for cue ${recentSpawn.id}`);
             this.executeCue(recentSpawn, true); // Immediate spawn
         }
@@ -154,10 +217,36 @@ export default class EncounterDirector {
             case 'LULL':
                 this.isLull = true;
                 this.lullEndTime = cue.time + cue.duration;
+                this.cancelAllPending(); // Lulls clear pending arrivals
                 break;
             case 'CLEAR_FOR_BOSS':
                 this.handleClearForBoss();
                 break;
+            case 'HEART_DROP':
+                this.handleHeartDrop(cue);
+                break;
+        }
+    }
+
+    handleHeartDrop(cue) {
+        const player = this.scene.player;
+        if (!player) return;
+
+        if (player.hearts < cue.ifHeartsBelow) {
+            if (this.isDebug()) console.log(`[ENCOUNTER] HEART_DROP triggered for ${cue.id} (hearts=${player.hearts} < ${cue.ifHeartsBelow})`);
+            
+            // Spawn heart below viewport
+            const view = this.scene.cameras.main.worldView;
+            let x = view.x + 100 + this.getSeededRandom(cue.id, 0) * (view.width - 200);
+            
+            // Clamp to world bounds
+            x = Phaser.Math.Clamp(x, 50, 1230);
+            
+            const y = view.bottom + 150;
+            
+            this.scene.spawnHeartAt(x, y);
+        } else {
+            if (this.isDebug()) console.log(`[ENCOUNTER] HEART_DROP skipped for ${cue.id} (hearts=${player.hearts} >= ${cue.ifHeartsBelow})`);
         }
     }
 
@@ -184,17 +273,19 @@ export default class EncounterDirector {
         const spawnList = this.calculateSpawnMix(cue.counts, countToSpawn);
         
         if (immediate) {
-            this.spawnFormation(cue.formation, spawnList, cue.spawnRegion, cue.seed);
+            this.spawnFormation(cue.formation, spawnList, cue.spawnRegion, cue.seed, cue.id);
         } else {
-            // Staggered arrival over 1-2 seconds for dramatic effect and performance
+            // Staggered arrival over 1-2 seconds
             this.pendingFormations.push({
+                id: cue.id,
                 formation: cue.formation,
                 list: spawnList,
                 region: cue.spawnRegion,
                 seed: cue.seed,
                 timer: 0,
-                interval: 0.1, // 100ms between robots
-                index: 0
+                interval: 100, 
+                index: 0,
+                expiresAt: this.timeline.audioDirector.getCurrentTime() + 10 // Expire after 10s if delayed
             });
         }
     }
@@ -203,19 +294,23 @@ export default class EncounterDirector {
         const totalRequested = Object.values(counts).reduce((a, b) => a + b, 0);
         const list = [];
         
-        for (const [type, count] of Object.entries(counts)) {
+        const sortedTypes = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+        
+        for (const [type, count] of sortedTypes) {
             const ratio = count / totalRequested;
-            const targetCount = Math.round(ratio * targetTotal);
+            const targetCount = Math.floor(ratio * targetTotal); // Use floor to avoid over-spawning
             for (let i = 0; i < targetCount; i++) {
                 list.push(type);
             }
         }
         
-        // Adjust if rounding error
-        while (list.length > targetTotal) list.pop();
+        // Fill remaining with primary type
         while (list.length < targetTotal) {
-            list.push(Object.keys(counts)[0]);
+            list.push(sortedTypes[0][0]);
         }
+        
+        // Trim if over
+        while (list.length > targetTotal) list.pop();
         
         return list;
     }
@@ -228,7 +323,7 @@ export default class EncounterDirector {
         if (cue.priority === 'OLDEST') {
             robots.sort((a, b) => a.creationTime - b.creationTime);
         } else {
-            // Default: Deterministic shuffle based on seed or cue ID
+            // Default: Deterministic shuffle
             this.deterministicShuffle(robots, cue.id + this.sessionID);
         }
 
@@ -240,11 +335,12 @@ export default class EncounterDirector {
         }
 
         selected.forEach(r => r.retreat());
+        this.cancelAllPending(); // Retreat usually means a lull follows or pressure reduction
     }
 
     handleClearForBoss() {
         this.enabled = false;
-        this.pendingFormations = [];
+        this.cancelAllPending();
         
         const robots = this.getEligibleRobots();
         if (this.isDebug()) {
@@ -254,12 +350,26 @@ export default class EncounterDirector {
         robots.forEach(r => r.retreat());
     }
 
+    cancelAllPending() {
+        this.pendingFormations = [];
+    }
+
     update(time, delta) {
-        if (!this.enabled || this.timeline.currentTrackKey !== 'SYNTH') return;
+        if (this.timeline.currentTrackKey !== 'SYNTH') return;
         
+        const currentTime = this.timeline.audioDirector.getCurrentTime();
+
         // 1. Process pending formations (staggered spawning)
         for (let i = this.pendingFormations.length - 1; i >= 0; i--) {
             const f = this.pendingFormations[i];
+            
+            // Expiration check
+            if (currentTime > f.expiresAt) {
+                if (this.isDebug()) console.log(`[ENCOUNTER] Expired pending formation ${f.id}`);
+                this.pendingFormations.splice(i, 1);
+                continue;
+            }
+
             f.timer += delta;
             
             if (f.timer >= f.interval) {
@@ -267,7 +377,9 @@ export default class EncounterDirector {
                 const type = f.list[f.index];
                 const pos = this.calculateSpawnPosition(f.formation, f.index, f.list.length, f.region, f.seed);
                 
-                this.scene.spawnRobotAt(pos.x, pos.y, type);
+                if (pos) {
+                    this.scene.spawnRobotAt(pos.x, pos.y, type, f.id);
+                }
                 
                 f.index++;
                 if (f.index >= f.list.length) {
@@ -276,9 +388,57 @@ export default class EncounterDirector {
             }
         }
 
-        // 2. Catch-up burst logic
+        // 2. Ambient Resistance
+        this.updateAmbientResistance(currentTime, delta);
+
+        // 3. Catch-up burst logic
         if (this.catchUpEnabled && !this.isLull) {
             this.processCatchUpBursts(delta);
+        }
+
+        this.lastTrackTime = currentTime;
+    }
+
+    updateAmbientResistance(currentTime, delta) {
+        if (!this.enabled || this.isLull || currentTime < AMBIENT_POLICY.startTime) return;
+        
+        // Suppress during heavy formations or retreats (if we have many pending)
+        if (this.pendingFormations.length > 0) return;
+
+        if (currentTime >= this.nextAmbientTime) {
+            const currentActive = this.getActiveCount();
+            if (currentActive < AMBIENT_POLICY.targetCount) {
+                this.spawnAmbientRobot(currentTime);
+            }
+            
+            // Schedule next ambient spawn regardless of success (deterministic interval)
+            const interval = this.getSeededAmbientInterval(currentTime);
+            this.nextAmbientTime = currentTime + interval;
+        }
+    }
+
+    getSeededAmbientInterval(time) {
+        const rand = this.getSeededRandom(this.ambientSeed, Math.floor(time));
+        const [min, max] = AMBIENT_POLICY.spawnIntervalRange;
+        return min + rand * (max - min);
+    }
+
+    spawnAmbientRobot(time) {
+        const rand = this.getSeededRandom(this.ambientSeed, Math.floor(time * 10));
+        
+        let type = 'PURSUER';
+        if (time > AMBIENT_POLICY.armoredStartTime && rand > 0.8) {
+            type = 'ARMORED_PURSUER';
+        } else if (rand > 0.5) {
+            type = 'SENTINEL';
+        }
+
+        const region = AMBIENT_POLICY.regions[Math.floor(rand * AMBIENT_POLICY.regions.length)];
+        const pos = this.calculateSpawnPosition('RANDOM', 0, 1, region, time);
+        
+        if (pos) {
+            if (this.isDebug()) console.log(`[AMBIENT] Spawned ${type} at ${time.toFixed(2)}s`);
+            this.scene.spawnRobotAt(pos.x, pos.y, type, null);
         }
     }
 
@@ -295,59 +455,79 @@ export default class EncounterDirector {
         });
     }
 
-    spawnFormation(formation, robotList, region, seed) {
+    spawnFormation(formation, robotList, region, seed, cueID = null) {
         robotList.forEach((type, index) => {
             const pos = this.calculateSpawnPosition(formation, index, robotList.length, region, seed);
-            this.scene.spawnRobotAt(pos.x, pos.y, type);
+            if (pos) {
+                this.scene.spawnRobotAt(pos.x, pos.y, type, cueID);
+            }
         });
     }
 
     calculateSpawnPosition(formation, index, total, region, seed) {
         const cam = this.scene.cameras.main;
-        const viewY = cam.scrollY;
+        const view = cam.worldView;
+        const descentSpeed = 75; // px/s
         
-        // Deterministic offset based on seed/index
+        // Deterministic offset
         const rand = this.getSeededRandom(seed, index);
         
-        let x = 320;
-        let y = viewY - 100;
+        let x = view.centerX;
+        let y = view.bottom + 100;
+
+        // Account for camera movement during staggered spawning
+        // If we are spawning the 10th robot at 100ms intervals, it will appear 1s later.
+        // We should adjust its spawn Y so it feels like it was in place.
+        const staggerOffset = (index * 0.1) * descentSpeed;
 
         switch (region) {
-            case 'TOP_RANDOM':
-                x = 50 + rand * 540;
-                y = viewY - 50 - (rand * 150);
+            case 'BOTTOM_APPROACH':
+                x = view.x + 50 + rand * (view.width - 100);
+                y = view.bottom + 50 + staggerOffset;
                 break;
-            case 'TOP_FAN':
-                x = 100 + (index / (total - 1 || 1)) * 440;
-                y = viewY - 100;
+            case 'BOTTOM_FAN':
+                x = view.x + 100 + (index / (total - 1 || 1)) * (view.width - 200);
+                y = view.bottom + 80 + staggerOffset;
                 break;
-            case 'TOP_ARC':
-                const angle = Math.PI + (index / (total - 1 || 1)) * Math.PI;
-                x = 320 + Math.cos(angle) * 300;
-                y = viewY - 100 + Math.sin(angle) * 100;
+            case 'BOTTOM_ARC':
+                const arcAngle = (index / (total - 1 || 1)) * Math.PI;
+                x = view.centerX + Math.cos(arcAngle) * (view.width * 0.4);
+                y = view.bottom + 100 + Math.sin(arcAngle) * 150 + staggerOffset;
+                break;
+            case 'BOTTOM_PINCER':
+                const isLeftPincer = index < total / 2;
+                x = isLeftPincer ? view.x + 50 : view.right - 50;
+                y = view.bottom + 60 + (index % Math.ceil(total/2)) * 40 + staggerOffset;
+                break;
+            case 'TOP_RANDOM': // Deprecated but preserved for manual debug
+                x = view.x + 50 + rand * (view.width - 100);
+                y = view.y + 50 + (rand * 400);
                 break;
             case 'SIDES':
-                const isLeft = index % 2 === 0;
-                x = isLeft ? -50 : 690;
-                y = viewY + 200 + (index * 50);
+                x = (index % 2 === 0) ? view.x - 50 : view.right + 50;
+                y = view.y + 200 + (index * 50);
                 break;
-            case 'MIXED':
-                if (index % 3 === 0) { // Top
-                    x = 100 + rand * 440;
-                    y = viewY - 100;
-                } else { // Sides
-                    x = (index % 2 === 0) ? -50 : 690;
-                    y = viewY + 300 + (rand * 400);
-                }
+            case 'BOTTOM': // Legacy
+                x = view.x + 50 + rand * (view.width - 100);
+                y = view.bottom + 100 + staggerOffset;
                 break;
+            default:
+                x = view.centerX;
+                y = view.bottom + 100;
         }
 
-        // Use GameScene's safety check
-        return this.scene.findSafeSpawnPosition(x, y);
+        // Use GameScene's safety check with a permitted region just below viewport
+        const margin = 200;
+        const permitted = new Phaser.Geom.Rectangle(view.x - 100, view.bottom, view.width + 200, margin + 500);
+        
+        // For debugging manual spawns (TOP_RANDOM / SIDES), we allow spawning inside viewport
+        const allowVisible = region.startsWith('TOP') || region === 'SIDES';
+        
+        return this.scene.findSafeSpawnPosition(x, y, allowVisible ? null : permitted);
     }
 
     getActiveCount() {
-        return this.scene.robotGroup.getLength();
+        return this.scene.robotGroup.countActive(true);
     }
 
     getEligibleRobots() {
@@ -355,6 +535,8 @@ export default class EncounterDirector {
     }
 
     clearAll() {
+        if (!this.scene || !this.scene.robotGroup || !this.scene.robotGroup.scene) return;
+        
         this.scene.robotGroup.getChildren().forEach(r => {
             r.setActive(false).setVisible(false);
             if (r.body) r.body.enable = false;
@@ -374,7 +556,6 @@ export default class EncounterDirector {
     }
 
     getSeededRandom(seed, index) {
-        // Simple LCG
         const s = (typeof seed === 'string') ? this.hashString(seed) : (seed || 12345);
         const x = Math.sin(s + index) * 10000;
         return x - Math.floor(x);

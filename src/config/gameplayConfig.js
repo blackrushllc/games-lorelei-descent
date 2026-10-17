@@ -12,7 +12,7 @@ export const GAMEPLAY_CONFIG = {
         defaultControlMode: 'CLASSIC',
         bounds: {
             left: 45,
-            right: 595,
+            right: 1235,
             top: 110,
             bottom: 900
         }

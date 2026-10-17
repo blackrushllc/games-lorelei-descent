@@ -29,7 +29,29 @@ export default class AudioDirector {
             this.playHeartLossSound();
         } else if (type === 'lowLife') {
             this.playLowLifeWarning();
+        } else if (type === 'heartGain') {
+            this.playHeartGainSound();
         }
+    }
+
+    playHeartGainSound() {
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sine';
+        // Ascending chime: 400Hz to 800Hz
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(800, now + 0.3);
+
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.3);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.3);
     }
 
     playHeartLossSound() {

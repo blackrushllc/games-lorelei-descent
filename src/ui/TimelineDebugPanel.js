@@ -23,6 +23,16 @@ export default class TimelineDebugPanel {
         this.container.id = 'timeline-debug-panel';
         this.applyStyles();
         
+        // Stop all mouse events from propagating to the game canvas
+        const stopProp = (e) => e.stopPropagation();
+        this.container.addEventListener('mousedown', stopProp);
+        this.container.addEventListener('mouseup', stopProp);
+        this.container.addEventListener('click', stopProp);
+        this.container.addEventListener('pointerdown', stopProp);
+        this.container.addEventListener('pointerup', stopProp);
+        this.container.addEventListener('contextmenu', stopProp);
+        this.container.addEventListener('wheel', stopProp);
+        
         this.container.innerHTML = `
             <div style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #555;">DEVELOPMENT TOOLS</div>
             
@@ -65,6 +75,7 @@ export default class TimelineDebugPanel {
                 <div class="debug-row">Active Scene: <span id="diag-active-scene">-</span></div>
                 <div class="debug-row">Physics: <span id="diag-physics">-</span></div>
                 <div class="debug-row">Scroll Y: <span id="diag-scroll-y">0</span></div>
+                <div class="debug-row">Scroll X: <span id="diag-scroll-x">0</span></div>
                 <div class="debug-row">Camera Mode: <span id="diag-cam-mode">-</span></div>
                 <div class="debug-row">Arena Depth: <span id="diag-arena-depth">0</span></div>
                 <div class="debug-row">Control Mode: <span id="diag-ctrl-mode">-</span></div>
@@ -81,6 +92,7 @@ export default class TimelineDebugPanel {
                 <div class="debug-row">Score: <span id="diag-score">0</span></div>
                 <div class="debug-row">Projectiles: <span id="diag-projectiles">0</span></div>
                 <div class="debug-row">Axes: <span id="diag-axes">0</span></div>
+                <div class="debug-row">Opening Proxy: <span id="diag-proxy">INACTIVE</span></div>
             </div>
 
             <div id="debug-combat-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] COMBAT TOOLS</div>
@@ -119,21 +131,43 @@ export default class TimelineDebugPanel {
             <div id="debug-encounter-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] ENCOUNTER TOOLS</div>
             <div id="debug-encounter" style="display: none; margin-top: 5px; font-size: 10px; color: #aaa; border-top: 1px solid #333; padding-top: 5px;">
                 <div class="debug-row">Cue: <span id="diag-cue">-</span></div>
-                <div class="debug-row">Robots (Active): <span id="diag-robots-active">0</span></div>
-                <div class="debug-row">Robots (Retreating): <span id="diag-robots-retreat">0</span></div>
+                <div class="debug-row">Scripted (Active): <span id="diag-robots-scripted">0</span></div>
+                <div class="debug-row">Ambient (Active): <span id="diag-robots-ambient">0</span></div>
+                <div class="debug-row">Retreating: <span id="diag-robots-retreat">0</span></div>
+                <div class="debug-row">Inactive/Pooled: <span id="diag-robots-pooled">0</span></div>
                 <div class="debug-row">Cap: <span id="diag-pop-cap">0</span></div>
                 <div class="debug-row">Pending: <span id="diag-pending-form">0</span></div>
+                <div class="debug-row">Next Ambient: <span id="diag-next-ambient">-</span></div>
                 
                 <div class="debug-controls" style="margin-top: 5px;">
                     <button id="btn-toggle-encounter">TOGGLE AUTO</button>
                     <button id="btn-toggle-catchup">TOGGLE CATCHUP</button>
                 </div>
                 <div class="debug-controls" style="margin-top: 5px;">
-                    <button id="btn-spawn-patrol">PATROL</button>
-                    <button id="btn-spawn-wall">SENTINEL WALL</button>
+                    <button id="btn-spawn-patrol">PATROL (4)</button>
+                    <button id="btn-spawn-wall">SENTINEL WALL (12)</button>
                     <button id="btn-partial-retreat">PARTIAL RETREAT</button>
                     <button id="btn-full-retreat">FULL RETREAT</button>
                     <button id="btn-clear-boss">CLEAR FOR BOSS</button>
+                </div>
+            </div>
+
+            <div id="debug-proxy-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] PROXY TOOLS</div>
+            <div id="debug-proxy" style="display: none; margin-top: 5px; font-size: 10px; color: #aaa; border-top: 1px solid #333; padding-top: 5px;">
+                <div class="debug-row">Boss Active: <span id="diag-proxy-active">NO</span></div>
+                <div class="debug-row">Boss HP: <span id="diag-proxy-hp">0</span></div>
+                <div class="debug-row">Boss State: <span id="diag-proxy-state">-</span></div>
+                <div class="debug-row">Soldier: <span id="diag-soldier">INACTIVE</span></div>
+                <div class="debug-row">Grenade: <span id="diag-grenade">INACTIVE</span></div>
+                
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-spawn-proxy">SPAWN PROXY</button>
+                    <button id="btn-proxy-stagger">STAGGER PROXY</button>
+                    <button id="btn-proxy-die">DIE PROXY</button>
+                </div>
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-spawn-soldier">SPAWN SOLDIER</button>
+                    <button id="btn-trigger-grenade">TRIGGER GRENADE</button>
                 </div>
             </div>
         `;
@@ -210,9 +244,9 @@ export default class TimelineDebugPanel {
         
         $('#debug-slider').oninput = (e) => {
             const state = this.timeline.getState();
-            if (state.duration > 0) {
-                const newTime = (e.target.value / 100) * state.duration;
-                this.timeline.seek(newTime);
+            if (state.totalDuration > 0) {
+                const newGlobalTime = (e.target.value / 100) * state.totalDuration;
+                this.timeline.seekGlobal(newGlobalTime);
             }
         };
 
@@ -245,6 +279,13 @@ export default class TimelineDebugPanel {
             const isHidden = encounter.style.display === 'none';
             encounter.style.display = isHidden ? 'block' : 'none';
             $('#debug-encounter-toggle').textContent = isHidden ? '[-] ENCOUNTER TOOLS' : '[+] ENCOUNTER TOOLS';
+        };
+
+        $('#debug-proxy-toggle').onclick = () => {
+            const proxy = $('#debug-proxy');
+            const isHidden = proxy.style.display === 'none';
+            proxy.style.display = isHidden ? 'block' : 'none';
+            $('#debug-proxy-toggle').textContent = isHidden ? '[-] PROXY TOOLS' : '[+] PROXY TOOLS';
         };
 
         // Combat tool actions
@@ -358,7 +399,7 @@ export default class TimelineDebugPanel {
                     formation: 'PATROL',
                     robotTypes: ['PURSUER'],
                     counts: { PURSUER: 4 },
-                    spawnRegion: 'TOP_RANDOM'
+                    spawnRegion: 'BOTTOM' // Use BOTTOM for manual patrol spawn
                 }, true);
             }
         };
@@ -372,7 +413,7 @@ export default class TimelineDebugPanel {
                     formation: 'SENTINEL_WALL',
                     robotTypes: ['SENTINEL'],
                     counts: { SENTINEL: 12 },
-                    spawnRegion: 'TOP_ARC'
+                    spawnRegion: 'TOP_RANDOM' // Use TOP_RANDOM (now inside viewport)
                 }, true);
             }
         };
@@ -408,6 +449,32 @@ export default class TimelineDebugPanel {
                 });
             }
         };
+
+        // Proxy Boss tool actions
+        $('#btn-spawn-proxy').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.handleProxyReleaseNadine();
+        };
+
+        $('#btn-proxy-stagger').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.proxyBoss) gs.proxyBoss.state = 'STAGGERED';
+        };
+
+        $('#btn-proxy-die').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.proxyBoss) gs.proxyBoss.die();
+        };
+
+        $('#btn-spawn-soldier').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.handleGermanSoldierArrival();
+        };
+
+        $('#btn-trigger-grenade').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.handleGrenadeSequence();
+        };
     }
 
     update() {
@@ -428,8 +495,8 @@ export default class TimelineDebugPanel {
         else if (state.isPaused) status = 'PAUSED';
         $('#debug-state').textContent = status;
         
-        if (state.duration > 0) {
-            $('#debug-slider').value = (state.time / state.duration) * 100;
+        if (state.totalDuration > 0) {
+            $('#debug-slider').value = (state.globalTime / state.totalDuration) * 100;
         }
 
         // Update Diagnostics
@@ -450,11 +517,23 @@ export default class TimelineDebugPanel {
                 const isPhysicsRunning = !gameScene.physics.world.isPaused;
                 $('#diag-physics').textContent = isPhysicsRunning ? 'RUNNING' : 'PAUSED';
                 $('#diag-scroll-y').textContent = Math.round(cam.scrollY);
+                $('#diag-scroll-x').textContent = Math.round(cam.scrollX);
                 
                 if (dc) {
                     $('#diag-cam-mode').textContent = dc.getCameraMode(state.track, state.time);
                     $('#diag-arena-depth').textContent = Math.round(dc.getArenaPosition());
                 }
+
+                if (gameScene.proxyBoss) {
+                    $('#diag-proxy-active').textContent = 'YES';
+                    $('#diag-proxy-hp').textContent = Math.round(gameScene.proxyBoss.hp);
+                    $('#diag-proxy-state').textContent = gameScene.proxyBoss.state;
+                } else {
+                    $('#diag-proxy-active').textContent = 'NO';
+                }
+
+                $('#diag-soldier').textContent = gameScene.germanSoldier ? 'ACTIVE' : 'INACTIVE';
+                $('#diag-grenade').textContent = gameScene.grenade ? 'ACTIVE' : 'INACTIVE';
 
                 if (ctrl) {
                     const ctrlState = ctrl.getState();
@@ -490,16 +569,29 @@ export default class TimelineDebugPanel {
                     $('#diag-axes').textContent = ws.getActiveAxeCount();
                 }
 
+                if (gameScene.openingProxy) {
+                    const op = gameScene.openingProxy;
+                    $('#diag-proxy').textContent = op.visible ? `ACTIVE (Y=${Math.round(op.y)})` : 'INACTIVE';
+                }
+
                 // Encounter Diagnostics
                 if (gameScene.encounterDirector) {
                     const ed = gameScene.encounterDirector;
-                    const retreatingCount = gameScene.robotGroup.getChildren().filter(r => r.active && r.aiState === 'RETREATING').length;
+                    const allRobots = gameScene.robotGroup.getChildren();
+                    const activeRobots = allRobots.filter(r => r.active && !r.isDestroyed);
+                    const retreatingCount = activeRobots.filter(r => r.aiState === 'RETREATING').length;
+                    const ambientCount = activeRobots.filter(r => !r.cueID && r.aiState !== 'RETREATING').length;
+                    const scriptedCount = activeRobots.filter(r => r.cueID && r.aiState !== 'RETREATING').length;
+                    const pooledCount = allRobots.length - activeRobots.length;
                     
                     $('#diag-cue').textContent = [...ed.activeCues].pop() || 'NONE';
-                    $('#diag-robots-active').textContent = ed.getActiveCount() - retreatingCount;
+                    $('#diag-robots-scripted').textContent = scriptedCount;
+                    $('#diag-robots-ambient').textContent = ambientCount;
                     $('#diag-robots-retreat').textContent = retreatingCount;
+                    $('#diag-robots-pooled').textContent = pooledCount;
                     $('#diag-pop-cap').textContent = ed.maxActive;
                     $('#diag-pending-form').textContent = ed.pendingFormations.length;
+                    $('#diag-next-ambient').textContent = ed.nextAmbientTime.toFixed(1) + 's';
                     
                     $('#btn-toggle-encounter').style.color = ed.enabled ? '#00ff00' : '#ff0000';
                     $('#btn-toggle-catchup').style.color = ed.catchUpEnabled ? '#00ff00' : '#ff0000';

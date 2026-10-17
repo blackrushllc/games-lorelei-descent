@@ -16,11 +16,15 @@ The game follows a fixed-duration, music-driven timeline. Progression and enemy 
 - **5:00–6:02:** Fixed Proxy boss arena.
 
 ### Encounter Choreography
-Encounters are not random but follow a data-driven "score" that defines specific cues:
-- **SPAWN:** Coordinated formations (Patrol, Fan, Pincer, Sentinel Wall, Mixed Swarm).
-- **PRESSURE:** Adjustments to the active robot population cap (Soft cap 16, Hard cap 36).
+Encounters follow a data-driven "score" with two distinct layers:
+- **Scripted Musical Formations:** Major choreographed events triggered at specific musical timestamps (Patrol, Fan, Pincer, Sentinel Wall, Mixed Swarm).
+- **Ambient Resistance:** Small groups of robots introduced at irregular, deterministic intervals between scripted formations to maintain continuous pressure.
+
+Both layers are governed by:
+- **SPAWN:** Deterministic offscreen spawning just below the camera view.
+- **PRESSURE:** Adjustments to the active robot population cap (Soft cap 16, Hard cap 36, Ambient target 3-6).
 - **RETREAT:** Survival drama where surviving robots abandon the fight by fleeing toward side exits.
-- **LULL:** Scripted valleys to provide dramatic contrast.
+- **LULL:** Scripted valleys to provide dramatic contrast; ambient spawning is suppressed during lulls.
 - **CLEAR_FOR_BOSS:** Final evacuation of all ordinary enemies before the boss arena.
 
 ## Characters & Entities
@@ -29,7 +33,8 @@ Encounters are not random but follow a data-driven "score" that defines specific
     - **Pursuer:** Basic close-range enemy. One-hit kill. Features "Catch-up Bursts" to stay near the player.
     - **Sentinel:** Ranged attacker with targeting lasers. Can be deployed in massive "Sentinel Walls".
     - **Armored Pursuer:** Tougher enemy with heavy plates requiring axe hits to expose the core.
-- **The Old Man's Proxy:** Mid-game boss.
+- **The Old Man's Proxy:** Mid-game boss encountered in the Fixed Arena. Composed of multiple damageable components (Head, Arms, Core) and features laser attacks and tactical repositioning.
+- **German Soldier:** Scripted ally appearing during the Proxy finale to deliver the finishing blow via a grenade.
 - **Giant Super-Robot:** Final boss.
 
 ## Combat Mechanics
@@ -49,7 +54,7 @@ Encounters are not random but follow a data-driven "score" that defines specific
 - **Control Modes**:
     - **Classic**: Keyboard (WASD/Arrows) to move, mouse to aim.
     - **Assisted**: Mouse-follow movement with keyboard override. Blackrush moves toward the cursor when it is outside a central dead zone.
-- **Movement**: Vertical scrolling is automatic during the descent, but Blackrush can move freely within the viewport. Camera stops during boss battles.
+- **Movement**: Vertical scrolling is automatic during the descent, but Blackrush can move freely within the 1280px wide viewport. On narrow displays, the camera tracks Blackrush horizontally to keep him centered.
 - **Aiming**: Mouse pointer. The character aims independently of movement direction.
 - **Primary Weapon**: Left Mouse Button fires a continuous stream of energy bolts.
 - **Secondary Weapon**: Right Mouse Button throws a spinning axe (cooldown required).
@@ -61,7 +66,7 @@ Encounters are not random but follow a data-driven "score" that defines specific
 - **Obstacle Types**:
     - **Pillars & Machine Blocks**: Solid rectangular obstacles that block movement, projectiles, and lasers.
     - **Industrial Tanks**: Solid circular obstacles (approximated as rectangles for physics).
-    - **Perimeter Walls**: Solid boundaries that keep the action within the 640px wide corridor.
+    - **Perimeter Walls**: Solid boundaries that keep the action within the 1280px wide corridor.
 - **Cover Mechanics**: Both the player and robots can use solid obstacles as cover. Lasers and projectiles terminate upon hitting an obstacle.
 - **Friendly Fire**: Sentinel lasers can damage other robots if they are in the line of fire.
 
