@@ -1,0 +1,1298 @@
+ Volume in drive E is Data
+ Volume Serial Number is E268-102D
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets
+
+10/20/2026  09:10 AM    <DIR>          .
+10/15/2026  05:26 PM    <DIR>          ..
+10/15/2026  06:08 PM    <DIR>          audio
+10/15/2026  05:26 PM    <DIR>          images
+10/19/2026  09:40 AM    <DIR>          source
+10/19/2026  09:41 AM    <DIR>          sprites
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\audio
+
+10/15/2026  06:08 PM    <DIR>          .
+10/20/2026  09:10 AM    <DIR>          ..
+10/15/2026  06:08 PM    <DIR>          music
+10/15/2026  05:26 PM    <DIR>          sfx
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\audio\music
+
+10/15/2026  06:08 PM    <DIR>          .
+10/15/2026  06:08 PM    <DIR>          ..
+10/15/2026  05:26 PM                 0 .gitkeep
+10/15/2026  08:27 PM         5,786,129 below-gamorrah-cathedral.mp3
+10/15/2026  08:28 PM         4,620,336 below-gamorrah-studio.mp3
+10/15/2026  08:29 PM         8,460,905 below-gamorrah-synth.mp3
+               4 File(s)     18,867,370 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\audio\sfx
+
+10/15/2026  05:26 PM    <DIR>          .
+10/15/2026  06:08 PM    <DIR>          ..
+10/15/2026  05:26 PM                 0 .gitkeep
+               1 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\images
+
+10/15/2026  05:26 PM    <DIR>          .
+10/20/2026  09:10 AM    <DIR>          ..
+10/15/2026  05:26 PM                 0 .gitkeep
+               1 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source
+
+10/19/2026  09:40 AM    <DIR>          .
+10/20/2026  09:10 AM    <DIR>          ..
+10/20/2026  08:17 AM    <DIR>          pixellab
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab
+
+10/20/2026  08:17 AM    <DIR>          .
+10/19/2026  09:40 AM    <DIR>          ..
+10/20/2026  09:04 AM    <DIR>          blackrush
+10/20/2026  08:47 AM    <DIR>          lorelei
+10/19/2026  10:29 AM    <DIR>          robots
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  08:17 AM    <DIR>          ..
+10/20/2026  08:21 AM    <DIR>          axe-ready
+10/20/2026  08:18 AM    <DIR>          axe-throw
+10/20/2026  08:53 AM    <DIR>          force-idle
+10/20/2026  09:04 AM    <DIR>          force-run
+10/20/2026  08:52 AM    <DIR>          force-walk
+10/20/2026  08:22 AM    <DIR>          idle
+10/20/2026  08:19 AM    <DIR>          run
+10/20/2026  08:18 AM    <DIR>          walk
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready
+
+10/20/2026  08:21 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  08:17 AM    <DIR>          east
+10/20/2026  08:17 AM    <DIR>          north
+10/20/2026  08:17 AM    <DIR>          north-east
+10/20/2026  08:17 AM    <DIR>          north-west
+10/20/2026  08:17 AM    <DIR>          south
+10/20/2026  08:17 AM    <DIR>          south-east
+10/20/2026  08:17 AM    <DIR>          south-west
+10/20/2026  08:17 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,554 frame_000.png
+10/20/2026  08:17 AM             1,588 frame_001.png
+10/20/2026  08:17 AM             1,531 frame_002.png
+10/20/2026  08:17 AM             1,578 frame_003.png
+10/20/2026  08:17 AM             1,605 frame_004.png
+10/20/2026  08:17 AM             1,630 frame_005.png
+10/20/2026  08:17 AM             1,573 frame_006.png
+10/20/2026  08:17 AM             1,605 frame_007.png
+               8 File(s)         12,664 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\north
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,280 frame_000.png
+10/20/2026  08:17 AM             1,290 frame_001.png
+10/20/2026  08:17 AM             1,319 frame_002.png
+10/20/2026  08:17 AM             1,444 frame_003.png
+10/20/2026  08:17 AM             1,356 frame_004.png
+10/20/2026  08:17 AM             1,397 frame_005.png
+10/20/2026  08:17 AM             1,294 frame_006.png
+10/20/2026  08:17 AM             1,283 frame_007.png
+               8 File(s)         10,663 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\north-east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,478 frame_000.png
+10/20/2026  08:17 AM             1,528 frame_001.png
+10/20/2026  08:17 AM             1,497 frame_002.png
+10/20/2026  08:17 AM             1,490 frame_003.png
+10/20/2026  08:17 AM             1,529 frame_004.png
+10/20/2026  08:17 AM             1,529 frame_005.png
+10/20/2026  08:17 AM             1,465 frame_006.png
+10/20/2026  08:17 AM             1,526 frame_007.png
+               8 File(s)         12,042 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\north-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,571 frame_000.png
+10/20/2026  08:17 AM             1,516 frame_001.png
+10/20/2026  08:17 AM             1,497 frame_002.png
+10/20/2026  08:17 AM             1,565 frame_003.png
+10/20/2026  08:17 AM             1,478 frame_004.png
+10/20/2026  08:17 AM             1,423 frame_005.png
+10/20/2026  08:17 AM             1,472 frame_006.png
+10/20/2026  08:17 AM             1,594 frame_007.png
+               8 File(s)         12,116 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\south
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,966 frame_000.png
+10/20/2026  08:17 AM             1,967 frame_001.png
+10/20/2026  08:17 AM             1,982 frame_002.png
+10/20/2026  08:17 AM             2,106 frame_003.png
+10/20/2026  08:17 AM             2,062 frame_004.png
+10/20/2026  08:17 AM             2,070 frame_005.png
+10/20/2026  08:17 AM             1,978 frame_006.png
+10/20/2026  08:17 AM             2,012 frame_007.png
+               8 File(s)         16,143 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\south-east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,661 frame_000.png
+10/20/2026  08:17 AM             1,677 frame_001.png
+10/20/2026  08:17 AM             1,637 frame_002.png
+10/20/2026  08:17 AM             1,718 frame_003.png
+10/20/2026  08:17 AM             1,596 frame_004.png
+10/20/2026  08:17 AM             1,651 frame_005.png
+10/20/2026  08:17 AM             1,598 frame_006.png
+10/20/2026  08:17 AM             1,646 frame_007.png
+               8 File(s)         13,184 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\south-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,984 frame_000.png
+10/20/2026  08:17 AM             1,977 frame_001.png
+10/20/2026  08:17 AM             1,942 frame_002.png
+10/20/2026  08:17 AM             1,932 frame_003.png
+10/20/2026  08:17 AM             1,897 frame_004.png
+10/20/2026  08:17 AM             1,931 frame_005.png
+10/20/2026  08:17 AM             1,939 frame_006.png
+10/20/2026  08:17 AM             1,952 frame_007.png
+               8 File(s)         15,554 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-ready\west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:21 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,795 frame_000.png
+10/20/2026  08:17 AM             1,784 frame_001.png
+10/20/2026  08:17 AM             1,708 frame_002.png
+10/20/2026  08:17 AM             1,794 frame_003.png
+10/20/2026  08:17 AM             1,789 frame_004.png
+10/20/2026  08:17 AM             1,754 frame_005.png
+10/20/2026  08:17 AM             1,758 frame_006.png
+10/20/2026  08:17 AM             1,852 frame_007.png
+               8 File(s)         14,234 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw
+
+10/20/2026  08:18 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  08:17 AM    <DIR>          east
+10/20/2026  08:17 AM    <DIR>          north
+10/20/2026  08:17 AM    <DIR>          north-west
+10/20/2026  08:17 AM    <DIR>          south
+10/20/2026  08:17 AM    <DIR>          south-east
+10/20/2026  08:17 AM    <DIR>          south-west
+10/20/2026  08:17 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw\east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,946 frame_000.png
+10/20/2026  08:17 AM             2,082 frame_001.png
+10/20/2026  08:17 AM             2,116 frame_002.png
+10/20/2026  08:17 AM             1,850 frame_003.png
+10/20/2026  08:17 AM             1,811 frame_004.png
+10/20/2026  08:17 AM             1,860 frame_005.png
+10/20/2026  08:17 AM             1,648 frame_006.png
+               7 File(s)         13,313 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw\north
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,186 frame_000.png
+10/20/2026  08:17 AM             1,279 frame_001.png
+10/20/2026  08:17 AM             1,428 frame_002.png
+10/20/2026  08:17 AM             1,591 frame_003.png
+10/20/2026  08:17 AM             1,117 frame_004.png
+10/20/2026  08:17 AM             1,230 frame_005.png
+10/20/2026  08:17 AM             1,176 frame_006.png
+               7 File(s)          9,007 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw\north-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,253 frame_000.png
+10/20/2026  08:17 AM             1,674 frame_001.png
+10/20/2026  08:17 AM             1,812 frame_002.png
+10/20/2026  08:17 AM             1,805 frame_003.png
+10/20/2026  08:17 AM             1,775 frame_004.png
+10/20/2026  08:17 AM             1,433 frame_005.png
+10/20/2026  08:17 AM             1,291 frame_006.png
+               7 File(s)         11,043 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw\south
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,565 frame_000.png
+10/20/2026  08:17 AM             2,507 frame_001.png
+10/20/2026  08:17 AM             2,638 frame_002.png
+10/20/2026  08:17 AM             2,709 frame_003.png
+10/20/2026  08:17 AM             1,988 frame_004.png
+10/20/2026  08:17 AM             2,519 frame_005.png
+10/20/2026  08:17 AM             2,729 frame_006.png
+               7 File(s)         17,655 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw\south-east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,410 frame_000.png
+10/20/2026  08:17 AM             2,347 frame_001.png
+10/20/2026  08:17 AM             2,640 frame_002.png
+10/20/2026  08:17 AM             2,660 frame_003.png
+10/20/2026  08:17 AM             1,941 frame_004.png
+10/20/2026  08:17 AM             2,144 frame_005.png
+10/20/2026  08:17 AM             2,351 frame_006.png
+               7 File(s)         16,493 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw\south-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,053 frame_000.png
+10/20/2026  08:17 AM             1,843 frame_001.png
+10/20/2026  08:17 AM             1,801 frame_002.png
+10/20/2026  08:17 AM             2,264 frame_003.png
+10/20/2026  08:17 AM             1,979 frame_004.png
+10/20/2026  08:17 AM             2,207 frame_005.png
+10/20/2026  08:17 AM             2,316 frame_006.png
+               7 File(s)         14,463 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\axe-throw\west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,701 frame_000.png
+10/20/2026  08:17 AM             1,811 frame_001.png
+10/20/2026  08:17 AM             1,958 frame_002.png
+10/20/2026  08:17 AM             2,071 frame_003.png
+10/20/2026  08:17 AM             1,908 frame_004.png
+10/20/2026  08:17 AM             1,825 frame_005.png
+10/20/2026  08:17 AM             1,790 frame_006.png
+               7 File(s)         13,064 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-idle
+
+10/20/2026  08:53 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  08:53 AM             1,185 east.png
+10/20/2026  08:53 AM               958 north-east.png
+10/20/2026  08:53 AM               968 north-west.png
+10/20/2026  08:53 AM               916 north.png
+10/20/2026  08:53 AM             1,527 south-east.png
+10/20/2026  08:53 AM             1,479 south-west.png
+10/20/2026  08:53 AM             1,591 south.png
+10/20/2026  08:53 AM             1,156 west.png
+               8 File(s)          9,780 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM    <DIR>          east
+10/20/2026  09:04 AM    <DIR>          north
+10/20/2026  09:04 AM    <DIR>          north-east
+10/20/2026  09:04 AM    <DIR>          north-west
+10/20/2026  09:04 AM    <DIR>          south
+10/20/2026  09:04 AM    <DIR>          south-east
+10/20/2026  09:04 AM    <DIR>          south-west
+10/20/2026  09:04 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\east
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,349 frame_000.png
+10/20/2026  09:04 AM             1,440 frame_001.png
+10/20/2026  09:04 AM             1,360 frame_002.png
+10/20/2026  09:04 AM             1,288 frame_003.png
+10/20/2026  09:04 AM             1,241 frame_004.png
+10/20/2026  09:04 AM             1,306 frame_005.png
+10/20/2026  09:04 AM             1,340 frame_006.png
+10/20/2026  09:04 AM             1,329 frame_007.png
+               8 File(s)         10,653 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\north
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,007 frame_000.png
+10/20/2026  09:04 AM               914 frame_001.png
+10/20/2026  09:04 AM               794 frame_002.png
+10/20/2026  09:04 AM               846 frame_003.png
+10/20/2026  09:04 AM               899 frame_004.png
+10/20/2026  09:04 AM               820 frame_005.png
+10/20/2026  09:04 AM               782 frame_006.png
+10/20/2026  09:04 AM               998 frame_007.png
+               8 File(s)          7,060 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\north-east
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,281 frame_000.png
+10/20/2026  09:04 AM             1,230 frame_001.png
+10/20/2026  09:04 AM             1,185 frame_002.png
+10/20/2026  09:04 AM             1,224 frame_003.png
+10/20/2026  09:04 AM             1,128 frame_004.png
+10/20/2026  09:04 AM             1,159 frame_005.png
+10/20/2026  09:04 AM             1,176 frame_006.png
+10/20/2026  09:04 AM             1,311 frame_007.png
+               8 File(s)          9,694 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\north-west
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,249 frame_000.png
+10/20/2026  09:04 AM             1,223 frame_001.png
+10/20/2026  09:04 AM             1,208 frame_002.png
+10/20/2026  09:04 AM             1,230 frame_003.png
+10/20/2026  09:04 AM             1,282 frame_004.png
+10/20/2026  09:04 AM             1,321 frame_005.png
+10/20/2026  09:04 AM             1,307 frame_006.png
+10/20/2026  09:04 AM             1,264 frame_007.png
+               8 File(s)         10,084 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\south
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,986 frame_000.png
+10/20/2026  09:04 AM             2,110 frame_001.png
+10/20/2026  09:04 AM             2,060 frame_002.png
+10/20/2026  09:04 AM             2,053 frame_003.png
+10/20/2026  09:04 AM             1,983 frame_004.png
+10/20/2026  09:04 AM             2,123 frame_005.png
+10/20/2026  09:04 AM             2,038 frame_006.png
+10/20/2026  09:04 AM             2,115 frame_007.png
+               8 File(s)         16,468 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\south-east
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,554 frame_000.png
+10/20/2026  09:04 AM             1,608 frame_001.png
+10/20/2026  09:04 AM             1,699 frame_002.png
+10/20/2026  09:04 AM             1,808 frame_003.png
+10/20/2026  09:04 AM             1,738 frame_004.png
+10/20/2026  09:04 AM             1,719 frame_005.png
+10/20/2026  09:04 AM             1,656 frame_006.png
+10/20/2026  09:04 AM             1,579 frame_007.png
+               8 File(s)         13,361 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\south-west
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,597 frame_000.png
+10/20/2026  09:04 AM             1,635 frame_001.png
+10/20/2026  09:04 AM             1,502 frame_002.png
+10/20/2026  09:04 AM             1,558 frame_003.png
+10/20/2026  09:04 AM             1,554 frame_004.png
+10/20/2026  09:04 AM             1,584 frame_005.png
+10/20/2026  09:04 AM             1,569 frame_006.png
+10/20/2026  09:04 AM             1,564 frame_007.png
+               8 File(s)         12,563 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-run\west
+
+10/20/2026  09:04 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  09:04 AM             1,414 frame_000.png
+10/20/2026  09:04 AM             1,391 frame_001.png
+10/20/2026  09:04 AM             1,167 frame_002.png
+10/20/2026  09:04 AM             1,287 frame_003.png
+10/20/2026  09:04 AM             1,320 frame_004.png
+10/20/2026  09:04 AM             1,244 frame_005.png
+10/20/2026  09:04 AM             1,216 frame_006.png
+10/20/2026  09:04 AM             1,400 frame_007.png
+               8 File(s)         10,439 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  08:52 AM    <DIR>          east
+10/20/2026  08:52 AM    <DIR>          north
+10/20/2026  08:52 AM    <DIR>          north-east
+10/20/2026  08:52 AM    <DIR>          north-west
+10/20/2026  08:52 AM    <DIR>          south
+10/20/2026  08:52 AM    <DIR>          south-east
+10/20/2026  08:52 AM    <DIR>          south-west
+10/20/2026  08:52 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\east
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM             1,380 frame_000.png
+10/20/2026  08:52 AM             1,472 frame_001.png
+10/20/2026  08:52 AM             1,361 frame_002.png
+10/20/2026  08:52 AM             1,232 frame_003.png
+10/20/2026  08:52 AM             1,330 frame_004.png
+10/20/2026  08:52 AM             1,354 frame_005.png
+10/20/2026  08:52 AM             1,340 frame_006.png
+10/20/2026  08:52 AM             1,301 frame_007.png
+               8 File(s)         10,770 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\north
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM               838 frame_000.png
+10/20/2026  08:52 AM               846 frame_001.png
+10/20/2026  08:52 AM               850 frame_002.png
+10/20/2026  08:52 AM               837 frame_003.png
+10/20/2026  08:52 AM               830 frame_004.png
+10/20/2026  08:52 AM               831 frame_005.png
+10/20/2026  08:52 AM               838 frame_006.png
+10/20/2026  08:52 AM               770 frame_007.png
+               8 File(s)          6,640 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\north-east
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM             1,229 frame_000.png
+10/20/2026  08:52 AM             1,252 frame_001.png
+10/20/2026  08:52 AM             1,239 frame_002.png
+10/20/2026  08:52 AM             1,332 frame_003.png
+10/20/2026  08:52 AM             1,255 frame_004.png
+10/20/2026  08:52 AM             1,270 frame_005.png
+10/20/2026  08:52 AM             1,296 frame_006.png
+10/20/2026  08:52 AM             1,275 frame_007.png
+               8 File(s)         10,148 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\north-west
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM             1,214 frame_000.png
+10/20/2026  08:52 AM             1,173 frame_001.png
+10/20/2026  08:52 AM             1,198 frame_002.png
+10/20/2026  08:52 AM             1,314 frame_003.png
+10/20/2026  08:52 AM             1,324 frame_004.png
+10/20/2026  08:52 AM             1,473 frame_005.png
+10/20/2026  08:52 AM             1,327 frame_006.png
+10/20/2026  08:52 AM             1,296 frame_007.png
+               8 File(s)         10,319 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\south
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM             2,042 frame_000.png
+10/20/2026  08:52 AM             2,171 frame_001.png
+10/20/2026  08:52 AM             2,200 frame_002.png
+10/20/2026  08:52 AM             2,145 frame_003.png
+10/20/2026  08:52 AM             2,156 frame_004.png
+10/20/2026  08:52 AM             2,183 frame_005.png
+10/20/2026  08:52 AM             2,114 frame_006.png
+10/20/2026  08:52 AM             2,187 frame_007.png
+               8 File(s)         17,198 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\south-east
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM             1,795 frame_000.png
+10/20/2026  08:52 AM             1,849 frame_001.png
+10/20/2026  08:52 AM             1,851 frame_002.png
+10/20/2026  08:52 AM             1,800 frame_003.png
+10/20/2026  08:52 AM             1,712 frame_004.png
+10/20/2026  08:52 AM             1,808 frame_005.png
+10/20/2026  08:52 AM             1,842 frame_006.png
+10/20/2026  08:52 AM             1,943 frame_007.png
+               8 File(s)         14,600 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\south-west
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM             1,703 frame_000.png
+10/20/2026  08:52 AM             1,809 frame_001.png
+10/20/2026  08:52 AM             1,756 frame_002.png
+10/20/2026  08:52 AM             1,819 frame_003.png
+10/20/2026  08:52 AM             1,750 frame_004.png
+10/20/2026  08:52 AM             1,829 frame_005.png
+10/20/2026  08:52 AM             1,790 frame_006.png
+10/20/2026  08:52 AM             1,731 frame_007.png
+               8 File(s)         14,187 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\force-walk\west
+
+10/20/2026  08:52 AM    <DIR>          .
+10/20/2026  08:52 AM    <DIR>          ..
+10/20/2026  08:52 AM             1,424 frame_000.png
+10/20/2026  08:52 AM             1,396 frame_001.png
+10/20/2026  08:52 AM             1,270 frame_002.png
+10/20/2026  08:52 AM             1,296 frame_003.png
+10/20/2026  08:52 AM             1,360 frame_004.png
+10/20/2026  08:52 AM             1,343 frame_005.png
+10/20/2026  08:52 AM             1,236 frame_006.png
+10/20/2026  08:52 AM             1,356 frame_007.png
+               8 File(s)         10,681 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\idle
+
+10/20/2026  08:22 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,589 east.png
+10/20/2026  08:17 AM             1,242 north-east.png
+10/20/2026  08:17 AM             1,229 north-west.png
+10/20/2026  08:17 AM             1,073 north.png
+10/20/2026  08:17 AM             2,252 south-east.png
+10/20/2026  08:17 AM             2,273 south-west.png
+10/20/2026  08:17 AM             2,636 south.png
+10/20/2026  08:17 AM             1,554 west.png
+               8 File(s)         13,848 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run
+
+10/20/2026  08:19 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  08:17 AM    <DIR>          east
+10/20/2026  08:17 AM    <DIR>          north
+10/20/2026  08:17 AM    <DIR>          north-east
+10/20/2026  08:17 AM    <DIR>          north-west
+10/20/2026  08:17 AM    <DIR>          south
+10/20/2026  08:17 AM    <DIR>          south-east
+10/20/2026  08:17 AM    <DIR>          south-west
+10/20/2026  08:17 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,760 frame_000.png
+10/20/2026  08:17 AM             1,985 frame_001.png
+10/20/2026  08:17 AM             1,819 frame_002.png
+10/20/2026  08:17 AM             1,734 frame_003.png
+10/20/2026  08:17 AM             2,030 frame_004.png
+10/20/2026  08:17 AM             2,149 frame_005.png
+10/20/2026  08:17 AM             2,034 frame_006.png
+10/20/2026  08:17 AM             1,842 frame_007.png
+               8 File(s)         15,353 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\north
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,574 frame_000.png
+10/20/2026  08:17 AM             1,455 frame_001.png
+10/20/2026  08:17 AM             1,511 frame_002.png
+10/20/2026  08:17 AM             1,414 frame_003.png
+10/20/2026  08:17 AM             1,391 frame_004.png
+10/20/2026  08:17 AM             1,560 frame_005.png
+10/20/2026  08:17 AM             1,502 frame_006.png
+10/20/2026  08:17 AM             1,423 frame_007.png
+               8 File(s)         11,830 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\north-east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,836 frame_000.png
+10/20/2026  08:17 AM             1,864 frame_001.png
+10/20/2026  08:17 AM             1,754 frame_002.png
+10/20/2026  08:17 AM             1,554 frame_003.png
+10/20/2026  08:17 AM             1,606 frame_004.png
+10/20/2026  08:17 AM             1,607 frame_005.png
+10/20/2026  08:17 AM             1,724 frame_006.png
+10/20/2026  08:17 AM             1,668 frame_007.png
+               8 File(s)         13,613 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\north-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,756 frame_000.png
+10/20/2026  08:17 AM             1,709 frame_001.png
+10/20/2026  08:17 AM             1,693 frame_002.png
+10/20/2026  08:17 AM             1,653 frame_003.png
+10/20/2026  08:17 AM             1,715 frame_004.png
+10/20/2026  08:17 AM             1,813 frame_005.png
+10/20/2026  08:17 AM             1,712 frame_006.png
+10/20/2026  08:17 AM             1,558 frame_007.png
+               8 File(s)         13,609 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\south
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,366 frame_000.png
+10/20/2026  08:17 AM             2,261 frame_001.png
+10/20/2026  08:17 AM             2,261 frame_002.png
+10/20/2026  08:17 AM             2,314 frame_003.png
+10/20/2026  08:17 AM             2,176 frame_004.png
+10/20/2026  08:17 AM             2,297 frame_005.png
+10/20/2026  08:17 AM             2,193 frame_006.png
+10/20/2026  08:17 AM             2,208 frame_007.png
+               8 File(s)         18,076 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\south-east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,980 frame_000.png
+10/20/2026  08:17 AM             2,027 frame_001.png
+10/20/2026  08:17 AM             2,024 frame_002.png
+10/20/2026  08:17 AM             2,199 frame_003.png
+10/20/2026  08:17 AM             2,207 frame_004.png
+10/20/2026  08:17 AM             2,260 frame_005.png
+10/20/2026  08:17 AM             2,274 frame_006.png
+10/20/2026  08:17 AM             2,202 frame_007.png
+               8 File(s)         17,173 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\south-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,198 frame_000.png
+10/20/2026  08:17 AM             2,225 frame_001.png
+10/20/2026  08:17 AM             2,162 frame_002.png
+10/20/2026  08:17 AM             2,078 frame_003.png
+10/20/2026  08:17 AM             1,824 frame_004.png
+10/20/2026  08:17 AM             1,987 frame_005.png
+10/20/2026  08:17 AM             2,053 frame_006.png
+10/20/2026  08:17 AM             2,112 frame_007.png
+               8 File(s)         16,639 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\run\west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:19 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,861 frame_000.png
+10/20/2026  08:17 AM             1,970 frame_001.png
+10/20/2026  08:17 AM             2,017 frame_002.png
+10/20/2026  08:17 AM             1,779 frame_003.png
+10/20/2026  08:17 AM             1,873 frame_004.png
+10/20/2026  08:17 AM             2,008 frame_005.png
+10/20/2026  08:17 AM             1,878 frame_006.png
+10/20/2026  08:17 AM             1,617 frame_007.png
+               8 File(s)         15,003 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk
+
+10/20/2026  08:18 AM    <DIR>          .
+10/20/2026  09:04 AM    <DIR>          ..
+10/20/2026  08:17 AM    <DIR>          east
+10/20/2026  08:17 AM    <DIR>          north
+10/20/2026  08:17 AM    <DIR>          north-east
+10/20/2026  08:17 AM    <DIR>          north-west
+10/20/2026  08:17 AM    <DIR>          south
+10/20/2026  08:17 AM    <DIR>          south-east
+10/20/2026  08:17 AM    <DIR>          south-west
+10/20/2026  08:17 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,557 frame_000.png
+10/20/2026  08:17 AM             1,762 frame_001.png
+10/20/2026  08:17 AM             1,722 frame_002.png
+10/20/2026  08:17 AM             1,652 frame_003.png
+10/20/2026  08:17 AM             1,585 frame_004.png
+10/20/2026  08:17 AM             1,579 frame_005.png
+10/20/2026  08:17 AM             1,697 frame_006.png
+10/20/2026  08:17 AM             1,658 frame_007.png
+               8 File(s)         13,212 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\north
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM               875 frame_000.png
+10/20/2026  08:17 AM               868 frame_001.png
+10/20/2026  08:17 AM               779 frame_002.png
+10/20/2026  08:17 AM               808 frame_003.png
+10/20/2026  08:17 AM               844 frame_004.png
+10/20/2026  08:17 AM               838 frame_005.png
+10/20/2026  08:17 AM               803 frame_006.png
+10/20/2026  08:17 AM               809 frame_007.png
+               8 File(s)          6,624 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\north-east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,282 frame_000.png
+10/20/2026  08:17 AM             1,230 frame_001.png
+10/20/2026  08:17 AM             1,244 frame_002.png
+10/20/2026  08:17 AM             1,284 frame_003.png
+10/20/2026  08:17 AM             1,297 frame_004.png
+10/20/2026  08:17 AM             1,235 frame_005.png
+10/20/2026  08:17 AM             1,179 frame_006.png
+10/20/2026  08:17 AM             1,238 frame_007.png
+               8 File(s)          9,989 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\north-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,246 frame_000.png
+10/20/2026  08:17 AM             1,209 frame_001.png
+10/20/2026  08:17 AM             1,166 frame_002.png
+10/20/2026  08:17 AM             1,174 frame_003.png
+10/20/2026  08:17 AM             1,154 frame_004.png
+10/20/2026  08:17 AM             1,227 frame_005.png
+10/20/2026  08:17 AM             1,290 frame_006.png
+10/20/2026  08:17 AM             1,277 frame_007.png
+               8 File(s)          9,743 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\south
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,685 frame_000.png
+10/20/2026  08:17 AM             2,641 frame_001.png
+10/20/2026  08:17 AM             2,698 frame_002.png
+10/20/2026  08:17 AM             2,668 frame_003.png
+10/20/2026  08:17 AM             2,671 frame_004.png
+10/20/2026  08:17 AM             2,650 frame_005.png
+10/20/2026  08:17 AM             2,708 frame_006.png
+10/20/2026  08:17 AM             2,671 frame_007.png
+               8 File(s)         21,392 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\south-east
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,097 frame_000.png
+10/20/2026  08:17 AM             2,167 frame_001.png
+10/20/2026  08:17 AM             2,049 frame_002.png
+10/20/2026  08:17 AM             1,997 frame_003.png
+10/20/2026  08:17 AM             1,892 frame_004.png
+10/20/2026  08:17 AM             1,968 frame_005.png
+10/20/2026  08:17 AM             2,041 frame_006.png
+10/20/2026  08:17 AM             2,134 frame_007.png
+               8 File(s)         16,345 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\south-west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             2,045 frame_000.png
+10/20/2026  08:17 AM             1,967 frame_001.png
+10/20/2026  08:17 AM             2,032 frame_002.png
+10/20/2026  08:17 AM             2,154 frame_003.png
+10/20/2026  08:17 AM             2,229 frame_004.png
+10/20/2026  08:17 AM             2,127 frame_005.png
+10/20/2026  08:17 AM             2,045 frame_006.png
+10/20/2026  08:17 AM             2,044 frame_007.png
+               8 File(s)         16,643 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\blackrush\walk\west
+
+10/20/2026  08:17 AM    <DIR>          .
+10/20/2026  08:18 AM    <DIR>          ..
+10/20/2026  08:17 AM             1,752 frame_000.png
+10/20/2026  08:17 AM             1,645 frame_001.png
+10/20/2026  08:17 AM             1,467 frame_002.png
+10/20/2026  08:17 AM             1,609 frame_003.png
+10/20/2026  08:17 AM             1,617 frame_004.png
+10/20/2026  08:17 AM             1,576 frame_005.png
+10/20/2026  08:17 AM             1,518 frame_006.png
+10/20/2026  08:17 AM             1,641 frame_007.png
+               8 File(s)         12,825 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei
+
+10/20/2026  08:47 AM    <DIR>          .
+10/20/2026  08:17 AM    <DIR>          ..
+10/20/2026  08:15 AM    <DIR>          idle
+10/19/2026  10:34 AM    <DIR>          walk
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\idle
+
+10/20/2026  08:15 AM    <DIR>          .
+10/20/2026  08:47 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,170 east.png
+10/19/2026  10:33 AM             1,396 north-east.png
+10/19/2026  10:33 AM             1,378 north-west.png
+10/19/2026  10:33 AM             1,405 north.png
+10/19/2026  10:33 AM             1,780 south-east.png
+10/19/2026  10:33 AM             1,834 south-west.png
+10/19/2026  10:33 AM             1,902 south.png
+10/19/2026  10:33 AM             1,227 west.png
+               8 File(s)         12,092 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk
+
+10/19/2026  10:34 AM    <DIR>          .
+10/20/2026  08:47 AM    <DIR>          ..
+10/19/2026  10:34 AM    <DIR>          east
+10/19/2026  10:34 AM    <DIR>          north
+10/19/2026  10:34 AM    <DIR>          north-east
+10/19/2026  10:34 AM    <DIR>          north-west
+10/19/2026  10:34 AM    <DIR>          south
+10/19/2026  10:34 AM    <DIR>          south-east
+10/19/2026  10:34 AM    <DIR>          south-west
+10/19/2026  10:34 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\east
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,478 frame_000.png
+10/19/2026  10:33 AM             1,398 frame_001.png
+10/19/2026  10:33 AM             1,254 frame_002.png
+10/19/2026  10:33 AM             1,411 frame_003.png
+10/19/2026  10:33 AM             1,476 frame_004.png
+10/19/2026  10:33 AM             1,473 frame_005.png
+10/19/2026  10:33 AM             1,368 frame_006.png
+10/19/2026  10:33 AM             1,434 frame_007.png
+               8 File(s)         11,292 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\north
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,312 frame_000.png
+10/19/2026  10:33 AM             1,342 frame_001.png
+10/19/2026  10:33 AM             1,270 frame_002.png
+10/19/2026  10:33 AM             1,425 frame_003.png
+10/19/2026  10:33 AM             1,269 frame_004.png
+10/19/2026  10:33 AM             1,298 frame_005.png
+10/19/2026  10:33 AM             1,302 frame_006.png
+10/19/2026  10:33 AM             1,405 frame_007.png
+               8 File(s)         10,623 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\north-east
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,437 frame_000.png
+10/19/2026  10:33 AM             1,435 frame_001.png
+10/19/2026  10:33 AM             1,359 frame_002.png
+10/19/2026  10:33 AM             1,308 frame_003.png
+10/19/2026  10:33 AM             1,196 frame_004.png
+10/19/2026  10:33 AM             1,195 frame_005.png
+10/19/2026  10:33 AM             1,306 frame_006.png
+10/19/2026  10:33 AM             1,326 frame_007.png
+               8 File(s)         10,562 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\north-west
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,311 frame_000.png
+10/19/2026  10:33 AM             1,249 frame_001.png
+10/19/2026  10:33 AM             1,230 frame_002.png
+10/19/2026  10:33 AM             1,222 frame_003.png
+10/19/2026  10:33 AM             1,181 frame_004.png
+10/19/2026  10:33 AM             1,205 frame_005.png
+10/19/2026  10:33 AM             1,215 frame_006.png
+10/19/2026  10:33 AM             1,303 frame_007.png
+               8 File(s)          9,916 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\south
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,827 frame_000.png
+10/19/2026  10:33 AM             1,758 frame_001.png
+10/19/2026  10:33 AM             1,771 frame_002.png
+10/19/2026  10:33 AM             1,742 frame_003.png
+10/19/2026  10:33 AM             1,718 frame_004.png
+10/19/2026  10:33 AM             1,722 frame_005.png
+10/19/2026  10:33 AM             1,757 frame_006.png
+10/19/2026  10:33 AM             1,814 frame_007.png
+               8 File(s)         14,109 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\south-east
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,662 frame_000.png
+10/19/2026  10:33 AM             1,691 frame_001.png
+10/19/2026  10:33 AM             1,617 frame_002.png
+10/19/2026  10:33 AM             1,620 frame_003.png
+10/19/2026  10:33 AM             1,638 frame_004.png
+10/19/2026  10:33 AM             1,749 frame_005.png
+10/19/2026  10:33 AM             1,797 frame_006.png
+10/19/2026  10:33 AM             1,742 frame_007.png
+               8 File(s)         13,516 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\south-west
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,762 frame_000.png
+10/19/2026  10:33 AM             1,786 frame_001.png
+10/19/2026  10:33 AM             1,718 frame_002.png
+10/19/2026  10:33 AM             1,712 frame_003.png
+10/19/2026  10:33 AM             1,829 frame_004.png
+10/19/2026  10:33 AM             1,842 frame_005.png
+10/19/2026  10:33 AM             1,739 frame_006.png
+10/19/2026  10:33 AM             1,856 frame_007.png
+               8 File(s)         14,244 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\lorelei\walk\west
+
+10/19/2026  10:34 AM    <DIR>          .
+10/19/2026  10:34 AM    <DIR>          ..
+10/19/2026  10:33 AM             1,369 frame_000.png
+10/19/2026  10:33 AM             1,326 frame_001.png
+10/19/2026  10:33 AM             1,282 frame_002.png
+10/19/2026  10:33 AM             1,407 frame_003.png
+10/19/2026  10:33 AM             1,414 frame_004.png
+10/19/2026  10:33 AM             1,444 frame_005.png
+10/19/2026  10:33 AM             1,303 frame_006.png
+10/19/2026  10:33 AM             1,348 frame_007.png
+               8 File(s)         10,893 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots
+
+10/19/2026  10:29 AM    <DIR>          .
+10/20/2026  08:17 AM    <DIR>          ..
+10/20/2026  08:16 AM    <DIR>          persuer
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer
+
+10/20/2026  08:16 AM    <DIR>          .
+10/19/2026  10:29 AM    <DIR>          ..
+10/20/2026  08:44 AM    <DIR>          attack
+10/20/2026  08:23 AM    <DIR>          idle
+10/20/2026  08:16 AM    <DIR>          walk
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:44 AM    <DIR>          east
+10/20/2026  08:44 AM    <DIR>          north
+10/20/2026  08:44 AM    <DIR>          north-east
+10/20/2026  08:44 AM    <DIR>          north-west
+10/20/2026  08:44 AM    <DIR>          south
+10/20/2026  08:44 AM    <DIR>          south-east
+10/20/2026  08:44 AM    <DIR>          south-west
+10/20/2026  08:44 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\east
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             2,052 frame_000.png
+10/20/2026  08:44 AM             2,137 frame_001.png
+10/20/2026  08:44 AM             1,923 frame_002.png
+10/20/2026  08:44 AM             2,139 frame_003.png
+10/20/2026  08:44 AM             2,100 frame_004.png
+10/20/2026  08:44 AM             2,018 frame_005.png
+10/20/2026  08:44 AM             1,890 frame_006.png
+10/20/2026  08:44 AM             2,197 frame_007.png
+               8 File(s)         16,456 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\north
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             2,046 frame_000.png
+10/20/2026  08:44 AM             2,030 frame_001.png
+10/20/2026  08:44 AM             2,020 frame_002.png
+10/20/2026  08:44 AM             2,030 frame_003.png
+10/20/2026  08:44 AM             1,944 frame_004.png
+10/20/2026  08:44 AM             2,024 frame_005.png
+10/20/2026  08:44 AM             2,007 frame_006.png
+10/20/2026  08:44 AM             2,110 frame_007.png
+               8 File(s)         16,211 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\north-east
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             1,967 frame_000.png
+10/20/2026  08:44 AM             2,029 frame_001.png
+10/20/2026  08:44 AM             1,979 frame_002.png
+10/20/2026  08:44 AM             2,086 frame_003.png
+10/20/2026  08:44 AM             1,984 frame_004.png
+10/20/2026  08:44 AM             2,034 frame_005.png
+10/20/2026  08:44 AM             2,058 frame_006.png
+10/20/2026  08:44 AM             2,073 frame_007.png
+               8 File(s)         16,210 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\north-west
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             1,996 frame_000.png
+10/20/2026  08:44 AM             2,069 frame_001.png
+10/20/2026  08:44 AM             2,028 frame_002.png
+10/20/2026  08:44 AM             2,176 frame_003.png
+10/20/2026  08:44 AM             2,189 frame_004.png
+10/20/2026  08:44 AM             2,213 frame_005.png
+10/20/2026  08:44 AM             2,140 frame_006.png
+10/20/2026  08:44 AM             2,127 frame_007.png
+               8 File(s)         16,938 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\south
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             2,364 frame_000.png
+10/20/2026  08:44 AM             2,543 frame_001.png
+10/20/2026  08:44 AM             2,419 frame_002.png
+10/20/2026  08:44 AM             2,507 frame_003.png
+10/20/2026  08:44 AM             2,404 frame_004.png
+10/20/2026  08:44 AM             2,473 frame_005.png
+10/20/2026  08:44 AM             2,313 frame_006.png
+10/20/2026  08:44 AM             2,567 frame_007.png
+               8 File(s)         19,590 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\south-east
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             2,401 frame_000.png
+10/20/2026  08:44 AM             2,261 frame_001.png
+10/20/2026  08:44 AM             2,114 frame_002.png
+10/20/2026  08:44 AM             2,137 frame_003.png
+10/20/2026  08:44 AM             2,106 frame_004.png
+10/20/2026  08:44 AM             2,214 frame_005.png
+10/20/2026  08:44 AM             2,250 frame_006.png
+10/20/2026  08:44 AM             2,472 frame_007.png
+               8 File(s)         17,955 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\south-west
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             2,326 frame_000.png
+10/20/2026  08:44 AM             2,412 frame_001.png
+10/20/2026  08:44 AM             2,176 frame_002.png
+10/20/2026  08:44 AM             2,254 frame_003.png
+10/20/2026  08:44 AM             2,134 frame_004.png
+10/20/2026  08:44 AM             2,311 frame_005.png
+10/20/2026  08:44 AM             2,326 frame_006.png
+10/20/2026  08:44 AM             2,483 frame_007.png
+               8 File(s)         18,422 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\attack\west
+
+10/20/2026  08:44 AM    <DIR>          .
+10/20/2026  08:44 AM    <DIR>          ..
+10/20/2026  08:44 AM             2,119 frame_000.png
+10/20/2026  08:44 AM             2,036 frame_001.png
+10/20/2026  08:44 AM             1,923 frame_002.png
+10/20/2026  08:44 AM             1,980 frame_003.png
+10/20/2026  08:44 AM             2,136 frame_004.png
+10/20/2026  08:44 AM             2,162 frame_005.png
+10/20/2026  08:44 AM             1,979 frame_006.png
+10/20/2026  08:44 AM             2,025 frame_007.png
+               8 File(s)         16,360 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\idle
+
+10/20/2026  08:23 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:23 AM             2,155 east.png
+10/20/2026  08:23 AM             2,807 north-east.png
+10/20/2026  08:23 AM             2,854 north-west.png
+10/20/2026  08:23 AM             2,781 north.png
+10/20/2026  08:23 AM             3,224 south-east.png
+10/20/2026  08:23 AM             3,266 south-west.png
+10/20/2026  08:23 AM             3,466 south.png
+10/20/2026  08:23 AM             2,141 west.png
+               8 File(s)         22,694 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM    <DIR>          east
+10/20/2026  08:16 AM    <DIR>          north
+10/20/2026  08:16 AM    <DIR>          north-east
+10/20/2026  08:16 AM    <DIR>          north-west
+10/20/2026  08:16 AM    <DIR>          south
+10/20/2026  08:16 AM    <DIR>          south-east
+10/20/2026  08:16 AM    <DIR>          south-west
+10/20/2026  08:16 AM    <DIR>          west
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\east
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             2,295 frame_000.png
+10/20/2026  08:16 AM             2,386 frame_001.png
+10/20/2026  08:16 AM             2,231 frame_002.png
+10/20/2026  08:16 AM             2,210 frame_003.png
+10/20/2026  08:16 AM             2,444 frame_004.png
+10/20/2026  08:16 AM             2,600 frame_005.png
+10/20/2026  08:16 AM             2,309 frame_006.png
+10/20/2026  08:16 AM             2,306 frame_007.png
+               8 File(s)         18,781 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\north
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             2,435 frame_000.png
+10/20/2026  08:16 AM             2,416 frame_001.png
+10/20/2026  08:16 AM             2,408 frame_002.png
+10/20/2026  08:16 AM             2,476 frame_003.png
+10/20/2026  08:16 AM             2,405 frame_004.png
+10/20/2026  08:16 AM             2,422 frame_005.png
+10/20/2026  08:16 AM             2,415 frame_006.png
+10/20/2026  08:16 AM             2,472 frame_007.png
+               8 File(s)         19,449 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\north-east
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             2,665 frame_000.png
+10/20/2026  08:16 AM             2,567 frame_001.png
+10/20/2026  08:16 AM             2,464 frame_002.png
+10/20/2026  08:16 AM             2,290 frame_003.png
+10/20/2026  08:16 AM             2,173 frame_004.png
+10/20/2026  08:16 AM             2,317 frame_005.png
+10/20/2026  08:16 AM             2,464 frame_006.png
+10/20/2026  08:16 AM             2,597 frame_007.png
+               8 File(s)         19,537 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\north-west
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             2,313 frame_000.png
+10/20/2026  08:16 AM             2,169 frame_001.png
+10/20/2026  08:16 AM             2,263 frame_002.png
+10/20/2026  08:16 AM             2,538 frame_003.png
+10/20/2026  08:16 AM             2,549 frame_004.png
+10/20/2026  08:16 AM             2,505 frame_005.png
+10/20/2026  08:16 AM             2,426 frame_006.png
+10/20/2026  08:16 AM             2,368 frame_007.png
+               8 File(s)         19,131 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\south
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             3,298 frame_000.png
+10/20/2026  08:16 AM             3,369 frame_001.png
+10/20/2026  08:16 AM             3,409 frame_002.png
+10/20/2026  08:16 AM             3,449 frame_003.png
+10/20/2026  08:16 AM             3,442 frame_004.png
+10/20/2026  08:16 AM             3,473 frame_005.png
+10/20/2026  08:16 AM             3,298 frame_006.png
+10/20/2026  08:16 AM             3,373 frame_007.png
+               8 File(s)         27,111 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\south-east
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             2,807 frame_000.png
+10/20/2026  08:16 AM             2,820 frame_001.png
+10/20/2026  08:16 AM             2,894 frame_002.png
+10/20/2026  08:16 AM             2,981 frame_003.png
+10/20/2026  08:16 AM             2,968 frame_004.png
+10/20/2026  08:16 AM             3,000 frame_005.png
+10/20/2026  08:16 AM             2,825 frame_006.png
+10/20/2026  08:16 AM             2,841 frame_007.png
+               8 File(s)         23,136 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\south-west
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             2,748 frame_000.png
+10/20/2026  08:16 AM             2,763 frame_001.png
+10/20/2026  08:16 AM             2,845 frame_002.png
+10/20/2026  08:16 AM             2,954 frame_003.png
+10/20/2026  08:16 AM             2,899 frame_004.png
+10/20/2026  08:16 AM             2,942 frame_005.png
+10/20/2026  08:16 AM             2,811 frame_006.png
+10/20/2026  08:16 AM             2,820 frame_007.png
+               8 File(s)         22,782 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\source\pixellab\robots\persuer\walk\west
+
+10/20/2026  08:16 AM    <DIR>          .
+10/20/2026  08:16 AM    <DIR>          ..
+10/20/2026  08:16 AM             2,329 frame_000.png
+10/20/2026  08:16 AM             2,307 frame_001.png
+10/20/2026  08:16 AM             2,251 frame_002.png
+10/20/2026  08:16 AM             2,484 frame_003.png
+10/20/2026  08:16 AM             2,579 frame_004.png
+10/20/2026  08:16 AM             2,494 frame_005.png
+10/20/2026  08:16 AM             2,202 frame_006.png
+10/20/2026  08:16 AM             2,304 frame_007.png
+               8 File(s)         18,950 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\sprites
+
+10/19/2026  09:41 AM    <DIR>          .
+10/20/2026  09:10 AM    <DIR>          ..
+10/15/2026  05:26 PM                 0 .gitkeep
+10/19/2026  09:41 AM    <DIR>          blackrush
+10/19/2026  09:41 AM    <DIR>          lorelei
+10/19/2026  09:41 AM    <DIR>          robots
+               1 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\sprites\blackrush
+
+10/19/2026  09:41 AM    <DIR>          .
+10/19/2026  09:41 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\sprites\lorelei
+
+10/19/2026  09:41 AM    <DIR>          .
+10/19/2026  09:41 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+ Directory of e:\Projects\Blackrush\games\lorelei\descent\public\assets\sprites\robots
+
+10/19/2026  09:41 AM    <DIR>          .
+10/19/2026  09:41 AM    <DIR>          ..
+               0 File(s)              0 bytes
+
+     Total Files Listed:
+             600 File(s)     19,942,530 bytes
+             296 Dir(s)  20,171,493,376 bytes free

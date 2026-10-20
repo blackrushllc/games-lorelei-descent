@@ -14,7 +14,7 @@ export const AMBIENT_POLICY = {
 export const ENCOUNTER_SCORE = [
     {
         id: 'FIRST_PATROL0',
-        time: 16,
+        time: 10,
         type: 'SPAWN',
         formation: 'PATROL',
         counts: { PURSUER: 1 },
@@ -41,7 +41,7 @@ export const ENCOUNTER_SCORE = [
         time: 35,
         type: 'SPAWN',
         formation: 'PATROL',
-        counts: { SENTINEL: 3, PURSUER: 3 },
+        counts: { ARMORED_PURSUER: 1, SENTINEL: 3, PURSUER: 3 },
         spawnRegion: 'BOTTOM_APPROACH'
     },
     {
@@ -57,7 +57,7 @@ export const ENCOUNTER_SCORE = [
         time: 47,
         type: 'SPAWN',
         formation: 'PATROL',
-        counts: { SENTINEL: 2, PURSUER: 5 },
+        counts: { ARMORED_PURSUER: 1, SENTINEL: 2, PURSUER: 5 },
         spawnRegion: 'BOTTOM_APPROACH'
     },
     {
@@ -80,7 +80,7 @@ export const ENCOUNTER_SCORE = [
         time: 85,
         type: 'SPAWN',
         formation: 'MIXED_SWARM',
-        counts: { PURSUER: 6, SENTINEL: 3 },
+        counts: { ARMORED_PURSUER: 1, PURSUER: 3, SENTINEL: 3 },
         spawnRegion: 'BOTTOM_FAN'
     },
     {
@@ -88,7 +88,7 @@ export const ENCOUNTER_SCORE = [
         time: 90,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { SENTINEL: 5 },
+        counts: { SENTINEL: 6 },
         spawnRegion: 'BOTTOM_FAN',
         maxActive: 24
     },
@@ -97,7 +97,7 @@ export const ENCOUNTER_SCORE = [
         time: 90,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { SENTINEL: 8 },
+        counts: { SENTINEL: 7 },
         spawnRegion: 'BOTTOM_FAN',
         maxActive: 24
     },
@@ -106,7 +106,7 @@ export const ENCOUNTER_SCORE = [
         time: 90,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { SENTINEL: 13 },
+        counts: { SENTINEL: 8 },
         spawnRegion: 'BOTTOM_FAN',
         maxActive: 24
     },
@@ -115,7 +115,7 @@ export const ENCOUNTER_SCORE = [
         time: 105,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { SENTINEL: 12 },
+        counts: { SENTINEL: 4 },
         spawnRegion: 'BOTTOM_ARC',
         maxActive: 24
     },
@@ -136,7 +136,7 @@ export const ENCOUNTER_SCORE = [
         time: 125,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { ARMORED_PURSUER: 1, PURSUER: 6, SENTINEL: 9 },
+        counts: { ARMORED_PURSUER: 1, PURSUER: 6, SENTINEL: 4 },
         spawnRegion: 'BOTTOM_FAN',
         maxActive: 24
     },
@@ -145,7 +145,7 @@ export const ENCOUNTER_SCORE = [
         time: 132,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { PURSUER: 6, SENTINEL: 6 },
+        counts: { PURSUER: 3, SENTINEL: 3 },
         spawnRegion: 'BOTTOM_FAN',
         maxActive: 24
     },
@@ -155,7 +155,7 @@ export const ENCOUNTER_SCORE = [
         time: 140,
         type: 'SPAWN',
         formation: 'HEAVY_ADVANCE',
-        counts: { ARMORED_PURSUER: 4, PURSUER: 6 },
+        counts: { ARMORED_PURSUER: 2, PURSUER: 3 },
         spawnRegion: 'BOTTOM_APPROACH'
     },
     {
@@ -163,7 +163,7 @@ export const ENCOUNTER_SCORE = [
         time: 150,
         type: 'SPAWN',
         formation: 'HEAVY_ADVANCE',
-        counts: { ARMORED_PURSUER: 4, PURSUER: 9, SENTINEL: 2 },
+        counts: { ARMORED_PURSUER: 2, PURSUER: 5, SENTINEL: 2 },
         spawnRegion: 'BOTTOM_APPROACH'
     },
     {
@@ -171,11 +171,10 @@ export const ENCOUNTER_SCORE = [
         time: 155,
         type: 'SPAWN',
         formation: 'HEAVY_ADVANCE',
-        counts: { ARMORED_PURSUER: 2, PURSUER: 8, SENTINEL: 7 },
+        counts: { ARMORED_PURSUER: 2, PURSUER: 4, SENTINEL: 3 },
         spawnRegion: 'BOTTOM_APPROACH'
     },
     {
-        id: 'RETREAT_1',
         id: 'RETREAT_1',
         time: 160,
         type: 'RETREAT',
@@ -199,7 +198,7 @@ export const ENCOUNTER_SCORE = [
         time: 170,
         type: 'SPAWN',
         formation: 'HEAVY_ADVANCE',
-        counts: { ARMORED_PURSUER: 3, PURSUER: 4 },
+        counts: { ARMORED_PURSUER: 1, PURSUER: 4 },
         spawnRegion: 'BOTTOM_APPROACH'
     },
     {
@@ -207,7 +206,7 @@ export const ENCOUNTER_SCORE = [
         time: 176,
         type: 'SPAWN',
         formation: 'HEAVY_ADVANCE',
-        counts: { SENTINEL: 12, ARMORED_PURSUER: 2, PURSUER: 4 },
+        counts: { SENTINEL: 6, ARMORED_PURSUER: 2, PURSUER: 4 },
         spawnRegion: 'BOTTOM_FAN'
     },
     {
@@ -215,7 +214,7 @@ export const ENCOUNTER_SCORE = [
         time: 190,
         type: 'SPAWN',
         formation: 'PINCER',
-        counts: { SENTINEL: 12 },
+        counts: { SENTINEL: 6 },
         spawnRegion: 'BOTTOM_PINCER'
     },
     {
@@ -243,7 +242,7 @@ export const ENCOUNTER_SCORE = [
         time: 240,
         type: 'SPAWN',
         formation: 'MIXED_SWARM',
-        counts: { PURSUER: 8, SENTINEL: 4, ARMORED_PURSUER: 3 },
+        counts: { PURSUER: 8, SENTINEL: 4, ARMORED_PURSUER: 2 },
         spawnRegion: 'BOTTOM_FAN',
         maxActive: 24
     },
@@ -252,7 +251,7 @@ export const ENCOUNTER_SCORE = [
         time: 260,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { SENTINEL: 9 },
+        counts: { SENTINEL: 5 },
         spawnRegion: 'BOTTOM_ARC',
         maxActive: 36
     },
@@ -261,7 +260,7 @@ export const ENCOUNTER_SCORE = [
         time: 265,
         type: 'SPAWN',
         formation: 'SENTINEL_WALL',
-        counts: { SENTINEL: 10 },
+        counts: { SENTINEL: 5 },
         spawnRegion: 'BOTTOM_ARC',
         maxActive: 36
     },
@@ -270,7 +269,7 @@ export const ENCOUNTER_SCORE = [
         time: 282,
         type: 'SPAWN',
         formation: 'MIXED_SWARM',
-        counts: { PURSUER: 10, SENTINEL: 6, ARMORED_PURSUER: 3 },
+        counts: { PURSUER: 6, SENTINEL: 4, ARMORED_PURSUER: 3 },
         spawnRegion: 'BOTTOM_FAN',
         maxActive: 36
     },
