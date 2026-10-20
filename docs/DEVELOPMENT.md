@@ -20,6 +20,7 @@
 7.3 **Ambient Resistance and Offscreen Spawning** (Completed)
 8.  **Opening chase** (Completed)
 9.  **Proxy boss and German soldier** (Completed)
+9.5 **PixelLab Character Artwork Integration** (Completed)
 10. **Super-robot and Panzer**
 11. **Ending and promotion**
 12. **Character and environment artwork**
@@ -28,6 +29,26 @@
 15. **Production deployment**
 
 ## Verification
+
+### Step 9.5 Verification
+1. Run `npm run sprites` to compile the character atlases.
+2. Run `npm run dev`.
+3. Open `http://localhost:3000/?debug=1`.
+4. **Blackrush Artwork**:
+    - Verify Blackrush appears as a pixel-art character.
+    - Test movement in 8 directions; verify animation and facing direction.
+    - Fire energy bolts (Left-Click) and verify "Force" firing stance.
+    - Throw an axe (Right-Click) and verify the throw animation and brief movement pause.
+    - Wait for axe cooldown; verify transition from `idle` to `axe-ready`.
+5. **Pursuer Artwork**:
+    - Observe Pursuer robots (Red robots with claws).
+    - Verify they use 8-way directional walking and idle animations.
+    - Observe the `attack` animation (claws extended) when they are near Blackrush.
+6. **Diagnostics**:
+    - Open **SPRITE TOOLS** in the debug panel.
+    - Verify "Blackrush State" and "Facing" update in real-time.
+    - Use **TOGGLE PIXEL ART** to switch between new artwork and procedural placeholders.
+7. **Tests**: Run `npm test` and verify all tests pass (including new `sprite_compiler.test.js`).
 
 ### Step 9 Verification
 1. Run `npm run dev`.

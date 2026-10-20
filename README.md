@@ -49,7 +49,7 @@ Serves the production build locally.
 - `docs/`: Project documentation.
 
 ## Current Milestone
-**Step 9: Expanded Battlefield, Proxy Boss Battle, Grenade Sequence, and Conditional Heart Drops** (Completed)
+**Step 9.5: PixelLab Asset Compiler and Animated Blackrush/Pursuer Integration** (Completed)
 
 ## Browser Compatibility
 Compatible with modern versions of Chrome, Firefox, Safari, and Edge.

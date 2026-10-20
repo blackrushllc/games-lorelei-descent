@@ -13,21 +13,33 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         this.config = GAMEPLAY_CONFIG.player;
         this.combatConfig = COMBAT_CONFIG.player;
 
-        // Visuals
+        // 1. Visuals
+        this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
+        this.pixelArtEnabled = true;
+
+        // Sprite
+        this.sprite = scene.add.sprite(0, 0, 'blackrush');
+        this.sprite.setScale(2); // Configurable scale
+        this.sprite.setVisible(this.pixelArtEnabled);
+
+        // Procedural Graphics (Legacy/Fallback)
         this.bodyGraphic = scene.add.graphics();
         this.bodyGraphic.fillStyle(0x00aaff, 1);
         this.bodyGraphic.fillRect(-14, -20, 28, 40);
         this.bodyGraphic.lineStyle(2, 0xffffff, 1);
         this.bodyGraphic.strokeRect(-14, -20, 28, 40);
+        this.bodyGraphic.setVisible(!this.pixelArtEnabled);
 
         this.headGraphic = scene.add.graphics();
         this.headGraphic.fillStyle(0xffffff, 1);
         this.headGraphic.fillCircle(0, -10, 8);
+        this.headGraphic.setVisible(!this.pixelArtEnabled);
 
         // Direction indicator (aim indicator)
         this.aimIndicator = scene.add.graphics();
         this.aimIndicator.fillStyle(0xffff00, 1);
         this.aimIndicator.fillTriangle(30, 0, 15, -6, 15, 6);
+        this.aimIndicator.setVisible(!this.pixelArtEnabled);
 
         this.label = scene.add.text(0, 30, 'BLACKRUSH', {
             fontSize: '12px',
@@ -39,7 +51,7 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         // Shield Flash Effect
         this.shieldGraphic = scene.add.graphics();
 
-        this.add([this.bodyGraphic, this.headGraphic, this.aimIndicator, this.label, this.shieldGraphic]);
+        this.add([this.sprite, this.bodyGraphic, this.headGraphic, this.aimIndicator, this.label, this.shieldGraphic]);
 
         // 2. Combat State
         this.maxShield = this.combatConfig.maxShield;
@@ -66,6 +78,19 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         this.body.setDrag(this.config.deceleration);
         
         this.aimAngle = 0;
+        this.currentFacing = 'south';
+        this.currentAnimState = 'idle';
+        this.forcePoseTimer = 0;
+        this.isThrowingAxe = false;
+        this.axeInterruptionTimer = 0;
+    }
+
+    setPixelArtEnabled(enabled) {
+        this.pixelArtEnabled = enabled;
+        this.sprite.setVisible(enabled);
+        this.bodyGraphic.setVisible(!enabled);
+        this.headGraphic.setVisible(!enabled);
+        this.aimIndicator.setVisible(!enabled);
     }
 
     isInvulnerable() {
@@ -89,6 +114,14 @@ export default class Blackrush extends Phaser.GameObjects.Container {
             this.setAlpha(Math.sin(this.scene.time.now / 50) > 0 ? 0.5 : 1.0);
         } else {
             this.setAlpha(1.0);
+        }
+
+        if (this.forcePoseTimer > 0) {
+            this.forcePoseTimer -= delta;
+        }
+
+        if (this.axeInterruptionTimer > 0) {
+            this.axeInterruptionTimer -= delta;
         }
 
         // Shield Regeneration
@@ -118,7 +151,7 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         }
 
         // 2. Movement
-        if (inputState.moveX !== 0 || inputState.moveY !== 0) {
+        if (this.axeInterruptionTimer <= 0 && (inputState.moveX !== 0 || inputState.moveY !== 0)) {
             let moveVec = new Phaser.Math.Vector2(inputState.moveX, inputState.moveY);
             if (moveVec.length() > 1) {
                 moveVec.normalize();
@@ -129,18 +162,92 @@ export default class Blackrush extends Phaser.GameObjects.Container {
             );
         } else {
             this.body.setAcceleration(0, 0);
+            if (this.axeInterruptionTimer > 0) {
+                this.body.setVelocity(0, 0);
+            }
         }
 
         // 3. Firing
         if (inputState.isFiringPrimary) {
             this.scene.weaponSystem.fireEnergy(this.x, this.y, this.aimAngle);
+            this.forcePoseTimer = 350; // Configurable linger
         }
         if (inputState.isFiringSecondary) {
-            this.scene.weaponSystem.fireAxe(this.x, this.y, this.aimAngle);
+            if (this.scene.weaponSystem.fireAxe(this.x, this.y, this.aimAngle)) {
+                this.triggerAxeThrow();
+            }
         }
 
-        // 4. Bounds Enforcement
+        // 4. Animation Stance
+        if (this.pixelArtEnabled) {
+            this.updateAnimation(inputState);
+        }
+
+        // 5. Bounds Enforcement
         this.constrainToBounds();
+    }
+
+    triggerAxeThrow() {
+        this.isThrowingAxe = true;
+        this.axeInterruptionTimer = 150; // Configurable brief interruption
+
+        const dir = this.currentFacing;
+        const animKey = this.spriteRegistry.getAnimationKey('blackrush', 'axe-throw', dir);
+        if (animKey) {
+            this.sprite.play(animKey);
+            this.sprite.once('animationcomplete', () => {
+                this.isThrowingAxe = false;
+            });
+        } else {
+            this.isThrowingAxe = false;
+        }
+    }
+
+    updateAnimation(inputState) {
+        if (this.isThrowingAxe) return;
+
+        // 1. Determine Direction
+        // If firing or recently fired, face aim. Otherwise face movement.
+        let targetAngle = this.aimAngle;
+        const isMoving = this.body.velocity.length() > 10;
+        
+        if (this.forcePoseTimer <= 0 && isMoving && !inputState.isFiringPrimary) {
+            targetAngle = Phaser.Math.Angle.Between(0, 0, this.body.velocity.x, this.body.velocity.y);
+        }
+
+        this.currentFacing = this.spriteRegistry.get8WayDirection(targetAngle);
+
+        // 2. Determine State
+        let state = 'idle';
+        const isFiring = this.forcePoseTimer > 0;
+        const speed = this.body.velocity.length();
+        const isRunning = speed > this.config.maxSpeed * 0.7; // Threshold for run animation
+
+        if (isFiring) {
+            if (isMoving) {
+                state = isRunning ? 'force-run' : 'force-walk';
+            } else {
+                state = 'force-idle';
+            }
+        } else if (isMoving) {
+            state = isRunning ? 'run' : 'walk';
+        } else {
+            // Check axe availability for idle stance
+            const axeAvailable = this.scene.weaponSystem.axes.countActive(false) > 0 || this.scene.weaponSystem.axeCooldown <= 0;
+            // Actually check if the weapon system says it's ready.
+            // For now, if no axes are in flight and cooldown is zero.
+            if (axeAvailable && this.scene.weaponSystem.axeCooldown <= 0) {
+                state = 'axe-ready';
+            } else {
+                state = 'idle';
+            }
+        }
+
+        // 3. Play Animation
+        const animKey = this.spriteRegistry.getAnimationKey('blackrush', state, this.currentFacing);
+        if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
+            this.sprite.play(animKey);
+        }
     }
 
     onHit() {

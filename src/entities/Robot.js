@@ -38,6 +38,9 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.retreatY = 0;
 
         // 2. Visuals
+        this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
+        this.pixelArtEnabled = true;
+        this.currentFacing = 'south';
         this.createVisuals();
 
         // 3. Physics
@@ -63,7 +66,16 @@ export default class Robot extends Phaser.GameObjects.Container {
         const cfg = this.combatConfig;
         const color = cfg.color || 0xaa0000;
 
-        // 1. Scale for Armored Pursuer
+        // 1. Sprite for Pursuer
+        this.hasSprite = (type === 'PURSUER');
+        if (this.hasSprite) {
+            this.sprite = this.scene.add.sprite(0, 0, 'pursuer');
+            this.sprite.setScale(2); 
+            this.sprite.setVisible(this.pixelArtEnabled);
+            this.add(this.sprite);
+        }
+
+        // 2. Scale for Armored Pursuer
         if (type === 'ARMORED_PURSUER') {
             this.setScale(1.25);
         }
@@ -71,6 +83,7 @@ export default class Robot extends Phaser.GameObjects.Container {
         // 2. Body
         this.bodyGraphic = this.scene.add.graphics();
         this.drawBody(color);
+        this.bodyGraphic.setVisible(!this.hasSprite || !this.pixelArtEnabled);
         this.add(this.bodyGraphic);
 
         // 3. Armor Plates (if applicable)
@@ -82,11 +95,11 @@ export default class Robot extends Phaser.GameObjects.Container {
 
         // 4. Sentinel Features
         if (type === 'SENTINEL') {
-            const antenna = this.scene.add.graphics();
-            antenna.lineStyle(2, 0x888888, 1);
-            antenna.moveTo(-8, -15); antenna.lineTo(-12, -25);
-            antenna.moveTo(8, -15); antenna.lineTo(12, -25);
-            this.add(antenna);
+            this.antenna = this.scene.add.graphics();
+            this.antenna.lineStyle(2, 0x888888, 1);
+            this.antenna.moveTo(-8, -15); this.antenna.lineTo(-12, -25);
+            this.antenna.moveTo(8, -15); this.antenna.lineTo(12, -25);
+            this.add(this.antenna);
         }
 
         // 5. Eye
@@ -97,14 +110,16 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.eye.fillCircle(0, 0, eyeRadius);
         this.eye.lineStyle(1, 0xffffff, 0.5);
         this.eye.strokeCircle(0, 0, eyeRadius + 2);
+        this.eye.setVisible(!this.hasSprite || !this.pixelArtEnabled);
         this.add(this.eye);
 
         // 6. Details
-        const details = this.scene.add.graphics();
-        details.lineStyle(1, 0x333333, 0.5);
-        details.moveTo(-10, -10); details.lineTo(-10, 10);
-        details.moveTo(10, -10); details.lineTo(10, 10);
-        this.add(details);
+        this.details = this.scene.add.graphics();
+        this.details.lineStyle(1, 0x333333, 0.5);
+        this.details.moveTo(-10, -10); this.details.lineTo(-10, 10);
+        this.details.moveTo(10, -10); this.details.lineTo(10, 10);
+        this.details.setVisible(!this.hasSprite || !this.pixelArtEnabled);
+        this.add(this.details);
 
         // 7. Hit Flash Overlay
         this.hitFlashOverlay = this.scene.add.graphics();
@@ -140,6 +155,17 @@ export default class Robot extends Phaser.GameObjects.Container {
         }
     }
 
+    setPixelArtEnabled(enabled) {
+        this.pixelArtEnabled = enabled;
+        if (this.hasSprite) {
+            this.sprite.setVisible(enabled);
+            this.bodyGraphic.setVisible(!enabled);
+            this.eye.setVisible(!enabled);
+            this.details.setVisible(!enabled);
+            if (this.antenna) this.antenna.setVisible(!enabled);
+        }
+    }
+
     update(time, delta) {
         if (this.isDestroyed || !this.active) return;
 
@@ -150,13 +176,23 @@ export default class Robot extends Phaser.GameObjects.Container {
                 this.body.setAcceleration(0, 0);
                 this.body.setVelocity(0, 0);
             }
+            if (this.hasSprite && this.sprite.anims.isPlaying) {
+                this.sprite.anims.pause();
+            }
             return;
+        } else if (this.hasSprite && this.sprite.anims.isPaused) {
+            this.sprite.anims.resume();
         }
 
         const player = this.scene.player;
         if (!player) return;
 
         const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+
+        // Update visuals if using pixel art
+        if (this.hasSprite && this.pixelArtEnabled) {
+            this.updateAnimation(player, dist);
+        }
 
         // Update burst/cooldown timers
         if (this.isBursting) {
@@ -214,6 +250,38 @@ export default class Robot extends Phaser.GameObjects.Container {
             this.setActive(false).setVisible(false);
             if (this.body) this.body.enable = false;
             this.laserGraphic.clear();
+        }
+    }
+
+    updateAnimation(player, dist) {
+        // 1. Direction
+        let angle = 0;
+        const isMoving = this.body.velocity.length() > 5;
+        
+        if (isMoving) {
+            angle = Phaser.Math.Angle.Between(0, 0, this.body.velocity.x, this.body.velocity.y);
+        } else {
+            // Face player if idle but active
+            angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        }
+
+        this.currentFacing = this.spriteRegistry.get8WayDirection(angle);
+
+        // 2. State
+        let state = 'idle';
+        if (this.aiState === 'PURSUING' || this.aiState === 'RETREATING') {
+            if (dist < 80 && this.aiState === 'PURSUING') {
+                state = 'attack';
+            } else if (isMoving) {
+                state = 'walk';
+            }
+        } else if (this.aiState === 'ACQUIRING_TARGET' || this.aiState === 'FIRING') {
+            state = 'attack'; // Sentinels claw out when ready? (Only Pursuer has sprites for now though)
+        }
+
+        const animKey = this.spriteRegistry.getAnimationKey('pursuer', state, this.currentFacing);
+        if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
+            this.sprite.play(animKey);
         }
     }
 

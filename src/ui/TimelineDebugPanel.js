@@ -170,6 +170,16 @@ export default class TimelineDebugPanel {
                     <button id="btn-trigger-grenade">TRIGGER GRENADE</button>
                 </div>
             </div>
+
+            <div id="debug-sprites-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] SPRITE TOOLS</div>
+            <div id="debug-sprites" style="display: none; margin-top: 5px; font-size: 10px; color: #aaa; border-top: 1px solid #333; padding-top: 5px;">
+                <div class="debug-row">Pixel Art: <span id="diag-pixel-art">ON</span></div>
+                <div class="debug-row">Blackrush State: <span id="diag-br-state">-</span></div>
+                <div class="debug-row">Blackrush Facing: <span id="diag-br-facing">-</span></div>
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-toggle-pixelart">TOGGLE PIXEL ART</button>
+                </div>
+            </div>
         `;
         
         document.body.appendChild(this.container);
@@ -288,6 +298,13 @@ export default class TimelineDebugPanel {
             $('#debug-proxy-toggle').textContent = isHidden ? '[-] PROXY TOOLS' : '[+] PROXY TOOLS';
         };
 
+        $('#debug-sprites-toggle').onclick = () => {
+            const sprites = $('#debug-sprites');
+            const isHidden = sprites.style.display === 'none';
+            sprites.style.display = isHidden ? 'block' : 'none';
+            $('#debug-sprites-toggle').textContent = isHidden ? '[-] SPRITE TOOLS' : '[+] SPRITE TOOLS';
+        };
+
         // Combat tool actions
         const getGameScene = () => this.game.scene.getScenes(true).find(s => s.scene.key === 'GameScene');
         
@@ -372,6 +389,17 @@ export default class TimelineDebugPanel {
                     gs.physics.world.createDebugGraphic();
                 }
                 gs.physics.world.debugGraphic.clear();
+            }
+        };
+
+        $('#btn-toggle-pixelart').onclick = () => {
+            const gs = getGameScene();
+            if (gs) {
+                const current = gs.player.pixelArtEnabled;
+                gs.player.setPixelArtEnabled(!current);
+                gs.robotGroup.getChildren().forEach(r => {
+                    if (r.setPixelArtEnabled) r.setPixelArtEnabled(!current);
+                });
             }
         };
 
@@ -572,6 +600,15 @@ export default class TimelineDebugPanel {
                 if (gameScene.openingProxy) {
                     const op = gameScene.openingProxy;
                     $('#diag-proxy').textContent = op.visible ? `ACTIVE (Y=${Math.round(op.y)})` : 'INACTIVE';
+                }
+
+                // Sprite diagnostics
+                if (p) {
+                    $('#diag-pixel-art').textContent = p.pixelArtEnabled ? 'ON' : 'OFF';
+                    const animKey = p.sprite?.anims?.currentAnim?.key || '';
+                    const statePart = animKey.split('_')[1] || '-';
+                    $('#diag-br-state').textContent = statePart;
+                    $('#diag-br-facing').textContent = p.currentFacing || '-';
                 }
 
                 // Encounter Diagnostics

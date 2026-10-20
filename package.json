@@ -7,11 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "sprites": "node scripts/assets/compile-sprites.mjs",
+    "sprites:check": "node scripts/assets/compile-sprites.mjs --check"
   },
   "private": true,
   "dependencies": {
-    "phaser": "^3.88.2"
+    "phaser": "^3.88.2",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "vite": "^8.3.4"

@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { SpriteAnimationRegistry } from '../systems/SpriteAnimationRegistry';
 
 export default class BootScene extends Phaser.Scene {
     constructor() {
@@ -21,11 +22,23 @@ export default class BootScene extends Phaser.Scene {
         this.load.on('complete', () => {
             loadingText.destroy();
         });
+
+        // Load Sprite Animations
+        this.registry.set('spriteAnimationRegistry', new SpriteAnimationRegistry(this));
     }
 
-    create() {
+    async create() {
         this.createProjectileTextures();
-        console.log('BootScene: Audio and textures loaded. Starting TitleScene...');
+        
+        const spriteRegistry = this.registry.get('spriteAnimationRegistry');
+        try {
+            await spriteRegistry.load('assets/sprites/manifest.json');
+            console.log('BootScene: Audio and sprite assets loaded.');
+        } catch (err) {
+            console.error('BootScene: Failed to load sprite assets:', err);
+        }
+
+        console.log('BootScene: Starting TitleScene...');
         this.scene.start('TitleScene');
     }
 

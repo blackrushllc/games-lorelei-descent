@@ -14,6 +14,8 @@ export const GAME_CONFIG = {
     backgroundColor: '#10151f',
     parent: 'game-container',
     type: Phaser.AUTO,
+    pixelArt: true,
+    roundPixels: true,
     scale: {
         mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH,
