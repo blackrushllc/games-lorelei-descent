@@ -114,6 +114,10 @@ export default class AudioDirector {
         
         this.currentSound = this.game.sound.add(assetKey);
         
+        this.currentSound.on('error', (err) => {
+            console.error(`AudioDirector: track ${trackId} error:`, err);
+        });
+
         if (onComplete) {
             this.currentSound.once('complete', () => {
                 onComplete(trackId);

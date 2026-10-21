@@ -89,6 +89,17 @@ export default class EncounterDirector {
         this.ambientSeed = 42 + (this.sessionID * 100);
     }
 
+    cancelNovaFormations() {
+        // Cancel robots still queued in the currently deploying formation
+        this.pendingFormations = [];
+    }
+
+    suspendAmbientSpawning(duration) {
+        // Suspend ambient reinforcement for a configurable short period (musical time)
+        const currentTime = this.timeline.currentTime;
+        this.nextAmbientTime = Math.max(this.nextAmbientTime, currentTime + duration);
+    }
+
     onEvent(eventID, eventData) {
         if (!this.scene || !this.scene.scene || !this.scene.scene.isActive()) return;
         if (this.timeline.currentTrackKey !== 'SYNTH') return;

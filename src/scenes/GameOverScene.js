@@ -6,11 +6,19 @@ export default class GameOverScene extends Phaser.Scene {
     }
 
     create() {
+        this.inputActive = false;
+        this.time.delayedCall(500, () => { this.inputActive = true; });
+
         this.createUI();
         this.scale.on('resize', this.onResize, this);
+        
+        this.events.once('shutdown', () => {
+            this.scale.off('resize', this.onResize, this);
+        });
     }
 
     createUI() {
+        if (!this.children) return;
         this.children.removeAll();
         const { width, height } = this.scale;
         this.timeline = this.game.timelineDirector;
@@ -43,7 +51,10 @@ export default class GameOverScene extends Phaser.Scene {
         })
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
-        .on('pointerdown', () => this.restartGame())
+        .on('pointerdown', () => {
+            if (!this.inputActive) return;
+            this.restartGame();
+        })
         .on('pointerover', () => restartBtn.setStyle({ fill: '#ffffff' }))
         .on('pointerout', () => restartBtn.setStyle({ fill: '#00ff00' }));
 
@@ -57,12 +68,16 @@ export default class GameOverScene extends Phaser.Scene {
         })
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
-        .on('pointerdown', () => this.returnToTitle())
+        .on('pointerdown', () => {
+            if (!this.inputActive) return;
+            this.returnToTitle();
+        })
         .on('pointerover', () => titleBtn.setStyle({ backgroundColor: '#444444' }))
         .on('pointerout', () => titleBtn.setStyle({ backgroundColor: '#333333' }));
     }
 
     onResize() {
+        if (!this.scene.isActive()) return;
         this.createUI();
     }
 
@@ -81,6 +96,8 @@ export default class GameOverScene extends Phaser.Scene {
     returnToTitle() {
         console.log(`[SESSION ${this.game.sessionID}] SESSION_STOP`);
         this.timeline.stop();
+        // Crucial: GameScene was launched parallel, so we must stop it explicitly
+        this.scene.stop('GameScene');
         this.scene.start('TitleScene');
     }
 }

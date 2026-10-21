@@ -22,7 +22,15 @@ export default class Grenade extends Phaser.GameObjects.Container {
         scene.physics.add.existing(this);
         this.body.setCircle(8, -8, -8);
         
+        this.pixelArtEnabled = true;
         this.isCaught = false;
+    }
+
+    setPixelArtEnabled(enabled) {
+        this.pixelArtEnabled = enabled;
+        // Grenade currently has no pixel art sprites
+        const showProcedural = true;
+        this.graphic.setVisible(showProcedural);
     }
 
     launch(targetX, targetY, duration, onComplete) {

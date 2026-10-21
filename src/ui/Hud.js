@@ -58,6 +58,15 @@ export default class Hud extends Phaser.GameObjects.Container {
         }).setOrigin(0.5);
         this.add(this.phaseLabel);
 
+        // NOVA Status
+        this.novaText = scene.add.text(width / 2, 95, 'NOVA [SPACE] — COST: 1 HEART', {
+            fontSize: '14px',
+            fill: '#00ffff',
+            fontFamily: 'Arial',
+            fontWeight: 'bold'
+        }).setOrigin(0.5);
+        this.add(this.novaText);
+
         // Hearts
         this.heartIcons = [];
         this.createHearts(width);
@@ -127,6 +136,13 @@ export default class Hud extends Phaser.GameObjects.Container {
                 this.heartIcons[i].setAlpha(0.6);
             }
         }
+
+        // Update NOVA status
+        if (this.novaText) {
+            const available = count >= 2;
+            this.novaText.setFill(available ? '#00ffff' : '#666666');
+            this.novaText.setText(available ? 'NOVA [SPACE] — COST: 1 HEART' : 'NOVA UNAVAILABLE');
+        }
     }
 
     resize(width, height) {
@@ -142,6 +158,7 @@ export default class Hud extends Phaser.GameObjects.Container {
         this.shieldText.setX(offset + 20);
         this.scoreText.setX(width - offset - 20);
         this.phaseLabel.setX(width / 2);
+        if (this.novaText) this.novaText.setX(width / 2);
 
         this.weaponText.setX(offset + 20);
         this.axeText.setX(offset + 200);

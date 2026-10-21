@@ -22,7 +22,8 @@ export default class DesktopControls {
             arrowUp: Phaser.Input.Keyboard.KeyCodes.UP,
             arrowDown: Phaser.Input.Keyboard.KeyCodes.DOWN,
             arrowLeft: Phaser.Input.Keyboard.KeyCodes.LEFT,
-            arrowRight: Phaser.Input.Keyboard.KeyCodes.RIGHT
+            arrowRight: Phaser.Input.Keyboard.KeyCodes.RIGHT,
+            nova: Phaser.Input.Keyboard.KeyCodes.SPACE
         });
 
         // Aim and actions
@@ -30,6 +31,7 @@ export default class DesktopControls {
         this.aimWorldY = 0;
         this.isFiringPrimary = false;
         this.isFiringSecondary = false;
+        this.isFiringNova = false;
         
         // Movement vectors (Normalized intent, -1 to 1)
         this.moveX = 0;
@@ -70,6 +72,7 @@ export default class DesktopControls {
         this.moveY = 0;
         this.isFiringPrimary = false;
         this.isFiringSecondary = false;
+        this.isFiringNova = false;
         this.ignoreInitialClick = true; // Wait for release after focus regain
         
         // Reset keyboard states to prevent stuck keys after focus loss
@@ -102,7 +105,10 @@ export default class DesktopControls {
             this.isFiringSecondary = pointer.rightButtonDown();
         }
 
-        // 3. Keyboard Movement (Priority)
+        // 3. Nova (Fresh key press only)
+        this.isFiringNova = Phaser.Input.Keyboard.JustDown(this.keys.nova);
+
+        // 4. Keyboard Movement (Priority)
         let kbMoveX = 0;
         let kbMoveY = 0;
 
@@ -166,6 +172,7 @@ export default class DesktopControls {
             aimY: this.aimWorldY,
             isFiringPrimary: this.isFiringPrimary,
             isFiringSecondary: this.isFiringSecondary,
+            isFiringNova: this.isFiringNova,
             controlMode: this.controlMode
         };
     }

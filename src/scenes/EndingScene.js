@@ -6,11 +6,15 @@ export default class EndingScene extends Phaser.Scene {
     }
 
     create() {
+        this.inputActive = false;
+        this.time.delayedCall(200, () => { this.inputActive = true; });
+
         this.createUI();
         this.scale.on('resize', this.onResize, this);
     }
 
     createUI() {
+        if (!this.children) return;
         this.children.removeAll();
         const { width, height } = this.scale;
         this.timeline = this.game.timelineDirector;
@@ -58,6 +62,7 @@ export default class EndingScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
+            if (!this.inputActive) return;
             this.timeline.startTrack('SYNTH');
             // scene switching handled by trackStart listener in main.js
         });
@@ -72,7 +77,11 @@ export default class EndingScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
+            if (!this.inputActive) return;
             this.timeline.stop();
+            // EndingScene might be running parallel to something else if we are not careful
+            // although main.js usually stops GameScene before starting EndingScene.
+            this.scene.stop('GameScene');
             this.scene.start('TitleScene');
         });
 
@@ -81,6 +90,7 @@ export default class EndingScene extends Phaser.Scene {
 
         // Cleanup on shutdown
         this.events.once('shutdown', () => {
+            this.scale.off('resize', this.onResize, this);
             this.cleanupTimelineListeners();
         });
 
@@ -88,6 +98,7 @@ export default class EndingScene extends Phaser.Scene {
     }
 
     onResize() {
+        if (!this.scene.isActive()) return;
         this.createUI();
     }
 

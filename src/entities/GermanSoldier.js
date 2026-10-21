@@ -27,7 +27,17 @@ export default class GermanSoldier extends Phaser.GameObjects.Container {
 
         this.add([this.bodyGraphic, this.headGraphic, this.label]);
 
+        this.pixelArtEnabled = true;
+
         scene.add.existing(this);
+    }
+
+    setPixelArtEnabled(enabled) {
+        this.pixelArtEnabled = enabled;
+        // GermanSoldier currently has no pixel art sprites
+        const showProcedural = true;
+        this.bodyGraphic.setVisible(showProcedural);
+        this.headGraphic.setVisible(showProcedural);
     }
 
     throwGrenade(targetX, targetY, callback) {

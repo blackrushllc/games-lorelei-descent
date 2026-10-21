@@ -10,10 +10,11 @@ export default class TimelineDebugPanel {
         this.timeline = game.timelineDirector;
         this.container = null;
         this.isVisible = false;
+        this.isExpanded = false;
         
         // Check for debug flag in URL
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('debug') === '1' || window.location.hostname === 'localhost') {
+        if (urlParams.get('debug') === '1') {
             this.init();
         }
     }
@@ -30,13 +31,19 @@ export default class TimelineDebugPanel {
         this.container.addEventListener('click', stopProp);
         this.container.addEventListener('pointerdown', stopProp);
         this.container.addEventListener('pointerup', stopProp);
+        this.container.addEventListener('touchstart', stopProp);
+        this.container.addEventListener('touchend', stopProp);
         this.container.addEventListener('contextmenu', stopProp);
         this.container.addEventListener('wheel', stopProp);
         
         this.container.innerHTML = `
-            <div style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #555;">DEVELOPMENT TOOLS</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #555; padding-bottom: 5px; margin-bottom: 5px;">
+                <div style="font-weight: bold;">LORELEI DEV TOOLS</div>
+                <button id="btn-toggle-panel" style="margin: 0; padding: 2px 5px;">_</button>
+            </div>
             
-            <div class="debug-row">Session: <span id="debug-session">-</span></div>
+            <div id="debug-content" style="display: none;">
+                <div class="debug-row">Session: <span id="debug-session">-</span></div>
             <div class="debug-row">Track: <span id="debug-track">-</span></div>
             <div class="debug-row">Phase: <span id="debug-phase">-</span></div>
             <div class="debug-row">Time: <span id="debug-time">00:00</span> / <span id="debug-duration">00:00</span></div>
@@ -90,6 +97,7 @@ export default class TimelineDebugPanel {
                 <div class="debug-row">Respawn: <span id="diag-respawn">NO</span></div>
                 <div class="debug-row">Invuln: <span id="diag-invuln">NO</span></div>
                 <div class="debug-row">Score: <span id="diag-score">0</span></div>
+                <div class="debug-row">Nova Ready: <span id="diag-nova-ready">NO</span></div>
                 <div class="debug-row">Projectiles: <span id="diag-projectiles">0</span></div>
                 <div class="debug-row">Axes: <span id="diag-axes">0</span></div>
                 <div class="debug-row">Opening Proxy: <span id="diag-proxy">INACTIVE</span></div>
@@ -100,6 +108,7 @@ export default class TimelineDebugPanel {
                 <div class="debug-controls">
                     <button id="btn-reset-shield">RESET SHIELD</button>
                     <button id="btn-clear-robots">CLEAR ROBOTS</button>
+                    <button id="btn-trigger-nova">TRIGGER NOVA</button>
                 </div>
                 <div style="margin-top: 5px; font-weight: bold;">SET SHIELD:</div>
                 <div class="debug-controls">
@@ -185,6 +194,16 @@ export default class TimelineDebugPanel {
         document.body.appendChild(this.container);
         this.setupEventListeners();
         this.isVisible = true;
+        this.setExpanded(false); // Start collapsed
+    }
+
+    setExpanded(expanded) {
+        this.isExpanded = expanded;
+        const content = this.container.querySelector('#debug-content');
+        const toggle = this.container.querySelector('#btn-toggle-panel');
+        if (content) content.style.display = expanded ? 'block' : 'none';
+        if (toggle) toggle.textContent = expanded ? '_' : '□';
+        this.container.style.width = expanded ? '240px' : '150px';
     }
 
     applyStyles() {
@@ -230,6 +249,8 @@ export default class TimelineDebugPanel {
         
         $('#btn-play').onclick = () => this.timeline.resume();
         $('#btn-pause').onclick = () => this.timeline.pause();
+        $('#btn-toggle-panel').onclick = () => this.setExpanded(!this.isExpanded);
+        
         $('#btn-stop').onclick = () => {
             this.timeline.stop();
             // Emit custom event for GameScene to handle
@@ -352,13 +373,18 @@ export default class TimelineDebugPanel {
             }
         };
 
+        $('#btn-trigger-nova').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.triggerNova) {
+                gs.triggerNova();
+            }
+        };
+
         const spawnRobot = (type) => {
             const gs = getGameScene();
             if (gs && gs.player) {
                 const pos = gs.findSafeRobotSpawnPosition();
-                const Robot = gs.robotGroup.classType;
-                const robot = new Robot(gs, pos.x, pos.y, type);
-                gs.robotGroup.add(robot);
+                gs.spawnRobotAt(pos.x, pos.y, type);
             }
         };
 
@@ -395,11 +421,26 @@ export default class TimelineDebugPanel {
         $('#btn-toggle-pixelart').onclick = () => {
             const gs = getGameScene();
             if (gs) {
-                const current = gs.player.pixelArtEnabled;
-                gs.player.setPixelArtEnabled(!current);
+                const nextState = !gs.player.pixelArtEnabled;
+                
+                // Toggle player
+                gs.player.setPixelArtEnabled(nextState);
+                
+                // Toggle all robots
                 gs.robotGroup.getChildren().forEach(r => {
-                    if (r.setPixelArtEnabled) r.setPixelArtEnabled(!current);
+                    if (r.setPixelArtEnabled) r.setPixelArtEnabled(nextState);
                 });
+
+                // Toggle other scripted entities if they exist
+                if (gs.openingProxy && gs.openingProxy.setPixelArtEnabled) {
+                    gs.openingProxy.setPixelArtEnabled(nextState);
+                }
+                if (gs.proxyBoss && gs.proxyBoss.setPixelArtEnabled) {
+                    gs.proxyBoss.setPixelArtEnabled(nextState);
+                }
+                if (gs.germanSoldier && gs.germanSoldier.setPixelArtEnabled) {
+                    gs.germanSoldier.setPixelArtEnabled(nextState);
+                }
             }
         };
 
@@ -629,6 +670,12 @@ export default class TimelineDebugPanel {
                     $('#diag-pop-cap').textContent = ed.maxActive;
                     $('#diag-pending-form').textContent = ed.pendingFormations.length;
                     $('#diag-next-ambient').textContent = ed.nextAmbientTime.toFixed(1) + 's';
+
+                    if ($('#diag-nova-ready')) {
+                        const available = gs.player && gs.player.hearts >= 2;
+                        $('#diag-nova-ready').textContent = available ? 'YES' : 'NO';
+                        $('#diag-nova-ready').style.color = available ? '#00ffff' : '#ff0000';
+                    }
                     
                     $('#btn-toggle-encounter').style.color = ed.enabled ? '#00ff00' : '#ff0000';
                     $('#btn-toggle-catchup').style.color = ed.catchUpEnabled ? '#00ff00' : '#ff0000';

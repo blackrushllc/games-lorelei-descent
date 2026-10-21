@@ -44,6 +44,8 @@ export default class Proxy extends Phaser.GameObjects.Container {
 
         this.add([this.bodyGraphic, this.head, this.nadineBundle, this.label]);
         
+        this.pixelArtEnabled = true;
+
         // Set depth to be above robots but maybe below HUD
         this.setDepth(10);
 
@@ -51,6 +53,16 @@ export default class Proxy extends Phaser.GameObjects.Container {
         
         // Initially hidden until updateFromTime is called
         this.setVisible(false);
+    }
+
+    setPixelArtEnabled(enabled) {
+        this.pixelArtEnabled = enabled;
+        // Proxy currently has no pixel art sprites, so always show procedural visuals
+        const showProcedural = true; 
+        
+        this.bodyGraphic.setVisible(showProcedural);
+        this.head.setVisible(showProcedural);
+        this.nadineBundle.setVisible(showProcedural);
     }
 
     /**

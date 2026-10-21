@@ -35,6 +35,15 @@ export const COMBAT_CONFIG = {
         oneHeartWarnInterval: 2000, // ms
     },
 
+    // Emergency Area-Clear Weapon (Step 9.6)
+    nova: {
+        heartCost: 1,
+        minHeartsRequired: 2,
+        expansionTime: 400, // ms
+        invulnerabilityWindow: 1000, // ms
+        ambientSuspensionTime: 2.0, // musical seconds
+    },
+
     // Weapons
     weapons: {
         energy: {

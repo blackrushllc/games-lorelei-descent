@@ -6,13 +6,21 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     create() {
+        this.inputActive = false;
+        this.time.delayedCall(200, () => { this.inputActive = true; });
+
         this.createUI();
 
         // Handle resize
         this.scale.on('resize', this.onResize, this);
+
+        this.events.once('shutdown', () => {
+            this.scale.off('resize', this.onResize, this);
+        });
     }
 
     createUI() {
+        if (!this.children) return;
         this.children.removeAll();
 
         const { width, height } = this.scale;
@@ -53,6 +61,7 @@ export default class TitleScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
+            if (!this.inputActive) return;
             localStorage.setItem('lorelei_descent_control_mode', 'CLASSIC');
             classicBtn.setStyle({ fill: '#00ff00' });
             assistedBtn.setStyle({ fill: '#ffffff' });
@@ -68,6 +77,7 @@ export default class TitleScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
+            if (!this.inputActive) return;
             localStorage.setItem('lorelei_descent_control_mode', 'ASSISTED');
             assistedBtn.setStyle({ fill: '#00ff00' });
             classicBtn.setStyle({ fill: '#ffffff' });
@@ -90,6 +100,7 @@ export default class TitleScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true })
         .on('pointerdown', () => {
+            if (!this.inputActive) return;
             this.game.timelineDirector.startTrack('SYNTH');
         })
         .on('pointerover', () => startButton.setStyle({ fill: '#ffffff' }))
@@ -104,6 +115,7 @@ export default class TitleScene extends Phaser.Scene {
     }
 
     onResize() {
+        if (!this.scene.isActive()) return;
         this.createUI();
     }
 }

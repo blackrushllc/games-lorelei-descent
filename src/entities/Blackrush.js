@@ -93,6 +93,19 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         this.aimIndicator.setVisible(!enabled);
     }
 
+    spendHeartForNova() {
+        if (this.hearts >= COMBAT_CONFIG.nova.minHeartsRequired) {
+            this.hearts -= COMBAT_CONFIG.nova.heartCost;
+            
+            // Apply invulnerability without shortening existing
+            const novaInvul = COMBAT_CONFIG.nova.invulnerabilityWindow;
+            this.invulnerabilityTimer = Math.max(this.invulnerabilityTimer, novaInvul);
+            
+            return true;
+        }
+        return false;
+    }
+
     isInvulnerable() {
         return this.invulnerabilityTimer > 0;
     }

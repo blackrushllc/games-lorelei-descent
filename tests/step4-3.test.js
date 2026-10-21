@@ -6,9 +6,11 @@ import { GAMEPLAY_CONFIG } from '../src/config/gameplayConfig.js';
 global.Phaser = {
     Input: {
         Keyboard: {
+            JustDown: (key) => key.isDown,
             KeyCodes: { 
                 W: 87, S: 83, A: 65, D: 68, 
-                UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39 
+                UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
+                SPACE: 32
             }
         }
     },
@@ -28,7 +30,8 @@ function createMockScene() {
             keyboard: {
                 addKeys: () => ({
                     up: { isDown: false }, down: { isDown: false }, left: { isDown: false }, right: { isDown: false },
-                    arrowUp: { isDown: false }, arrowDown: { isDown: false }, arrowLeft: { isDown: false }, arrowRight: { isDown: false }
+                    arrowUp: { isDown: false }, arrowDown: { isDown: false }, arrowLeft: { isDown: false }, arrowRight: { isDown: false },
+                    nova: { isDown: false }
                 }),
                 resetKeys: () => {}
             },

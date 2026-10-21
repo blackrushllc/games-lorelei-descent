@@ -157,13 +157,17 @@ export default class Robot extends Phaser.GameObjects.Container {
 
     setPixelArtEnabled(enabled) {
         this.pixelArtEnabled = enabled;
-        if (this.hasSprite) {
-            this.sprite.setVisible(enabled);
-            this.bodyGraphic.setVisible(!enabled);
-            this.eye.setVisible(!enabled);
-            this.details.setVisible(!enabled);
-            if (this.antenna) this.antenna.setVisible(!enabled);
-        }
+        
+        // If we have a sprite, toggle visibility between sprite and procedural
+        // If no sprite, we always show procedural (fallback)
+        const showProcedural = !this.hasSprite || !enabled;
+        const showSprite = this.hasSprite && enabled;
+        
+        if (this.sprite) this.sprite.setVisible(showSprite);
+        if (this.bodyGraphic) this.bodyGraphic.setVisible(showProcedural);
+        if (this.eye) this.eye.setVisible(showProcedural);
+        if (this.details) this.details.setVisible(showProcedural);
+        if (this.antenna) this.antenna.setVisible(showProcedural);
     }
 
     update(time, delta) {

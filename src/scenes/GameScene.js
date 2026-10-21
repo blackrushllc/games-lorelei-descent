@@ -90,15 +90,18 @@ export default class GameScene extends Phaser.Scene {
         // 9. Survival Warning Timer
         this.survivalWarningTimer = 0;
 
-        // 9. Back to Title Button (Dev purposes)
-        const backButton = this.add.text(width - 20, height - 20, 'BACK TO TITLE', {
-            fontSize: '18px', fill: '#ffffff', fontFamily: 'Arial',
-            backgroundColor: '#333333', padding: { x: 10, y: 5 }
-        })
-        .setOrigin(1, 1)
-        .setInteractive({ useHandCursor: true })
-        .setScrollFactor(0)
-        .on('pointerdown', () => this.returnToTitle());
+        // 9. Back to Title Button (Dev purposes) - Only show if debug enabled
+        if (window.location.search.includes('debug=1')) {
+            const backButton = this.add.text(20, height - 20, 'BACK TO TITLE', {
+                fontSize: '18px', fill: '#ffffff', fontFamily: 'Arial',
+                backgroundColor: '#333333', padding: { x: 10, y: 5 }
+            })
+            .setOrigin(0, 1)
+            .setInteractive({ useHandCursor: true })
+            .setScrollFactor(0)
+            .setDepth(1001)
+            .on('pointerdown', () => this.returnToTitle());
+        }
 
         // Timeline Event Listeners
         this.setupTimelineListeners();
@@ -109,6 +112,7 @@ export default class GameScene extends Phaser.Scene {
 
         // Cleanup on shutdown
         this.events.once('shutdown', () => {
+            this.scale.off('resize', this.onResize, this);
             this.cleanupTimelineListeners();
             if (this.encounterDirector) {
                 this.encounterDirector.destroy();
@@ -131,6 +135,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     onResize() {
+        if (!this.cameras || !this.cameras.main) return;
         const { width, height } = this.scale;
         
         // Target logical height: 960
@@ -174,6 +179,12 @@ export default class GameScene extends Phaser.Scene {
 
     spawnRobotAt(x, y, type, cueID = null) {
         const robot = new Robot(this, x, y, type);
+        
+        // Sync with current pixel art state
+        if (this.player) {
+            robot.setPixelArtEnabled(this.player.pixelArtEnabled);
+        }
+        
         robot.cueID = cueID;
         this.robotGroup.add(robot);
         return robot;
@@ -402,6 +413,86 @@ export default class GameScene extends Phaser.Scene {
                 this.handlePlayerDefeat();
             }
         }
+    }
+
+    triggerNova() {
+        if (!this.player || this.player.isDestroyed || this.player.isRespawning || this.isGameOver) return;
+
+        // 1. Spend heart
+        if (this.player.spendHeartForNova()) {
+            // Update HUD immediately
+            this.hud.setHearts(this.player.hearts, this.player.maxHearts);
+            
+            // 2. Visual Effect: Cyan/white expanding ring
+            this.createNovaEffect(this.player.x, this.player.y);
+            
+            // 3. Clear Robots
+            this.clearOrdinaryRobots();
+            
+            // 4. Suspend encounters
+            if (this.encounterDirector) {
+                this.encounterDirector.cancelNovaFormations();
+                this.encounterDirector.suspendAmbientSpawning(COMBAT_CONFIG.nova.ambientSuspensionTime);
+            }
+            
+            // Play heart loss sound as feedback
+            this.playSurvivalSound('heartLoss');
+            
+            const isDebug = window.location.search.includes('debug=1');
+            if (isDebug) console.log(`[SESSION ${this.sessionID}] NOVA_ACTIVATED. Hearts: ${this.player.hearts}`);
+        }
+    }
+
+    createNovaEffect(x, y) {
+        const ring = this.add.graphics();
+        ring.lineStyle(8, 0x00ffff, 1);
+        ring.strokeCircle(0, 0, 10);
+        ring.setPosition(x, y);
+        
+        this.tweens.add({
+            targets: ring,
+            scale: 150, 
+            alpha: 0,
+            duration: COMBAT_CONFIG.nova.expansionTime,
+            ease: 'Expo.out',
+            onComplete: () => ring.destroy()
+        });
+        
+        // Brief pulse effect
+        const flash = this.add.graphics();
+        flash.fillStyle(0xffffff, 0.2);
+        flash.fillRect(0, this.cameras.main.scrollY, 1280, 960);
+        this.tweens.add({
+            targets: flash,
+            alpha: 0,
+            duration: 200,
+            onComplete: () => flash.destroy()
+        });
+    }
+
+    clearOrdinaryRobots() {
+        // Includes Pursuers, Sentinels, and Armored Pursuers
+        // We only destroy ordinary robots in the robotGroup.
+        // Scripted entities like ProxyBoss, GermanSoldier etc are usually NOT in this group 
+        // OR they are handled specially.
+        const robots = this.robotGroup.getChildren();
+        const toDestroy = [];
+        
+        robots.forEach(robot => {
+            if (robot.active && !robot.isDestroyed) {
+                const type = robot.type;
+                if (type === 'PURSUER' || type === 'SENTINEL' || type === 'ARMORED_PURSUER') {
+                    toDestroy.push(robot);
+                }
+            }
+        });
+
+        toDestroy.forEach(robot => {
+            // No score for NOVA kills
+            // robot.die() emits 'robotDestroyed' but score is added in collision handlers
+            // We just call die() directly.
+            robot.die();
+        });
     }
 
     handleProjectileBossCollision(projectile, component) {
@@ -1184,6 +1275,7 @@ export default class GameScene extends Phaser.Scene {
         if (this.timeline) {
             this.timeline.stop();
         }
+        this.scene.stop('GameOverScene');
         this.scene.start('TitleScene');
     }
 
@@ -1231,7 +1323,11 @@ export default class GameScene extends Phaser.Scene {
         }
 
         // 3. Update Player
-        this.player.update(this.controls.getState(), delta);
+        const input = this.controls.getState();
+        if (input.isFiringNova) {
+            this.triggerNova();
+        }
+        this.player.update(input, delta);
 
         // 4. Update Weapons
         this.weaponSystem.update();

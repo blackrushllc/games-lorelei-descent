@@ -29,6 +29,16 @@ export default class Heart extends Phaser.GameObjects.Container {
         // Expiration logic
         this.spawnTime = scene.time.now;
         this.lifespan = 15000; // 15 seconds
+        
+        this.pixelArtEnabled = true;
+    }
+
+    setPixelArtEnabled(enabled) {
+        this.pixelArtEnabled = enabled;
+        // Heart currently has no pixel art sprites
+        const showProcedural = true;
+        this.graphic.setVisible(showProcedural);
+        this.glow.setVisible(showProcedural);
     }
 
     drawHeart(g, x, y, size) {

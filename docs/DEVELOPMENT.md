@@ -21,6 +21,7 @@
 8.  **Opening chase** (Completed)
 9.  **Proxy boss and German soldier** (Completed)
 9.5 **PixelLab Character Artwork Integration** (Completed)
+9.6 **NOVA — Emergency Area-Clear Weapon** (Completed)
 10. **Super-robot and Panzer**
 11. **Ending and promotion**
 12. **Character and environment artwork**
@@ -29,6 +30,36 @@
 15. **Production deployment**
 
 ## Verification
+
+### Step 9.6 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. Click **START GAME**.
+4. **NOVA Activation**:
+    - Ensure Blackrush has at least 2 hearts.
+    - Press **SPACE** once. Verify that:
+        - One heart is consumed.
+        - A cyan/white ring expands rapidly from the player.
+        - All Pursuers, Sentinels, and Armored Pursuers in the viewport are destroyed.
+        - NO score is added for these kills.
+        - Blackrush becomes temporarily invulnerable (flashing).
+    - Hold **SPACE**; verify that only one NOVA is triggered.
+    - Press **SPACE** with only 1 heart remaining; verify NOVA does not activate.
+5. **Encounter Behavior**:
+    - Activate NOVA during a dense swarm.
+    - Verify that pending formation robots are cancelled.
+    - Verify that ambient spawning pauses for 2 seconds.
+    - Verify that music and scripted timeline events continue normally.
+6. **Exemptions**:
+    - Trigger NOVA during the Proxy Boss encounter.
+    - Verify the Boss and Nadine are NOT damaged.
+    - Verify that hearts and grenades on the ground are NOT destroyed.
+7. **HUD**:
+    - Verify the `NOVA [SPACE] — COST: 1 HEART` indicator is visible and changes color when unavailable.
+8. **Diagnostics**:
+    - Verify the `Nova Ready` status in the debug panel.
+    - Use the **TRIGGER NOVA** debug button to test without keyboard input.
+9. **Tests**: Run `npm test` and verify all 75 tests pass.
 
 ### Step 9.5 Verification
 1. Run `npm run sprites` to compile the character atlases.
@@ -210,6 +241,12 @@
     - Complete a mission, then click **REPLAY**.
     - Verify the new mission starts correctly and transitions to victory again at the end.
 6. **Tests**: Run `npm test` and verify all 47 tests pass (including new lifecycle safety tests).
+
+### Step 9.6 Maintenance
+- **onResize Fix**: Resolved `TypeError: Cannot read properties of undefined (reading 'setZoom')` by adding defensive guards for `this.cameras` and `this.scene.isActive()` in all `onResize` handlers.
+- **Listener Cleanup**: Properly unregistered `this.scale.on('resize', ...)` listeners in the `shutdown` event of all scenes to prevent memory leaks and crashes during scene transitions.
+- **Accidental Exit Protection**: Moved the `BACK TO TITLE` developer button in `GameScene` to the bottom-left corner and restricted its visibility to debug mode (`?debug=1`) to prevent accidental clicks during gameplay.
+- **Verification**: Run `npm test` to verify all 75 tests pass.
 
 ### Development Build
 Run the following command to start the development server:
