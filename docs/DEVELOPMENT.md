@@ -22,6 +22,7 @@
 9.  **Proxy boss and German soldier** (Completed)
 9.5 **PixelLab Character Artwork Integration** (Completed)
 9.6 **NOVA — Emergency Area-Clear Weapon** (Completed)
+9.7 **Adaptive Assistance and Arena Checkpoints** (Completed)
 10. **Super-robot and Panzer**
 11. **Ending and promotion**
 12. **Character and environment artwork**
@@ -30,6 +31,32 @@
 15. **Production deployment**
 
 ## Verification
+
+### Step 9.7 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Adaptive Assistance**:
+    - Observe `Assistance` level in the diagnostics panel (begins at `0 (1.0x)`).
+    - Collect a heart pickup (e.g. at 120s `HEART_0`).
+    - Verify `Assistance` increases to `1 (0.5x)`.
+    - Verify subsequent robot formations (e.g. `FIRST_SPECTACLE4` at 125s) are significantly smaller but still recognizable.
+    - Collect a second heart; verify multiplier changes to `0.35x`.
+    - Use the **ASST: 0-3** buttons in **COMBAT TOOLS** to manually test different levels.
+    - Confirm that assistance only applies during the Synth descent (before 5:00).
+4. **Arena Checkpoints**:
+    - Reach the Proxy Boss arena (Synth 5:00).
+    - Verify the console logs `Checkpoint Unlocked: PROXY` and diagnostics show `Checkpoint: PROXY`.
+    - Die during the boss encounter.
+    - Verify the Game Over screen displays **CONTINUE FROM ARENA**.
+    - Click **CONTINUE FROM ARENA**.
+    - Verify the game restarts Synth at 5:00, with 3 hearts and 100 shield.
+    - Verify the Proxy Boss, arena, and Nadine are correctly reset to their starting states.
+    - Repeat the process to ensure lifecycle safety (no duplicate scenes or audio errors).
+5. **Mission Lifecycle**:
+    - Select **RESTART MISSION** from the Game Over screen.
+    - Verify assistance level resets to 0 and the mission begins at Synth 0:00.
+    - Return to the Title Screen and verify all mission state is cleared.
+6. **Tests**: Run `npm test` and verify all 85 tests pass, including `tests/step9-7.test.js`.
 
 ### Step 9.6 Verification
 1. Run `npm run dev`.

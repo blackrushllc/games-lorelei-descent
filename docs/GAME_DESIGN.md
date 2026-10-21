@@ -43,8 +43,10 @@ Both layers are governed by:
     - **Shield Regeneration:** If Blackrush avoids damage for 4 seconds, the shield begins regenerating at 12 points per second.
     - **Hearts:** Blackrush has 6 hearts (lives). Losing all hearts results in final defeat.
     - **Automatic Respawn:** If hearts remain after shield depletion, Blackrush automatically respawns in a safe position after 1.2 seconds with 3 seconds of invulnerability.
-    - **Low-Life Warning:** A Nintendo-style two-note electronic warning repeats when 2 hearts remain (every 8s) or 1 heart remains (every 4s).
+    - **Low-Life Warning:** A Nintendo-style two-note electronic warning repeats when 2 hearts remain (every 4s) or 1 heart remains (every 2s).
 - **NOVA Weapon:** An emergency area-clear attack. Pressing **SPACE** consumes one heart to instantly destroy all ordinary robots within the arena and provides 1 second of invulnerability. Only available when 2 or more hearts remain.
+- **Adaptive Assistance:** Collecting HEART_DROP pickups increases mission-level assistance, reducing future descent encounter sizes (up to 25% population at 3+ hearts).
+- **Arena Checkpoints:** Reaching boss arenas (Proxy, Cathedral) unlocks checkpoints, allowing players to continue with 3 hearts and full shield after a Game Over.
 - **Energy Bolts:** Rapid-fire projectiles. Effective against unarmored robots but bounce off armor.
 - **Throwing Axe:** Heavy weapon that penetrates ordinary robots and strips armor from Armored Pursuers. Applies significant knockback.
 - **AI Behaviors:** Robots feature a state-machine AI (Idle, Pursue, Target, Firing, Staggered).

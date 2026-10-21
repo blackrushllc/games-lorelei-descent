@@ -110,6 +110,24 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         return this.invulnerabilityTimer > 0;
     }
 
+    reset() {
+        this.shield = this.maxShield;
+        this.hearts = this.combatConfig.startingHearts;
+        this.isDestroyed = false;
+        this.isRespawning = false;
+        this.isFinalDefeat = false;
+        this.invulnerabilityTimer = 0;
+        this.lastDamageTime = 0;
+        this.regenTimer = 0;
+        this.alpha = 1;
+        this.scale = 1;
+        this.setVisible(true);
+        if (this.body) {
+            this.body.enable = true;
+            this.body.setVelocity(0, 0);
+        }
+    }
+
     update(inputState, delta) {
         if (this.isFinalDefeat) return;
 

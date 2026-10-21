@@ -18,6 +18,7 @@ export default class TimelineDirector extends EventEmitter {
         this.passedEvents = new Set();
         this.lastTime = 0;
         this.isExplicitSeeking = false;
+        this.isNaturalProgression = false;
         
         // Global time tracking
         this.globalTime = 0;
@@ -41,23 +42,31 @@ export default class TimelineDirector extends EventEmitter {
     /**
      * Starts the timeline for a specific track.
      * @param {string} trackKey 
+     * @param {number} startTime Optional start time in seconds
      */
-    startTrack(trackKey) {
+    startTrack(trackKey, startTime = 0) {
         const track = TIMELINE_CONFIG.tracks[trackKey];
         if (!track) return;
 
         this.currentTrackKey = trackKey;
         this.passedEvents.clear();
-        this.lastTime = 0;
+        this.lastTime = startTime;
         
+        // If we start at a specific time, mark it as seeking so events aren't immediately fired 
+        // unless they are exactly at startTime. Actually, handleSeek(startTime) will clear them.
+        if (startTime > 0) {
+            this.handleSeek(startTime);
+        }
+
         this.audioDirector.play(
             track.id, 
-            track.id, // assetKey should match track.id in BootScene
-            () => this.onTrackComplete(trackKey)
+            track.id, 
+            () => this.onTrackComplete(trackKey),
+            { seek: startTime }
         );
         
         this.update();
-        this.emit('trackStart', trackKey);
+        this.emit('trackStart', trackKey, startTime);
     }
 
     /**
@@ -81,6 +90,9 @@ export default class TimelineDirector extends EventEmitter {
         
         const currentTime = this.audioDirector.getCurrentTime();
         
+        // Natural progression: not seeking and not a huge frame jump
+        this.isNaturalProgression = !this.isExplicitSeeking && Math.abs(currentTime - this.lastTime) < 1.0;
+
         // Handle seeking or time jumps
         if (this.isExplicitSeeking || Math.abs(currentTime - this.lastTime) > 1.0) {
             // If it's not an explicit seek, it might be a huge frame drop.

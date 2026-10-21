@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { ARENA_CHECKPOINTS } from '../config/assistanceConfig.js';
 
 export default class GameOverScene extends Phaser.Scene {
     constructor() {
@@ -41,8 +42,29 @@ export default class GameOverScene extends Phaser.Scene {
             fontFamily: 'Arial'
         }).setOrigin(0.5);
 
+        // CONTINUE FROM ARENA (if available)
+        const missionState = this.game.missionState;
+        if (missionState && missionState.arenaCheckpoint) {
+            const cp = ARENA_CHECKPOINTS[missionState.arenaCheckpoint];
+            const continueBtn = this.add.text(width / 2, height / 2 + 20, cp.label, {
+                fontSize: '28px',
+                fill: '#00ffff',
+                fontFamily: 'Arial',
+                backgroundColor: '#222222',
+                padding: { x: 20, y: 10 }
+            })
+            .setOrigin(0.5)
+            .setInteractive({ useHandCursor: true })
+            .on('pointerdown', () => {
+                if (!this.inputActive) return;
+                this.continueFromArena();
+            })
+            .on('pointerover', () => continueBtn.setStyle({ fill: '#ffffff' }))
+            .on('pointerout', () => continueBtn.setStyle({ fill: '#00ffff' }));
+        }
+
         // RESTART MISSION
-        const restartBtn = this.add.text(width / 2, height / 2 + 80, 'RESTART MISSION', {
+        const restartBtn = this.add.text(width / 2, height / 2 + 100, 'RESTART MISSION', {
             fontSize: '28px',
             fill: '#00ff00',
             fontFamily: 'Arial',
@@ -59,7 +81,7 @@ export default class GameOverScene extends Phaser.Scene {
         .on('pointerout', () => restartBtn.setStyle({ fill: '#00ff00' }));
 
         // BACK TO TITLE
-        const titleBtn = this.add.text(width / 2, height / 2 + 160, 'BACK TO TITLE', {
+        const titleBtn = this.add.text(width / 2, height / 2 + 180, 'BACK TO TITLE', {
             fontSize: '22px',
             fill: '#ffffff',
             fontFamily: 'Arial',
@@ -79,6 +101,23 @@ export default class GameOverScene extends Phaser.Scene {
     onResize() {
         if (!this.scene.isActive()) return;
         this.createUI();
+    }
+
+    continueFromArena() {
+        const missionState = this.game.missionState;
+        if (!missionState || !missionState.arenaCheckpoint) return;
+        
+        const cp = ARENA_CHECKPOINTS[missionState.arenaCheckpoint];
+        if (!cp) return;
+
+        missionState.retryCount++;
+        console.log(`[SESSION ${this.game.sessionID}] CONTINUE_FROM_ARENA: ${cp.id} (Retry #${missionState.retryCount})`);
+        
+        this.timeline.stop();
+        this.timeline.startTrack(cp.track, cp.time);
+        
+        // The trackStart event will handle the rest in main.js and GameScene.js
+        this.scene.stop('GameOverScene');
     }
 
     restartGame() {

@@ -1,5 +1,6 @@
 import { ENCOUNTER_SCORE, AMBIENT_POLICY } from '../config/encounterScore.js';
 import { COMBAT_CONFIG } from '../config/combatConfig.js';
+import { ASSISTANCE_CONFIG } from '../config/assistanceConfig.js';
 
 /**
  * Orchestrates musically choreographed robot encounters.
@@ -267,14 +268,33 @@ export default class EncounterDirector {
         }
 
         const countRequested = Object.values(cue.counts).reduce((a, b) => a + b, 0);
+        
+        // PART A: Adaptive Assistance
+        let multiplier = 1.0;
+        const currentTime = this.timeline.audioDirector.getCurrentTime();
+        const missionState = this.scene.game.missionState;
+        
+        if (missionState && ASSISTANCE_CONFIG.affectsScripted && currentTime < ASSISTANCE_CONFIG.appliesBeforeSynthTime) {
+            const level = missionState.assistanceLevel || 0;
+            multiplier = ASSISTANCE_CONFIG.spawnMultipliers[Math.min(level, ASSISTANCE_CONFIG.spawnMultipliers.length - 1)];
+        }
+
+        let countToSpawn = Math.round(countRequested * multiplier);
+        
+        // Respect minimum formation count and preserve small encounters
+        if (countRequested >= ASSISTANCE_CONFIG.minimumFormationCount) {
+            countToSpawn = Math.max(ASSISTANCE_CONFIG.minimumFormationCount, countToSpawn);
+        } else if (countRequested > 0) {
+            countToSpawn = Math.max(1, countToSpawn);
+        }
+
         const currentCount = this.getActiveCount();
         const limit = cue.maxActive || this.maxActive;
         
-        let countToSpawn = countRequested;
         if (currentCount + countToSpawn > limit) {
             countToSpawn = Math.max(0, limit - currentCount);
             if (this.isDebug()) {
-                console.log(`[ENCOUNTER] Cue ${cue.id} capped: requested=${countRequested} actual=${countToSpawn} (cap=${limit})`);
+                console.log(`[ENCOUNTER] Cue ${cue.id} capped: requested=${countRequested} scaled=${Math.round(countRequested * multiplier)} actual=${countToSpawn} (cap=${limit})`);
             }
         }
 
@@ -417,8 +437,18 @@ export default class EncounterDirector {
         if (this.pendingFormations.length > 0) return;
 
         if (currentTime >= this.nextAmbientTime) {
+            let targetCount = AMBIENT_POLICY.targetCount;
+            
+            // PART A: Adaptive Assistance
+            const missionState = this.scene.game.missionState;
+            if (missionState && ASSISTANCE_CONFIG.affectsAmbient && currentTime < ASSISTANCE_CONFIG.appliesBeforeSynthTime) {
+                const level = missionState.assistanceLevel || 0;
+                const multiplier = ASSISTANCE_CONFIG.spawnMultipliers[Math.min(level, ASSISTANCE_CONFIG.spawnMultipliers.length - 1)];
+                targetCount = Math.max(1, Math.round(targetCount * multiplier));
+            }
+
             const currentActive = this.getActiveCount();
-            if (currentActive < AMBIENT_POLICY.targetCount) {
+            if (currentActive < targetCount) {
                 this.spawnAmbientRobot(currentTime);
             }
             

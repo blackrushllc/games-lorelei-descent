@@ -16,6 +16,7 @@ import EncounterDirector from '../systems/EncounterDirector.js';
 import { COMBAT_CONFIG } from '../config/combatConfig.js';
 import { PROXY_CONFIG } from '../config/proxyConfig.js';
 import { PROXY_BOSS_CONFIG } from '../config/proxyBossConfig.js';
+import { ASSISTANCE_CONFIG, ARENA_CHECKPOINTS } from '../config/assistanceConfig.js';
 
 export default class GameScene extends Phaser.Scene {
     constructor() {
@@ -287,6 +288,15 @@ export default class GameScene extends Phaser.Scene {
             player.hearts++;
             this.hud.setHearts(player.hearts, player.maxHearts);
             
+            // PART A: Adaptive Assistance - Only on SUCCESSFUL pickup
+            if (this.game.missionState) {
+                this.game.missionState.heartsCollected++;
+                this.game.missionState.assistanceLevel++;
+                if (window.location.search.includes('debug=1')) {
+                    console.log(`[ASSISTANCE] Heart collected. Level: ${this.game.missionState.assistanceLevel}`);
+                }
+            }
+
             this.playSurvivalSound('heartGain');
             
             // Visual effect
@@ -1052,14 +1062,14 @@ export default class GameScene extends Phaser.Scene {
             }
         };
 
-        this.onTrackStart = (trackKey) => {
+        this.onTrackStart = (trackKey, startTime) => {
             // Guard: Studio is for EndingScene
             if (trackKey === 'STUDIO') return;
 
             // Guard: Ensure scene is active and valid
             if (!this.scene.isActive()) return;
 
-            console.log(`[SESSION ${this.sessionID}] TRACK_START: ${trackKey}`);
+            console.log(`[SESSION ${this.sessionID}] TRACK_START: ${trackKey} at ${startTime || 0}s`);
             
             // Full reset for track restart
             this.weaponSystem.reset();
@@ -1070,29 +1080,34 @@ export default class GameScene extends Phaser.Scene {
             this.spawnTestEncounter();
             
             // Survival state reset
-            this.player.maxShield = this.player.combatConfig.maxShield;
-            this.player.shield = this.player.maxShield;
-            this.player.hearts = this.player.combatConfig.startingHearts;
-            this.player.maxHearts = this.player.combatConfig.maxHearts;
-            this.player.isDestroyed = false;
-            this.player.isRespawning = false;
-            this.player.isFinalDefeat = false;
-            this.player.invulnerabilityTimer = 0;
-            this.player.lastDamageTime = 0;
-            this.survivalWarningTimer = 0;
-
-            if (this.player.body) {
-                this.player.body.enable = true;
+            if (this.player) {
+                this.player.reset();
+                
+                // Override for Arena Checkpoint continuation
+                if (startTime > 0 && this.game.missionState && this.game.missionState.arenaCheckpoint) {
+                    const cp = ARENA_CHECKPOINTS[this.game.missionState.arenaCheckpoint];
+                    // Check if we are starting at exactly this checkpoint
+                    if (cp && trackKey === cp.track && Math.abs(startTime - cp.time) < 1.0) {
+                        this.player.hearts = cp.startingHearts;
+                        this.player.shield = cp.startingShield;
+                        console.log(`[SESSION ${this.sessionID}] Applying checkpoint status: ${this.player.hearts} hearts`);
+                    }
+                }
+                
+                this.hud.setHearts(this.player.hearts, this.player.maxHearts);
+                this.hud.setShield(this.player.shield, this.player.maxShield);
             }
-            this.player.setAlpha(1);
-            this.player.setScale(1);
-            this.player.setVisible(true);
-            this.isGameOver = false;
             
-            this.hud.setShield(this.player.shield, this.player.combatConfig.maxShield);
-            this.hud.setHearts(this.player.hearts, this.player.maxHearts);
+            this.isGameOver = false;
             this.score = 0;
             this.hud.setScore(0);
+
+            // Reconstruct arena/boss if needed
+            if (startTime > 0) {
+                this.reconstructArena();
+            } else if (this.proxyBoss) {
+                this.proxyBoss.reset();
+            }
         };
 
         this.onSeek = () => {
@@ -1120,28 +1135,15 @@ export default class GameScene extends Phaser.Scene {
             this.spawnTestEncounter();
             
             // Reset combat stats for dev purposes as per policy
-            this.player.maxShield = this.player.combatConfig.maxShield;
-            this.player.shield = this.player.maxShield;
-            this.player.hearts = this.player.combatConfig.startingHearts;
-            this.player.isDestroyed = false;
-            this.player.isRespawning = false;
-            this.player.isFinalDefeat = false;
-            this.player.invulnerabilityTimer = 0;
-            this.player.lastDamageTime = 0;
-            this.survivalWarningTimer = 0;
-
-            if (this.player.body) {
-                this.player.body.enable = true;
+            if (this.player) {
+                this.player.reset();
+                this.hud.setShield(this.player.shield, this.player.maxShield);
+                this.hud.setHearts(this.player.hearts, this.player.maxHearts);
             }
-            this.player.setAlpha(1);
-            this.player.setScale(1);
-            this.player.setVisible(true);
-            this.isGameOver = false;
             
-            this.hud.setShield(this.player.shield, this.player.combatConfig.maxShield);
-            this.hud.setHearts(this.player.hearts, this.player.maxHearts);
             this.score = 0;
             this.hud.setScore(0);
+            this.isGameOver = false;
         };
 
         this.onDebugReturnToTitle = () => {
@@ -1199,6 +1201,54 @@ export default class GameScene extends Phaser.Scene {
         this.events.off('robotDestroyed');
         this.events.off('robotArmorHit');
         this.events.off('playerDestroyed');
+    }
+
+    reconstructArena() {
+        // Clear old lasers, robots, grenade and soldier entities
+        if (this.robotGroup && this.robotGroup.scene) {
+            this.robotGroup.clear(true, true);
+        }
+        if (this.weaponSystem) {
+            this.weaponSystem.reset();
+        }
+        
+        // Soldier and Grenade cleanup
+        if (this.germanSoldier) this.germanSoldier.destroy();
+        if (this.grenade) this.grenade.destroy();
+        this.playerHasGrenade = false;
+
+        // Reset Proxy Boss health and components
+        if (this.proxyBoss) {
+            this.proxyBoss.reset();
+        }
+
+        console.log(`[SESSION ${this.sessionID}] Arena reconstructed for checkpoint`);
+    }
+
+    updateCheckpointAcquisition() {
+        if (!this.game.missionState) return;
+        
+        // Skip if not natural progression
+        if (!this.timeline.isNaturalProgression) return;
+
+        const state = this.timeline.getState();
+        const missionState = this.game.missionState;
+        
+        // Proxy Checkpoint: Synth 5:00
+        if (state.track === 'SYNTH' && state.time >= 300) {
+            if (missionState.arenaCheckpoint !== 'PROXY') {
+                missionState.arenaCheckpoint = 'PROXY';
+                console.log(`[SESSION ${this.sessionID}] Checkpoint Unlocked: PROXY`);
+            }
+        }
+        
+        // Cathedral Checkpoint: Cathedral start
+        if (state.track === 'CATHEDRAL') {
+            if (missionState.arenaCheckpoint !== 'SUPER_ROBOT') {
+                missionState.arenaCheckpoint = 'SUPER_ROBOT';
+                console.log(`[SESSION ${this.sessionID}] Checkpoint Unlocked: SUPER_ROBOT`);
+            }
+        }
     }
 
     reconstructBossState(time) {
@@ -1296,6 +1346,9 @@ export default class GameScene extends Phaser.Scene {
         // 1. Update Camera Descent
         const targetScrollY = this.descentController.getTargetScrollY();
         this.cameras.main.scrollY = targetScrollY;
+        
+        // Adaptive Assistance & Checkpoints (Step 9.7)
+        this.updateCheckpointAcquisition();
 
         // 1.5 Horizontal Camera tracking (Part B)
         this.updateHorizontalCamera(delta);

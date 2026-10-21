@@ -71,6 +71,7 @@ const DesktopControls = global.DesktopControls;
 const edCode = fs.readFileSync(path.resolve('src/systems/EncounterDirector.js'), 'utf8')
     .replace("import { ENCOUNTER_SCORE, AMBIENT_POLICY } from '../config/encounterScore.js';", "const AMBIENT_POLICY = { startTime: 0 }; const ENCOUNTER_SCORE = [];")
     .replace("import { COMBAT_CONFIG } from '../config/combatConfig.js';", "const COMBAT_CONFIG = global.COMBAT_CONFIG;")
+    .replace("import { ASSISTANCE_CONFIG } from '../config/assistanceConfig.js';", "const ASSISTANCE_CONFIG = { spawnMultipliers: [1,1,1,1] };")
     .replace("export default class EncounterDirector", "global.EncounterDirector = class EncounterDirector");
 (new Function(edCode))();
 const EncounterDirector = global.EncounterDirector;

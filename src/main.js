@@ -17,6 +17,14 @@ window.addEventListener('load', () => {
     game.sessionID = 0;
     game.isTransitioning = false;
 
+    // Mission-level state for adaptive assistance and checkpoints
+    game.missionState = {
+        assistanceLevel: 0,
+        heartsCollected: 0,
+        arenaCheckpoint: null,
+        retryCount: 0
+    };
+
     // Global update loop for timeline and debug panel
     // This ensures they update regardless of which scene is active.
     game.events.on('poststep', () => {
@@ -27,17 +35,26 @@ window.addEventListener('load', () => {
     });
 
     // Scene reconciliation: ensure the correct scene is active for the current track
-    game.timelineDirector.on('trackStart', (trackKey) => {
+    game.timelineDirector.on('trackStart', (trackKey, startTime) => {
         if (game.isTransitioning) return;
         game.isTransitioning = true;
 
         // Reset transitioning flag in next frame to allow trackStart to propagate
         setTimeout(() => { game.isTransitioning = false; }, 100);
 
-        // Increment session ID for new missions (Synth start)
-        if (trackKey === 'SYNTH') {
+        // Reset mission state and increment session ID for NEW missions
+        if (trackKey === 'SYNTH' && (startTime === 0 || startTime === undefined)) {
             game.sessionID++;
-            console.log(`[SESSION ${game.sessionID}] SESSION_START`);
+            game.missionState.assistanceLevel = 0;
+            game.missionState.heartsCollected = 0;
+            game.missionState.arenaCheckpoint = null;
+            game.missionState.retryCount = 0;
+            console.log(`[SESSION ${game.sessionID}] SESSION_START (NEW MISSION)`);
+        } else if (trackKey === 'SYNTH' || trackKey === 'CATHEDRAL') {
+            // If it's a continue/seek, we don't reset mission state, but we might increment session ID 
+            // if we want each attempt to be unique. Let's increment it anyway for clean logs.
+            game.sessionID++;
+            console.log(`[SESSION ${game.sessionID}] SESSION_RESTART (CONTINUE/SEEK at ${startTime}s)`);
         }
 
         const activeScenes = game.scene.getScenes(true);
@@ -63,9 +80,9 @@ window.addEventListener('load', () => {
             // But let's keep it simple: SYNTH always restarts. CATHEDRAL only starts if not already there.
             
             if (trackKey === 'SYNTH' || currentKey !== 'GameScene') {
-                console.log(`[SESSION ${game.sessionID}] Starting GameScene for track: ${trackKey}`);
+                console.log(`[SESSION ${game.sessionID}] Starting GameScene for track: ${trackKey} at ${startTime || 0}s`);
                 if (currentKey) game.scene.stop(currentKey);
-                game.scene.start('GameScene', { sessionID: game.sessionID, trackKey });
+                game.scene.start('GameScene', { sessionID: game.sessionID, trackKey, startTime });
             }
         }
     });

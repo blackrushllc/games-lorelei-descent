@@ -1,3 +1,6 @@
+import { TIMELINE_CONFIG } from '../config/timeline.js';
+import { ASSISTANCE_CONFIG } from '../config/assistanceConfig.js';
+
 /**
  * HTML-based developer panel for controlling and inspecting the timeline.
  */
@@ -101,6 +104,10 @@ export default class TimelineDebugPanel {
                 <div class="debug-row">Projectiles: <span id="diag-projectiles">0</span></div>
                 <div class="debug-row">Axes: <span id="diag-axes">0</span></div>
                 <div class="debug-row">Opening Proxy: <span id="diag-proxy">INACTIVE</span></div>
+                <div class="debug-row">Assistance: <span id="diag-assistance">0 (1.0x)</span></div>
+                <div class="debug-row">Hearts Collected: <span id="diag-hearts-collected">0</span></div>
+                <div class="debug-row">Checkpoint: <span id="diag-checkpoint">NONE</span></div>
+                <div class="debug-row">Retries: <span id="diag-retries">0</span></div>
             </div>
 
             <div id="debug-combat-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] COMBAT TOOLS</div>
@@ -109,6 +116,16 @@ export default class TimelineDebugPanel {
                     <button id="btn-reset-shield">RESET SHIELD</button>
                     <button id="btn-clear-robots">CLEAR ROBOTS</button>
                     <button id="btn-trigger-nova">TRIGGER NOVA</button>
+                </div>
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-set-assistance-0">ASST: 0</button>
+                    <button id="btn-set-assistance-1">1</button>
+                    <button id="btn-set-assistance-2">2</button>
+                    <button id="btn-set-assistance-3">3</button>
+                </div>
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-unlock-proxy">UNLOCK PROXY CP</button>
+                    <button id="btn-unlock-cathedral">CATHEDRAL CP</button>
                 </div>
                 <div style="margin-top: 5px; font-weight: bold;">SET SHIELD:</div>
                 <div class="debug-controls">
@@ -380,6 +397,38 @@ export default class TimelineDebugPanel {
             }
         };
 
+        [0, 1, 2, 3].forEach(level => {
+            const btn = $(`#btn-set-assistance-${level}`);
+            if (btn) {
+                btn.onclick = () => {
+                    if (this.game.missionState) {
+                        this.game.missionState.assistanceLevel = level;
+                        console.log(`[DEBUG] Assistance level set to ${level}`);
+                    }
+                };
+            }
+        });
+
+        const btnUnlockProxy = $('#btn-unlock-proxy');
+        if (btnUnlockProxy) {
+            btnUnlockProxy.onclick = () => {
+                if (this.game.missionState) {
+                    this.game.missionState.arenaCheckpoint = 'PROXY';
+                    console.log(`[DEBUG] Proxy checkpoint unlocked`);
+                }
+            };
+        }
+
+        const btnUnlockCathedral = $('#btn-unlock-cathedral');
+        if (btnUnlockCathedral) {
+            btnUnlockCathedral.onclick = () => {
+                if (this.game.missionState) {
+                    this.game.missionState.arenaCheckpoint = 'SUPER_ROBOT';
+                    console.log(`[DEBUG] Cathedral checkpoint unlocked`);
+                }
+            };
+        }
+
         const spawnRobot = (type) => {
             const gs = getGameScene();
             if (gs && gs.player) {
@@ -641,6 +690,16 @@ export default class TimelineDebugPanel {
                 if (gameScene.openingProxy) {
                     const op = gameScene.openingProxy;
                     $('#diag-proxy').textContent = op.visible ? `ACTIVE (Y=${Math.round(op.y)})` : 'INACTIVE';
+                }
+
+                // PART A: Assistance & Checkpoints
+                if (this.game.missionState) {
+                    const ms = this.game.missionState;
+                    const mult = ASSISTANCE_CONFIG.spawnMultipliers[Math.min(ms.assistanceLevel, ASSISTANCE_CONFIG.spawnMultipliers.length - 1)];
+                    $('#diag-assistance').textContent = `${ms.assistanceLevel} (${mult}x)`;
+                    $('#diag-hearts-collected').textContent = ms.heartsCollected;
+                    $('#diag-checkpoint').textContent = ms.arenaCheckpoint || 'NONE';
+                    $('#diag-retries').textContent = ms.retryCount;
                 }
 
                 // Sprite diagnostics

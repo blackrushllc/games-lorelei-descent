@@ -105,8 +105,9 @@ export default class AudioDirector {
      * @param {string} trackId Unique identifier for the track
      * @param {string} assetKey Phaser asset key
      * @param {Function} onComplete Callback when track ends
+     * @param {object} config Optional Phaser sound config (e.g. { seek: 300 })
      */
-    play(trackId, assetKey, onComplete = null) {
+    play(trackId, assetKey, onComplete = null, config = {}) {
         this.stop();
 
         this.currentTrackId = trackId;
@@ -124,8 +125,8 @@ export default class AudioDirector {
             });
         }
 
-        this.currentSound.play();
-        console.log(`AudioDirector: Playing track ${trackId} (${assetKey})`);
+        this.currentSound.play(config);
+        console.log(`AudioDirector: Playing track ${trackId} (${assetKey}) at ${config.seek || 0}s`);
     }
 
     /**

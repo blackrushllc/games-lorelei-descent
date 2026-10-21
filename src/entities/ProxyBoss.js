@@ -48,6 +48,33 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         this.laserGraphic.setVisible(showProcedural);
     }
 
+    reset() {
+        this.hp = this.config.health;
+        this.isDestroyed = false;
+        this.state = 'IDLE';
+        this.attackTimer = 0;
+        this.moveTimer = 0;
+        this.isLaserWarning = false;
+        this.isLaserFiring = false;
+        this.laserGraphic.clear();
+        this.alpha = 1.0;
+        
+        // Reset components
+        this.components.forEach((comp, key) => {
+            comp.reset();
+            const cfg = this.config.components[key];
+            if (cfg.exposedOnly) {
+                comp.setVisible(false);
+                comp.setActive(false);
+                if (comp.body) comp.body.enable = false;
+            } else {
+                comp.setVisible(true);
+                comp.setActive(true);
+                if (comp.body) comp.body.enable = true;
+            }
+        });
+    }
+
     setupComponents() {
         Object.entries(this.config.components).forEach(([key, cfg]) => {
             const comp = new BossComponent(this.scene, cfg.relativeX, cfg.relativeY, cfg);
@@ -274,6 +301,15 @@ class BossComponent extends Phaser.GameObjects.Container {
         // Boss components currently have no pixel art sprites
         const showProcedural = true;
         this.graphic.setVisible(showProcedural);
+    }
+
+    reset() {
+        this.hp = this.cfg.health;
+        this.armor = this.cfg.armor;
+        this.draw(0xaa00ff);
+        this.setVisible(true);
+        this.setActive(true);
+        if (this.body) this.body.enable = true;
     }
 
     draw(color) {
