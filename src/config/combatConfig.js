@@ -80,8 +80,13 @@ export const COMBAT_CONFIG = {
             preferredDistance: 250,
             contactDamage: 5,
             laserDamage: 15,
-            warningTime: 700, // ms
-            fireTime: 150, // ms
+            // Fair laser timing
+            laserConfig: {
+                trackingMs: 650,
+                lockedMs: 300,
+                firingMs: 180,
+                beamWidth: 12
+            },
             cooldown: 2500, // ms
             score: 200,
             color: 0xaa0000,

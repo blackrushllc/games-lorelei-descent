@@ -34,10 +34,13 @@ export const PROXY_BOSS_CONFIG = {
     attacks: {
         laser: {
             damage: 20,
-            warningTime: 1200, // ms
-            fireTime: 400, // ms
+            laserConfig: {
+                trackingMs: 800,
+                lockedMs: 300,
+                firingMs: 300,
+                beamWidth: 30
+            },
             cooldown: 5000, // ms
-            beamWidth: 30
         },
         contact: {
             damage: 25,

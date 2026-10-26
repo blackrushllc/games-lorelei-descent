@@ -28,8 +28,9 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         this.moveTimer = 0;
         
         this.laserAngle = 0;
-        this.isLaserWarning = false;
-        this.isLaserFiring = false;
+        this.laserConfig = this.config.attacks.laser.laserConfig;
+        this.attackTimer = 0;
+        this.attackSubState = 'NONE'; // NONE, TRACKING, LOCKED, FIRING
         
         this.pixelArtEnabled = true;
         
@@ -54,8 +55,7 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         this.state = 'IDLE';
         this.attackTimer = 0;
         this.moveTimer = 0;
-        this.isLaserWarning = false;
-        this.isLaserFiring = false;
+        this.attackSubState = 'NONE';
         this.laserGraphic.clear();
         this.alpha = 1.0;
         
@@ -154,41 +154,80 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
 
     updateAttacking(player, delta) {
         if (!player || player.isDestroyed) {
-            this.isLaserWarning = false;
-            this.isLaserFiring = false;
+            this.attackSubState = 'NONE';
             this.state = 'IDLE';
             return;
         }
 
-        if (this.isLaserWarning) {
-            // Track player slowly
+        this.attackTimer += delta;
+
+        if (this.attackSubState === 'TRACKING') {
             const targetAngle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
-            this.laserAngle = Phaser.Math.Angle.RotateTo(this.laserAngle, targetAngle, 0.02);
-            this.drawLaser(false);
-        } else if (this.isLaserFiring) {
-            this.drawLaser(true);
+            // Track player but with some inertia
+            this.laserAngle = Phaser.Math.Angle.RotateTo(this.laserAngle, targetAngle, 0.03);
+            this.drawLaser('TRACKING');
+
+            if (this.attackTimer >= this.laserConfig.trackingMs) {
+                this.attackSubState = 'LOCKED';
+                this.attackTimer = 0;
+                // Visual feedback for lock
+                this.scene.tweens.add({
+                    targets: this,
+                    scaleX: 1.1,
+                    scaleY: 1.1,
+                    duration: 100,
+                    yoyo: true
+                });
+            }
+        } else if (this.attackSubState === 'LOCKED') {
+            this.drawLaser('LOCKED');
+            if (this.attackTimer >= this.laserConfig.lockedMs) {
+                this.attackSubState = 'FIRING';
+                this.attackTimer = 0;
+                this.applyLaserDamage(player);
+            }
+        } else if (this.attackSubState === 'FIRING') {
+            this.drawLaser('FIRING');
+            if (this.attackTimer >= this.laserConfig.firingMs) {
+                this.attackSubState = 'NONE';
+                this.state = 'IDLE';
+                this.attackTimer = 0;
+            }
         }
     }
 
-    drawLaser(isDestructive) {
+    drawLaser(mode) {
         this.laserGraphic.clear();
         
-        // Calculate hit (simple for now)
         const maxLength = 2000;
         const lx = Math.cos(this.laserAngle) * maxLength;
         const ly = Math.sin(this.laserAngle) * maxLength;
+        const beamWidth = this.laserConfig.beamWidth;
 
-        if (isDestructive) {
-            this.laserGraphic.lineStyle(this.config.attacks.laser.beamWidth, 0xff00ff, 0.5);
+        if (mode === 'FIRING') {
+            this.laserGraphic.lineStyle(beamWidth, 0xff00ff, 0.5);
             this.laserGraphic.moveTo(0, 0);
             this.laserGraphic.lineTo(lx, ly);
             this.laserGraphic.strokePath();
             
-            this.laserGraphic.lineStyle(4, 0xffffff, 1);
+            this.laserGraphic.lineStyle(beamWidth / 4, 0xffffff, 1);
+            this.laserGraphic.moveTo(0, 0);
+            this.laserGraphic.lineTo(lx, ly);
+            this.laserGraphic.strokePath();
+        } else if (mode === 'LOCKED') {
+            // Brighter pulsing warning
+            const alpha = 0.4 + Math.sin(this.scene.time.now * 0.02) * 0.2;
+            this.laserGraphic.lineStyle(4, 0xffffff, alpha);
+            this.laserGraphic.moveTo(0, 0);
+            this.laserGraphic.lineTo(lx, ly);
+            this.laserGraphic.strokePath();
+            
+            this.laserGraphic.lineStyle(2, 0xff00ff, 0.8);
             this.laserGraphic.moveTo(0, 0);
             this.laserGraphic.lineTo(lx, ly);
             this.laserGraphic.strokePath();
         } else {
+            // Tracking
             this.laserGraphic.lineStyle(2, 0xff00ff, 0.4);
             this.laserGraphic.moveTo(0, 0);
             this.laserGraphic.lineTo(lx, ly);
@@ -197,35 +236,29 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
     }
 
     startLaserAttack(player) {
-        this.isLaserWarning = true;
-        this.isLaserFiring = false;
+        this.state = 'ATTACKING';
+        this.attackSubState = 'TRACKING';
+        this.attackTimer = 0;
         this.laserAngle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
-
-        this.scene.time.delayedCall(this.config.attacks.laser.warningTime, () => {
-            if (this.state === 'ATTACKING') {
-                this.fireLaser(player);
-            }
-        });
-    }
-
-    fireLaser(player) {
-        this.isLaserWarning = false;
-        this.isLaserFiring = true;
-
-        // Apply damage if hit
-        this.applyLaserDamage(player);
-
-        this.scene.time.delayedCall(this.config.attacks.laser.fireTime, () => {
-            this.isLaserFiring = false;
-            if (this.state === 'ATTACKING') this.state = 'IDLE';
-        });
     }
 
     applyLaserDamage(player) {
+        // Geometric check for damage
         const maxLength = 2000;
         const ray = new Phaser.Geom.Line(this.x, this.y, this.x + Math.cos(this.laserAngle) * maxLength, this.y + Math.sin(this.laserAngle) * maxLength);
+        
+        // Use a realistic hit circle for the player
         const playerCircle = new Phaser.Geom.Circle(player.x, player.y, 25);
         
+        // Also check environmental blocking for boss laser
+        const obsHit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, maxLength);
+        const playerDist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+        
+        if (obsHit && obsHit.distance < playerDist - 20) {
+            // Blocked by cover
+            return;
+        }
+
         if (Phaser.Geom.Intersects.GetLineToCircle(ray, playerCircle)) {
             const attack = {
                 type: 'LASER',
@@ -265,10 +298,35 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
     }
 
     die() {
+        if (this.state === 'DEFEATED') return;
         this.isDestroyed = true;
         this.state = 'DEFEATED';
-        this.alpha = 0.5;
-        // Trigger destruction effects in Scene
+        this.attackSubState = 'NONE';
+        this.laserGraphic.clear();
+        
+        // Disable components
+        this.components.forEach(comp => {
+            comp.setActive(false);
+            if (comp.body) comp.body.enable = false;
+        });
+
+        // Procedural breakup
+        this.scene.tweens.add({
+            targets: this,
+            alpha: 0,
+            y: this.y + 100,
+            duration: 1500,
+            onComplete: () => this.setVisible(false)
+        });
+
+        // Some explosions
+        for (let i = 0; i < 8; i++) {
+            this.scene.time.delayedCall(i * 150, () => {
+                const rx = this.x + (Math.random() - 0.5) * 80;
+                const ry = this.y + (Math.random() - 0.5) * 120;
+                this.scene.createImpactSparks(rx, ry, Math.random() * Math.PI * 2, true);
+            });
+        }
     }
 }
 
@@ -285,7 +343,7 @@ class BossComponent extends Phaser.GameObjects.Container {
         
         // Visuals
         this.graphic = scene.add.graphics();
-        this.draw(0xaa00ff);
+        this.draw();
         this.add(this.graphic);
         
         // Physics
@@ -306,18 +364,26 @@ class BossComponent extends Phaser.GameObjects.Container {
     reset() {
         this.hp = this.cfg.health;
         this.armor = this.cfg.armor;
-        this.draw(0xaa00ff);
+        this.draw();
         this.setVisible(true);
         this.setActive(true);
         if (this.body) this.body.enable = true;
     }
 
-    draw(color) {
+    draw() {
         this.graphic.clear();
+        const cfg = this.cfg;
+        const color = this.hp > 0 ? (this.armor > 0 ? 0x888888 : (cfg.exposedOnly ? 0xffaa00 : 0xaa00ff)) : 0x333333;
+        
         this.graphic.fillStyle(color, 1);
-        this.graphic.fillCircle(0, 0, this.cfg.radius);
+        this.graphic.fillCircle(0, 0, cfg.radius);
         this.graphic.lineStyle(2, 0xffffff, 0.5);
-        this.graphic.strokeCircle(0, 0, this.cfg.radius);
+        this.graphic.strokeCircle(0, 0, cfg.radius);
+        
+        if (cfg.exposedOnly && this.hp > 0) {
+            this.graphic.lineStyle(4, 0xff0000, 1);
+            this.graphic.strokeCircle(0, 0, cfg.radius);
+        }
     }
 
     takeDamage(attack) {

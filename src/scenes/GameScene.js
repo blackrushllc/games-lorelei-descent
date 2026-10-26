@@ -5,6 +5,7 @@ import Robot from '../entities/Robot.js';
 import Heart from '../entities/Heart.js';
 import Proxy from '../entities/Proxy.js';
 import ProxyBoss from '../entities/ProxyBoss.js';
+import SuperRobot from '../entities/SuperRobot.js';
 import GermanSoldier from '../entities/GermanSoldier.js';
 import Grenade from '../entities/Grenade.js';
 import Hud from '../ui/Hud.js';
@@ -73,6 +74,10 @@ export default class GameScene extends Phaser.Scene {
 
         // 4.5 Opening Proxy (Scripted Escape)
         this.openingProxy = new Proxy(this, PROXY_CONFIG.opening);
+        this.proxyBoss = null;
+        this.superRobot = null;
+        this.germanSoldier = null;
+        this.grenade = null;
 
         // 5. Encounter Orchestration
         this.encounterDirector = new EncounterDirector(this);
@@ -123,6 +128,9 @@ export default class GameScene extends Phaser.Scene {
             }
             if (this.proxyBoss) {
                 this.proxyBoss.destroy();
+            }
+            if (this.superRobot) {
+                this.superRobot.destroy();
             }
             if (this.germanSoldier) {
                 this.germanSoldier.destroy();
@@ -623,6 +631,47 @@ export default class GameScene extends Phaser.Scene {
             }
 
             console.log(`[SESSION ${this.sessionID}] PROXY_BOSS_COLLAPSED`);
+        }
+    }
+
+    handleSuperRobotAppears() {
+        const arenaY = this.descentController.getArenaPosition();
+        this.superRobot = new SuperRobot(this, 640, arenaY + 300);
+        
+        this.superRobot.components.forEach(comp => {
+            this.bossComponentGroup.add(comp);
+        });
+        
+        console.log(`[SESSION ${this.sessionID}] SUPER_ROBOT_SPAWNED`);
+    }
+
+    handlePanzerShot(shotNumber) {
+        if (!this.superRobot) return;
+        
+        console.log(`[SESSION ${this.sessionID}] PANZER_SHOT_${shotNumber} IMPACT`);
+        
+        // Panzer shots are powerful - they break armor and deal high damage
+        const attack = {
+            type: COMBAT_CONFIG.types.ENERGY, // Placeholder for Panzer impact
+            damage: 20,
+            armorBreaking: true,
+            direction: Math.PI / 2,
+            knockback: 1000
+        };
+
+        // Pick a random functional component to damage
+        const components = [...this.superRobot.components.values()].filter(c => c.hp > 0);
+        if (components.length > 0) {
+            const target = Phaser.Utils.Array.GetRandom(components);
+            this.superRobot.onComponentHit(target, attack);
+            this.createImpactSparks(this.superRobot.x + target.x, this.superRobot.y + target.y, attack.direction, true);
+        }
+    }
+
+    handleFinalBossDestruction() {
+        if (this.superRobot) {
+            this.superRobot.die();
+            console.log(`[SESSION ${this.sessionID}] SUPER_ROBOT_DESTROYED`);
         }
     }
 
@@ -1177,6 +1226,18 @@ export default class GameScene extends Phaser.Scene {
                 case 'PROXY_COLLAPSE':
                     this.handleProxyCollapse();
                     break;
+                case 'SUPER_ROBOT_APPEARS':
+                    this.handleSuperRobotAppears();
+                    break;
+                case 'PANZER_SHOT_1':
+                    this.handlePanzerShot(1);
+                    break;
+                case 'PANZER_SHOT_2':
+                    this.handlePanzerShot(2);
+                    break;
+                case 'FINAL_BOSS_DESTRUCTION':
+                    this.handleFinalBossDestruction();
+                    break;
             }
         };
 
@@ -1217,9 +1278,12 @@ export default class GameScene extends Phaser.Scene {
         if (this.grenade) this.grenade.destroy();
         this.playerHasGrenade = false;
 
-        // Reset Proxy Boss health and components
+        // Reset Bosses
         if (this.proxyBoss) {
             this.proxyBoss.reset();
+        }
+        if (this.superRobot) {
+            this.superRobot.reset();
         }
 
         console.log(`[SESSION ${this.sessionID}] Arena reconstructed for checkpoint`);
@@ -1257,6 +1321,10 @@ export default class GameScene extends Phaser.Scene {
             this.proxyBoss.destroy();
             this.proxyBoss = null;
         }
+        if (this.superRobot) {
+            this.superRobot.destroy();
+            this.superRobot = null;
+        }
         if (this.germanSoldier) {
             this.germanSoldier.destroy();
             this.germanSoldier = null;
@@ -1290,6 +1358,16 @@ export default class GameScene extends Phaser.Scene {
             
             if (time >= cfg.grenadeSequence) {
                 this.proxyBoss.state = 'STAGGERED';
+            }
+        }
+
+        // CATHEDRAL reconstruct
+        if (trackKey === 'CATHEDRAL') {
+            this.handleSuperRobotAppears();
+            // Reconstruct some component damage if deep into track
+            if (time > 60) {
+                const ls = this.superRobot.components.get('LEFT_SHOULDER');
+                if (ls) ls.takeDamage({ damage: 20, armorBreaking: true });
             }
         }
     }
@@ -1367,6 +1445,10 @@ export default class GameScene extends Phaser.Scene {
         // 2.6 Update Proxy Boss (Part C)
         if (this.proxyBoss) {
             this.proxyBoss.update(this.player, delta);
+        }
+
+        if (this.superRobot) {
+            this.superRobot.update(this.player, delta);
         }
 
         // 2.7 Update Grenade (if held by player - Part D)

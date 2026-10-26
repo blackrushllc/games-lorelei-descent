@@ -37,6 +37,14 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.retreatX = 0;
         this.retreatY = 0;
 
+        // Fair laser timing
+        this.laserConfig = this.combatConfig.laserConfig || {
+            trackingMs: 700,
+            lockedMs: 0,
+            firingMs: 150,
+            beamWidth: 10
+        };
+
         // 2. Visuals
         this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
         this.pixelArtEnabled = true;
@@ -223,6 +231,10 @@ export default class Robot extends Phaser.GameObjects.Container {
                 this.handleAcquire(player, dist, delta);
                 break;
 
+            case 'LOCKED':
+                this.handleLocked(player, delta);
+                break;
+
             case 'FIRING':
                 this.handleFiring(delta);
                 break;
@@ -371,35 +383,13 @@ export default class Robot extends Phaser.GameObjects.Container {
     }
 
     handleAcquire(player, dist, delta) {
-        const prefDist = this.combatConfig.preferredDistance;
-        const angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
-        
         this.stateTimer += delta;
-        if (this.stateTimer < this.combatConfig.warningTime * 0.8) {
-            this.laserAngle = angle;
-        }
+        const angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        this.laserAngle = angle;
 
-        // Ray-based laser blocking check
-        const hit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, 1000);
-        const distToPlayer = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
-        const isPlayerBlocked = hit && hit.distance < distToPlayer - 20;
-        const laserLen = hit ? hit.distance : 1000;
+        this.handleSentinelTactics(player, dist, delta);
 
-        // Movement logic: maintain distance + steer if blocked
-        if (dist > prefDist + 50) {
-            this.body.setVelocity(Math.cos(angle) * this.combatConfig.speed, Math.sin(angle) * this.combatConfig.speed);
-        } else if (dist < prefDist - 50) {
-            this.body.setVelocity(-Math.cos(angle) * this.combatConfig.speed, -Math.sin(angle) * this.combatConfig.speed);
-        } else if (isPlayerBlocked) {
-            // Reposition sideways if line of sight is blocked
-            const timeFactor = Math.floor(this.scene.time.now / 1000);
-            const steerDir = (timeFactor % 2 === 0) ? 1 : -1;
-            const sideAngle = this.laserAngle + (Math.PI / 2) * steerDir;
-            this.body.setVelocity(Math.cos(sideAngle) * this.combatConfig.speed, Math.sin(sideAngle) * this.combatConfig.speed);
-        } else {
-            this.body.setVelocity(0, 0);
-        }
-
+        const laserLen = 1000;
         this.laserGraphic.clear();
         this.laserGraphic.lineStyle(1, 0xff0000, 0.4);
         
@@ -409,7 +399,36 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.laserGraphic.lineTo(lx, ly);
         this.laserGraphic.strokePath();
 
-        if (this.stateTimer >= this.combatConfig.warningTime) {
+        if (this.stateTimer >= this.laserConfig.trackingMs) {
+            this.aiState = 'LOCKED';
+            this.stateTimer = 0;
+            // Brighter pulse on lock
+            this.scene.tweens.add({
+                targets: this.eye,
+                scale: 1.5,
+                duration: 100,
+                yoyo: true
+            });
+        }
+    }
+
+    handleLocked(player, delta) {
+        this.stateTimer += delta;
+        const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+        this.handleSentinelTactics(player, dist, delta);
+
+        const laserLen = 1000;
+        this.laserGraphic.clear();
+        // Brighter locked beam
+        this.laserGraphic.lineStyle(2, 0xffffff, 0.6);
+        
+        const lx = Math.cos(this.laserAngle) * laserLen;
+        const ly = Math.sin(this.laserAngle) * laserLen;
+        this.laserGraphic.moveTo(0, 0);
+        this.laserGraphic.lineTo(lx, ly);
+        this.laserGraphic.strokePath();
+
+        if (this.stateTimer >= this.laserConfig.lockedMs) {
             this.aiState = 'FIRING';
             this.stateTimer = 0;
         }
@@ -419,24 +438,24 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.stateTimer += delta;
         this.body.setVelocity(0, 0);
 
-        // New: Ray-based laser blocking for destructive beam
-        // Also checks for robots (friendly fire) and player
+        // Calculate impact based on LOCKED angle
         const result = this.calculateLaserImpact();
         const laserLen = result.distance;
+        const beamWidth = this.laserConfig.beamWidth;
 
         this.laserGraphic.clear();
-        this.laserGraphic.lineStyle(6, 0xff0000, 1);
+        this.laserGraphic.lineStyle(beamWidth / 2, 0xff0000, 1);
         this.laserGraphic.strokeCircle(0, 0, 4); 
         
         const lx = Math.cos(this.laserAngle) * laserLen;
         const ly = Math.sin(this.laserAngle) * laserLen;
         
-        this.laserGraphic.lineStyle(10, 0xff6600, 0.3);
+        this.laserGraphic.lineStyle(beamWidth, 0xff6600, 0.3);
         this.laserGraphic.moveTo(0, 0);
         this.laserGraphic.lineTo(lx, ly);
         this.laserGraphic.strokePath();
         
-        this.laserGraphic.lineStyle(4, 0xffffff, 1);
+        this.laserGraphic.lineStyle(beamWidth / 3, 0xffffff, 1);
         this.laserGraphic.moveTo(0, 0);
         this.laserGraphic.lineTo(lx, ly);
         this.laserGraphic.strokePath();
@@ -445,10 +464,33 @@ export default class Robot extends Phaser.GameObjects.Container {
             this.applyLaserDamage(result);
         }
 
-        if (this.stateTimer >= this.combatConfig.fireTime) {
+        if (this.stateTimer >= this.laserConfig.firingMs) {
             this.laserGraphic.clear();
             this.aiState = 'COOLDOWN';
             this.stateTimer = 0;
+        }
+    }
+
+    handleSentinelTactics(player, dist, delta) {
+        const prefDist = this.combatConfig.preferredDistance;
+        const angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        
+        // Ray-based laser blocking check for movement decision
+        const hit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, 1000);
+        const distToPlayer = dist;
+        const isPlayerBlocked = hit && hit.distance < distToPlayer - 20;
+
+        if (dist > prefDist + 50) {
+            this.body.setVelocity(Math.cos(angle) * this.combatConfig.speed, Math.sin(angle) * this.combatConfig.speed);
+        } else if (dist < prefDist - 50) {
+            this.body.setVelocity(-Math.cos(angle) * this.combatConfig.speed, -Math.sin(angle) * this.combatConfig.speed);
+        } else if (isPlayerBlocked) {
+            const timeFactor = Math.floor(this.scene.time.now / 1000);
+            const steerDir = (timeFactor % 2 === 0) ? 1 : -1;
+            const sideAngle = this.laserAngle + (Math.PI / 2) * steerDir;
+            this.body.setVelocity(Math.cos(sideAngle) * this.combatConfig.speed, Math.sin(sideAngle) * this.combatConfig.speed);
+        } else {
+            this.body.setVelocity(0, 0);
         }
     }
 

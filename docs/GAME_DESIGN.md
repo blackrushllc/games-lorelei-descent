@@ -35,7 +35,7 @@ Both layers are governed by:
     - **Armored Pursuer:** Tougher enemy with heavy plates requiring axe hits to expose the core.
 - **The Old Man's Proxy:** Mid-game boss encountered in the Fixed Arena. Composed of multiple damageable components (Head, Arms, Core) and features laser attacks and tactical repositioning.
 - **German Soldier:** Scripted ally appearing during the Proxy finale to deliver the finishing blow via a grenade.
-- **Giant Super-Robot:** Final boss.
+- **Giant Super-Robot:** Final boss encountered in Cathedral. Composed of four circular defensive components (Shoulders, Knees) protecting a central core.
 
 ## Combat Mechanics
 - **Shield System:** Blackrush has 100 shield points. Taking damage from contact or lasers reduces the shield. When depleted, the player loses one heart.
@@ -49,8 +49,10 @@ Both layers are governed by:
 - **Arena Checkpoints:** Reaching boss arenas (Proxy, Cathedral) unlocks checkpoints, allowing players to continue with 3 hearts and full shield after a Game Over.
 - **Energy Bolts:** Rapid-fire projectiles. Effective against unarmored robots but bounce off armor.
 - **Throwing Axe:** Heavy weapon that penetrates ordinary robots and strips armor from Armored Pursuers. Applies significant knockback.
-- **AI Behaviors:** Robots feature a state-machine AI (Idle, Pursue, Target, Firing, Staggered).
-- **Destruction:** Satisfying visual effects including mechanical fragments, sparks, and impact flashes.
+- **AI Behaviors:** Robots feature a state-machine AI (Idle, Pursue, Target, Firing, Staggered). Sentinel and Boss laser attacks follow a fair 3-stage sequence: ACQUIRE (tracking), LOCK (aim freezes), and FIRE (actual beam).
+- **Dodge Mechanics:** Standardized laser telegraphing allows players to dodge aimed attacks by moving away during the "LOCK" window. Environmental cover also blocks destructive beams.
+- **Panzer Support:** During the Cathedral finale, scripted Panzer shots provide heavy fire support to weaken the Super-Robot's components.
+- **Destruction:** Satisfying visual effects including mechanical fragments, sparks, and impact flashes. Bosses feature procedural breakup and climactic destruction sequences.
 - **Scoring:** Points awarded for destroying robots and breaking armor.
 
 ## Controls and Mechanics (Desktop)

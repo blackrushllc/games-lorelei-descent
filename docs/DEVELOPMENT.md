@@ -443,3 +443,29 @@ The output will be in the `dist/` directory.
 8. **Diagnostics**:
     - Check the `Opening Proxy` diagnostic in the debug panel. It should show `ACTIVE` while visible and `INACTIVE` otherwise.
 9. **Tests**: Run `npm test` and verify all 63 tests pass (including new Step 8 tests).
+
+
+### Step 9.8 Verification
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/?debug=1`.
+3. **Fair Laser Targeting**:
+    - Engage a Sentinel. Observe the red targeting line.
+    - Verify it locks (turns brighter/white) briefly before firing.
+    - Verify you can dodge the beam by moving sideways during the lock.
+    - Confirm the beam stops at solid obstacles and does not damage you through cover.
+4. **Proxy Boss Finale**:
+    - Jump to Synth 5:00. Fight the Proxy.
+    - Damage components until the core is exposed.
+    - Observe the German Soldier arrival at ~5:40.
+    - Catch the grenade and deliver it to the Proxy, OR let the scripted finale resolve.
+    - Verify the Proxy collapses with procedural effects and stops attacking at ~5:58.
+    - Confirm smooth transition to Cathedral.
+5. **Giant Robot (Cathedral)**:
+    - Battle the Super-Robot at the start of Cathedral.
+    - Confirm its 4 circular components (Shoulders, Knees) are damageable.
+    - Observe the Panzer impact hooks at 3:00 and 3:30 (CATHEDRAL). Verify components take massive damage.
+    - Confirm final destruction at 3:45 (CATHEDRAL). Verify procedural breakup and stop of all attacks.
+6. **Regression**:
+    - Verify Arena Checkpoints work for both bosses (Proxy at Synth 5:00, Super Robot at Cathedral start).
+    - Run `npm test` and confirm all 88 tests pass.
+    - Run `npm run build` and verify success.

@@ -195,6 +195,18 @@ export default class TimelineDebugPanel {
                     <button id="btn-spawn-soldier">SPAWN SOLDIER</button>
                     <button id="btn-trigger-grenade">TRIGGER GRENADE</button>
                 </div>
+
+                <div style="margin-top: 10px; border-top: 1px solid #333; padding-top: 5px;">
+                    <div class="debug-row">Super Robot Active: <span id="diag-super-active">NO</span></div>
+                    <div class="debug-row">Super Robot HP: <span id="diag-super-hp">0</span></div>
+                    <div class="debug-row">Super Robot State: <span id="diag-super-state">-</span></div>
+                    <div class="debug-controls" style="margin-top: 5px;">
+                        <button id="btn-spawn-super">SPAWN SUPER</button>
+                        <button id="btn-trigger-panzer-1">PANZER SHOT 1</button>
+                        <button id="btn-trigger-panzer-2">PANZER SHOT 2</button>
+                        <button id="btn-super-die">DIE SUPER</button>
+                    </div>
+                </div>
             </div>
 
             <div id="debug-sprites-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] SPRITE TOOLS</div>
@@ -593,6 +605,26 @@ export default class TimelineDebugPanel {
             const gs = getGameScene();
             if (gs) gs.handleGrenadeSequence();
         };
+
+        $('#btn-spawn-super').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.handleSuperRobotAppears();
+        };
+
+        $('#btn-trigger-panzer-1').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.handlePanzerShot(1);
+        };
+
+        $('#btn-trigger-panzer-2').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.handlePanzerShot(2);
+        };
+
+        $('#btn-super-die').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.handleFinalBossDestruction();
+        };
     }
 
     update() {
@@ -652,6 +684,14 @@ export default class TimelineDebugPanel {
 
                 $('#diag-soldier').textContent = gameScene.germanSoldier ? 'ACTIVE' : 'INACTIVE';
                 $('#diag-grenade').textContent = gameScene.grenade ? 'ACTIVE' : 'INACTIVE';
+
+                if (gameScene.superRobot) {
+                    $('#diag-super-active').textContent = 'YES';
+                    $('#diag-super-hp').textContent = Math.round(gameScene.superRobot.hp);
+                    $('#diag-super-state').textContent = gameScene.superRobot.state;
+                } else {
+                    $('#diag-super-active').textContent = 'NO';
+                }
 
                 if (ctrl) {
                     const ctrlState = ctrl.getState();
