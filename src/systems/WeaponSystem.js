@@ -36,16 +36,17 @@ export default class WeaponSystem {
     /**
      * Fires primary energy weapon.
      */
-    fireEnergy(x, y, angle) {
+    fireEnergy(entity, angle) {
         const now = this.scene.time.now;
         const fireInterval = 1000 / this.energyConfig.fireRate;
         
         if (now - this.lastEnergyFireTime >= fireInterval) {
-            const projectile = this.energyProjectiles.get(x, y, 'energy_bolt');
+            const origin = entity.getWeaponOrigin ? entity.getWeaponOrigin() : { x: entity.x, y: entity.y };
+            const projectile = this.energyProjectiles.get(origin.x, origin.y, 'energy_bolt');
             if (projectile) {
                 // Offset muzzle position slightly forward
-                const muzzleX = x + Math.cos(angle) * 20;
-                const muzzleY = y + Math.sin(angle) * 20;
+                const muzzleX = origin.x + Math.cos(angle) * 20;
+                const muzzleY = origin.y + Math.sin(angle) * 20;
                 
                 projectile.fire(muzzleX, muzzleY, angle, this.energyConfig.speed, this.energyConfig.lifeTime);
                 this.lastEnergyFireTime = now;
@@ -58,16 +59,19 @@ export default class WeaponSystem {
     /**
      * Fires secondary throwing axe.
      */
-    fireAxe(x, y, angle) {
+    fireAxe(entity, angle) {
         const now = this.scene.time.now;
         
         if (now - this.lastAxeFireTime >= this.axeConfig.cooldown) {
-            const axe = this.axes.get(x, y, 'axe');
+            const origin = entity.getWeaponOrigin ? entity.getWeaponOrigin() : { x: entity.x, y: entity.y };
+            const axe = this.axes.get(origin.x, origin.y, 'axe');
             if (axe) {
-                axe.fire(x, y, angle, this.axeConfig.speed, this.axeConfig.lifeTime, this.axeConfig.rotationSpeed);
+                axe.fire(origin.x, origin.y, angle, this.axeConfig.speed, this.axeConfig.lifeTime, this.axeConfig.rotationSpeed);
                 this.lastAxeFireTime = now;
+                return true;
             }
         }
+        return false;
     }
 
     /**

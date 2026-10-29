@@ -1,0 +1,80 @@
+S E:\Projects\Blackrush\games\lorelei\descent> npm run sprites
+
+> lorelei-descent@0.1.0 sprites
+> node scripts/assets/compile-sprites.mjs
+
+[SPRITES] Starting compilation...
+[SPRITES] Processing entity: blackrush
+[SPRITES] blackrush dimensions distribution:
+  - 48x48: 16 frames
+  - 64x64: 161 frames
+  - 80x80: 64 frames
+  - 68x68: 152 frames
+[SPRITES] blackrush stable anchor: (0.500, 0.762) [Offset: 21]
+[SPRITES] Generated 1 atlas pages for "blackrush"
+[SPRITES] Processing entity: pursuer
+[SPRITES] pursuer dimensions distribution:
+  - 48x48: 8 frames
+  - 68x68: 128 frames
+[SPRITES] pursuer stable anchor: (0.500, 0.794) [Offset: 20]
+[SPRITES] Generated 1 atlas pages for "pursuer"
+[SPRITES] Processing entity: sentinel
+[SPRITES] sentinel dimensions distribution:
+  - 48x48: 8 frames
+  - 68x68: 96 frames
+  - 64x64: 32 frames
+[SPRITES] sentinel stable anchor: (0.500, 0.794) [Offset: 20]
+[SPRITES] Generated 1 atlas pages for "sentinel"
+[SPRITES] Processing entity: armored_robot
+[SPRITES] armored_robot dimensions distribution:
+  - 48x48: 16 frames
+  - 64x64: 192 frames
+[SPRITES] armored_robot stable anchor: (0.500, 0.828) [Offset: 21]
+[SPRITES] Generated 1 atlas pages for "armored_robot"
+[SPRITES] Processing entity: eclipse
+[SPRITES] eclipse dimensions distribution:
+  - 48x48: 8 frames
+  - 68x68: 128 frames
+  - 80x80: 20 frames
+[SPRITES] eclipse stable anchor: (0.500, 0.775) [Offset: 22]
+[SPRITES] Generated 1 atlas pages for "eclipse"
+[SPRITES] Processing entity: german_soldier
+[SPRITES] german_soldier dimensions distribution:
+  - 48x48: 8 frames
+  - 68x68: 64 frames
+  - 80x80: 56 frames
+[SPRITES] german_soldier stable anchor: (0.500, 0.775) [Offset: 22]
+[SPRITES] Generated 1 atlas pages for "german_soldier"
+[SPRITES] Processing entity: lorelei
+[SPRITES] lorelei dimensions distribution:
+  - 48x48: 8 frames
+  - 68x68: 96 frames
+  - 64x64: 32 frames
+[SPRITES] lorelei stable anchor: (0.500, 0.824) [Offset: 22]
+[SPRITES] Generated 1 atlas pages for "lorelei"
+[SPRITES] Processing entity: nadine
+[SPRITES] nadine dimensions distribution:
+  - 48x48: 8 frames
+  - 68x68: 40 frames
+  - 64x64: 24 frames
+[SPRITES] nadine stable anchor: (0.500, 0.824) [Offset: 22]
+[SPRITES] Generated 1 atlas pages for "nadine"
+[SPRITES] Processing entity: proxy
+[SPRITES] proxy dimensions distribution:
+  - 64x64: 40 frames
+  - 84x84: 207 frames
+  - 88x88: 57 frames
+  - 92x92: 9 frames
+[SPRITES] proxy stable anchor: (0.500, 0.815) [Offset: 29]
+[SPRITES] Generated 1 atlas pages for "proxy"
+[SPRITES] Processing entity: giant_boss
+[SPRITES] giant_boss dimensions distribution:
+  - 128x128: 33 frames
+  - 172x172: 99 frames
+  - 176x176: 146 frames
+  - 180x180: 49 frames
+  - 192x192: 32 frames
+[SPRITES] giant_boss stable anchor: (0.500, 0.813) [Offset: 60]
+[SPRITES] Generated 4 atlas pages for "giant_boss"
+[SPRITES] Manifest written to public\assets\sprites\manifest.json
+[SPRITES] Compilation complete.

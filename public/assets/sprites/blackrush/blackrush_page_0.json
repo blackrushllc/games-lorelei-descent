@@ -1,0 +1,9840 @@
+{
+  "frames": [
+    {
+      "filename": "blackrush__default__idle__north__000",
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__idle__north-east__000",
+      "frame": {
+        "x": 84,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__idle__east__000",
+      "frame": {
+        "x": 166,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__idle__south-east__000",
+      "frame": {
+        "x": 248,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__idle__south__000",
+      "frame": {
+        "x": 330,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__idle__south-west__000",
+      "frame": {
+        "x": 412,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__idle__west__000",
+      "frame": {
+        "x": 494,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__idle__north-west__000",
+      "frame": {
+        "x": 576,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__000",
+      "frame": {
+        "x": 658,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__001",
+      "frame": {
+        "x": 740,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__002",
+      "frame": {
+        "x": 822,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__003",
+      "frame": {
+        "x": 904,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__004",
+      "frame": {
+        "x": 986,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__005",
+      "frame": {
+        "x": 1068,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__006",
+      "frame": {
+        "x": 1150,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north__007",
+      "frame": {
+        "x": 1232,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__000",
+      "frame": {
+        "x": 1314,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__001",
+      "frame": {
+        "x": 1396,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__002",
+      "frame": {
+        "x": 1478,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__003",
+      "frame": {
+        "x": 1560,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__004",
+      "frame": {
+        "x": 1642,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__005",
+      "frame": {
+        "x": 1724,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__006",
+      "frame": {
+        "x": 1806,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-east__007",
+      "frame": {
+        "x": 1888,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__000",
+      "frame": {
+        "x": 2,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__001",
+      "frame": {
+        "x": 84,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__002",
+      "frame": {
+        "x": 166,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__003",
+      "frame": {
+        "x": 248,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__004",
+      "frame": {
+        "x": 330,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__005",
+      "frame": {
+        "x": 412,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__006",
+      "frame": {
+        "x": 494,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__east__007",
+      "frame": {
+        "x": 576,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__000",
+      "frame": {
+        "x": 658,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__001",
+      "frame": {
+        "x": 740,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__002",
+      "frame": {
+        "x": 822,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__003",
+      "frame": {
+        "x": 904,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__004",
+      "frame": {
+        "x": 986,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__005",
+      "frame": {
+        "x": 1068,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__006",
+      "frame": {
+        "x": 1150,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-east__007",
+      "frame": {
+        "x": 1232,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__000",
+      "frame": {
+        "x": 1314,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__001",
+      "frame": {
+        "x": 1396,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__002",
+      "frame": {
+        "x": 1478,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__003",
+      "frame": {
+        "x": 1560,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__004",
+      "frame": {
+        "x": 1642,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__005",
+      "frame": {
+        "x": 1724,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__006",
+      "frame": {
+        "x": 1806,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south__007",
+      "frame": {
+        "x": 1888,
+        "y": 84,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__000",
+      "frame": {
+        "x": 2,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__001",
+      "frame": {
+        "x": 84,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__002",
+      "frame": {
+        "x": 166,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__003",
+      "frame": {
+        "x": 248,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__004",
+      "frame": {
+        "x": 330,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__005",
+      "frame": {
+        "x": 412,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__006",
+      "frame": {
+        "x": 494,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__south-west__007",
+      "frame": {
+        "x": 576,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__000",
+      "frame": {
+        "x": 658,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__001",
+      "frame": {
+        "x": 740,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__002",
+      "frame": {
+        "x": 822,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__003",
+      "frame": {
+        "x": 904,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__004",
+      "frame": {
+        "x": 986,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__005",
+      "frame": {
+        "x": 1068,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__006",
+      "frame": {
+        "x": 1150,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__west__007",
+      "frame": {
+        "x": 1232,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__000",
+      "frame": {
+        "x": 1314,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__001",
+      "frame": {
+        "x": 1396,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__002",
+      "frame": {
+        "x": 1478,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__003",
+      "frame": {
+        "x": 1560,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__004",
+      "frame": {
+        "x": 1642,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__005",
+      "frame": {
+        "x": 1724,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__006",
+      "frame": {
+        "x": 1806,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__walk__north-west__007",
+      "frame": {
+        "x": 1888,
+        "y": 166,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__000",
+      "frame": {
+        "x": 2,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__001",
+      "frame": {
+        "x": 84,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__002",
+      "frame": {
+        "x": 166,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__003",
+      "frame": {
+        "x": 248,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__004",
+      "frame": {
+        "x": 330,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__005",
+      "frame": {
+        "x": 412,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__006",
+      "frame": {
+        "x": 494,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north__007",
+      "frame": {
+        "x": 576,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__000",
+      "frame": {
+        "x": 658,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__001",
+      "frame": {
+        "x": 740,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__002",
+      "frame": {
+        "x": 822,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__003",
+      "frame": {
+        "x": 904,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__004",
+      "frame": {
+        "x": 986,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__005",
+      "frame": {
+        "x": 1068,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__006",
+      "frame": {
+        "x": 1150,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-east__007",
+      "frame": {
+        "x": 1232,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__000",
+      "frame": {
+        "x": 1314,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__001",
+      "frame": {
+        "x": 1396,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__002",
+      "frame": {
+        "x": 1478,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__003",
+      "frame": {
+        "x": 1560,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__004",
+      "frame": {
+        "x": 1642,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__005",
+      "frame": {
+        "x": 1724,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__006",
+      "frame": {
+        "x": 1806,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__east__007",
+      "frame": {
+        "x": 1888,
+        "y": 248,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__000",
+      "frame": {
+        "x": 2,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__001",
+      "frame": {
+        "x": 84,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__002",
+      "frame": {
+        "x": 166,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__003",
+      "frame": {
+        "x": 248,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__004",
+      "frame": {
+        "x": 330,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__005",
+      "frame": {
+        "x": 412,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__006",
+      "frame": {
+        "x": 494,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-east__007",
+      "frame": {
+        "x": 576,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__000",
+      "frame": {
+        "x": 658,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__001",
+      "frame": {
+        "x": 740,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__002",
+      "frame": {
+        "x": 822,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__003",
+      "frame": {
+        "x": 904,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__004",
+      "frame": {
+        "x": 986,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__005",
+      "frame": {
+        "x": 1068,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__006",
+      "frame": {
+        "x": 1150,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south__007",
+      "frame": {
+        "x": 1232,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__000",
+      "frame": {
+        "x": 1314,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__001",
+      "frame": {
+        "x": 1396,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__002",
+      "frame": {
+        "x": 1478,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__003",
+      "frame": {
+        "x": 1560,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__004",
+      "frame": {
+        "x": 1642,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__005",
+      "frame": {
+        "x": 1724,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__006",
+      "frame": {
+        "x": 1806,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__south-west__007",
+      "frame": {
+        "x": 1888,
+        "y": 330,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__000",
+      "frame": {
+        "x": 2,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__001",
+      "frame": {
+        "x": 84,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__002",
+      "frame": {
+        "x": 166,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__003",
+      "frame": {
+        "x": 248,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__004",
+      "frame": {
+        "x": 330,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__005",
+      "frame": {
+        "x": 412,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__006",
+      "frame": {
+        "x": 494,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__west__007",
+      "frame": {
+        "x": 576,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__000",
+      "frame": {
+        "x": 658,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__001",
+      "frame": {
+        "x": 740,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__002",
+      "frame": {
+        "x": 822,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__003",
+      "frame": {
+        "x": 904,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__004",
+      "frame": {
+        "x": 986,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__005",
+      "frame": {
+        "x": 1068,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__006",
+      "frame": {
+        "x": 1150,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__run__north-west__007",
+      "frame": {
+        "x": 1232,
+        "y": 412,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__north__000",
+      "frame": {
+        "x": 1314,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__north-east__000",
+      "frame": {
+        "x": 1396,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__east__000",
+      "frame": {
+        "x": 1478,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__south-east__000",
+      "frame": {
+        "x": 1560,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__south__000",
+      "frame": {
+        "x": 1642,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__south-west__000",
+      "frame": {
+        "x": 1724,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__west__000",
+      "frame": {
+        "x": 1806,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-idle__north-west__000",
+      "frame": {
+        "x": 1888,
+        "y": 412,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__000",
+      "frame": {
+        "x": 2,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__001",
+      "frame": {
+        "x": 84,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__002",
+      "frame": {
+        "x": 166,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__003",
+      "frame": {
+        "x": 248,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__004",
+      "frame": {
+        "x": 330,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__005",
+      "frame": {
+        "x": 412,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__006",
+      "frame": {
+        "x": 494,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north__007",
+      "frame": {
+        "x": 576,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__000",
+      "frame": {
+        "x": 658,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__001",
+      "frame": {
+        "x": 740,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__002",
+      "frame": {
+        "x": 822,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__003",
+      "frame": {
+        "x": 904,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__004",
+      "frame": {
+        "x": 986,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__005",
+      "frame": {
+        "x": 1068,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__006",
+      "frame": {
+        "x": 1150,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-east__007",
+      "frame": {
+        "x": 1232,
+        "y": 494,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__000",
+      "frame": {
+        "x": 1314,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__001",
+      "frame": {
+        "x": 1396,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__002",
+      "frame": {
+        "x": 1478,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__003",
+      "frame": {
+        "x": 1560,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__004",
+      "frame": {
+        "x": 1642,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__005",
+      "frame": {
+        "x": 1724,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__006",
+      "frame": {
+        "x": 1806,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__east__007",
+      "frame": {
+        "x": 1888,
+        "y": 494,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__000",
+      "frame": {
+        "x": 2,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__001",
+      "frame": {
+        "x": 84,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__002",
+      "frame": {
+        "x": 166,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__003",
+      "frame": {
+        "x": 248,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__004",
+      "frame": {
+        "x": 330,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__005",
+      "frame": {
+        "x": 412,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__006",
+      "frame": {
+        "x": 494,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-east__007",
+      "frame": {
+        "x": 576,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__000",
+      "frame": {
+        "x": 658,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__001",
+      "frame": {
+        "x": 740,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__002",
+      "frame": {
+        "x": 822,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__003",
+      "frame": {
+        "x": 904,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__004",
+      "frame": {
+        "x": 986,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__005",
+      "frame": {
+        "x": 1068,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__006",
+      "frame": {
+        "x": 1150,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south__007",
+      "frame": {
+        "x": 1232,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__000",
+      "frame": {
+        "x": 1314,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__001",
+      "frame": {
+        "x": 1396,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__002",
+      "frame": {
+        "x": 1478,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__003",
+      "frame": {
+        "x": 1560,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__004",
+      "frame": {
+        "x": 1642,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__005",
+      "frame": {
+        "x": 1724,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__006",
+      "frame": {
+        "x": 1806,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__south-west__007",
+      "frame": {
+        "x": 1888,
+        "y": 576,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__000",
+      "frame": {
+        "x": 2,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__001",
+      "frame": {
+        "x": 84,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__002",
+      "frame": {
+        "x": 166,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__003",
+      "frame": {
+        "x": 248,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__004",
+      "frame": {
+        "x": 330,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__005",
+      "frame": {
+        "x": 412,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__006",
+      "frame": {
+        "x": 494,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__west__007",
+      "frame": {
+        "x": 576,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__000",
+      "frame": {
+        "x": 658,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__001",
+      "frame": {
+        "x": 740,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__002",
+      "frame": {
+        "x": 822,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__003",
+      "frame": {
+        "x": 904,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__004",
+      "frame": {
+        "x": 986,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__005",
+      "frame": {
+        "x": 1068,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__006",
+      "frame": {
+        "x": 1150,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-walk__north-west__007",
+      "frame": {
+        "x": 1232,
+        "y": 658,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__000",
+      "frame": {
+        "x": 1314,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__001",
+      "frame": {
+        "x": 1396,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__002",
+      "frame": {
+        "x": 1478,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__003",
+      "frame": {
+        "x": 1560,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__004",
+      "frame": {
+        "x": 1642,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__005",
+      "frame": {
+        "x": 1724,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__006",
+      "frame": {
+        "x": 1806,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north__007",
+      "frame": {
+        "x": 1888,
+        "y": 658,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__000",
+      "frame": {
+        "x": 2,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__001",
+      "frame": {
+        "x": 84,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__002",
+      "frame": {
+        "x": 166,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__003",
+      "frame": {
+        "x": 248,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__004",
+      "frame": {
+        "x": 330,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__005",
+      "frame": {
+        "x": 412,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__006",
+      "frame": {
+        "x": 494,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-east__007",
+      "frame": {
+        "x": 576,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__000",
+      "frame": {
+        "x": 658,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__001",
+      "frame": {
+        "x": 740,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__002",
+      "frame": {
+        "x": 822,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__003",
+      "frame": {
+        "x": 904,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__004",
+      "frame": {
+        "x": 986,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__005",
+      "frame": {
+        "x": 1068,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__006",
+      "frame": {
+        "x": 1150,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__east__007",
+      "frame": {
+        "x": 1232,
+        "y": 740,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__000",
+      "frame": {
+        "x": 1314,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__001",
+      "frame": {
+        "x": 1396,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__002",
+      "frame": {
+        "x": 1478,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__003",
+      "frame": {
+        "x": 1560,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__004",
+      "frame": {
+        "x": 1642,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__005",
+      "frame": {
+        "x": 1724,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__006",
+      "frame": {
+        "x": 1806,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-east__007",
+      "frame": {
+        "x": 1888,
+        "y": 740,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__000",
+      "frame": {
+        "x": 2,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__001",
+      "frame": {
+        "x": 84,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__002",
+      "frame": {
+        "x": 166,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__003",
+      "frame": {
+        "x": 248,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__004",
+      "frame": {
+        "x": 330,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__005",
+      "frame": {
+        "x": 412,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__006",
+      "frame": {
+        "x": 494,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south__007",
+      "frame": {
+        "x": 576,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__000",
+      "frame": {
+        "x": 658,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__001",
+      "frame": {
+        "x": 740,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__002",
+      "frame": {
+        "x": 822,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__003",
+      "frame": {
+        "x": 904,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__004",
+      "frame": {
+        "x": 986,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__005",
+      "frame": {
+        "x": 1068,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__006",
+      "frame": {
+        "x": 1150,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__south-west__007",
+      "frame": {
+        "x": 1232,
+        "y": 822,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__000",
+      "frame": {
+        "x": 1314,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__001",
+      "frame": {
+        "x": 1396,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__002",
+      "frame": {
+        "x": 1478,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__003",
+      "frame": {
+        "x": 1560,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__004",
+      "frame": {
+        "x": 1642,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__005",
+      "frame": {
+        "x": 1724,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__006",
+      "frame": {
+        "x": 1806,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__west__007",
+      "frame": {
+        "x": 1888,
+        "y": 822,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__000",
+      "frame": {
+        "x": 2,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__001",
+      "frame": {
+        "x": 84,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__002",
+      "frame": {
+        "x": 166,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__003",
+      "frame": {
+        "x": 248,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__004",
+      "frame": {
+        "x": 330,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__005",
+      "frame": {
+        "x": 412,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__006",
+      "frame": {
+        "x": 494,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__force-run__north-west__007",
+      "frame": {
+        "x": 576,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__000",
+      "frame": {
+        "x": 658,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__001",
+      "frame": {
+        "x": 740,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__002",
+      "frame": {
+        "x": 822,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__003",
+      "frame": {
+        "x": 904,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__004",
+      "frame": {
+        "x": 986,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__005",
+      "frame": {
+        "x": 1068,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__006",
+      "frame": {
+        "x": 1150,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north__007",
+      "frame": {
+        "x": 1232,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__000",
+      "frame": {
+        "x": 1314,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__001",
+      "frame": {
+        "x": 1396,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__002",
+      "frame": {
+        "x": 1478,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__003",
+      "frame": {
+        "x": 1560,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__004",
+      "frame": {
+        "x": 1642,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__005",
+      "frame": {
+        "x": 1724,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__006",
+      "frame": {
+        "x": 1806,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-east__007",
+      "frame": {
+        "x": 1888,
+        "y": 904,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__000",
+      "frame": {
+        "x": 2,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__001",
+      "frame": {
+        "x": 84,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__002",
+      "frame": {
+        "x": 166,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__003",
+      "frame": {
+        "x": 248,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__004",
+      "frame": {
+        "x": 330,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__005",
+      "frame": {
+        "x": 412,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__006",
+      "frame": {
+        "x": 494,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__east__007",
+      "frame": {
+        "x": 576,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__000",
+      "frame": {
+        "x": 658,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__001",
+      "frame": {
+        "x": 740,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__002",
+      "frame": {
+        "x": 822,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__003",
+      "frame": {
+        "x": 904,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__004",
+      "frame": {
+        "x": 986,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__005",
+      "frame": {
+        "x": 1068,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__006",
+      "frame": {
+        "x": 1150,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-east__007",
+      "frame": {
+        "x": 1232,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__000",
+      "frame": {
+        "x": 1314,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__001",
+      "frame": {
+        "x": 1396,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__002",
+      "frame": {
+        "x": 1478,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__003",
+      "frame": {
+        "x": 1560,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__004",
+      "frame": {
+        "x": 1642,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__005",
+      "frame": {
+        "x": 1724,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__006",
+      "frame": {
+        "x": 1806,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south__007",
+      "frame": {
+        "x": 1888,
+        "y": 986,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__000",
+      "frame": {
+        "x": 2,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__001",
+      "frame": {
+        "x": 84,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__002",
+      "frame": {
+        "x": 166,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__003",
+      "frame": {
+        "x": 248,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__004",
+      "frame": {
+        "x": 330,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__005",
+      "frame": {
+        "x": 412,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__006",
+      "frame": {
+        "x": 494,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__south-west__007",
+      "frame": {
+        "x": 576,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__000",
+      "frame": {
+        "x": 658,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__001",
+      "frame": {
+        "x": 740,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__002",
+      "frame": {
+        "x": 822,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__003",
+      "frame": {
+        "x": 904,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__004",
+      "frame": {
+        "x": 986,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__005",
+      "frame": {
+        "x": 1068,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__006",
+      "frame": {
+        "x": 1150,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__west__007",
+      "frame": {
+        "x": 1232,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__000",
+      "frame": {
+        "x": 1314,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__001",
+      "frame": {
+        "x": 1396,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__002",
+      "frame": {
+        "x": 1478,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__003",
+      "frame": {
+        "x": 1560,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__004",
+      "frame": {
+        "x": 1642,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__005",
+      "frame": {
+        "x": 1724,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__006",
+      "frame": {
+        "x": 1806,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-ready__north-west__007",
+      "frame": {
+        "x": 1888,
+        "y": 1068,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north__000",
+      "frame": {
+        "x": 2,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north__001",
+      "frame": {
+        "x": 84,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north__002",
+      "frame": {
+        "x": 166,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north__003",
+      "frame": {
+        "x": 248,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north__004",
+      "frame": {
+        "x": 330,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north__005",
+      "frame": {
+        "x": 412,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north__006",
+      "frame": {
+        "x": 494,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__000",
+      "frame": {
+        "x": 576,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__001",
+      "frame": {
+        "x": 658,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__002",
+      "frame": {
+        "x": 740,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__003",
+      "frame": {
+        "x": 822,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__004",
+      "frame": {
+        "x": 904,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__005",
+      "frame": {
+        "x": 986,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__006",
+      "frame": {
+        "x": 1068,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-east__007",
+      "frame": {
+        "x": 1150,
+        "y": 1150,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 6,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__east__000",
+      "frame": {
+        "x": 1232,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__east__001",
+      "frame": {
+        "x": 1314,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__east__002",
+      "frame": {
+        "x": 1396,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__east__003",
+      "frame": {
+        "x": 1478,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__east__004",
+      "frame": {
+        "x": 1560,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__east__005",
+      "frame": {
+        "x": 1642,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__east__006",
+      "frame": {
+        "x": 1724,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-east__000",
+      "frame": {
+        "x": 1806,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-east__001",
+      "frame": {
+        "x": 1888,
+        "y": 1150,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-east__002",
+      "frame": {
+        "x": 2,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-east__003",
+      "frame": {
+        "x": 84,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-east__004",
+      "frame": {
+        "x": 166,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-east__005",
+      "frame": {
+        "x": 248,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-east__006",
+      "frame": {
+        "x": 330,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south__000",
+      "frame": {
+        "x": 412,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south__001",
+      "frame": {
+        "x": 494,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south__002",
+      "frame": {
+        "x": 576,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south__003",
+      "frame": {
+        "x": 658,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south__004",
+      "frame": {
+        "x": 740,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south__005",
+      "frame": {
+        "x": 822,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south__006",
+      "frame": {
+        "x": 904,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-west__000",
+      "frame": {
+        "x": 986,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-west__001",
+      "frame": {
+        "x": 1068,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-west__002",
+      "frame": {
+        "x": 1150,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-west__003",
+      "frame": {
+        "x": 1232,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-west__004",
+      "frame": {
+        "x": 1314,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-west__005",
+      "frame": {
+        "x": 1396,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__south-west__006",
+      "frame": {
+        "x": 1478,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__west__000",
+      "frame": {
+        "x": 1560,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__west__001",
+      "frame": {
+        "x": 1642,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__west__002",
+      "frame": {
+        "x": 1724,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__west__003",
+      "frame": {
+        "x": 1806,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__west__004",
+      "frame": {
+        "x": 1888,
+        "y": 1232,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__west__005",
+      "frame": {
+        "x": 2,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__west__006",
+      "frame": {
+        "x": 84,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-west__000",
+      "frame": {
+        "x": 166,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-west__001",
+      "frame": {
+        "x": 248,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-west__002",
+      "frame": {
+        "x": 330,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-west__003",
+      "frame": {
+        "x": 412,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-west__004",
+      "frame": {
+        "x": 494,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-west__005",
+      "frame": {
+        "x": 576,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    },
+    {
+      "filename": "blackrush__default__axe-throw__north-west__006",
+      "frame": {
+        "x": 658,
+        "y": 1314,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.7625
+      }
+    }
+  ],
+  "meta": {
+    "app": "Lorelei Sprite Compiler",
+    "version": "2.0",
+    "image": "blackrush_page_0.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1970,
+      "h": 1396
+    },
+    "scale": "1"
+  }
+}

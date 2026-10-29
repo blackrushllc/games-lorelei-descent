@@ -23,7 +23,8 @@
 9.5 **PixelLab Character Artwork Integration** (Completed)
 9.6 **NOVA — Emergency Area-Clear Weapon** (Completed)
 9.7 **Adaptive Assistance and Arena Checkpoints** (Completed)
-10. **Super-robot and Panzer**
+10. **General-Purpose Asset Pipeline v2.0** (Completed)
+10.1 **Sentinel Pixel-Art Integration** (Completed)
 11. **Ending and promotion**
 12. **Character and environment artwork**
 13. **Sound effects and visual/audio polish**
@@ -31,6 +32,42 @@
 15. **Production deployment**
 
 ## Verification
+
+### Step 10.1 Verification
+1. **Sentinel Appearance**:
+    - Run `npm run dev`.
+    - Open `?debug=1`.
+    - Observe Sentinel robots; they should now render using PixelLab artwork.
+    - Verify 8-way directional animations for `idle`, `walk`, and `run`.
+2. **Laser Targeting Orientation**:
+    - Engage a Sentinel.
+    - Verify that while tracking, locking, or firing, the sprite faces the target (following the laser trajectory).
+    - Dodge a locked laser; verify the Sentinel sprite remains fixed in the firing direction until the `COOLDOWN` phase.
+3. **Pixel Art Toggle**:
+    - Use the **TOGGLE PIXEL ART** button in the debug panel.
+    - Verify Sentinels switch between sprites and procedural bodies (with antennae).
+4. **Tests**:
+    - Run `node --test tests/step10-1.test.js`.
+    - Verify all 4 tests pass (Integration, Direction Logic, Animation States, Asset Fallback).
+    - Run `npm test` to verify no regressions in other systems.
+
+### Step 10 Verification
+1. **Compilation**:
+    - Run `npm run sprites`.
+    - Verify all entities (Blackrush, Pursuer, Sentinel, Armored Robot, Eclipse, Nadine, Lorelei, Proxy, Giant Boss) are processed.
+    - Check `public/assets/sprites/` for multi-page atlases (e.g. `giant_boss_page_0.png` through `page_3.png`).
+    - Verify `manifest.json` uses `schemaVersion: 2` and contains `states` and `pages` for all entities.
+2. **Runtime Resolution**:
+    - Run `npm run dev`.
+    - Open `?debug=1`.
+    - Verify Blackrush and Pursuers still render correctly using pixel art.
+    - Test directional fallbacks: observe diagonals falling back to cardinals if 8-way is missing (can be tested by modifying config).
+3. **Tests**:
+    - Run `node --test tests/sprite_compiler.test.js tests/step10.test.js`.
+    - Verify all 7 tests pass (Basic functionality, Missing Direction, Multi-state, Resolve 8-way, Animation Fallback, State-specific, Tie-breaking).
+4. **Build**:
+    - Run `npm run build`.
+    - Verify success.
 
 ### Step 9.7 Verification
 1. Run `npm run dev`.

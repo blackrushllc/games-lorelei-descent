@@ -30,16 +30,42 @@ export default class SuperRobot extends Phaser.GameObjects.Container {
         this.laserConfig = this.config.attacks.megaLaser.laserConfig;
         this.attackSubState = 'NONE';
         
+        this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
         this.pixelArtEnabled = true;
+
+        if (scene.add && typeof scene.add.sprite === 'function') {
+            this.sprite = scene.add.sprite(0, 0, 'giant_boss');
+            if (this.sprite) {
+                this.sprite.setScale(4); // Giant Boss is BIG
+                if (typeof this.sprite.setVisible === 'function') this.sprite.setVisible(this.pixelArtEnabled);
+                if (typeof this.sprite.setOriginFromFrame === 'function') this.sprite.setOriginFromFrame();
+                this.add(this.sprite);
+            }
+        }
         
         scene.add.existing(this);
     }
 
     setPixelArtEnabled(enabled) {
         this.pixelArtEnabled = enabled;
+        if (this.sprite && typeof this.sprite.setVisible === 'function') this.sprite.setVisible(enabled);
         this.components.forEach(comp => {
-            if (comp.setPixelArtEnabled) comp.setPixelArtEnabled(enabled);
+            if (comp && typeof comp.setPixelArtEnabled === 'function') comp.setPixelArtEnabled(enabled);
         });
+        if (this.laserGraphic && typeof this.laserGraphic.setVisible === 'function') {
+            this.laserGraphic.setVisible(!enabled || this.attackSubState !== 'NONE');
+        }
+    }
+
+    /**
+     * Returns the world-space position from which mega lasers are fired.
+     */
+    getWeaponOrigin() {
+        // Laser emission for Giant Boss is from its core/chest area
+        return {
+            x: this.x,
+            y: this.y
+        };
     }
 
     reset() {
@@ -87,6 +113,11 @@ export default class SuperRobot extends Phaser.GameObjects.Container {
 
         this.laserGraphic.clear();
 
+        // Update animation
+        if (this.pixelArtEnabled && this.spriteRegistry) {
+            this.updateAnimation(player);
+        }
+
         switch (this.state) {
             case 'IDLE':
                 this.updateIdle(player, delta);
@@ -106,6 +137,51 @@ export default class SuperRobot extends Phaser.GameObjects.Container {
         const functionalComponents = [...this.components.values()].filter(c => c.hp > 0 && !c.cfg.exposedOnly).length;
         if (functionalComponents < 2 && this.state !== 'STAGGERED' && this.state !== 'DEFEATED') {
             this.checkExposeCore();
+        }
+    }
+
+    updateAnimation(player) {
+        // 1. Direction
+        let angle = 0;
+        const isMoving = (this.state === 'MOVING');
+        
+        if (this.state === 'ATTACKING') {
+            angle = this.laserAngle;
+        } else if (isMoving) {
+            angle = Phaser.Math.Angle.Between(this.x, this.y, this.targetX, this.targetY);
+        } else {
+            angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        }
+
+        const facing = this.spriteRegistry.get8WayDirection(angle);
+
+        // 2. State Mapping
+        let state = 'idle';
+        if (this.state === 'MOVING') {
+            state = 'walk';
+        } else if (this.state === 'ATTACKING' && this.attackSubState === 'FIRING') {
+            state = 'swing'; // Using swing as proxy for mega laser attack
+        } else if (this.state === 'DEFEATED') {
+            state = 'destroyed';
+        }
+
+        // Determine entity state based on damage
+        let entityState = 'default';
+        const brokenCount = [...this.components.values()].filter(c => c.hp <= 0 && !c.cfg.exposedOnly).length;
+        if (this.state === 'DEFEATED') {
+            entityState = 'destroyed';
+        } else if (brokenCount >= 3) {
+            entityState = 'damage_all';
+        } else if (brokenCount === 2) {
+            entityState = 'damage_left_right';
+        } else if (brokenCount === 1) {
+            entityState = 'damage_left';
+        }
+
+        const animKey = this.spriteRegistry.getAnimationKey('giant_boss', state, facing, entityState);
+        if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
+            this.sprite.play(animKey);
+            this.sprite.setOriginFromFrame();
         }
     }
 
@@ -146,9 +222,11 @@ export default class SuperRobot extends Phaser.GameObjects.Container {
         }
 
         this.attackTimer += delta;
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
 
         if (this.attackSubState === 'TRACKING') {
-            const targetAngle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+            const targetAngle = Phaser.Math.Angle.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
             this.laserAngle = Phaser.Math.Angle.RotateTo(this.laserAngle, targetAngle, 0.02);
             this.drawLaser('TRACKING');
 
@@ -215,17 +293,24 @@ export default class SuperRobot extends Phaser.GameObjects.Container {
         this.state = 'ATTACKING';
         this.attackSubState = 'TRACKING';
         this.attackTimer = 0;
-        this.laserAngle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
+        this.laserAngle = Phaser.Math.Angle.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
     }
 
     applyLaserDamage(player) {
         const maxLength = 2000;
-        const ray = new Phaser.Geom.Line(this.x, this.y, this.x + Math.cos(this.laserAngle) * maxLength, this.y + Math.sin(this.laserAngle) * maxLength);
-        const playerCircle = new Phaser.Geom.Circle(player.x, player.y, 25);
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
+        
+        const ray = new Phaser.Geom.Line(origin.x, origin.y, origin.x + Math.cos(this.laserAngle) * maxLength, origin.y + Math.sin(this.laserAngle) * maxLength);
+        
+        // Use combat target region
+        const playerCircle = new Phaser.Geom.Circle(targetRegion.x, targetRegion.y, targetRegion.radius);
         
         // Blocking cover
-        const obsHit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, maxLength);
-        const playerDist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+        const obsHit = this.scene.getNearestObstacleAlongRay(origin.x, origin.y, this.laserAngle, maxLength);
+        const playerDist = Phaser.Math.Distance.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
         if (obsHit && obsHit.distance < playerDist - 20) return;
 
         if (Phaser.Geom.Intersects.GetLineToCircle(ray, playerCircle)) {
@@ -314,6 +399,17 @@ class BossComponent extends Phaser.GameObjects.Container {
         this.body.setCircle(cfg.radius, -cfg.radius, -cfg.radius);
     }
 
+    /**
+     * Returns the world-space target region.
+     */
+    getTargetRegion() {
+        return {
+            x: this.boss.x + this.x,
+            y: this.boss.y + this.y,
+            radius: this.cfg.radius
+        };
+    }
+
     draw() {
         this.graphic.clear();
         const color = this.hp > 0 ? (this.armor > 0 ? 0x888888 : 0xaa0000) : 0x333333;
@@ -362,6 +458,8 @@ class BossComponent extends Phaser.GameObjects.Container {
     }
 
     setPixelArtEnabled(enabled) {
-        // Boss components are currently procedural
+        this.pixelArtEnabled = enabled;
+        const showProcedural = !enabled;
+        this.graphic.setVisible(showProcedural);
     }
 }

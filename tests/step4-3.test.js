@@ -31,7 +31,7 @@ function createMockScene() {
                 addKeys: () => ({
                     up: { isDown: false }, down: { isDown: false }, left: { isDown: false }, right: { isDown: false },
                     arrowUp: { isDown: false }, arrowDown: { isDown: false }, arrowLeft: { isDown: false }, arrowRight: { isDown: false },
-                    nova: { isDown: false }
+                    nova: { isDown: false }, esc: { isDown: false }
                 }),
                 resetKeys: () => {}
             },

@@ -35,15 +35,29 @@ import { PROXY_CONFIG } from '../src/config/proxyConfig.js';
 // Mock classes for testing
 class MockScene {
     constructor() {
+        this.registry = {
+            get: () => ({
+                get8WayDirection: () => 'south',
+                getAnimationKey: () => 'anim'
+            })
+        };
         this.add = {
             existing: (obj) => obj,
+            sprite: () => ({
+                setScale: () => {},
+                setVisible: () => {},
+                setOriginFromFrame: () => {},
+                play: () => {},
+                anims: { currentAnim: null }
+            }),
             graphics: () => ({
                 fillStyle: () => ({ fillRect: () => ({ lineStyle: () => ({ strokeRect: () => {} }) }) }),
                 fillRect: () => {},
                 fillCircle: () => {},
                 lineStyle: () => {},
                 strokeRect: () => {},
-                clear: () => {}
+                clear: () => {},
+                setVisible: () => {}
             }),
             text: () => ({
                 setOrigin: () => ({})

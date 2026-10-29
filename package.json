@@ -4,7 +4,7 @@
   "description": "LORELEI: DESCENT - A browser-based, top-down, vertically scrolling arcade shooter.",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open \"/?debug=1\"",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test tests/*.test.js",
@@ -17,6 +17,7 @@
     "sharp": "^0.35.5"
   },
   "devDependencies": {
+    "phaser3spectorjs": "^0.0.8",
     "vite": "^8.3.4"
   }
 }

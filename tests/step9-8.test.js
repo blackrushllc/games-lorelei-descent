@@ -17,6 +17,12 @@ global.COMBAT_CONFIG = {
         SENTINEL: {
             laserConfig: { trackingMs: 650, lockedMs: 300, firingMs: 180, beamWidth: 12 }
         }
+    },
+    geometry: {
+        player: { weaponOrigin: { x: 0, y: -45 }, targetCenter: { x: 0, y: -40 }, targetRadius: 22 },
+        PURSUER: { weaponOrigin: { x: 0, y: -30 }, targetCenter: { x: 0, y: -30 }, targetRadius: 20 },
+        SENTINEL: { weaponOrigin: { x: 0, y: -35 }, targetCenter: { x: 0, y: -35 }, targetRadius: 20 },
+        ARMORED_PURSUER: { weaponOrigin: { x: 0, y: -40 }, targetCenter: { x: 0, y: -40 }, targetRadius: 25 }
     }
 };
 
@@ -67,6 +73,7 @@ class MockScene {
                 setVisible: () => g,
                 setAlpha: () => g,
                 setDepth: () => g,
+                setPosition: () => g,
                 alpha: 1,
                 visible: true
             };
@@ -76,13 +83,27 @@ class MockScene {
         this.add = {
             existing: (obj) => obj,
             graphics: createGraphics,
-            sprite: () => ({ setScale: () => ({ setVisible: () => ({}) }) }),
+            sprite: () => {
+                const s = {
+                    setScale: () => s,
+                    setVisible: () => s,
+                    setOriginFromFrame: () => s,
+                    play: () => s,
+                    anims: { currentAnim: null }
+                };
+                return s;
+            },
             text: () => ({ setOrigin: () => ({}) })
         };
         this.physics = { add: { existing: (obj) => { obj.body = { setCircle: () => {}, setDrag: () => {}, setBounce: () => {}, setVelocity: () => {}, setAcceleration: () => {}, setMaxSpeed: () => {} }; } } };
         this.tweens = { add: () => {} };
         this.time = { now: 0, delayedCall: (ms, cb) => cb() };
-        this.registry = { get: () => ({}) };
+        this.registry = {
+            get: () => ({
+                get8WayDirection: () => 'south',
+                getAnimationKey: () => 'anim'
+            })
+        };
         this.events = { emit: () => {}, on: () => {} };
         this.getNearestObstacleAlongRay = () => null;
         this.createImpactSparks = () => {};
@@ -110,7 +131,10 @@ global.PROXY_BOSS_CONFIG = PROXY_BOSS_CONFIG;
 test('Laser fairing: Sentinel follow -> lock -> fire sequence', () => {
     const scene = new MockScene();
     const sentinel = new global.Robot(scene, 100, 100, 'SENTINEL');
-    const player = { x: 200, y: 100 };
+    const player = { 
+        x: 200, y: 105, // Adjusted to align target region with emitter
+        getTargetRegion: () => ({ x: 200, y: 65, radius: 25 })
+    };
     
     sentinel.aiState = 'ACQUIRING_TARGET';
     sentinel.stateTimer = 0;
@@ -141,7 +165,10 @@ test('Laser fairing: Sentinel follow -> lock -> fire sequence', () => {
 test('Laser fairing: Proxy Boss follow -> lock -> fire sequence', () => {
     const scene = new MockScene();
     const boss = new global.ProxyBoss(scene, 100, 100);
-    const player = { x: 200, y: 100 };
+    const player = { 
+        x: 200, y: 100,
+        getTargetRegion: () => ({ x: 200, y: 100, radius: 25 })
+    };
     
     boss.startLaserAttack(player);
     assert.strictEqual(boss.attackSubState, 'TRACKING');

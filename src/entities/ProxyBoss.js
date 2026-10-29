@@ -20,6 +20,7 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         this.setupComponents();
         
         this.laserGraphic = scene.add.graphics();
+        this.laserGraphic.setPosition(0, -20); // Relative to container weapon offset
         this.add(this.laserGraphic);
         
         this.targetX = x;
@@ -32,21 +33,44 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         this.attackTimer = 0;
         this.attackSubState = 'NONE'; // NONE, TRACKING, LOCKED, FIRING
         
+        this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
         this.pixelArtEnabled = true;
+
+        if (scene.add && typeof scene.add.sprite === 'function') {
+            this.sprite = scene.add.sprite(0, 0, 'proxy');
+            if (this.sprite) {
+                this.sprite.setScale(3); // Proxy Boss is large
+                if (typeof this.sprite.setVisible === 'function') this.sprite.setVisible(this.pixelArtEnabled);
+                if (typeof this.sprite.setOriginFromFrame === 'function') this.sprite.setOriginFromFrame();
+                this.add(this.sprite);
+            }
+        }
         
         scene.add.existing(this);
     }
 
     setPixelArtEnabled(enabled) {
         this.pixelArtEnabled = enabled;
-        // Boss currently has no pixel art sprites
-        const showProcedural = true;
+        if (this.sprite && typeof this.sprite.setVisible === 'function') this.sprite.setVisible(enabled);
         
         this.components.forEach(comp => {
-            if (comp.setPixelArtEnabled) comp.setPixelArtEnabled(enabled);
+            if (comp && typeof comp.setPixelArtEnabled === 'function') comp.setPixelArtEnabled(enabled);
         });
         
-        this.laserGraphic.setVisible(showProcedural);
+        if (this.laserGraphic && typeof this.laserGraphic.setVisible === 'function') {
+            this.laserGraphic.setVisible(!enabled || this.attackSubState !== 'NONE');
+        }
+    }
+
+    /**
+     * Returns the world-space position from which lasers are fired.
+     */
+    getWeaponOrigin() {
+        // Laser emission for Proxy Boss is from its head/core area
+        return {
+            x: this.x,
+            y: this.y - 20
+        };
     }
 
     reset() {
@@ -97,6 +121,11 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         // Reset laser graphic
         this.laserGraphic.clear();
 
+        // Update animation
+        if (this.pixelArtEnabled && this.spriteRegistry) {
+            this.updateAnimation(player);
+        }
+
         // Behavior based on state
         switch (this.state) {
             case 'IDLE':
@@ -115,6 +144,46 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
 
         // Sync components if they had independent physics (not needed if they are in container)
         // But we want their bodies to be active for collisions
+    }
+
+    updateAnimation(player) {
+        // 1. Direction
+        let angle = 0;
+        const isMoving = (this.state === 'MOVING');
+        
+        if (this.state === 'ATTACKING') {
+            angle = this.laserAngle;
+        } else if (isMoving) {
+            angle = Phaser.Math.Angle.Between(this.x, this.y, this.targetX, this.targetY);
+        } else {
+            angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        }
+
+        const facing = this.spriteRegistry.get8WayDirection(angle);
+
+        // 2. State Mapping
+        let state = isMoving ? 'walk' : 'idle';
+        if (this.state === 'DEFEATED') {
+            state = 'collapse'; // Special collapse animation for proxy
+        }
+
+        // Determine entity state based on damage components
+        let entityState = 'default';
+        const brokenCount = [...this.components.values()].filter(c => c.hp <= 0 && !c.cfg.exposedOnly).length;
+        
+        if (this.state === 'DEFEATED') {
+            entityState = 'damage_3';
+        } else if (brokenCount === 2) {
+            entityState = 'damage_2';
+        } else if (brokenCount === 1) {
+            entityState = 'damage_1';
+        }
+
+        const animKey = this.spriteRegistry.getAnimationKey('proxy', state, facing, entityState);
+        if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
+            this.sprite.play(animKey);
+            this.sprite.setOriginFromFrame();
+        }
     }
 
     updateIdle(player, delta) {
@@ -160,9 +229,11 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         }
 
         this.attackTimer += delta;
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
 
         if (this.attackSubState === 'TRACKING') {
-            const targetAngle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+            const targetAngle = Phaser.Math.Angle.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
             // Track player but with some inertia
             this.laserAngle = Phaser.Math.Angle.RotateTo(this.laserAngle, targetAngle, 0.03);
             this.drawLaser('TRACKING');
@@ -239,20 +310,25 @@ export default class ProxyBoss extends Phaser.GameObjects.Container {
         this.state = 'ATTACKING';
         this.attackSubState = 'TRACKING';
         this.attackTimer = 0;
-        this.laserAngle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
+        this.laserAngle = Phaser.Math.Angle.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
     }
 
     applyLaserDamage(player) {
         // Geometric check for damage
         const maxLength = 2000;
-        const ray = new Phaser.Geom.Line(this.x, this.y, this.x + Math.cos(this.laserAngle) * maxLength, this.y + Math.sin(this.laserAngle) * maxLength);
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
         
-        // Use a realistic hit circle for the player
-        const playerCircle = new Phaser.Geom.Circle(player.x, player.y, 25);
+        const ray = new Phaser.Geom.Line(origin.x, origin.y, origin.x + Math.cos(this.laserAngle) * maxLength, origin.y + Math.sin(this.laserAngle) * maxLength);
+        
+        // Use the combat target region of the player
+        const playerCircle = new Phaser.Geom.Circle(targetRegion.x, targetRegion.y, targetRegion.radius);
         
         // Also check environmental blocking for boss laser
-        const obsHit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, maxLength);
-        const playerDist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+        const obsHit = this.scene.getNearestObstacleAlongRay(origin.x, origin.y, this.laserAngle, maxLength);
+        const playerDist = Phaser.Math.Distance.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
         
         if (obsHit && obsHit.distance < playerDist - 20) {
             // Blocked by cover
@@ -354,10 +430,20 @@ class BossComponent extends Phaser.GameObjects.Container {
         this.pixelArtEnabled = true;
     }
 
+    /**
+     * Returns the world-space target region.
+     */
+    getTargetRegion() {
+        return {
+            x: this.boss.x + this.x,
+            y: this.boss.y + this.y,
+            radius: this.cfg.radius
+        };
+    }
+
     setPixelArtEnabled(enabled) {
         this.pixelArtEnabled = enabled;
-        // Boss components currently have no pixel art sprites
-        const showProcedural = true;
+        const showProcedural = !enabled;
         this.graphic.setVisible(showProcedural);
     }
 

@@ -1,0 +1,2515 @@
+{
+  "frames": [
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-east__004",
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-east__005",
+      "frame": {
+        "x": 196,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-east__006",
+      "frame": {
+        "x": 390,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-east__007",
+      "frame": {
+        "x": 584,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__000",
+      "frame": {
+        "x": 778,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__001",
+      "frame": {
+        "x": 972,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__002",
+      "frame": {
+        "x": 1166,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__003",
+      "frame": {
+        "x": 1360,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__004",
+      "frame": {
+        "x": 1554,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__005",
+      "frame": {
+        "x": 1748,
+        "y": 2,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__006",
+      "frame": {
+        "x": 2,
+        "y": 196,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__east__007",
+      "frame": {
+        "x": 196,
+        "y": 196,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__000",
+      "frame": {
+        "x": 390,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__001",
+      "frame": {
+        "x": 584,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__002",
+      "frame": {
+        "x": 778,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__003",
+      "frame": {
+        "x": 972,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__004",
+      "frame": {
+        "x": 1166,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__005",
+      "frame": {
+        "x": 1360,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__006",
+      "frame": {
+        "x": 1554,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-east__007",
+      "frame": {
+        "x": 1748,
+        "y": 196,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__000",
+      "frame": {
+        "x": 2,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__001",
+      "frame": {
+        "x": 196,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__002",
+      "frame": {
+        "x": 390,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__003",
+      "frame": {
+        "x": 584,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__004",
+      "frame": {
+        "x": 778,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__005",
+      "frame": {
+        "x": 972,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__006",
+      "frame": {
+        "x": 1166,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south__007",
+      "frame": {
+        "x": 1360,
+        "y": 390,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__000",
+      "frame": {
+        "x": 1554,
+        "y": 390,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__001",
+      "frame": {
+        "x": 1748,
+        "y": 390,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__002",
+      "frame": {
+        "x": 2,
+        "y": 584,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__003",
+      "frame": {
+        "x": 196,
+        "y": 584,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__004",
+      "frame": {
+        "x": 390,
+        "y": 584,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__005",
+      "frame": {
+        "x": 584,
+        "y": 584,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__006",
+      "frame": {
+        "x": 778,
+        "y": 584,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__south-west__007",
+      "frame": {
+        "x": 972,
+        "y": 584,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__000",
+      "frame": {
+        "x": 1166,
+        "y": 584,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__001",
+      "frame": {
+        "x": 1360,
+        "y": 584,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__002",
+      "frame": {
+        "x": 1554,
+        "y": 584,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__003",
+      "frame": {
+        "x": 1748,
+        "y": 584,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__004",
+      "frame": {
+        "x": 2,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__005",
+      "frame": {
+        "x": 196,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__006",
+      "frame": {
+        "x": 390,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__west__007",
+      "frame": {
+        "x": 584,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__000",
+      "frame": {
+        "x": 778,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__001",
+      "frame": {
+        "x": 972,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__002",
+      "frame": {
+        "x": 1166,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__003",
+      "frame": {
+        "x": 1360,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__004",
+      "frame": {
+        "x": 1554,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__005",
+      "frame": {
+        "x": 1748,
+        "y": 778,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__006",
+      "frame": {
+        "x": 2,
+        "y": 972,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_left_right__walk__north-west__007",
+      "frame": {
+        "x": 196,
+        "y": 972,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__north__000",
+      "frame": {
+        "x": 390,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__north-east__000",
+      "frame": {
+        "x": 584,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__east__000",
+      "frame": {
+        "x": 778,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__south-east__000",
+      "frame": {
+        "x": 972,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__south__000",
+      "frame": {
+        "x": 1166,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__south-west__000",
+      "frame": {
+        "x": 1360,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__west__000",
+      "frame": {
+        "x": 1554,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__idle__north-west__000",
+      "frame": {
+        "x": 1748,
+        "y": 972,
+        "w": 128,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 32,
+        "y": 32,
+        "w": 128,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__000",
+      "frame": {
+        "x": 2,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__001",
+      "frame": {
+        "x": 196,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__002",
+      "frame": {
+        "x": 390,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__003",
+      "frame": {
+        "x": 584,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__004",
+      "frame": {
+        "x": 778,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__005",
+      "frame": {
+        "x": 972,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__006",
+      "frame": {
+        "x": 1166,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north__007",
+      "frame": {
+        "x": 1360,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__000",
+      "frame": {
+        "x": 1554,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__001",
+      "frame": {
+        "x": 1748,
+        "y": 1166,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__002",
+      "frame": {
+        "x": 2,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__003",
+      "frame": {
+        "x": 196,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__004",
+      "frame": {
+        "x": 390,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__005",
+      "frame": {
+        "x": 584,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__006",
+      "frame": {
+        "x": 778,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__north-east__007",
+      "frame": {
+        "x": 972,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__000",
+      "frame": {
+        "x": 1166,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__001",
+      "frame": {
+        "x": 1360,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__002",
+      "frame": {
+        "x": 1554,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__003",
+      "frame": {
+        "x": 1748,
+        "y": 1360,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__004",
+      "frame": {
+        "x": 2,
+        "y": 1554,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__005",
+      "frame": {
+        "x": 196,
+        "y": 1554,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__006",
+      "frame": {
+        "x": 390,
+        "y": 1554,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__east__007",
+      "frame": {
+        "x": 584,
+        "y": 1554,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__000",
+      "frame": {
+        "x": 778,
+        "y": 1554,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__001",
+      "frame": {
+        "x": 972,
+        "y": 1554,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__002",
+      "frame": {
+        "x": 1166,
+        "y": 1554,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__003",
+      "frame": {
+        "x": 1360,
+        "y": 1554,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__004",
+      "frame": {
+        "x": 1554,
+        "y": 1554,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__005",
+      "frame": {
+        "x": 1748,
+        "y": 1554,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__006",
+      "frame": {
+        "x": 2,
+        "y": 1748,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south-east__007",
+      "frame": {
+        "x": 196,
+        "y": 1748,
+        "w": 192,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 192,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__000",
+      "frame": {
+        "x": 390,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__001",
+      "frame": {
+        "x": 584,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__002",
+      "frame": {
+        "x": 778,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__003",
+      "frame": {
+        "x": 972,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__004",
+      "frame": {
+        "x": 1166,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__005",
+      "frame": {
+        "x": 1360,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__006",
+      "frame": {
+        "x": 1554,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    {
+      "filename": "giant_boss__damage_all__walk__south__007",
+      "frame": {
+        "x": 1748,
+        "y": 1748,
+        "w": 176,
+        "h": 176
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 8,
+        "w": 176,
+        "h": 176
+      },
+      "sourceSize": {
+        "w": 192,
+        "h": 192
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    }
+  ],
+  "meta": {
+    "app": "Lorelei Sprite Compiler",
+    "version": "2.0",
+    "image": "giant_boss_page_2.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1942,
+      "h": 1942
+    },
+    "scale": "1"
+  }
+}

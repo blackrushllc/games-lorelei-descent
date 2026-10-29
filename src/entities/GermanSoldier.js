@@ -8,7 +8,15 @@ export default class GermanSoldier extends Phaser.GameObjects.Container {
         super(scene, x, y);
         this.scene = scene;
 
-        // Placeholder Visuals
+        // Visuals
+        this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
+        this.pixelArtEnabled = true;
+
+        this.sprite = scene.add.sprite(0, 0, 'german_soldier');
+        this.sprite.setScale(2);
+        this.sprite.setVisible(this.pixelArtEnabled);
+        this.sprite.setOriginFromFrame();
+
         this.bodyGraphic = scene.add.graphics();
         this.bodyGraphic.fillStyle(0x4a5d4a, 1); // Field Gray
         this.bodyGraphic.fillRect(-15, -20, 30, 40);
@@ -25,7 +33,7 @@ export default class GermanSoldier extends Phaser.GameObjects.Container {
             fontFamily: 'monospace'
         }).setOrigin(0.5);
 
-        this.add([this.bodyGraphic, this.headGraphic, this.label]);
+        this.add([this.sprite, this.bodyGraphic, this.headGraphic, this.label]);
 
         this.pixelArtEnabled = true;
 
@@ -34,14 +42,21 @@ export default class GermanSoldier extends Phaser.GameObjects.Container {
 
     setPixelArtEnabled(enabled) {
         this.pixelArtEnabled = enabled;
-        // GermanSoldier currently has no pixel art sprites
-        const showProcedural = true;
+        const showProcedural = !enabled;
+        if (this.sprite) this.sprite.setVisible(enabled);
         this.bodyGraphic.setVisible(showProcedural);
         this.headGraphic.setVisible(showProcedural);
     }
 
     throwGrenade(targetX, targetY, callback) {
-        // Animation of throwing (simplified)
+        // Animation of throwing
+        if (this.pixelArtEnabled && this.spriteRegistry) {
+            const animKey = this.spriteRegistry.getAnimationKey('german_soldier', 'throw', 'north');
+            if (animKey) {
+                this.sprite.play(animKey);
+            }
+        }
+
         this.scene.tweens.add({
             targets: this,
             scaleX: 1.2,

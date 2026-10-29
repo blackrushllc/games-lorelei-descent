@@ -15,6 +15,14 @@ export default class Proxy extends Phaser.GameObjects.Container {
         this.config = config;
 
         // 1. Visuals
+        this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
+        this.pixelArtEnabled = true;
+
+        this.sprite = scene.add.sprite(0, 0, 'proxy');
+        this.sprite.setScale(2);
+        this.sprite.setVisible(this.pixelArtEnabled);
+        this.sprite.setOriginFromFrame();
+
         this.bodyGraphic = scene.add.graphics();
         this.bodyGraphic.fillStyle(config.color, 1);
         this.bodyGraphic.fillRect(-config.width/2, -config.height/2, config.width, config.height);
@@ -42,7 +50,7 @@ export default class Proxy extends Phaser.GameObjects.Container {
             strokeThickness: 3
         }).setOrigin(0.5);
 
-        this.add([this.bodyGraphic, this.head, this.nadineBundle, this.label]);
+        this.add([this.sprite, this.bodyGraphic, this.head, this.nadineBundle, this.label]);
         
         this.pixelArtEnabled = true;
 
@@ -57,9 +65,9 @@ export default class Proxy extends Phaser.GameObjects.Container {
 
     setPixelArtEnabled(enabled) {
         this.pixelArtEnabled = enabled;
-        // Proxy currently has no pixel art sprites, so always show procedural visuals
-        const showProcedural = true; 
+        const showProcedural = !enabled;
         
+        if (this.sprite) this.sprite.setVisible(enabled);
         this.bodyGraphic.setVisible(showProcedural);
         this.head.setVisible(showProcedural);
         this.nadineBundle.setVisible(showProcedural);
@@ -82,5 +90,17 @@ export default class Proxy extends Phaser.GameObjects.Container {
         // Straight downward deterministic movement
         this.y = this.config.startY + (this.config.speed * dt);
         this.x = this.config.startX;
+
+        // Update animation
+        if (this.pixelArtEnabled && this.spriteRegistry) {
+            // Opening proxy is carrying Nadine
+            const state = 'carrying_nadine';
+            const facing = 'south'; // Always fleeing downward
+            const animKey = this.spriteRegistry.getAnimationKey('proxy', state, facing);
+            if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
+                this.sprite.play(animKey);
+                this.sprite.setOriginFromFrame();
+            }
+        }
     }
 }

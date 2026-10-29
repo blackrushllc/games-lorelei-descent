@@ -65,8 +65,73 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.laserGraphic = scene.add.graphics().setDepth(5);
         this.add(this.laserGraphic);
         
+        const geo = COMBAT_CONFIG.geometry[this.type];
+        if (geo) {
+            this.laserGraphic.setPosition(geo.weaponOrigin.x, geo.weaponOrigin.y);
+        }
+        
         this.muzzleFlash = scene.add.graphics();
         this.add(this.muzzleFlash);
+
+        // 5. Combat Sensor (Step 10.2.1)
+        this.createCombatSensor(scene);
+    }
+
+    /**
+     * Creates a generous combat collision sensor.
+     * @param {Phaser.Scene} scene 
+     */
+    createCombatSensor(scene) {
+        const geo = COMBAT_CONFIG.geometry[this.type];
+        const radius = geo ? geo.targetRadius : 15;
+        const centerX = geo ? geo.targetCenter.x : 0;
+        const centerY = geo ? geo.targetCenter.y : -20;
+
+        // Defensive check for tests mocking the scene
+        if (scene.add && typeof scene.add.zone === 'function') {
+            // Use a Zone for the collision sensor
+            this.combatSensor = scene.add.zone(this.x + centerX, this.y + centerY, radius * 2, radius * 2);
+            scene.physics.add.existing(this.combatSensor);
+            
+            if (this.combatSensor.body) {
+                this.combatSensor.body.setCircle(radius);
+                this.combatSensor.body.setAllowGravity(false);
+                this.combatSensor.body.setImmovable(true);
+            }
+
+            this.combatSensor.parentRobot = this;
+            this.combatSensor.isCombatSensor = true;
+
+            // Add to global group if it exists (managed by GameScene)
+            if (scene.combatSensorGroup) {
+                scene.combatSensorGroup.add(this.combatSensor);
+            }
+        }
+    }
+
+    /**
+     * Returns the world-space position from which lasers are fired.
+     */
+    getWeaponOrigin() {
+        const geo = COMBAT_CONFIG.geometry[this.type];
+        if (!geo) return { x: this.x, y: this.y };
+        return {
+            x: this.x + geo.weaponOrigin.x,
+            y: this.y + geo.weaponOrigin.y
+        };
+    }
+
+    /**
+     * Returns the combat target region (center and radius).
+     */
+    getTargetRegion() {
+        const geo = COMBAT_CONFIG.geometry[this.type];
+        if (!geo) return { x: this.x, y: this.y, radius: 15 };
+        return {
+            x: this.x + geo.targetCenter.x,
+            y: this.y + geo.targetCenter.y,
+            radius: geo.targetRadius
+        };
     }
 
     createVisuals() {
@@ -74,13 +139,27 @@ export default class Robot extends Phaser.GameObjects.Container {
         const cfg = this.combatConfig;
         const color = cfg.color || 0xaa0000;
 
-        // 1. Sprite for Pursuer
-        this.hasSprite = (type === 'PURSUER');
+        // 1. Sprite for Pursuer, Sentinel and Armored Robot
+        this.hasSprite = (type === 'PURSUER' || type === 'SENTINEL' || type === 'ARMORED_PURSUER');
         if (this.hasSprite) {
-            this.sprite = this.scene.add.sprite(0, 0, 'pursuer');
-            this.sprite.setScale(2); 
-            this.sprite.setVisible(this.pixelArtEnabled);
-            this.add(this.sprite);
+            const spriteKey = type === 'ARMORED_PURSUER' ? 'armored_robot' : type.toLowerCase();
+            // Check if registry has this sprite (via manifest)
+            if (this.spriteRegistry && this.spriteRegistry.manifest && this.spriteRegistry.manifest.entities[spriteKey]) {
+                if (this.scene.add && typeof this.scene.add.sprite === 'function') {
+                    this.sprite = this.scene.add.sprite(0, 0, spriteKey);
+                    if (this.sprite) {
+                        this.sprite.setScale(2); 
+                        if (typeof this.sprite.setVisible === 'function') this.sprite.setVisible(this.pixelArtEnabled);
+                        if (typeof this.sprite.setOriginFromFrame === 'function') this.sprite.setOriginFromFrame();
+                        this.add(this.sprite);
+                    }
+                }
+            } else {
+                this.hasSprite = false;
+                if (this.spriteRegistry && this.spriteRegistry.isInitialized) {
+                    console.warn(`Robot: Sprite for ${spriteKey} not found in manifest. Falling back to procedural.`);
+                }
+            }
         }
 
         // 2. Scale for Armored Pursuer
@@ -107,6 +186,7 @@ export default class Robot extends Phaser.GameObjects.Container {
             this.antenna.lineStyle(2, 0x888888, 1);
             this.antenna.moveTo(-8, -15); this.antenna.lineTo(-12, -25);
             this.antenna.moveTo(8, -15); this.antenna.lineTo(12, -25);
+            this.antenna.setVisible(!this.hasSprite || !this.pixelArtEnabled);
             this.add(this.antenna);
         }
 
@@ -171,7 +251,7 @@ export default class Robot extends Phaser.GameObjects.Container {
         const showProcedural = !this.hasSprite || !enabled;
         const showSprite = this.hasSprite && enabled;
         
-        if (this.sprite) this.sprite.setVisible(showSprite);
+        if (this.sprite && typeof this.sprite.setVisible === 'function') this.sprite.setVisible(showSprite);
         if (this.bodyGraphic) this.bodyGraphic.setVisible(showProcedural);
         if (this.eye) this.eye.setVisible(showProcedural);
         if (this.details) this.details.setVisible(showProcedural);
@@ -180,6 +260,16 @@ export default class Robot extends Phaser.GameObjects.Container {
 
     update(time, delta) {
         if (this.isDestroyed || !this.active) return;
+
+        // Sync combat sensor position
+        if (this.combatSensor && this.combatSensor.body) {
+            const geo = COMBAT_CONFIG.geometry[this.type];
+            if (geo) {
+                this.combatSensor.setPosition(this.x + geo.targetCenter.x, this.y + geo.targetCenter.y);
+            } else {
+                this.combatSensor.setPosition(this.x, this.y - 20);
+            }
+        }
 
         // Authoritative pause check
         const state = this.scene.timeline.getState();
@@ -259,7 +349,7 @@ export default class Robot extends Phaser.GameObjects.Container {
         const camY = this.scene.cameras.main.scrollY;
         
         // If retreating, we can be removed if we are off to the sides
-        const isOffSides = this.x < -100 || this.x > 740;
+        const isOffSides = this.x < -100 || this.x > 1380;
         
         // Only cleanup if it's ABOVE the camera (passed) or VERY far below, or off sides during retreat
         if (this.y < camY - 400 || this.y > camY + 3000 || (this.aiState === 'RETREATING' && isOffSides)) {
@@ -274,7 +364,10 @@ export default class Robot extends Phaser.GameObjects.Container {
         let angle = 0;
         const isMoving = this.body.velocity.length() > 5;
         
-        if (isMoving) {
+        // Sentinels face their laser target during acquisition/lock/fire
+        if (this.type === 'SENTINEL' && (this.aiState === 'ACQUIRING_TARGET' || this.aiState === 'LOCKED' || this.aiState === 'FIRING')) {
+            angle = this.laserAngle;
+        } else if (isMoving) {
             angle = Phaser.Math.Angle.Between(0, 0, this.body.velocity.x, this.body.velocity.y);
         } else {
             // Face player if idle but active
@@ -285,19 +378,34 @@ export default class Robot extends Phaser.GameObjects.Container {
 
         // 2. State
         let state = 'idle';
+        const entityId = this.type === 'ARMORED_PURSUER' ? 'armored_robot' : this.type.toLowerCase();
+
         if (this.aiState === 'PURSUING' || this.aiState === 'RETREATING') {
-            if (dist < 80 && this.aiState === 'PURSUING') {
+            if (this.type === 'PURSUER' && dist < 80 && this.aiState === 'PURSUING') {
                 state = 'attack';
             } else if (isMoving) {
-                state = 'walk';
+                // Use run animation if bursting or moving fast
+                const speed = this.body.velocity.length();
+                state = (speed > this.combatConfig.speed * 1.2) ? 'run' : 'walk';
             }
-        } else if (this.aiState === 'ACQUIRING_TARGET' || this.aiState === 'FIRING') {
-            state = 'attack'; // Sentinels claw out when ready? (Only Pursuer has sprites for now though)
+        } else if (this.type === 'SENTINEL') {
+            // Sentinels use walk/run if moving, idle if stationary (even while firing)
+            if (isMoving) {
+                const speed = this.body.velocity.length();
+                state = (speed > this.combatConfig.speed * 1.2) ? 'run' : 'walk';
+            } else {
+                state = 'idle';
+            }
+        } else if (this.type === 'PURSUER' && (this.aiState === 'ACQUIRING_TARGET' || this.aiState === 'FIRING')) {
+            // Pursuers don't usually have these states, but for completeness:
+            state = 'attack';
         }
 
-        const animKey = this.spriteRegistry.getAnimationKey('pursuer', state, this.currentFacing);
+        const animKey = this.spriteRegistry.getAnimationKey(entityId, state, this.currentFacing);
         if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
             this.sprite.play(animKey);
+            // Ensure stable anchoring from the new frame metadata
+            this.sprite.setOriginFromFrame();
         }
     }
 
@@ -327,9 +435,9 @@ export default class Robot extends Phaser.GameObjects.Container {
         
         this.aiState = 'RETREATING';
         
-        // Determine exit: closest side
-        const isLeftCloser = this.x < 320;
-        this.retreatX = isLeftCloser ? -150 : 790;
+        // Determine exit: closest side (World is 1280px wide)
+        const isLeftCloser = this.x < 640;
+        this.retreatX = isLeftCloser ? -150 : 1430;
         // Keep current Y or follow camera slightly
         this.retreatY = this.y;
         
@@ -384,7 +492,9 @@ export default class Robot extends Phaser.GameObjects.Container {
 
     handleAcquire(player, dist, delta) {
         this.stateTimer += delta;
-        const angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
+        const angle = Phaser.Math.Angle.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
         this.laserAngle = angle;
 
         this.handleSentinelTactics(player, dist, delta);
@@ -414,7 +524,8 @@ export default class Robot extends Phaser.GameObjects.Container {
 
     handleLocked(player, delta) {
         this.stateTimer += delta;
-        const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
+        const origin = this.getWeaponOrigin();
+        const dist = Phaser.Math.Distance.Between(origin.x, origin.y, player.x, player.y);
         this.handleSentinelTactics(player, dist, delta);
 
         const laserLen = 1000;
@@ -473,10 +584,12 @@ export default class Robot extends Phaser.GameObjects.Container {
 
     handleSentinelTactics(player, dist, delta) {
         const prefDist = this.combatConfig.preferredDistance;
-        const angle = Phaser.Math.Angle.Between(this.x, this.y, player.x, player.y);
+        const origin = this.getWeaponOrigin();
+        const targetRegion = player.getTargetRegion();
+        const angle = Phaser.Math.Angle.Between(origin.x, origin.y, targetRegion.x, targetRegion.y);
         
         // Ray-based laser blocking check for movement decision
-        const hit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, 1000);
+        const hit = this.scene.getNearestObstacleAlongRay(origin.x, origin.y, this.laserAngle, 1000);
         const distToPlayer = dist;
         const isPlayerBlocked = hit && hit.distance < distToPlayer - 20;
 
@@ -496,12 +609,13 @@ export default class Robot extends Phaser.GameObjects.Container {
 
     calculateLaserImpact() {
         const maxLength = 1000;
-        const ray = new Phaser.Geom.Line(this.x, this.y, this.x + Math.cos(this.laserAngle) * maxLength, this.y + Math.sin(this.laserAngle) * maxLength);
+        const origin = this.getWeaponOrigin();
+        const ray = new Phaser.Geom.Line(origin.x, origin.y, origin.x + Math.cos(this.laserAngle) * maxLength, origin.y + Math.sin(this.laserAngle) * maxLength);
         
         let nearestHit = { distance: maxLength, target: null, type: 'NONE' };
 
         // 1. Check Obstacles
-        const obsHit = this.scene.getNearestObstacleAlongRay(this.x, this.y, this.laserAngle, maxLength);
+        const obsHit = this.scene.getNearestObstacleAlongRay(origin.x, origin.y, this.laserAngle, maxLength);
         if (obsHit) {
             nearestHit = { distance: obsHit.distance, target: obsHit.target, type: 'OBSTACLE' };
         }
@@ -509,11 +623,12 @@ export default class Robot extends Phaser.GameObjects.Container {
         // 2. Check Player
         const player = this.scene.player;
         if (player && !player.isDestroyed && !player.isRespawning) {
-            const playerCircle = new Phaser.Geom.Circle(player.x, player.y, 25);
+            const targetRegion = player.getTargetRegion();
+            const playerCircle = new Phaser.Geom.Circle(targetRegion.x, targetRegion.y, targetRegion.radius);
             const points = [];
             if (Phaser.Geom.Intersects.GetLineToCircle(ray, playerCircle, points)) {
                 points.forEach(p => {
-                    const d = Phaser.Math.Distance.Between(this.x, this.y, p.x, p.y);
+                    const d = Phaser.Math.Distance.Between(origin.x, origin.y, p.x, p.y);
                     if (d < nearestHit.distance) {
                         nearestHit = { distance: d, target: player, type: 'PLAYER' };
                     }
@@ -525,12 +640,12 @@ export default class Robot extends Phaser.GameObjects.Container {
         this.scene.robotGroup.getChildren().forEach(other => {
             if (other === this || other.isDestroyed || !other.active) return;
             
-            const radius = other.type === 'ARMORED_PURSUER' ? 22 : 18;
-            const otherCircle = new Phaser.Geom.Circle(other.x, other.y, radius);
+            const targetRegion = other.getTargetRegion();
+            const otherCircle = new Phaser.Geom.Circle(targetRegion.x, targetRegion.y, targetRegion.radius);
             const points = [];
             if (Phaser.Geom.Intersects.GetLineToCircle(ray, otherCircle, points)) {
                 points.forEach(p => {
-                    const d = Phaser.Math.Distance.Between(this.x, this.y, p.x, p.y);
+                    const d = Phaser.Math.Distance.Between(origin.x, origin.y, p.x, p.y);
                     if (d < nearestHit.distance) {
                         nearestHit = { distance: d, target: other, type: 'ROBOT' };
                     }
@@ -571,14 +686,16 @@ export default class Robot extends Phaser.GameObjects.Container {
         }
     }
 
-    applyKnockback(angle, strength) {
+    applyKnockback(angle, strength, duration = 400) {
         if (this.isDestroyed) return;
         this.aiState = 'STAGGERED';
-        this.stateTimer = 400; 
+        this.stateTimer = duration; 
         
         const vx = Math.cos(angle) * strength;
         const vy = Math.sin(angle) * strength;
         if (this.body) {
+            // Ensure maxSpeed doesn't clamp the knockback burst
+            this.body.setMaxSpeed(Math.max(strength, this.combatConfig.speed * 2));
             this.body.setVelocity(vx, vy);
             this.body.setAcceleration(0, 0);
         }
@@ -609,6 +726,12 @@ export default class Robot extends Phaser.GameObjects.Container {
             this.body.setVelocity(0, 0);
             this.body.setAcceleration(0, 0);
         }
+
+        if (this.combatSensor) {
+            this.combatSensor.active = false;
+            if (this.combatSensor.body) this.combatSensor.body.enable = false;
+        }
+
         this.laserGraphic.clear();
         
         if (this.hitFlashTween) this.hitFlashTween.stop();
@@ -628,6 +751,10 @@ export default class Robot extends Phaser.GameObjects.Container {
 
     destroy(fromScene) {
         if (this.hitFlashTween) this.hitFlashTween.stop();
+        if (this.combatSensor) {
+            this.combatSensor.destroy();
+            this.combatSensor = null;
+        }
         super.destroy(fromScene);
     }
 }

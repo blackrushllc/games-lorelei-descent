@@ -1,939 +1,3419 @@
 {
-  "blackrush": {
-    "character": "blackrush",
-    "frameWidth": 48,
-    "frameHeight": 48,
-    "displayScale": 2,
-    "animations": {
-      "idle": {
-        "fps": 1,
-        "loop": true,
-        "directions": {
-          "north": [
-            "idle_north_000"
-          ],
-          "north-east": [
-            "idle_north-east_000"
-          ],
-          "east": [
-            "idle_east_000"
-          ],
-          "south-east": [
-            "idle_south-east_000"
-          ],
-          "south": [
-            "idle_south_000"
-          ],
-          "south-west": [
-            "idle_south-west_000"
-          ],
-          "west": [
-            "idle_west_000"
-          ],
-          "north-west": [
-            "idle_north-west_000"
-          ]
-        },
-        "width": 48,
-        "height": 48
+  "schemaVersion": 2,
+  "entities": {
+    "blackrush": {
+      "id": "blackrush",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "blackrush__default__idle__north__000"
+                ],
+                "north-east": [
+                  "blackrush__default__idle__north-east__000"
+                ],
+                "east": [
+                  "blackrush__default__idle__east__000"
+                ],
+                "south-east": [
+                  "blackrush__default__idle__south-east__000"
+                ],
+                "south": [
+                  "blackrush__default__idle__south__000"
+                ],
+                "south-west": [
+                  "blackrush__default__idle__south-west__000"
+                ],
+                "west": [
+                  "blackrush__default__idle__west__000"
+                ],
+                "north-west": [
+                  "blackrush__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 10,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "blackrush__default__walk__north__000",
+                  "blackrush__default__walk__north__001",
+                  "blackrush__default__walk__north__002",
+                  "blackrush__default__walk__north__003",
+                  "blackrush__default__walk__north__004",
+                  "blackrush__default__walk__north__005",
+                  "blackrush__default__walk__north__006",
+                  "blackrush__default__walk__north__007"
+                ],
+                "north-east": [
+                  "blackrush__default__walk__north-east__000",
+                  "blackrush__default__walk__north-east__001",
+                  "blackrush__default__walk__north-east__002",
+                  "blackrush__default__walk__north-east__003",
+                  "blackrush__default__walk__north-east__004",
+                  "blackrush__default__walk__north-east__005",
+                  "blackrush__default__walk__north-east__006",
+                  "blackrush__default__walk__north-east__007"
+                ],
+                "east": [
+                  "blackrush__default__walk__east__000",
+                  "blackrush__default__walk__east__001",
+                  "blackrush__default__walk__east__002",
+                  "blackrush__default__walk__east__003",
+                  "blackrush__default__walk__east__004",
+                  "blackrush__default__walk__east__005",
+                  "blackrush__default__walk__east__006",
+                  "blackrush__default__walk__east__007"
+                ],
+                "south-east": [
+                  "blackrush__default__walk__south-east__000",
+                  "blackrush__default__walk__south-east__001",
+                  "blackrush__default__walk__south-east__002",
+                  "blackrush__default__walk__south-east__003",
+                  "blackrush__default__walk__south-east__004",
+                  "blackrush__default__walk__south-east__005",
+                  "blackrush__default__walk__south-east__006",
+                  "blackrush__default__walk__south-east__007"
+                ],
+                "south": [
+                  "blackrush__default__walk__south__000",
+                  "blackrush__default__walk__south__001",
+                  "blackrush__default__walk__south__002",
+                  "blackrush__default__walk__south__003",
+                  "blackrush__default__walk__south__004",
+                  "blackrush__default__walk__south__005",
+                  "blackrush__default__walk__south__006",
+                  "blackrush__default__walk__south__007"
+                ],
+                "south-west": [
+                  "blackrush__default__walk__south-west__000",
+                  "blackrush__default__walk__south-west__001",
+                  "blackrush__default__walk__south-west__002",
+                  "blackrush__default__walk__south-west__003",
+                  "blackrush__default__walk__south-west__004",
+                  "blackrush__default__walk__south-west__005",
+                  "blackrush__default__walk__south-west__006",
+                  "blackrush__default__walk__south-west__007"
+                ],
+                "west": [
+                  "blackrush__default__walk__west__000",
+                  "blackrush__default__walk__west__001",
+                  "blackrush__default__walk__west__002",
+                  "blackrush__default__walk__west__003",
+                  "blackrush__default__walk__west__004",
+                  "blackrush__default__walk__west__005",
+                  "blackrush__default__walk__west__006",
+                  "blackrush__default__walk__west__007"
+                ],
+                "north-west": [
+                  "blackrush__default__walk__north-west__000",
+                  "blackrush__default__walk__north-west__001",
+                  "blackrush__default__walk__north-west__002",
+                  "blackrush__default__walk__north-west__003",
+                  "blackrush__default__walk__north-west__004",
+                  "blackrush__default__walk__north-west__005",
+                  "blackrush__default__walk__north-west__006",
+                  "blackrush__default__walk__north-west__007"
+                ]
+              }
+            },
+            "run": {
+              "fps": 14,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "blackrush__default__run__north__000",
+                  "blackrush__default__run__north__001",
+                  "blackrush__default__run__north__002",
+                  "blackrush__default__run__north__003",
+                  "blackrush__default__run__north__004",
+                  "blackrush__default__run__north__005",
+                  "blackrush__default__run__north__006",
+                  "blackrush__default__run__north__007"
+                ],
+                "north-east": [
+                  "blackrush__default__run__north-east__000",
+                  "blackrush__default__run__north-east__001",
+                  "blackrush__default__run__north-east__002",
+                  "blackrush__default__run__north-east__003",
+                  "blackrush__default__run__north-east__004",
+                  "blackrush__default__run__north-east__005",
+                  "blackrush__default__run__north-east__006",
+                  "blackrush__default__run__north-east__007"
+                ],
+                "east": [
+                  "blackrush__default__run__east__000",
+                  "blackrush__default__run__east__001",
+                  "blackrush__default__run__east__002",
+                  "blackrush__default__run__east__003",
+                  "blackrush__default__run__east__004",
+                  "blackrush__default__run__east__005",
+                  "blackrush__default__run__east__006",
+                  "blackrush__default__run__east__007"
+                ],
+                "south-east": [
+                  "blackrush__default__run__south-east__000",
+                  "blackrush__default__run__south-east__001",
+                  "blackrush__default__run__south-east__002",
+                  "blackrush__default__run__south-east__003",
+                  "blackrush__default__run__south-east__004",
+                  "blackrush__default__run__south-east__005",
+                  "blackrush__default__run__south-east__006",
+                  "blackrush__default__run__south-east__007"
+                ],
+                "south": [
+                  "blackrush__default__run__south__000",
+                  "blackrush__default__run__south__001",
+                  "blackrush__default__run__south__002",
+                  "blackrush__default__run__south__003",
+                  "blackrush__default__run__south__004",
+                  "blackrush__default__run__south__005",
+                  "blackrush__default__run__south__006",
+                  "blackrush__default__run__south__007"
+                ],
+                "south-west": [
+                  "blackrush__default__run__south-west__000",
+                  "blackrush__default__run__south-west__001",
+                  "blackrush__default__run__south-west__002",
+                  "blackrush__default__run__south-west__003",
+                  "blackrush__default__run__south-west__004",
+                  "blackrush__default__run__south-west__005",
+                  "blackrush__default__run__south-west__006",
+                  "blackrush__default__run__south-west__007"
+                ],
+                "west": [
+                  "blackrush__default__run__west__000",
+                  "blackrush__default__run__west__001",
+                  "blackrush__default__run__west__002",
+                  "blackrush__default__run__west__003",
+                  "blackrush__default__run__west__004",
+                  "blackrush__default__run__west__005",
+                  "blackrush__default__run__west__006",
+                  "blackrush__default__run__west__007"
+                ],
+                "north-west": [
+                  "blackrush__default__run__north-west__000",
+                  "blackrush__default__run__north-west__001",
+                  "blackrush__default__run__north-west__002",
+                  "blackrush__default__run__north-west__003",
+                  "blackrush__default__run__north-west__004",
+                  "blackrush__default__run__north-west__005",
+                  "blackrush__default__run__north-west__006",
+                  "blackrush__default__run__north-west__007"
+                ]
+              }
+            },
+            "force-idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "blackrush__default__force-idle__north__000"
+                ],
+                "north-east": [
+                  "blackrush__default__force-idle__north-east__000"
+                ],
+                "east": [
+                  "blackrush__default__force-idle__east__000"
+                ],
+                "south-east": [
+                  "blackrush__default__force-idle__south-east__000"
+                ],
+                "south": [
+                  "blackrush__default__force-idle__south__000"
+                ],
+                "south-west": [
+                  "blackrush__default__force-idle__south-west__000"
+                ],
+                "west": [
+                  "blackrush__default__force-idle__west__000"
+                ],
+                "north-west": [
+                  "blackrush__default__force-idle__north-west__000"
+                ]
+              }
+            },
+            "force-walk": {
+              "fps": 10,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "blackrush__default__force-walk__north__000",
+                  "blackrush__default__force-walk__north__001",
+                  "blackrush__default__force-walk__north__002",
+                  "blackrush__default__force-walk__north__003",
+                  "blackrush__default__force-walk__north__004",
+                  "blackrush__default__force-walk__north__005",
+                  "blackrush__default__force-walk__north__006",
+                  "blackrush__default__force-walk__north__007"
+                ],
+                "north-east": [
+                  "blackrush__default__force-walk__north-east__000",
+                  "blackrush__default__force-walk__north-east__001",
+                  "blackrush__default__force-walk__north-east__002",
+                  "blackrush__default__force-walk__north-east__003",
+                  "blackrush__default__force-walk__north-east__004",
+                  "blackrush__default__force-walk__north-east__005",
+                  "blackrush__default__force-walk__north-east__006",
+                  "blackrush__default__force-walk__north-east__007"
+                ],
+                "east": [
+                  "blackrush__default__force-walk__east__000",
+                  "blackrush__default__force-walk__east__001",
+                  "blackrush__default__force-walk__east__002",
+                  "blackrush__default__force-walk__east__003",
+                  "blackrush__default__force-walk__east__004",
+                  "blackrush__default__force-walk__east__005",
+                  "blackrush__default__force-walk__east__006",
+                  "blackrush__default__force-walk__east__007"
+                ],
+                "south-east": [
+                  "blackrush__default__force-walk__south-east__000",
+                  "blackrush__default__force-walk__south-east__001",
+                  "blackrush__default__force-walk__south-east__002",
+                  "blackrush__default__force-walk__south-east__003",
+                  "blackrush__default__force-walk__south-east__004",
+                  "blackrush__default__force-walk__south-east__005",
+                  "blackrush__default__force-walk__south-east__006",
+                  "blackrush__default__force-walk__south-east__007"
+                ],
+                "south": [
+                  "blackrush__default__force-walk__south__000",
+                  "blackrush__default__force-walk__south__001",
+                  "blackrush__default__force-walk__south__002",
+                  "blackrush__default__force-walk__south__003",
+                  "blackrush__default__force-walk__south__004",
+                  "blackrush__default__force-walk__south__005",
+                  "blackrush__default__force-walk__south__006",
+                  "blackrush__default__force-walk__south__007"
+                ],
+                "south-west": [
+                  "blackrush__default__force-walk__south-west__000",
+                  "blackrush__default__force-walk__south-west__001",
+                  "blackrush__default__force-walk__south-west__002",
+                  "blackrush__default__force-walk__south-west__003",
+                  "blackrush__default__force-walk__south-west__004",
+                  "blackrush__default__force-walk__south-west__005",
+                  "blackrush__default__force-walk__south-west__006",
+                  "blackrush__default__force-walk__south-west__007"
+                ],
+                "west": [
+                  "blackrush__default__force-walk__west__000",
+                  "blackrush__default__force-walk__west__001",
+                  "blackrush__default__force-walk__west__002",
+                  "blackrush__default__force-walk__west__003",
+                  "blackrush__default__force-walk__west__004",
+                  "blackrush__default__force-walk__west__005",
+                  "blackrush__default__force-walk__west__006",
+                  "blackrush__default__force-walk__west__007"
+                ],
+                "north-west": [
+                  "blackrush__default__force-walk__north-west__000",
+                  "blackrush__default__force-walk__north-west__001",
+                  "blackrush__default__force-walk__north-west__002",
+                  "blackrush__default__force-walk__north-west__003",
+                  "blackrush__default__force-walk__north-west__004",
+                  "blackrush__default__force-walk__north-west__005",
+                  "blackrush__default__force-walk__north-west__006",
+                  "blackrush__default__force-walk__north-west__007"
+                ]
+              }
+            },
+            "force-run": {
+              "fps": 14,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "blackrush__default__force-run__north__000",
+                  "blackrush__default__force-run__north__001",
+                  "blackrush__default__force-run__north__002",
+                  "blackrush__default__force-run__north__003",
+                  "blackrush__default__force-run__north__004",
+                  "blackrush__default__force-run__north__005",
+                  "blackrush__default__force-run__north__006",
+                  "blackrush__default__force-run__north__007"
+                ],
+                "north-east": [
+                  "blackrush__default__force-run__north-east__000",
+                  "blackrush__default__force-run__north-east__001",
+                  "blackrush__default__force-run__north-east__002",
+                  "blackrush__default__force-run__north-east__003",
+                  "blackrush__default__force-run__north-east__004",
+                  "blackrush__default__force-run__north-east__005",
+                  "blackrush__default__force-run__north-east__006",
+                  "blackrush__default__force-run__north-east__007"
+                ],
+                "east": [
+                  "blackrush__default__force-run__east__000",
+                  "blackrush__default__force-run__east__001",
+                  "blackrush__default__force-run__east__002",
+                  "blackrush__default__force-run__east__003",
+                  "blackrush__default__force-run__east__004",
+                  "blackrush__default__force-run__east__005",
+                  "blackrush__default__force-run__east__006",
+                  "blackrush__default__force-run__east__007"
+                ],
+                "south-east": [
+                  "blackrush__default__force-run__south-east__000",
+                  "blackrush__default__force-run__south-east__001",
+                  "blackrush__default__force-run__south-east__002",
+                  "blackrush__default__force-run__south-east__003",
+                  "blackrush__default__force-run__south-east__004",
+                  "blackrush__default__force-run__south-east__005",
+                  "blackrush__default__force-run__south-east__006",
+                  "blackrush__default__force-run__south-east__007"
+                ],
+                "south": [
+                  "blackrush__default__force-run__south__000",
+                  "blackrush__default__force-run__south__001",
+                  "blackrush__default__force-run__south__002",
+                  "blackrush__default__force-run__south__003",
+                  "blackrush__default__force-run__south__004",
+                  "blackrush__default__force-run__south__005",
+                  "blackrush__default__force-run__south__006",
+                  "blackrush__default__force-run__south__007"
+                ],
+                "south-west": [
+                  "blackrush__default__force-run__south-west__000",
+                  "blackrush__default__force-run__south-west__001",
+                  "blackrush__default__force-run__south-west__002",
+                  "blackrush__default__force-run__south-west__003",
+                  "blackrush__default__force-run__south-west__004",
+                  "blackrush__default__force-run__south-west__005",
+                  "blackrush__default__force-run__south-west__006",
+                  "blackrush__default__force-run__south-west__007"
+                ],
+                "west": [
+                  "blackrush__default__force-run__west__000",
+                  "blackrush__default__force-run__west__001",
+                  "blackrush__default__force-run__west__002",
+                  "blackrush__default__force-run__west__003",
+                  "blackrush__default__force-run__west__004",
+                  "blackrush__default__force-run__west__005",
+                  "blackrush__default__force-run__west__006",
+                  "blackrush__default__force-run__west__007"
+                ],
+                "north-west": [
+                  "blackrush__default__force-run__north-west__000",
+                  "blackrush__default__force-run__north-west__001",
+                  "blackrush__default__force-run__north-west__002",
+                  "blackrush__default__force-run__north-west__003",
+                  "blackrush__default__force-run__north-west__004",
+                  "blackrush__default__force-run__north-west__005",
+                  "blackrush__default__force-run__north-west__006",
+                  "blackrush__default__force-run__north-west__007"
+                ]
+              }
+            },
+            "axe-ready": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "blackrush__default__axe-ready__north__000",
+                  "blackrush__default__axe-ready__north__001",
+                  "blackrush__default__axe-ready__north__002",
+                  "blackrush__default__axe-ready__north__003",
+                  "blackrush__default__axe-ready__north__004",
+                  "blackrush__default__axe-ready__north__005",
+                  "blackrush__default__axe-ready__north__006",
+                  "blackrush__default__axe-ready__north__007"
+                ],
+                "north-east": [
+                  "blackrush__default__axe-ready__north-east__000",
+                  "blackrush__default__axe-ready__north-east__001",
+                  "blackrush__default__axe-ready__north-east__002",
+                  "blackrush__default__axe-ready__north-east__003",
+                  "blackrush__default__axe-ready__north-east__004",
+                  "blackrush__default__axe-ready__north-east__005",
+                  "blackrush__default__axe-ready__north-east__006",
+                  "blackrush__default__axe-ready__north-east__007"
+                ],
+                "east": [
+                  "blackrush__default__axe-ready__east__000",
+                  "blackrush__default__axe-ready__east__001",
+                  "blackrush__default__axe-ready__east__002",
+                  "blackrush__default__axe-ready__east__003",
+                  "blackrush__default__axe-ready__east__004",
+                  "blackrush__default__axe-ready__east__005",
+                  "blackrush__default__axe-ready__east__006",
+                  "blackrush__default__axe-ready__east__007"
+                ],
+                "south-east": [
+                  "blackrush__default__axe-ready__south-east__000",
+                  "blackrush__default__axe-ready__south-east__001",
+                  "blackrush__default__axe-ready__south-east__002",
+                  "blackrush__default__axe-ready__south-east__003",
+                  "blackrush__default__axe-ready__south-east__004",
+                  "blackrush__default__axe-ready__south-east__005",
+                  "blackrush__default__axe-ready__south-east__006",
+                  "blackrush__default__axe-ready__south-east__007"
+                ],
+                "south": [
+                  "blackrush__default__axe-ready__south__000",
+                  "blackrush__default__axe-ready__south__001",
+                  "blackrush__default__axe-ready__south__002",
+                  "blackrush__default__axe-ready__south__003",
+                  "blackrush__default__axe-ready__south__004",
+                  "blackrush__default__axe-ready__south__005",
+                  "blackrush__default__axe-ready__south__006",
+                  "blackrush__default__axe-ready__south__007"
+                ],
+                "south-west": [
+                  "blackrush__default__axe-ready__south-west__000",
+                  "blackrush__default__axe-ready__south-west__001",
+                  "blackrush__default__axe-ready__south-west__002",
+                  "blackrush__default__axe-ready__south-west__003",
+                  "blackrush__default__axe-ready__south-west__004",
+                  "blackrush__default__axe-ready__south-west__005",
+                  "blackrush__default__axe-ready__south-west__006",
+                  "blackrush__default__axe-ready__south-west__007"
+                ],
+                "west": [
+                  "blackrush__default__axe-ready__west__000",
+                  "blackrush__default__axe-ready__west__001",
+                  "blackrush__default__axe-ready__west__002",
+                  "blackrush__default__axe-ready__west__003",
+                  "blackrush__default__axe-ready__west__004",
+                  "blackrush__default__axe-ready__west__005",
+                  "blackrush__default__axe-ready__west__006",
+                  "blackrush__default__axe-ready__west__007"
+                ],
+                "north-west": [
+                  "blackrush__default__axe-ready__north-west__000",
+                  "blackrush__default__axe-ready__north-west__001",
+                  "blackrush__default__axe-ready__north-west__002",
+                  "blackrush__default__axe-ready__north-west__003",
+                  "blackrush__default__axe-ready__north-west__004",
+                  "blackrush__default__axe-ready__north-west__005",
+                  "blackrush__default__axe-ready__north-west__006",
+                  "blackrush__default__axe-ready__north-west__007"
+                ]
+              }
+            },
+            "axe-throw": {
+              "fps": 18,
+              "loop": false,
+              "directions": {
+                "north": [
+                  "blackrush__default__axe-throw__north__000",
+                  "blackrush__default__axe-throw__north__001",
+                  "blackrush__default__axe-throw__north__002",
+                  "blackrush__default__axe-throw__north__003",
+                  "blackrush__default__axe-throw__north__004",
+                  "blackrush__default__axe-throw__north__005",
+                  "blackrush__default__axe-throw__north__006"
+                ],
+                "north-east": [
+                  "blackrush__default__axe-throw__north-east__000",
+                  "blackrush__default__axe-throw__north-east__001",
+                  "blackrush__default__axe-throw__north-east__002",
+                  "blackrush__default__axe-throw__north-east__003",
+                  "blackrush__default__axe-throw__north-east__004",
+                  "blackrush__default__axe-throw__north-east__005",
+                  "blackrush__default__axe-throw__north-east__006",
+                  "blackrush__default__axe-throw__north-east__007"
+                ],
+                "east": [
+                  "blackrush__default__axe-throw__east__000",
+                  "blackrush__default__axe-throw__east__001",
+                  "blackrush__default__axe-throw__east__002",
+                  "blackrush__default__axe-throw__east__003",
+                  "blackrush__default__axe-throw__east__004",
+                  "blackrush__default__axe-throw__east__005",
+                  "blackrush__default__axe-throw__east__006"
+                ],
+                "south-east": [
+                  "blackrush__default__axe-throw__south-east__000",
+                  "blackrush__default__axe-throw__south-east__001",
+                  "blackrush__default__axe-throw__south-east__002",
+                  "blackrush__default__axe-throw__south-east__003",
+                  "blackrush__default__axe-throw__south-east__004",
+                  "blackrush__default__axe-throw__south-east__005",
+                  "blackrush__default__axe-throw__south-east__006"
+                ],
+                "south": [
+                  "blackrush__default__axe-throw__south__000",
+                  "blackrush__default__axe-throw__south__001",
+                  "blackrush__default__axe-throw__south__002",
+                  "blackrush__default__axe-throw__south__003",
+                  "blackrush__default__axe-throw__south__004",
+                  "blackrush__default__axe-throw__south__005",
+                  "blackrush__default__axe-throw__south__006"
+                ],
+                "south-west": [
+                  "blackrush__default__axe-throw__south-west__000",
+                  "blackrush__default__axe-throw__south-west__001",
+                  "blackrush__default__axe-throw__south-west__002",
+                  "blackrush__default__axe-throw__south-west__003",
+                  "blackrush__default__axe-throw__south-west__004",
+                  "blackrush__default__axe-throw__south-west__005",
+                  "blackrush__default__axe-throw__south-west__006"
+                ],
+                "west": [
+                  "blackrush__default__axe-throw__west__000",
+                  "blackrush__default__axe-throw__west__001",
+                  "blackrush__default__axe-throw__west__002",
+                  "blackrush__default__axe-throw__west__003",
+                  "blackrush__default__axe-throw__west__004",
+                  "blackrush__default__axe-throw__west__005",
+                  "blackrush__default__axe-throw__west__006"
+                ],
+                "north-west": [
+                  "blackrush__default__axe-throw__north-west__000",
+                  "blackrush__default__axe-throw__north-west__001",
+                  "blackrush__default__axe-throw__north-west__002",
+                  "blackrush__default__axe-throw__north-west__003",
+                  "blackrush__default__axe-throw__north-west__004",
+                  "blackrush__default__axe-throw__north-west__005",
+                  "blackrush__default__axe-throw__north-west__006"
+                ]
+              }
+            }
+          }
+        }
       },
-      "walk": {
-        "fps": 10,
-        "loop": true,
-        "directions": {
-          "north": [
-            "walk_north_000",
-            "walk_north_001",
-            "walk_north_002",
-            "walk_north_003",
-            "walk_north_004",
-            "walk_north_005",
-            "walk_north_006",
-            "walk_north_007"
-          ],
-          "north-east": [
-            "walk_north-east_000",
-            "walk_north-east_001",
-            "walk_north-east_002",
-            "walk_north-east_003",
-            "walk_north-east_004",
-            "walk_north-east_005",
-            "walk_north-east_006",
-            "walk_north-east_007"
-          ],
-          "east": [
-            "walk_east_000",
-            "walk_east_001",
-            "walk_east_002",
-            "walk_east_003",
-            "walk_east_004",
-            "walk_east_005",
-            "walk_east_006",
-            "walk_east_007"
-          ],
-          "south-east": [
-            "walk_south-east_000",
-            "walk_south-east_001",
-            "walk_south-east_002",
-            "walk_south-east_003",
-            "walk_south-east_004",
-            "walk_south-east_005",
-            "walk_south-east_006",
-            "walk_south-east_007"
-          ],
-          "south": [
-            "walk_south_000",
-            "walk_south_001",
-            "walk_south_002",
-            "walk_south_003",
-            "walk_south_004",
-            "walk_south_005",
-            "walk_south_006",
-            "walk_south_007"
-          ],
-          "south-west": [
-            "walk_south-west_000",
-            "walk_south-west_001",
-            "walk_south-west_002",
-            "walk_south-west_003",
-            "walk_south-west_004",
-            "walk_south-west_005",
-            "walk_south-west_006",
-            "walk_south-west_007"
-          ],
-          "west": [
-            "walk_west_000",
-            "walk_west_001",
-            "walk_west_002",
-            "walk_west_003",
-            "walk_west_004",
-            "walk_west_005",
-            "walk_west_006",
-            "walk_west_007"
-          ],
-          "north-west": [
-            "walk_north-west_000",
-            "walk_north-west_001",
-            "walk_north-west_002",
-            "walk_north-west_003",
-            "walk_north-west_004",
-            "walk_north-west_005",
-            "walk_north-west_006",
-            "walk_north-west_007"
-          ]
-        },
-        "width": 64,
-        "height": 64
+      "maxSourceWidth": 80,
+      "maxSourceHeight": 80,
+      "groundOffset": 21,
+      "anchorX": 0.5,
+      "anchorY": 0.7625,
+      "pages": [
+        {
+          "image": "blackrush/blackrush_page_0.png",
+          "json": "blackrush/blackrush_page_0.json"
+        }
+      ]
+    },
+    "pursuer": {
+      "id": "pursuer",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "pursuer__default__idle__north__000"
+                ],
+                "north-east": [
+                  "pursuer__default__idle__north-east__000"
+                ],
+                "east": [
+                  "pursuer__default__idle__east__000"
+                ],
+                "south-east": [
+                  "pursuer__default__idle__south-east__000"
+                ],
+                "south": [
+                  "pursuer__default__idle__south__000"
+                ],
+                "south-west": [
+                  "pursuer__default__idle__south-west__000"
+                ],
+                "west": [
+                  "pursuer__default__idle__west__000"
+                ],
+                "north-west": [
+                  "pursuer__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 11,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "pursuer__default__walk__north__000",
+                  "pursuer__default__walk__north__001",
+                  "pursuer__default__walk__north__002",
+                  "pursuer__default__walk__north__003",
+                  "pursuer__default__walk__north__004",
+                  "pursuer__default__walk__north__005",
+                  "pursuer__default__walk__north__006",
+                  "pursuer__default__walk__north__007"
+                ],
+                "north-east": [
+                  "pursuer__default__walk__north-east__000",
+                  "pursuer__default__walk__north-east__001",
+                  "pursuer__default__walk__north-east__002",
+                  "pursuer__default__walk__north-east__003",
+                  "pursuer__default__walk__north-east__004",
+                  "pursuer__default__walk__north-east__005",
+                  "pursuer__default__walk__north-east__006",
+                  "pursuer__default__walk__north-east__007"
+                ],
+                "east": [
+                  "pursuer__default__walk__east__000",
+                  "pursuer__default__walk__east__001",
+                  "pursuer__default__walk__east__002",
+                  "pursuer__default__walk__east__003",
+                  "pursuer__default__walk__east__004",
+                  "pursuer__default__walk__east__005",
+                  "pursuer__default__walk__east__006",
+                  "pursuer__default__walk__east__007"
+                ],
+                "south-east": [
+                  "pursuer__default__walk__south-east__000",
+                  "pursuer__default__walk__south-east__001",
+                  "pursuer__default__walk__south-east__002",
+                  "pursuer__default__walk__south-east__003",
+                  "pursuer__default__walk__south-east__004",
+                  "pursuer__default__walk__south-east__005",
+                  "pursuer__default__walk__south-east__006",
+                  "pursuer__default__walk__south-east__007"
+                ],
+                "south": [
+                  "pursuer__default__walk__south__000",
+                  "pursuer__default__walk__south__001",
+                  "pursuer__default__walk__south__002",
+                  "pursuer__default__walk__south__003",
+                  "pursuer__default__walk__south__004",
+                  "pursuer__default__walk__south__005",
+                  "pursuer__default__walk__south__006",
+                  "pursuer__default__walk__south__007"
+                ],
+                "south-west": [
+                  "pursuer__default__walk__south-west__000",
+                  "pursuer__default__walk__south-west__001",
+                  "pursuer__default__walk__south-west__002",
+                  "pursuer__default__walk__south-west__003",
+                  "pursuer__default__walk__south-west__004",
+                  "pursuer__default__walk__south-west__005",
+                  "pursuer__default__walk__south-west__006",
+                  "pursuer__default__walk__south-west__007"
+                ],
+                "west": [
+                  "pursuer__default__walk__west__000",
+                  "pursuer__default__walk__west__001",
+                  "pursuer__default__walk__west__002",
+                  "pursuer__default__walk__west__003",
+                  "pursuer__default__walk__west__004",
+                  "pursuer__default__walk__west__005",
+                  "pursuer__default__walk__west__006",
+                  "pursuer__default__walk__west__007"
+                ],
+                "north-west": [
+                  "pursuer__default__walk__north-west__000",
+                  "pursuer__default__walk__north-west__001",
+                  "pursuer__default__walk__north-west__002",
+                  "pursuer__default__walk__north-west__003",
+                  "pursuer__default__walk__north-west__004",
+                  "pursuer__default__walk__north-west__005",
+                  "pursuer__default__walk__north-west__006",
+                  "pursuer__default__walk__north-west__007"
+                ]
+              }
+            },
+            "attack": {
+              "fps": 12,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "pursuer__default__attack__north__000",
+                  "pursuer__default__attack__north__001",
+                  "pursuer__default__attack__north__002",
+                  "pursuer__default__attack__north__003",
+                  "pursuer__default__attack__north__004",
+                  "pursuer__default__attack__north__005",
+                  "pursuer__default__attack__north__006",
+                  "pursuer__default__attack__north__007"
+                ],
+                "north-east": [
+                  "pursuer__default__attack__north-east__000",
+                  "pursuer__default__attack__north-east__001",
+                  "pursuer__default__attack__north-east__002",
+                  "pursuer__default__attack__north-east__003",
+                  "pursuer__default__attack__north-east__004",
+                  "pursuer__default__attack__north-east__005",
+                  "pursuer__default__attack__north-east__006",
+                  "pursuer__default__attack__north-east__007"
+                ],
+                "east": [
+                  "pursuer__default__attack__east__000",
+                  "pursuer__default__attack__east__001",
+                  "pursuer__default__attack__east__002",
+                  "pursuer__default__attack__east__003",
+                  "pursuer__default__attack__east__004",
+                  "pursuer__default__attack__east__005",
+                  "pursuer__default__attack__east__006",
+                  "pursuer__default__attack__east__007"
+                ],
+                "south-east": [
+                  "pursuer__default__attack__south-east__000",
+                  "pursuer__default__attack__south-east__001",
+                  "pursuer__default__attack__south-east__002",
+                  "pursuer__default__attack__south-east__003",
+                  "pursuer__default__attack__south-east__004",
+                  "pursuer__default__attack__south-east__005",
+                  "pursuer__default__attack__south-east__006",
+                  "pursuer__default__attack__south-east__007"
+                ],
+                "south": [
+                  "pursuer__default__attack__south__000",
+                  "pursuer__default__attack__south__001",
+                  "pursuer__default__attack__south__002",
+                  "pursuer__default__attack__south__003",
+                  "pursuer__default__attack__south__004",
+                  "pursuer__default__attack__south__005",
+                  "pursuer__default__attack__south__006",
+                  "pursuer__default__attack__south__007"
+                ],
+                "south-west": [
+                  "pursuer__default__attack__south-west__000",
+                  "pursuer__default__attack__south-west__001",
+                  "pursuer__default__attack__south-west__002",
+                  "pursuer__default__attack__south-west__003",
+                  "pursuer__default__attack__south-west__004",
+                  "pursuer__default__attack__south-west__005",
+                  "pursuer__default__attack__south-west__006",
+                  "pursuer__default__attack__south-west__007"
+                ],
+                "west": [
+                  "pursuer__default__attack__west__000",
+                  "pursuer__default__attack__west__001",
+                  "pursuer__default__attack__west__002",
+                  "pursuer__default__attack__west__003",
+                  "pursuer__default__attack__west__004",
+                  "pursuer__default__attack__west__005",
+                  "pursuer__default__attack__west__006",
+                  "pursuer__default__attack__west__007"
+                ],
+                "north-west": [
+                  "pursuer__default__attack__north-west__000",
+                  "pursuer__default__attack__north-west__001",
+                  "pursuer__default__attack__north-west__002",
+                  "pursuer__default__attack__north-west__003",
+                  "pursuer__default__attack__north-west__004",
+                  "pursuer__default__attack__north-west__005",
+                  "pursuer__default__attack__north-west__006",
+                  "pursuer__default__attack__north-west__007"
+                ]
+              }
+            }
+          }
+        }
       },
-      "run": {
-        "fps": 14,
-        "loop": true,
-        "directions": {
-          "north": [
-            "run_north_000",
-            "run_north_001",
-            "run_north_002",
-            "run_north_003",
-            "run_north_004",
-            "run_north_005",
-            "run_north_006",
-            "run_north_007"
-          ],
-          "north-east": [
-            "run_north-east_000",
-            "run_north-east_001",
-            "run_north-east_002",
-            "run_north-east_003",
-            "run_north-east_004",
-            "run_north-east_005",
-            "run_north-east_006",
-            "run_north-east_007"
-          ],
-          "east": [
-            "run_east_000",
-            "run_east_001",
-            "run_east_002",
-            "run_east_003",
-            "run_east_004",
-            "run_east_005",
-            "run_east_006",
-            "run_east_007"
-          ],
-          "south-east": [
-            "run_south-east_000",
-            "run_south-east_001",
-            "run_south-east_002",
-            "run_south-east_003",
-            "run_south-east_004",
-            "run_south-east_005",
-            "run_south-east_006",
-            "run_south-east_007"
-          ],
-          "south": [
-            "run_south_000",
-            "run_south_001",
-            "run_south_002",
-            "run_south_003",
-            "run_south_004",
-            "run_south_005",
-            "run_south_006",
-            "run_south_007"
-          ],
-          "south-west": [
-            "run_south-west_000",
-            "run_south-west_001",
-            "run_south-west_002",
-            "run_south-west_003",
-            "run_south-west_004",
-            "run_south-west_005",
-            "run_south-west_006",
-            "run_south-west_007"
-          ],
-          "west": [
-            "run_west_000",
-            "run_west_001",
-            "run_west_002",
-            "run_west_003",
-            "run_west_004",
-            "run_west_005",
-            "run_west_006",
-            "run_west_007"
-          ],
-          "north-west": [
-            "run_north-west_000",
-            "run_north-west_001",
-            "run_north-west_002",
-            "run_north-west_003",
-            "run_north-west_004",
-            "run_north-west_005",
-            "run_north-west_006",
-            "run_north-west_007"
-          ]
-        },
-        "width": 80,
-        "height": 80
+      "maxSourceWidth": 68,
+      "maxSourceHeight": 68,
+      "groundOffset": 20,
+      "anchorX": 0.5,
+      "anchorY": 0.7941176470588235,
+      "pages": [
+        {
+          "image": "robots/pursuer/pursuer_page_0.png",
+          "json": "robots/pursuer/pursuer_page_0.json"
+        }
+      ]
+    },
+    "sentinel": {
+      "id": "sentinel",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "sentinel__default__idle__north__000"
+                ],
+                "north-east": [
+                  "sentinel__default__idle__north-east__000"
+                ],
+                "east": [
+                  "sentinel__default__idle__east__000"
+                ],
+                "south-east": [
+                  "sentinel__default__idle__south-east__000"
+                ],
+                "south": [
+                  "sentinel__default__idle__south__000"
+                ],
+                "south-west": [
+                  "sentinel__default__idle__south-west__000"
+                ],
+                "west": [
+                  "sentinel__default__idle__west__000"
+                ],
+                "north-west": [
+                  "sentinel__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "sentinel__default__walk__north__000",
+                  "sentinel__default__walk__north__001",
+                  "sentinel__default__walk__north__002",
+                  "sentinel__default__walk__north__003",
+                  "sentinel__default__walk__north__004",
+                  "sentinel__default__walk__north__005",
+                  "sentinel__default__walk__north__006",
+                  "sentinel__default__walk__north__007"
+                ],
+                "north-east": [
+                  "sentinel__default__walk__north-east__000",
+                  "sentinel__default__walk__north-east__001",
+                  "sentinel__default__walk__north-east__002",
+                  "sentinel__default__walk__north-east__003",
+                  "sentinel__default__walk__north-east__004",
+                  "sentinel__default__walk__north-east__005",
+                  "sentinel__default__walk__north-east__006",
+                  "sentinel__default__walk__north-east__007"
+                ],
+                "east": [
+                  "sentinel__default__walk__east__000",
+                  "sentinel__default__walk__east__001",
+                  "sentinel__default__walk__east__002",
+                  "sentinel__default__walk__east__003",
+                  "sentinel__default__walk__east__004",
+                  "sentinel__default__walk__east__005",
+                  "sentinel__default__walk__east__006",
+                  "sentinel__default__walk__east__007"
+                ],
+                "south-east": [
+                  "sentinel__default__walk__south-east__000",
+                  "sentinel__default__walk__south-east__001",
+                  "sentinel__default__walk__south-east__002",
+                  "sentinel__default__walk__south-east__003",
+                  "sentinel__default__walk__south-east__004",
+                  "sentinel__default__walk__south-east__005",
+                  "sentinel__default__walk__south-east__006",
+                  "sentinel__default__walk__south-east__007"
+                ],
+                "south": [
+                  "sentinel__default__walk__south__000",
+                  "sentinel__default__walk__south__001",
+                  "sentinel__default__walk__south__002",
+                  "sentinel__default__walk__south__003",
+                  "sentinel__default__walk__south__004",
+                  "sentinel__default__walk__south__005",
+                  "sentinel__default__walk__south__006",
+                  "sentinel__default__walk__south__007"
+                ],
+                "south-west": [
+                  "sentinel__default__walk__south-west__000",
+                  "sentinel__default__walk__south-west__001",
+                  "sentinel__default__walk__south-west__002",
+                  "sentinel__default__walk__south-west__003",
+                  "sentinel__default__walk__south-west__004",
+                  "sentinel__default__walk__south-west__005",
+                  "sentinel__default__walk__south-west__006",
+                  "sentinel__default__walk__south-west__007"
+                ],
+                "west": [
+                  "sentinel__default__walk__west__000",
+                  "sentinel__default__walk__west__001",
+                  "sentinel__default__walk__west__002",
+                  "sentinel__default__walk__west__003",
+                  "sentinel__default__walk__west__004",
+                  "sentinel__default__walk__west__005",
+                  "sentinel__default__walk__west__006",
+                  "sentinel__default__walk__west__007"
+                ],
+                "north-west": [
+                  "sentinel__default__walk__north-west__000",
+                  "sentinel__default__walk__north-west__001",
+                  "sentinel__default__walk__north-west__002",
+                  "sentinel__default__walk__north-west__003",
+                  "sentinel__default__walk__north-west__004",
+                  "sentinel__default__walk__north-west__005",
+                  "sentinel__default__walk__north-west__006",
+                  "sentinel__default__walk__north-west__007"
+                ]
+              }
+            },
+            "run": {
+              "fps": 12,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "sentinel__default__run__north__000",
+                  "sentinel__default__run__north__001",
+                  "sentinel__default__run__north__002",
+                  "sentinel__default__run__north__003",
+                  "sentinel__default__run__north__004",
+                  "sentinel__default__run__north__005",
+                  "sentinel__default__run__north__006",
+                  "sentinel__default__run__north__007"
+                ],
+                "north-east": [
+                  "sentinel__default__run__north-east__000",
+                  "sentinel__default__run__north-east__001",
+                  "sentinel__default__run__north-east__002",
+                  "sentinel__default__run__north-east__003",
+                  "sentinel__default__run__north-east__004",
+                  "sentinel__default__run__north-east__005",
+                  "sentinel__default__run__north-east__006",
+                  "sentinel__default__run__north-east__007"
+                ],
+                "east": [
+                  "sentinel__default__run__east__000",
+                  "sentinel__default__run__east__001",
+                  "sentinel__default__run__east__002",
+                  "sentinel__default__run__east__003",
+                  "sentinel__default__run__east__004",
+                  "sentinel__default__run__east__005",
+                  "sentinel__default__run__east__006",
+                  "sentinel__default__run__east__007"
+                ],
+                "south-east": [
+                  "sentinel__default__run__south-east__000",
+                  "sentinel__default__run__south-east__001",
+                  "sentinel__default__run__south-east__002",
+                  "sentinel__default__run__south-east__003",
+                  "sentinel__default__run__south-east__004",
+                  "sentinel__default__run__south-east__005",
+                  "sentinel__default__run__south-east__006",
+                  "sentinel__default__run__south-east__007"
+                ],
+                "south": [
+                  "sentinel__default__run__south__000",
+                  "sentinel__default__run__south__001",
+                  "sentinel__default__run__south__002",
+                  "sentinel__default__run__south__003",
+                  "sentinel__default__run__south__004",
+                  "sentinel__default__run__south__005",
+                  "sentinel__default__run__south__006",
+                  "sentinel__default__run__south__007"
+                ],
+                "south-west": [
+                  "sentinel__default__run__south-west__000",
+                  "sentinel__default__run__south-west__001",
+                  "sentinel__default__run__south-west__002",
+                  "sentinel__default__run__south-west__003",
+                  "sentinel__default__run__south-west__004",
+                  "sentinel__default__run__south-west__005",
+                  "sentinel__default__run__south-west__006",
+                  "sentinel__default__run__south-west__007"
+                ],
+                "west": [
+                  "sentinel__default__run__west__000",
+                  "sentinel__default__run__west__001",
+                  "sentinel__default__run__west__002",
+                  "sentinel__default__run__west__003",
+                  "sentinel__default__run__west__004",
+                  "sentinel__default__run__west__005",
+                  "sentinel__default__run__west__006",
+                  "sentinel__default__run__west__007"
+                ],
+                "north-west": [
+                  "sentinel__default__run__north-west__000",
+                  "sentinel__default__run__north-west__001",
+                  "sentinel__default__run__north-west__002",
+                  "sentinel__default__run__north-west__003",
+                  "sentinel__default__run__north-west__004",
+                  "sentinel__default__run__north-west__005",
+                  "sentinel__default__run__north-west__006",
+                  "sentinel__default__run__north-west__007"
+                ]
+              }
+            }
+          }
+        }
       },
-      "force-idle": {
-        "fps": 1,
-        "loop": true,
-        "directions": {
-          "north": [
-            "force-idle_north_000"
-          ],
-          "north-east": [
-            "force-idle_north-east_000"
-          ],
-          "east": [
-            "force-idle_east_000"
-          ],
-          "south-east": [
-            "force-idle_south-east_000"
-          ],
-          "south": [
-            "force-idle_south_000"
-          ],
-          "south-west": [
-            "force-idle_south-west_000"
-          ],
-          "west": [
-            "force-idle_west_000"
-          ],
-          "north-west": [
-            "force-idle_north-west_000"
-          ]
+      "maxSourceWidth": 68,
+      "maxSourceHeight": 68,
+      "groundOffset": 20,
+      "anchorX": 0.5,
+      "anchorY": 0.7941176470588235,
+      "pages": [
+        {
+          "image": "robots/sentinel/sentinel_page_0.png",
+          "json": "robots/sentinel/sentinel_page_0.json"
+        }
+      ]
+    },
+    "armored_robot": {
+      "id": "armored_robot",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "armored_robot__default__idle__north__000"
+                ],
+                "north-east": [
+                  "armored_robot__default__idle__north-east__000"
+                ],
+                "east": [
+                  "armored_robot__default__idle__east__000"
+                ],
+                "south-east": [
+                  "armored_robot__default__idle__south-east__000"
+                ],
+                "south": [
+                  "armored_robot__default__idle__south__000"
+                ],
+                "south-west": [
+                  "armored_robot__default__idle__south-west__000"
+                ],
+                "west": [
+                  "armored_robot__default__idle__west__000"
+                ],
+                "north-west": [
+                  "armored_robot__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 9,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "armored_robot__default__walk__north__000",
+                  "armored_robot__default__walk__north__001",
+                  "armored_robot__default__walk__north__002",
+                  "armored_robot__default__walk__north__003",
+                  "armored_robot__default__walk__north__004",
+                  "armored_robot__default__walk__north__005",
+                  "armored_robot__default__walk__north__006",
+                  "armored_robot__default__walk__north__007"
+                ],
+                "north-east": [
+                  "armored_robot__default__walk__north-east__000",
+                  "armored_robot__default__walk__north-east__001",
+                  "armored_robot__default__walk__north-east__002",
+                  "armored_robot__default__walk__north-east__003",
+                  "armored_robot__default__walk__north-east__004",
+                  "armored_robot__default__walk__north-east__005",
+                  "armored_robot__default__walk__north-east__006",
+                  "armored_robot__default__walk__north-east__007"
+                ],
+                "east": [
+                  "armored_robot__default__walk__east__000",
+                  "armored_robot__default__walk__east__001",
+                  "armored_robot__default__walk__east__002",
+                  "armored_robot__default__walk__east__003",
+                  "armored_robot__default__walk__east__004",
+                  "armored_robot__default__walk__east__005",
+                  "armored_robot__default__walk__east__006",
+                  "armored_robot__default__walk__east__007"
+                ],
+                "south-east": [
+                  "armored_robot__default__walk__south-east__000",
+                  "armored_robot__default__walk__south-east__001",
+                  "armored_robot__default__walk__south-east__002",
+                  "armored_robot__default__walk__south-east__003",
+                  "armored_robot__default__walk__south-east__004",
+                  "armored_robot__default__walk__south-east__005",
+                  "armored_robot__default__walk__south-east__006",
+                  "armored_robot__default__walk__south-east__007"
+                ],
+                "south": [
+                  "armored_robot__default__walk__south__000",
+                  "armored_robot__default__walk__south__001",
+                  "armored_robot__default__walk__south__002",
+                  "armored_robot__default__walk__south__003",
+                  "armored_robot__default__walk__south__004",
+                  "armored_robot__default__walk__south__005",
+                  "armored_robot__default__walk__south__006",
+                  "armored_robot__default__walk__south__007"
+                ],
+                "south-west": [
+                  "armored_robot__default__walk__south-west__000",
+                  "armored_robot__default__walk__south-west__001",
+                  "armored_robot__default__walk__south-west__002",
+                  "armored_robot__default__walk__south-west__003",
+                  "armored_robot__default__walk__south-west__004",
+                  "armored_robot__default__walk__south-west__005",
+                  "armored_robot__default__walk__south-west__006",
+                  "armored_robot__default__walk__south-west__007"
+                ],
+                "west": [
+                  "armored_robot__default__walk__west__000",
+                  "armored_robot__default__walk__west__001",
+                  "armored_robot__default__walk__west__002",
+                  "armored_robot__default__walk__west__003",
+                  "armored_robot__default__walk__west__004",
+                  "armored_robot__default__walk__west__005",
+                  "armored_robot__default__walk__west__006",
+                  "armored_robot__default__walk__west__007"
+                ],
+                "north-west": [
+                  "armored_robot__default__walk__north-west__000",
+                  "armored_robot__default__walk__north-west__001",
+                  "armored_robot__default__walk__north-west__002",
+                  "armored_robot__default__walk__north-west__003",
+                  "armored_robot__default__walk__north-west__004",
+                  "armored_robot__default__walk__north-west__005",
+                  "armored_robot__default__walk__north-west__006",
+                  "armored_robot__default__walk__north-west__007"
+                ]
+              }
+            },
+            "run": {
+              "fps": 12,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "armored_robot__default__run__north__000",
+                  "armored_robot__default__run__north__001",
+                  "armored_robot__default__run__north__002",
+                  "armored_robot__default__run__north__003",
+                  "armored_robot__default__run__north__004",
+                  "armored_robot__default__run__north__005",
+                  "armored_robot__default__run__north__006",
+                  "armored_robot__default__run__north__007"
+                ],
+                "north-east": [
+                  "armored_robot__default__run__north-east__000",
+                  "armored_robot__default__run__north-east__001",
+                  "armored_robot__default__run__north-east__002",
+                  "armored_robot__default__run__north-east__003",
+                  "armored_robot__default__run__north-east__004",
+                  "armored_robot__default__run__north-east__005",
+                  "armored_robot__default__run__north-east__006",
+                  "armored_robot__default__run__north-east__007"
+                ],
+                "east": [
+                  "armored_robot__default__run__east__000",
+                  "armored_robot__default__run__east__001",
+                  "armored_robot__default__run__east__002",
+                  "armored_robot__default__run__east__003",
+                  "armored_robot__default__run__east__004",
+                  "armored_robot__default__run__east__005",
+                  "armored_robot__default__run__east__006",
+                  "armored_robot__default__run__east__007"
+                ],
+                "south-east": [
+                  "armored_robot__default__run__south-east__000",
+                  "armored_robot__default__run__south-east__001",
+                  "armored_robot__default__run__south-east__002",
+                  "armored_robot__default__run__south-east__003",
+                  "armored_robot__default__run__south-east__004",
+                  "armored_robot__default__run__south-east__005",
+                  "armored_robot__default__run__south-east__006",
+                  "armored_robot__default__run__south-east__007"
+                ],
+                "south": [
+                  "armored_robot__default__run__south__000",
+                  "armored_robot__default__run__south__001",
+                  "armored_robot__default__run__south__002",
+                  "armored_robot__default__run__south__003",
+                  "armored_robot__default__run__south__004",
+                  "armored_robot__default__run__south__005",
+                  "armored_robot__default__run__south__006",
+                  "armored_robot__default__run__south__007"
+                ],
+                "south-west": [
+                  "armored_robot__default__run__south-west__000",
+                  "armored_robot__default__run__south-west__001",
+                  "armored_robot__default__run__south-west__002",
+                  "armored_robot__default__run__south-west__003",
+                  "armored_robot__default__run__south-west__004",
+                  "armored_robot__default__run__south-west__005",
+                  "armored_robot__default__run__south-west__006",
+                  "armored_robot__default__run__south-west__007"
+                ],
+                "west": [
+                  "armored_robot__default__run__west__000",
+                  "armored_robot__default__run__west__001",
+                  "armored_robot__default__run__west__002",
+                  "armored_robot__default__run__west__003",
+                  "armored_robot__default__run__west__004",
+                  "armored_robot__default__run__west__005",
+                  "armored_robot__default__run__west__006",
+                  "armored_robot__default__run__west__007"
+                ],
+                "north-west": [
+                  "armored_robot__default__run__north-west__000",
+                  "armored_robot__default__run__north-west__001",
+                  "armored_robot__default__run__north-west__002",
+                  "armored_robot__default__run__north-west__003",
+                  "armored_robot__default__run__north-west__004",
+                  "armored_robot__default__run__north-west__005",
+                  "armored_robot__default__run__north-west__006",
+                  "armored_robot__default__run__north-west__007"
+                ]
+              }
+            }
+          }
         },
-        "width": 48,
-        "height": 48
+        "disarmed": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "armored_robot__disarmed__idle__north__000"
+                ],
+                "north-east": [
+                  "armored_robot__disarmed__idle__north-east__000"
+                ],
+                "east": [
+                  "armored_robot__disarmed__idle__east__000"
+                ],
+                "south-east": [
+                  "armored_robot__disarmed__idle__south-east__000"
+                ],
+                "south": [
+                  "armored_robot__disarmed__idle__south__000"
+                ],
+                "south-west": [
+                  "armored_robot__disarmed__idle__south-west__000"
+                ],
+                "west": [
+                  "armored_robot__disarmed__idle__west__000"
+                ],
+                "north-west": [
+                  "armored_robot__disarmed__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 9,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "armored_robot__disarmed__walk__north__000",
+                  "armored_robot__disarmed__walk__north__001",
+                  "armored_robot__disarmed__walk__north__002",
+                  "armored_robot__disarmed__walk__north__003",
+                  "armored_robot__disarmed__walk__north__004",
+                  "armored_robot__disarmed__walk__north__005",
+                  "armored_robot__disarmed__walk__north__006",
+                  "armored_robot__disarmed__walk__north__007"
+                ],
+                "north-east": [
+                  "armored_robot__disarmed__walk__north-east__000",
+                  "armored_robot__disarmed__walk__north-east__001",
+                  "armored_robot__disarmed__walk__north-east__002",
+                  "armored_robot__disarmed__walk__north-east__003",
+                  "armored_robot__disarmed__walk__north-east__004",
+                  "armored_robot__disarmed__walk__north-east__005",
+                  "armored_robot__disarmed__walk__north-east__006",
+                  "armored_robot__disarmed__walk__north-east__007"
+                ],
+                "east": [
+                  "armored_robot__disarmed__walk__east__000",
+                  "armored_robot__disarmed__walk__east__001",
+                  "armored_robot__disarmed__walk__east__002",
+                  "armored_robot__disarmed__walk__east__003",
+                  "armored_robot__disarmed__walk__east__004",
+                  "armored_robot__disarmed__walk__east__005",
+                  "armored_robot__disarmed__walk__east__006",
+                  "armored_robot__disarmed__walk__east__007"
+                ],
+                "south-east": [
+                  "armored_robot__disarmed__walk__south-east__000",
+                  "armored_robot__disarmed__walk__south-east__001",
+                  "armored_robot__disarmed__walk__south-east__002",
+                  "armored_robot__disarmed__walk__south-east__003",
+                  "armored_robot__disarmed__walk__south-east__004",
+                  "armored_robot__disarmed__walk__south-east__005",
+                  "armored_robot__disarmed__walk__south-east__006",
+                  "armored_robot__disarmed__walk__south-east__007"
+                ],
+                "south": [
+                  "armored_robot__disarmed__walk__south__000",
+                  "armored_robot__disarmed__walk__south__001",
+                  "armored_robot__disarmed__walk__south__002",
+                  "armored_robot__disarmed__walk__south__003",
+                  "armored_robot__disarmed__walk__south__004",
+                  "armored_robot__disarmed__walk__south__005",
+                  "armored_robot__disarmed__walk__south__006",
+                  "armored_robot__disarmed__walk__south__007"
+                ],
+                "south-west": [
+                  "armored_robot__disarmed__walk__south-west__000",
+                  "armored_robot__disarmed__walk__south-west__001",
+                  "armored_robot__disarmed__walk__south-west__002",
+                  "armored_robot__disarmed__walk__south-west__003",
+                  "armored_robot__disarmed__walk__south-west__004",
+                  "armored_robot__disarmed__walk__south-west__005",
+                  "armored_robot__disarmed__walk__south-west__006",
+                  "armored_robot__disarmed__walk__south-west__007"
+                ],
+                "west": [
+                  "armored_robot__disarmed__walk__west__000",
+                  "armored_robot__disarmed__walk__west__001",
+                  "armored_robot__disarmed__walk__west__002",
+                  "armored_robot__disarmed__walk__west__003",
+                  "armored_robot__disarmed__walk__west__004",
+                  "armored_robot__disarmed__walk__west__005",
+                  "armored_robot__disarmed__walk__west__006",
+                  "armored_robot__disarmed__walk__west__007"
+                ],
+                "north-west": [
+                  "armored_robot__disarmed__walk__north-west__000",
+                  "armored_robot__disarmed__walk__north-west__001",
+                  "armored_robot__disarmed__walk__north-west__002",
+                  "armored_robot__disarmed__walk__north-west__003",
+                  "armored_robot__disarmed__walk__north-west__004",
+                  "armored_robot__disarmed__walk__north-west__005",
+                  "armored_robot__disarmed__walk__north-west__006",
+                  "armored_robot__disarmed__walk__north-west__007"
+                ]
+              }
+            },
+            "run": {
+              "fallback": "walk"
+            }
+          }
+        }
       },
-      "force-walk": {
-        "fps": 10,
-        "loop": true,
-        "directions": {
-          "north": [
-            "force-walk_north_000",
-            "force-walk_north_001",
-            "force-walk_north_002",
-            "force-walk_north_003",
-            "force-walk_north_004",
-            "force-walk_north_005",
-            "force-walk_north_006",
-            "force-walk_north_007"
-          ],
-          "north-east": [
-            "force-walk_north-east_000",
-            "force-walk_north-east_001",
-            "force-walk_north-east_002",
-            "force-walk_north-east_003",
-            "force-walk_north-east_004",
-            "force-walk_north-east_005",
-            "force-walk_north-east_006",
-            "force-walk_north-east_007"
-          ],
-          "east": [
-            "force-walk_east_000",
-            "force-walk_east_001",
-            "force-walk_east_002",
-            "force-walk_east_003",
-            "force-walk_east_004",
-            "force-walk_east_005",
-            "force-walk_east_006",
-            "force-walk_east_007"
-          ],
-          "south-east": [
-            "force-walk_south-east_000",
-            "force-walk_south-east_001",
-            "force-walk_south-east_002",
-            "force-walk_south-east_003",
-            "force-walk_south-east_004",
-            "force-walk_south-east_005",
-            "force-walk_south-east_006",
-            "force-walk_south-east_007"
-          ],
-          "south": [
-            "force-walk_south_000",
-            "force-walk_south_001",
-            "force-walk_south_002",
-            "force-walk_south_003",
-            "force-walk_south_004",
-            "force-walk_south_005",
-            "force-walk_south_006",
-            "force-walk_south_007"
-          ],
-          "south-west": [
-            "force-walk_south-west_000",
-            "force-walk_south-west_001",
-            "force-walk_south-west_002",
-            "force-walk_south-west_003",
-            "force-walk_south-west_004",
-            "force-walk_south-west_005",
-            "force-walk_south-west_006",
-            "force-walk_south-west_007"
-          ],
-          "west": [
-            "force-walk_west_000",
-            "force-walk_west_001",
-            "force-walk_west_002",
-            "force-walk_west_003",
-            "force-walk_west_004",
-            "force-walk_west_005",
-            "force-walk_west_006",
-            "force-walk_west_007"
-          ],
-          "north-west": [
-            "force-walk_north-west_000",
-            "force-walk_north-west_001",
-            "force-walk_north-west_002",
-            "force-walk_north-west_003",
-            "force-walk_north-west_004",
-            "force-walk_north-west_005",
-            "force-walk_north-west_006",
-            "force-walk_north-west_007"
-          ]
-        },
-        "width": 68,
-        "height": 68
+      "maxSourceWidth": 64,
+      "maxSourceHeight": 64,
+      "groundOffset": 21,
+      "anchorX": 0.5,
+      "anchorY": 0.828125,
+      "pages": [
+        {
+          "image": "robots/armored_robot/armored_robot_page_0.png",
+          "json": "robots/armored_robot/armored_robot_page_0.json"
+        }
+      ]
+    },
+    "eclipse": {
+      "id": "eclipse",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "eclipse__default__idle__north__000"
+                ],
+                "north-east": [
+                  "eclipse__default__idle__north-east__000"
+                ],
+                "east": [
+                  "eclipse__default__idle__east__000"
+                ],
+                "south-east": [
+                  "eclipse__default__idle__south-east__000"
+                ],
+                "south": [
+                  "eclipse__default__idle__south__000"
+                ],
+                "south-west": [
+                  "eclipse__default__idle__south-west__000"
+                ],
+                "west": [
+                  "eclipse__default__idle__west__000"
+                ],
+                "north-west": [
+                  "eclipse__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 10,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "eclipse__default__walk__north__000",
+                  "eclipse__default__walk__north__001",
+                  "eclipse__default__walk__north__002",
+                  "eclipse__default__walk__north__003",
+                  "eclipse__default__walk__north__004",
+                  "eclipse__default__walk__north__005",
+                  "eclipse__default__walk__north__006",
+                  "eclipse__default__walk__north__007"
+                ],
+                "north-east": [
+                  "eclipse__default__walk__north-east__000",
+                  "eclipse__default__walk__north-east__001",
+                  "eclipse__default__walk__north-east__002",
+                  "eclipse__default__walk__north-east__003",
+                  "eclipse__default__walk__north-east__004",
+                  "eclipse__default__walk__north-east__005",
+                  "eclipse__default__walk__north-east__006",
+                  "eclipse__default__walk__north-east__007"
+                ],
+                "east": [
+                  "eclipse__default__walk__east__000",
+                  "eclipse__default__walk__east__001",
+                  "eclipse__default__walk__east__002",
+                  "eclipse__default__walk__east__003",
+                  "eclipse__default__walk__east__004",
+                  "eclipse__default__walk__east__005",
+                  "eclipse__default__walk__east__006",
+                  "eclipse__default__walk__east__007"
+                ],
+                "south-east": [
+                  "eclipse__default__walk__south-east__000",
+                  "eclipse__default__walk__south-east__001",
+                  "eclipse__default__walk__south-east__002",
+                  "eclipse__default__walk__south-east__003",
+                  "eclipse__default__walk__south-east__004",
+                  "eclipse__default__walk__south-east__005",
+                  "eclipse__default__walk__south-east__006",
+                  "eclipse__default__walk__south-east__007"
+                ],
+                "south": [
+                  "eclipse__default__walk__south__000",
+                  "eclipse__default__walk__south__001",
+                  "eclipse__default__walk__south__002",
+                  "eclipse__default__walk__south__003",
+                  "eclipse__default__walk__south__004",
+                  "eclipse__default__walk__south__005",
+                  "eclipse__default__walk__south__006",
+                  "eclipse__default__walk__south__007"
+                ],
+                "south-west": [
+                  "eclipse__default__walk__south-west__000",
+                  "eclipse__default__walk__south-west__001",
+                  "eclipse__default__walk__south-west__002",
+                  "eclipse__default__walk__south-west__003",
+                  "eclipse__default__walk__south-west__004",
+                  "eclipse__default__walk__south-west__005",
+                  "eclipse__default__walk__south-west__006",
+                  "eclipse__default__walk__south-west__007"
+                ],
+                "west": [
+                  "eclipse__default__walk__west__000",
+                  "eclipse__default__walk__west__001",
+                  "eclipse__default__walk__west__002",
+                  "eclipse__default__walk__west__003",
+                  "eclipse__default__walk__west__004",
+                  "eclipse__default__walk__west__005",
+                  "eclipse__default__walk__west__006",
+                  "eclipse__default__walk__west__007"
+                ],
+                "north-west": [
+                  "eclipse__default__walk__north-west__000",
+                  "eclipse__default__walk__north-west__001",
+                  "eclipse__default__walk__north-west__002",
+                  "eclipse__default__walk__north-west__003",
+                  "eclipse__default__walk__north-west__004",
+                  "eclipse__default__walk__north-west__005",
+                  "eclipse__default__walk__north-west__006",
+                  "eclipse__default__walk__north-west__007"
+                ]
+              }
+            },
+            "run": {
+              "fps": 14,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "eclipse__default__run__north__000",
+                  "eclipse__default__run__north__001",
+                  "eclipse__default__run__north__002",
+                  "eclipse__default__run__north__003",
+                  "eclipse__default__run__north__004",
+                  "eclipse__default__run__north__005",
+                  "eclipse__default__run__north__006",
+                  "eclipse__default__run__north__007"
+                ],
+                "north-east": [
+                  "eclipse__default__run__north-east__000",
+                  "eclipse__default__run__north-east__001",
+                  "eclipse__default__run__north-east__002",
+                  "eclipse__default__run__north-east__003",
+                  "eclipse__default__run__north-east__004",
+                  "eclipse__default__run__north-east__005",
+                  "eclipse__default__run__north-east__006",
+                  "eclipse__default__run__north-east__007"
+                ],
+                "east": [
+                  "eclipse__default__run__east__000",
+                  "eclipse__default__run__east__001",
+                  "eclipse__default__run__east__002",
+                  "eclipse__default__run__east__003",
+                  "eclipse__default__run__east__004",
+                  "eclipse__default__run__east__005",
+                  "eclipse__default__run__east__006",
+                  "eclipse__default__run__east__007"
+                ],
+                "south-east": [
+                  "eclipse__default__run__south-east__000",
+                  "eclipse__default__run__south-east__001",
+                  "eclipse__default__run__south-east__002",
+                  "eclipse__default__run__south-east__003",
+                  "eclipse__default__run__south-east__004",
+                  "eclipse__default__run__south-east__005",
+                  "eclipse__default__run__south-east__006",
+                  "eclipse__default__run__south-east__007"
+                ],
+                "south": [
+                  "eclipse__default__run__south__000",
+                  "eclipse__default__run__south__001",
+                  "eclipse__default__run__south__002",
+                  "eclipse__default__run__south__003",
+                  "eclipse__default__run__south__004",
+                  "eclipse__default__run__south__005",
+                  "eclipse__default__run__south__006",
+                  "eclipse__default__run__south__007"
+                ],
+                "south-west": [
+                  "eclipse__default__run__south-west__000",
+                  "eclipse__default__run__south-west__001",
+                  "eclipse__default__run__south-west__002",
+                  "eclipse__default__run__south-west__003",
+                  "eclipse__default__run__south-west__004",
+                  "eclipse__default__run__south-west__005",
+                  "eclipse__default__run__south-west__006",
+                  "eclipse__default__run__south-west__007"
+                ],
+                "west": [
+                  "eclipse__default__run__west__000",
+                  "eclipse__default__run__west__001",
+                  "eclipse__default__run__west__002",
+                  "eclipse__default__run__west__003",
+                  "eclipse__default__run__west__004",
+                  "eclipse__default__run__west__005",
+                  "eclipse__default__run__west__006",
+                  "eclipse__default__run__west__007"
+                ],
+                "north-west": [
+                  "eclipse__default__run__north-west__000",
+                  "eclipse__default__run__north-west__001",
+                  "eclipse__default__run__north-west__002",
+                  "eclipse__default__run__north-west__003",
+                  "eclipse__default__run__north-west__004",
+                  "eclipse__default__run__north-west__005",
+                  "eclipse__default__run__north-west__006",
+                  "eclipse__default__run__north-west__007"
+                ]
+              }
+            },
+            "crouch": {
+              "fps": 10,
+              "loop": false,
+              "directions": {
+                "north": [
+                  "eclipse__default__crouch__north__000",
+                  "eclipse__default__crouch__north__001",
+                  "eclipse__default__crouch__north__002",
+                  "eclipse__default__crouch__north__003",
+                  "eclipse__default__crouch__north__004"
+                ],
+                "east": [
+                  "eclipse__default__crouch__east__000",
+                  "eclipse__default__crouch__east__001",
+                  "eclipse__default__crouch__east__002",
+                  "eclipse__default__crouch__east__003",
+                  "eclipse__default__crouch__east__004"
+                ],
+                "south": [
+                  "eclipse__default__crouch__south__000",
+                  "eclipse__default__crouch__south__001",
+                  "eclipse__default__crouch__south__002",
+                  "eclipse__default__crouch__south__003",
+                  "eclipse__default__crouch__south__004"
+                ],
+                "west": [
+                  "eclipse__default__crouch__west__000",
+                  "eclipse__default__crouch__west__001",
+                  "eclipse__default__crouch__west__002",
+                  "eclipse__default__crouch__west__003",
+                  "eclipse__default__crouch__west__004"
+                ]
+              }
+            }
+          }
+        }
       },
-      "force-run": {
-        "fps": 14,
-        "loop": true,
-        "directions": {
-          "north": [
-            "force-run_north_000",
-            "force-run_north_001",
-            "force-run_north_002",
-            "force-run_north_003",
-            "force-run_north_004",
-            "force-run_north_005",
-            "force-run_north_006",
-            "force-run_north_007"
-          ],
-          "north-east": [
-            "force-run_north-east_000",
-            "force-run_north-east_001",
-            "force-run_north-east_002",
-            "force-run_north-east_003",
-            "force-run_north-east_004",
-            "force-run_north-east_005",
-            "force-run_north-east_006",
-            "force-run_north-east_007"
-          ],
-          "east": [
-            "force-run_east_000",
-            "force-run_east_001",
-            "force-run_east_002",
-            "force-run_east_003",
-            "force-run_east_004",
-            "force-run_east_005",
-            "force-run_east_006",
-            "force-run_east_007"
-          ],
-          "south-east": [
-            "force-run_south-east_000",
-            "force-run_south-east_001",
-            "force-run_south-east_002",
-            "force-run_south-east_003",
-            "force-run_south-east_004",
-            "force-run_south-east_005",
-            "force-run_south-east_006",
-            "force-run_south-east_007"
-          ],
-          "south": [
-            "force-run_south_000",
-            "force-run_south_001",
-            "force-run_south_002",
-            "force-run_south_003",
-            "force-run_south_004",
-            "force-run_south_005",
-            "force-run_south_006",
-            "force-run_south_007"
-          ],
-          "south-west": [
-            "force-run_south-west_000",
-            "force-run_south-west_001",
-            "force-run_south-west_002",
-            "force-run_south-west_003",
-            "force-run_south-west_004",
-            "force-run_south-west_005",
-            "force-run_south-west_006",
-            "force-run_south-west_007"
-          ],
-          "west": [
-            "force-run_west_000",
-            "force-run_west_001",
-            "force-run_west_002",
-            "force-run_west_003",
-            "force-run_west_004",
-            "force-run_west_005",
-            "force-run_west_006",
-            "force-run_west_007"
-          ],
-          "north-west": [
-            "force-run_north-west_000",
-            "force-run_north-west_001",
-            "force-run_north-west_002",
-            "force-run_north-west_003",
-            "force-run_north-west_004",
-            "force-run_north-west_005",
-            "force-run_north-west_006",
-            "force-run_north-west_007"
-          ]
-        },
-        "width": 68,
-        "height": 68
+      "maxSourceWidth": 80,
+      "maxSourceHeight": 80,
+      "groundOffset": 22,
+      "anchorX": 0.5,
+      "anchorY": 0.775,
+      "pages": [
+        {
+          "image": "eclipse/eclipse_page_0.png",
+          "json": "eclipse/eclipse_page_0.json"
+        }
+      ]
+    },
+    "german_soldier": {
+      "id": "german_soldier",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "german_soldier__default__idle__north__000"
+                ],
+                "north-east": [
+                  "german_soldier__default__idle__north-east__000"
+                ],
+                "east": [
+                  "german_soldier__default__idle__east__000"
+                ],
+                "south-east": [
+                  "german_soldier__default__idle__south-east__000"
+                ],
+                "south": [
+                  "german_soldier__default__idle__south__000"
+                ],
+                "south-west": [
+                  "german_soldier__default__idle__south-west__000"
+                ],
+                "west": [
+                  "german_soldier__default__idle__west__000"
+                ],
+                "north-west": [
+                  "german_soldier__default__idle__north-west__000"
+                ]
+              }
+            },
+            "run": {
+              "fps": 14,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "german_soldier__default__run__north__000",
+                  "german_soldier__default__run__north__001",
+                  "german_soldier__default__run__north__002",
+                  "german_soldier__default__run__north__003",
+                  "german_soldier__default__run__north__004",
+                  "german_soldier__default__run__north__005",
+                  "german_soldier__default__run__north__006",
+                  "german_soldier__default__run__north__007"
+                ],
+                "north-east": [
+                  "german_soldier__default__run__north-east__000",
+                  "german_soldier__default__run__north-east__001",
+                  "german_soldier__default__run__north-east__002",
+                  "german_soldier__default__run__north-east__003",
+                  "german_soldier__default__run__north-east__004",
+                  "german_soldier__default__run__north-east__005",
+                  "german_soldier__default__run__north-east__006",
+                  "german_soldier__default__run__north-east__007"
+                ],
+                "east": [
+                  "german_soldier__default__run__east__000",
+                  "german_soldier__default__run__east__001",
+                  "german_soldier__default__run__east__002",
+                  "german_soldier__default__run__east__003",
+                  "german_soldier__default__run__east__004",
+                  "german_soldier__default__run__east__005",
+                  "german_soldier__default__run__east__006",
+                  "german_soldier__default__run__east__007"
+                ],
+                "south-east": [
+                  "german_soldier__default__run__south-east__000",
+                  "german_soldier__default__run__south-east__001",
+                  "german_soldier__default__run__south-east__002",
+                  "german_soldier__default__run__south-east__003",
+                  "german_soldier__default__run__south-east__004",
+                  "german_soldier__default__run__south-east__005",
+                  "german_soldier__default__run__south-east__006",
+                  "german_soldier__default__run__south-east__007"
+                ],
+                "south": [
+                  "german_soldier__default__run__south__000",
+                  "german_soldier__default__run__south__001",
+                  "german_soldier__default__run__south__002",
+                  "german_soldier__default__run__south__003",
+                  "german_soldier__default__run__south__004",
+                  "german_soldier__default__run__south__005",
+                  "german_soldier__default__run__south__006",
+                  "german_soldier__default__run__south__007"
+                ],
+                "south-west": [
+                  "german_soldier__default__run__south-west__000",
+                  "german_soldier__default__run__south-west__001",
+                  "german_soldier__default__run__south-west__002",
+                  "german_soldier__default__run__south-west__003",
+                  "german_soldier__default__run__south-west__004",
+                  "german_soldier__default__run__south-west__005",
+                  "german_soldier__default__run__south-west__006",
+                  "german_soldier__default__run__south-west__007"
+                ],
+                "west": [
+                  "german_soldier__default__run__west__000",
+                  "german_soldier__default__run__west__001",
+                  "german_soldier__default__run__west__002",
+                  "german_soldier__default__run__west__003",
+                  "german_soldier__default__run__west__004",
+                  "german_soldier__default__run__west__005",
+                  "german_soldier__default__run__west__006",
+                  "german_soldier__default__run__west__007"
+                ],
+                "north-west": [
+                  "german_soldier__default__run__north-west__000",
+                  "german_soldier__default__run__north-west__001",
+                  "german_soldier__default__run__north-west__002",
+                  "german_soldier__default__run__north-west__003",
+                  "german_soldier__default__run__north-west__004",
+                  "german_soldier__default__run__north-west__005",
+                  "german_soldier__default__run__north-west__006",
+                  "german_soldier__default__run__north-west__007"
+                ]
+              }
+            },
+            "throw": {
+              "fps": 18,
+              "loop": false,
+              "directions": {
+                "north": [
+                  "german_soldier__default__throw__north__000",
+                  "german_soldier__default__throw__north__001",
+                  "german_soldier__default__throw__north__002",
+                  "german_soldier__default__throw__north__003",
+                  "german_soldier__default__throw__north__004",
+                  "german_soldier__default__throw__north__005",
+                  "german_soldier__default__throw__north__006"
+                ],
+                "north-east": [
+                  "german_soldier__default__throw__north-east__000",
+                  "german_soldier__default__throw__north-east__001",
+                  "german_soldier__default__throw__north-east__002",
+                  "german_soldier__default__throw__north-east__003",
+                  "german_soldier__default__throw__north-east__004",
+                  "german_soldier__default__throw__north-east__005",
+                  "german_soldier__default__throw__north-east__006"
+                ],
+                "east": [
+                  "german_soldier__default__throw__east__000",
+                  "german_soldier__default__throw__east__001",
+                  "german_soldier__default__throw__east__002",
+                  "german_soldier__default__throw__east__003",
+                  "german_soldier__default__throw__east__004",
+                  "german_soldier__default__throw__east__005",
+                  "german_soldier__default__throw__east__006"
+                ],
+                "south-east": [
+                  "german_soldier__default__throw__south-east__000",
+                  "german_soldier__default__throw__south-east__001",
+                  "german_soldier__default__throw__south-east__002",
+                  "german_soldier__default__throw__south-east__003",
+                  "german_soldier__default__throw__south-east__004",
+                  "german_soldier__default__throw__south-east__005",
+                  "german_soldier__default__throw__south-east__006"
+                ],
+                "south": [
+                  "german_soldier__default__throw__south__000",
+                  "german_soldier__default__throw__south__001",
+                  "german_soldier__default__throw__south__002",
+                  "german_soldier__default__throw__south__003",
+                  "german_soldier__default__throw__south__004",
+                  "german_soldier__default__throw__south__005",
+                  "german_soldier__default__throw__south__006"
+                ],
+                "south-west": [
+                  "german_soldier__default__throw__south-west__000",
+                  "german_soldier__default__throw__south-west__001",
+                  "german_soldier__default__throw__south-west__002",
+                  "german_soldier__default__throw__south-west__003",
+                  "german_soldier__default__throw__south-west__004",
+                  "german_soldier__default__throw__south-west__005",
+                  "german_soldier__default__throw__south-west__006"
+                ],
+                "west": [
+                  "german_soldier__default__throw__west__000",
+                  "german_soldier__default__throw__west__001",
+                  "german_soldier__default__throw__west__002",
+                  "german_soldier__default__throw__west__003",
+                  "german_soldier__default__throw__west__004",
+                  "german_soldier__default__throw__west__005",
+                  "german_soldier__default__throw__west__006"
+                ],
+                "north-west": [
+                  "german_soldier__default__throw__north-west__000",
+                  "german_soldier__default__throw__north-west__001",
+                  "german_soldier__default__throw__north-west__002",
+                  "german_soldier__default__throw__north-west__003",
+                  "german_soldier__default__throw__north-west__004",
+                  "german_soldier__default__throw__north-west__005",
+                  "german_soldier__default__throw__north-west__006"
+                ]
+              }
+            },
+            "walk": {
+              "fallback": "run"
+            }
+          }
+        }
       },
-      "axe-ready": {
-        "fps": 8,
-        "loop": true,
-        "directions": {
-          "north": [
-            "axe-ready_north_000",
-            "axe-ready_north_001",
-            "axe-ready_north_002",
-            "axe-ready_north_003",
-            "axe-ready_north_004",
-            "axe-ready_north_005",
-            "axe-ready_north_006",
-            "axe-ready_north_007"
-          ],
-          "north-east": [
-            "axe-ready_north-east_000",
-            "axe-ready_north-east_001",
-            "axe-ready_north-east_002",
-            "axe-ready_north-east_003",
-            "axe-ready_north-east_004",
-            "axe-ready_north-east_005",
-            "axe-ready_north-east_006",
-            "axe-ready_north-east_007"
-          ],
-          "east": [
-            "axe-ready_east_000",
-            "axe-ready_east_001",
-            "axe-ready_east_002",
-            "axe-ready_east_003",
-            "axe-ready_east_004",
-            "axe-ready_east_005",
-            "axe-ready_east_006",
-            "axe-ready_east_007"
-          ],
-          "south-east": [
-            "axe-ready_south-east_000",
-            "axe-ready_south-east_001",
-            "axe-ready_south-east_002",
-            "axe-ready_south-east_003",
-            "axe-ready_south-east_004",
-            "axe-ready_south-east_005",
-            "axe-ready_south-east_006",
-            "axe-ready_south-east_007"
-          ],
-          "south": [
-            "axe-ready_south_000",
-            "axe-ready_south_001",
-            "axe-ready_south_002",
-            "axe-ready_south_003",
-            "axe-ready_south_004",
-            "axe-ready_south_005",
-            "axe-ready_south_006",
-            "axe-ready_south_007"
-          ],
-          "south-west": [
-            "axe-ready_south-west_000",
-            "axe-ready_south-west_001",
-            "axe-ready_south-west_002",
-            "axe-ready_south-west_003",
-            "axe-ready_south-west_004",
-            "axe-ready_south-west_005",
-            "axe-ready_south-west_006",
-            "axe-ready_south-west_007"
-          ],
-          "west": [
-            "axe-ready_west_000",
-            "axe-ready_west_001",
-            "axe-ready_west_002",
-            "axe-ready_west_003",
-            "axe-ready_west_004",
-            "axe-ready_west_005",
-            "axe-ready_west_006",
-            "axe-ready_west_007"
-          ],
-          "north-west": [
-            "axe-ready_north-west_000",
-            "axe-ready_north-west_001",
-            "axe-ready_north-west_002",
-            "axe-ready_north-west_003",
-            "axe-ready_north-west_004",
-            "axe-ready_north-west_005",
-            "axe-ready_north-west_006",
-            "axe-ready_north-west_007"
-          ]
-        },
-        "width": 68,
-        "height": 68
+      "maxSourceWidth": 80,
+      "maxSourceHeight": 80,
+      "groundOffset": 22,
+      "anchorX": 0.5,
+      "anchorY": 0.775,
+      "pages": [
+        {
+          "image": "german_soldier/german_soldier_page_0.png",
+          "json": "german_soldier/german_soldier_page_0.json"
+        }
+      ]
+    },
+    "lorelei": {
+      "id": "lorelei",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "lorelei__default__idle__north__000"
+                ],
+                "north-east": [
+                  "lorelei__default__idle__north-east__000"
+                ],
+                "east": [
+                  "lorelei__default__idle__east__000"
+                ],
+                "south-east": [
+                  "lorelei__default__idle__south-east__000"
+                ],
+                "south": [
+                  "lorelei__default__idle__south__000"
+                ],
+                "south-west": [
+                  "lorelei__default__idle__south-west__000"
+                ],
+                "west": [
+                  "lorelei__default__idle__west__000"
+                ],
+                "north-west": [
+                  "lorelei__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "lorelei__default__walk__north__000",
+                  "lorelei__default__walk__north__001",
+                  "lorelei__default__walk__north__002",
+                  "lorelei__default__walk__north__003",
+                  "lorelei__default__walk__north__004",
+                  "lorelei__default__walk__north__005",
+                  "lorelei__default__walk__north__006",
+                  "lorelei__default__walk__north__007"
+                ],
+                "north-east": [
+                  "lorelei__default__walk__north-east__000",
+                  "lorelei__default__walk__north-east__001",
+                  "lorelei__default__walk__north-east__002",
+                  "lorelei__default__walk__north-east__003",
+                  "lorelei__default__walk__north-east__004",
+                  "lorelei__default__walk__north-east__005",
+                  "lorelei__default__walk__north-east__006",
+                  "lorelei__default__walk__north-east__007"
+                ],
+                "east": [
+                  "lorelei__default__walk__east__000",
+                  "lorelei__default__walk__east__001",
+                  "lorelei__default__walk__east__002",
+                  "lorelei__default__walk__east__003",
+                  "lorelei__default__walk__east__004",
+                  "lorelei__default__walk__east__005",
+                  "lorelei__default__walk__east__006",
+                  "lorelei__default__walk__east__007"
+                ],
+                "south-east": [
+                  "lorelei__default__walk__south-east__000",
+                  "lorelei__default__walk__south-east__001",
+                  "lorelei__default__walk__south-east__002",
+                  "lorelei__default__walk__south-east__003",
+                  "lorelei__default__walk__south-east__004",
+                  "lorelei__default__walk__south-east__005",
+                  "lorelei__default__walk__south-east__006",
+                  "lorelei__default__walk__south-east__007"
+                ],
+                "south": [
+                  "lorelei__default__walk__south__000",
+                  "lorelei__default__walk__south__001",
+                  "lorelei__default__walk__south__002",
+                  "lorelei__default__walk__south__003",
+                  "lorelei__default__walk__south__004",
+                  "lorelei__default__walk__south__005",
+                  "lorelei__default__walk__south__006",
+                  "lorelei__default__walk__south__007"
+                ],
+                "south-west": [
+                  "lorelei__default__walk__south-west__000",
+                  "lorelei__default__walk__south-west__001",
+                  "lorelei__default__walk__south-west__002",
+                  "lorelei__default__walk__south-west__003",
+                  "lorelei__default__walk__south-west__004",
+                  "lorelei__default__walk__south-west__005",
+                  "lorelei__default__walk__south-west__006",
+                  "lorelei__default__walk__south-west__007"
+                ],
+                "west": [
+                  "lorelei__default__walk__west__000",
+                  "lorelei__default__walk__west__001",
+                  "lorelei__default__walk__west__002",
+                  "lorelei__default__walk__west__003",
+                  "lorelei__default__walk__west__004",
+                  "lorelei__default__walk__west__005",
+                  "lorelei__default__walk__west__006",
+                  "lorelei__default__walk__west__007"
+                ],
+                "north-west": [
+                  "lorelei__default__walk__north-west__000",
+                  "lorelei__default__walk__north-west__001",
+                  "lorelei__default__walk__north-west__002",
+                  "lorelei__default__walk__north-west__003",
+                  "lorelei__default__walk__north-west__004",
+                  "lorelei__default__walk__north-west__005",
+                  "lorelei__default__walk__north-west__006",
+                  "lorelei__default__walk__north-west__007"
+                ]
+              }
+            },
+            "run": {
+              "fps": 12,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "lorelei__default__run__north__000",
+                  "lorelei__default__run__north__001",
+                  "lorelei__default__run__north__002",
+                  "lorelei__default__run__north__003",
+                  "lorelei__default__run__north__004",
+                  "lorelei__default__run__north__005",
+                  "lorelei__default__run__north__006",
+                  "lorelei__default__run__north__007"
+                ],
+                "north-east": [
+                  "lorelei__default__run__north-east__000",
+                  "lorelei__default__run__north-east__001",
+                  "lorelei__default__run__north-east__002",
+                  "lorelei__default__run__north-east__003",
+                  "lorelei__default__run__north-east__004",
+                  "lorelei__default__run__north-east__005",
+                  "lorelei__default__run__north-east__006",
+                  "lorelei__default__run__north-east__007"
+                ],
+                "east": [
+                  "lorelei__default__run__east__000",
+                  "lorelei__default__run__east__001",
+                  "lorelei__default__run__east__002",
+                  "lorelei__default__run__east__003",
+                  "lorelei__default__run__east__004",
+                  "lorelei__default__run__east__005",
+                  "lorelei__default__run__east__006",
+                  "lorelei__default__run__east__007"
+                ],
+                "south-east": [
+                  "lorelei__default__run__south-east__000",
+                  "lorelei__default__run__south-east__001",
+                  "lorelei__default__run__south-east__002",
+                  "lorelei__default__run__south-east__003",
+                  "lorelei__default__run__south-east__004",
+                  "lorelei__default__run__south-east__005",
+                  "lorelei__default__run__south-east__006",
+                  "lorelei__default__run__south-east__007"
+                ],
+                "south": [
+                  "lorelei__default__run__south__000",
+                  "lorelei__default__run__south__001",
+                  "lorelei__default__run__south__002",
+                  "lorelei__default__run__south__003",
+                  "lorelei__default__run__south__004",
+                  "lorelei__default__run__south__005",
+                  "lorelei__default__run__south__006",
+                  "lorelei__default__run__south__007"
+                ],
+                "south-west": [
+                  "lorelei__default__run__south-west__000",
+                  "lorelei__default__run__south-west__001",
+                  "lorelei__default__run__south-west__002",
+                  "lorelei__default__run__south-west__003",
+                  "lorelei__default__run__south-west__004",
+                  "lorelei__default__run__south-west__005",
+                  "lorelei__default__run__south-west__006",
+                  "lorelei__default__run__south-west__007"
+                ],
+                "west": [
+                  "lorelei__default__run__west__000",
+                  "lorelei__default__run__west__001",
+                  "lorelei__default__run__west__002",
+                  "lorelei__default__run__west__003",
+                  "lorelei__default__run__west__004",
+                  "lorelei__default__run__west__005",
+                  "lorelei__default__run__west__006",
+                  "lorelei__default__run__west__007"
+                ],
+                "north-west": [
+                  "lorelei__default__run__north-west__000",
+                  "lorelei__default__run__north-west__001",
+                  "lorelei__default__run__north-west__002",
+                  "lorelei__default__run__north-west__003",
+                  "lorelei__default__run__north-west__004",
+                  "lorelei__default__run__north-west__005",
+                  "lorelei__default__run__north-west__006",
+                  "lorelei__default__run__north-west__007"
+                ]
+              }
+            }
+          }
+        }
       },
-      "axe-throw": {
-        "fps": 18,
-        "loop": false,
-        "directions": {
-          "north": [
-            "axe-throw_north_000",
-            "axe-throw_north_001",
-            "axe-throw_north_002",
-            "axe-throw_north_003",
-            "axe-throw_north_004",
-            "axe-throw_north_005",
-            "axe-throw_north_006"
-          ],
-          "north-east": [
-            "axe-throw_north-east_000",
-            "axe-throw_north-east_001",
-            "axe-throw_north-east_002",
-            "axe-throw_north-east_003",
-            "axe-throw_north-east_004",
-            "axe-throw_north-east_005",
-            "axe-throw_north-east_006",
-            "axe-throw_north-east_007"
-          ],
-          "east": [
-            "axe-throw_east_000",
-            "axe-throw_east_001",
-            "axe-throw_east_002",
-            "axe-throw_east_003",
-            "axe-throw_east_004",
-            "axe-throw_east_005",
-            "axe-throw_east_006"
-          ],
-          "south-east": [
-            "axe-throw_south-east_000",
-            "axe-throw_south-east_001",
-            "axe-throw_south-east_002",
-            "axe-throw_south-east_003",
-            "axe-throw_south-east_004",
-            "axe-throw_south-east_005",
-            "axe-throw_south-east_006"
-          ],
-          "south": [
-            "axe-throw_south_000",
-            "axe-throw_south_001",
-            "axe-throw_south_002",
-            "axe-throw_south_003",
-            "axe-throw_south_004",
-            "axe-throw_south_005",
-            "axe-throw_south_006"
-          ],
-          "south-west": [
-            "axe-throw_south-west_000",
-            "axe-throw_south-west_001",
-            "axe-throw_south-west_002",
-            "axe-throw_south-west_003",
-            "axe-throw_south-west_004",
-            "axe-throw_south-west_005",
-            "axe-throw_south-west_006"
-          ],
-          "west": [
-            "axe-throw_west_000",
-            "axe-throw_west_001",
-            "axe-throw_west_002",
-            "axe-throw_west_003",
-            "axe-throw_west_004",
-            "axe-throw_west_005",
-            "axe-throw_west_006"
-          ],
-          "north-west": [
-            "axe-throw_north-west_000",
-            "axe-throw_north-west_001",
-            "axe-throw_north-west_002",
-            "axe-throw_north-west_003",
-            "axe-throw_north-west_004",
-            "axe-throw_north-west_005",
-            "axe-throw_north-west_006"
-          ]
-        },
-        "width": 64,
-        "height": 64
-      }
-    }
-  },
-  "pursuer": {
-    "character": "pursuer",
-    "frameWidth": 48,
-    "frameHeight": 48,
-    "displayScale": 2,
-    "animations": {
-      "idle": {
-        "fps": 1,
-        "loop": true,
-        "directions": {
-          "north": [
-            "idle_north_000"
-          ],
-          "north-east": [
-            "idle_north-east_000"
-          ],
-          "east": [
-            "idle_east_000"
-          ],
-          "south-east": [
-            "idle_south-east_000"
-          ],
-          "south": [
-            "idle_south_000"
-          ],
-          "south-west": [
-            "idle_south-west_000"
-          ],
-          "west": [
-            "idle_west_000"
-          ],
-          "north-west": [
-            "idle_north-west_000"
-          ]
-        },
-        "width": 48,
-        "height": 48
+      "maxSourceWidth": 68,
+      "maxSourceHeight": 68,
+      "groundOffset": 22,
+      "anchorX": 0.5,
+      "anchorY": 0.8235294117647058,
+      "pages": [
+        {
+          "image": "lorelei/lorelei_page_0.png",
+          "json": "lorelei/lorelei_page_0.json"
+        }
+      ]
+    },
+    "nadine": {
+      "id": "nadine",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "nadine__default__idle__north__000"
+                ],
+                "north-east": [
+                  "nadine__default__idle__north-east__000"
+                ],
+                "east": [
+                  "nadine__default__idle__east__000"
+                ],
+                "south-east": [
+                  "nadine__default__idle__south-east__000"
+                ],
+                "south": [
+                  "nadine__default__idle__south__000"
+                ],
+                "south-west": [
+                  "nadine__default__idle__south-west__000"
+                ],
+                "west": [
+                  "nadine__default__idle__west__000"
+                ],
+                "north-west": [
+                  "nadine__default__idle__north-west__000"
+                ]
+              }
+            },
+            "run": {
+              "fps": 14,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "nadine__default__run__north__000",
+                  "nadine__default__run__north__001",
+                  "nadine__default__run__north__002",
+                  "nadine__default__run__north__003",
+                  "nadine__default__run__north__004",
+                  "nadine__default__run__north__005",
+                  "nadine__default__run__north__006",
+                  "nadine__default__run__north__007"
+                ],
+                "north-east": [
+                  "nadine__default__run__north-east__000",
+                  "nadine__default__run__north-east__001",
+                  "nadine__default__run__north-east__002",
+                  "nadine__default__run__north-east__003",
+                  "nadine__default__run__north-east__004",
+                  "nadine__default__run__north-east__005",
+                  "nadine__default__run__north-east__006",
+                  "nadine__default__run__north-east__007"
+                ],
+                "east": [
+                  "nadine__default__run__east__000",
+                  "nadine__default__run__east__001",
+                  "nadine__default__run__east__002",
+                  "nadine__default__run__east__003",
+                  "nadine__default__run__east__004",
+                  "nadine__default__run__east__005",
+                  "nadine__default__run__east__006",
+                  "nadine__default__run__east__007"
+                ],
+                "south-east": [
+                  "nadine__default__run__south-east__000",
+                  "nadine__default__run__south-east__001",
+                  "nadine__default__run__south-east__002",
+                  "nadine__default__run__south-east__003",
+                  "nadine__default__run__south-east__004",
+                  "nadine__default__run__south-east__005",
+                  "nadine__default__run__south-east__006",
+                  "nadine__default__run__south-east__007"
+                ],
+                "south": [
+                  "nadine__default__run__south__000",
+                  "nadine__default__run__south__001",
+                  "nadine__default__run__south__002",
+                  "nadine__default__run__south__003",
+                  "nadine__default__run__south__004",
+                  "nadine__default__run__south__005",
+                  "nadine__default__run__south__006",
+                  "nadine__default__run__south__007"
+                ],
+                "south-west": [
+                  "nadine__default__run__south-west__000",
+                  "nadine__default__run__south-west__001",
+                  "nadine__default__run__south-west__002",
+                  "nadine__default__run__south-west__003",
+                  "nadine__default__run__south-west__004",
+                  "nadine__default__run__south-west__005",
+                  "nadine__default__run__south-west__006",
+                  "nadine__default__run__south-west__007"
+                ],
+                "west": [
+                  "nadine__default__run__west__000",
+                  "nadine__default__run__west__001",
+                  "nadine__default__run__west__002",
+                  "nadine__default__run__west__003",
+                  "nadine__default__run__west__004",
+                  "nadine__default__run__west__005",
+                  "nadine__default__run__west__006",
+                  "nadine__default__run__west__007"
+                ],
+                "north-west": [
+                  "nadine__default__run__north-west__000",
+                  "nadine__default__run__north-west__001",
+                  "nadine__default__run__north-west__002",
+                  "nadine__default__run__north-west__003",
+                  "nadine__default__run__north-west__004",
+                  "nadine__default__run__north-west__005",
+                  "nadine__default__run__north-west__006",
+                  "nadine__default__run__north-west__007"
+                ]
+              }
+            },
+            "walk": {
+              "fallback": "run"
+            }
+          }
+        }
       },
-      "walk": {
-        "fps": 8,
-        "loop": true,
-        "directions": {
-          "north": [
-            "walk_north_000",
-            "walk_north_001",
-            "walk_north_002",
-            "walk_north_003",
-            "walk_north_004",
-            "walk_north_005",
-            "walk_north_006",
-            "walk_north_007"
-          ],
-          "north-east": [
-            "walk_north-east_000",
-            "walk_north-east_001",
-            "walk_north-east_002",
-            "walk_north-east_003",
-            "walk_north-east_004",
-            "walk_north-east_005",
-            "walk_north-east_006",
-            "walk_north-east_007"
-          ],
-          "east": [
-            "walk_east_000",
-            "walk_east_001",
-            "walk_east_002",
-            "walk_east_003",
-            "walk_east_004",
-            "walk_east_005",
-            "walk_east_006",
-            "walk_east_007"
-          ],
-          "south-east": [
-            "walk_south-east_000",
-            "walk_south-east_001",
-            "walk_south-east_002",
-            "walk_south-east_003",
-            "walk_south-east_004",
-            "walk_south-east_005",
-            "walk_south-east_006",
-            "walk_south-east_007"
-          ],
-          "south": [
-            "walk_south_000",
-            "walk_south_001",
-            "walk_south_002",
-            "walk_south_003",
-            "walk_south_004",
-            "walk_south_005",
-            "walk_south_006",
-            "walk_south_007"
-          ],
-          "south-west": [
-            "walk_south-west_000",
-            "walk_south-west_001",
-            "walk_south-west_002",
-            "walk_south-west_003",
-            "walk_south-west_004",
-            "walk_south-west_005",
-            "walk_south-west_006",
-            "walk_south-west_007"
-          ],
-          "west": [
-            "walk_west_000",
-            "walk_west_001",
-            "walk_west_002",
-            "walk_west_003",
-            "walk_west_004",
-            "walk_west_005",
-            "walk_west_006",
-            "walk_west_007"
-          ],
-          "north-west": [
-            "walk_north-west_000",
-            "walk_north-west_001",
-            "walk_north-west_002",
-            "walk_north-west_003",
-            "walk_north-west_004",
-            "walk_north-west_005",
-            "walk_north-west_006",
-            "walk_north-west_007"
-          ]
+      "maxSourceWidth": 68,
+      "maxSourceHeight": 68,
+      "groundOffset": 22,
+      "anchorX": 0.5,
+      "anchorY": 0.8235294117647058,
+      "pages": [
+        {
+          "image": "nadine/nadine_page_0.png",
+          "json": "nadine/nadine_page_0.json"
+        }
+      ]
+    },
+    "proxy": {
+      "id": "proxy",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__default__idle__north__000"
+                ],
+                "north-east": [
+                  "proxy__default__idle__north-east__000"
+                ],
+                "east": [
+                  "proxy__default__idle__east__000"
+                ],
+                "south-east": [
+                  "proxy__default__idle__south-east__000"
+                ],
+                "south": [
+                  "proxy__default__idle__south__000"
+                ],
+                "south-west": [
+                  "proxy__default__idle__south-west__000"
+                ],
+                "west": [
+                  "proxy__default__idle__west__000"
+                ],
+                "north-west": [
+                  "proxy__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__default__walk__north__000",
+                  "proxy__default__walk__north__001",
+                  "proxy__default__walk__north__002",
+                  "proxy__default__walk__north__003",
+                  "proxy__default__walk__north__004",
+                  "proxy__default__walk__north__005",
+                  "proxy__default__walk__north__006",
+                  "proxy__default__walk__north__007"
+                ],
+                "north-east": [
+                  "proxy__default__walk__north-east__000",
+                  "proxy__default__walk__north-east__001",
+                  "proxy__default__walk__north-east__002",
+                  "proxy__default__walk__north-east__003",
+                  "proxy__default__walk__north-east__004",
+                  "proxy__default__walk__north-east__005",
+                  "proxy__default__walk__north-east__006",
+                  "proxy__default__walk__north-east__007"
+                ],
+                "east": [
+                  "proxy__default__walk__east__000",
+                  "proxy__default__walk__east__001",
+                  "proxy__default__walk__east__002",
+                  "proxy__default__walk__east__003",
+                  "proxy__default__walk__east__004",
+                  "proxy__default__walk__east__005",
+                  "proxy__default__walk__east__006",
+                  "proxy__default__walk__east__007"
+                ],
+                "south-east": [
+                  "proxy__default__walk__south-east__000",
+                  "proxy__default__walk__south-east__001",
+                  "proxy__default__walk__south-east__002",
+                  "proxy__default__walk__south-east__003",
+                  "proxy__default__walk__south-east__004",
+                  "proxy__default__walk__south-east__005",
+                  "proxy__default__walk__south-east__006",
+                  "proxy__default__walk__south-east__007"
+                ],
+                "south": [
+                  "proxy__default__walk__south__000",
+                  "proxy__default__walk__south__001",
+                  "proxy__default__walk__south__002",
+                  "proxy__default__walk__south__003",
+                  "proxy__default__walk__south__004",
+                  "proxy__default__walk__south__005",
+                  "proxy__default__walk__south__006",
+                  "proxy__default__walk__south__007"
+                ],
+                "south-west": [
+                  "proxy__default__walk__south-west__000",
+                  "proxy__default__walk__south-west__001",
+                  "proxy__default__walk__south-west__002",
+                  "proxy__default__walk__south-west__003",
+                  "proxy__default__walk__south-west__004",
+                  "proxy__default__walk__south-west__005",
+                  "proxy__default__walk__south-west__006",
+                  "proxy__default__walk__south-west__007"
+                ],
+                "west": [
+                  "proxy__default__walk__west__000",
+                  "proxy__default__walk__west__001",
+                  "proxy__default__walk__west__002",
+                  "proxy__default__walk__west__003",
+                  "proxy__default__walk__west__004",
+                  "proxy__default__walk__west__005",
+                  "proxy__default__walk__west__006",
+                  "proxy__default__walk__west__007"
+                ],
+                "north-west": [
+                  "proxy__default__walk__north-west__000",
+                  "proxy__default__walk__north-west__001",
+                  "proxy__default__walk__north-west__002",
+                  "proxy__default__walk__north-west__003",
+                  "proxy__default__walk__north-west__004",
+                  "proxy__default__walk__north-west__005",
+                  "proxy__default__walk__north-west__006",
+                  "proxy__default__walk__north-west__007"
+                ]
+              }
+            }
+          }
         },
-        "width": 68,
-        "height": 68
+        "carrying_nadine": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__carrying_nadine__idle__north__000"
+                ],
+                "north-east": [
+                  "proxy__carrying_nadine__idle__north-east__000"
+                ],
+                "east": [
+                  "proxy__carrying_nadine__idle__east__000"
+                ],
+                "south-east": [
+                  "proxy__carrying_nadine__idle__south-east__000"
+                ],
+                "south": [
+                  "proxy__carrying_nadine__idle__south__000"
+                ],
+                "south-west": [
+                  "proxy__carrying_nadine__idle__south-west__000"
+                ],
+                "west": [
+                  "proxy__carrying_nadine__idle__west__000"
+                ],
+                "north-west": [
+                  "proxy__carrying_nadine__idle__north-west__000"
+                ]
+              }
+            },
+            "run": {
+              "fps": 14,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__carrying_nadine__run__north__000",
+                  "proxy__carrying_nadine__run__north__001",
+                  "proxy__carrying_nadine__run__north__002",
+                  "proxy__carrying_nadine__run__north__003",
+                  "proxy__carrying_nadine__run__north__004",
+                  "proxy__carrying_nadine__run__north__005",
+                  "proxy__carrying_nadine__run__north__006",
+                  "proxy__carrying_nadine__run__north__007",
+                  "proxy__carrying_nadine__run__north__008"
+                ],
+                "north-east": [
+                  "proxy__carrying_nadine__run__north-east__000",
+                  "proxy__carrying_nadine__run__north-east__001",
+                  "proxy__carrying_nadine__run__north-east__002",
+                  "proxy__carrying_nadine__run__north-east__003",
+                  "proxy__carrying_nadine__run__north-east__004",
+                  "proxy__carrying_nadine__run__north-east__005",
+                  "proxy__carrying_nadine__run__north-east__006",
+                  "proxy__carrying_nadine__run__north-east__007",
+                  "proxy__carrying_nadine__run__north-east__008"
+                ],
+                "east": [
+                  "proxy__carrying_nadine__run__east__000",
+                  "proxy__carrying_nadine__run__east__001",
+                  "proxy__carrying_nadine__run__east__002",
+                  "proxy__carrying_nadine__run__east__003",
+                  "proxy__carrying_nadine__run__east__004",
+                  "proxy__carrying_nadine__run__east__005",
+                  "proxy__carrying_nadine__run__east__006",
+                  "proxy__carrying_nadine__run__east__007",
+                  "proxy__carrying_nadine__run__east__008"
+                ],
+                "south-east": [
+                  "proxy__carrying_nadine__run__south-east__000",
+                  "proxy__carrying_nadine__run__south-east__001",
+                  "proxy__carrying_nadine__run__south-east__002",
+                  "proxy__carrying_nadine__run__south-east__003",
+                  "proxy__carrying_nadine__run__south-east__004",
+                  "proxy__carrying_nadine__run__south-east__005",
+                  "proxy__carrying_nadine__run__south-east__006",
+                  "proxy__carrying_nadine__run__south-east__007",
+                  "proxy__carrying_nadine__run__south-east__008"
+                ],
+                "south": [
+                  "proxy__carrying_nadine__run__south__000",
+                  "proxy__carrying_nadine__run__south__001",
+                  "proxy__carrying_nadine__run__south__002",
+                  "proxy__carrying_nadine__run__south__003",
+                  "proxy__carrying_nadine__run__south__004",
+                  "proxy__carrying_nadine__run__south__005",
+                  "proxy__carrying_nadine__run__south__006",
+                  "proxy__carrying_nadine__run__south__007",
+                  "proxy__carrying_nadine__run__south__008"
+                ],
+                "south-west": [
+                  "proxy__carrying_nadine__run__south-west__000",
+                  "proxy__carrying_nadine__run__south-west__001",
+                  "proxy__carrying_nadine__run__south-west__002",
+                  "proxy__carrying_nadine__run__south-west__003",
+                  "proxy__carrying_nadine__run__south-west__004",
+                  "proxy__carrying_nadine__run__south-west__005",
+                  "proxy__carrying_nadine__run__south-west__006",
+                  "proxy__carrying_nadine__run__south-west__007",
+                  "proxy__carrying_nadine__run__south-west__008"
+                ],
+                "west": [
+                  "proxy__carrying_nadine__run__west__000",
+                  "proxy__carrying_nadine__run__west__001",
+                  "proxy__carrying_nadine__run__west__002",
+                  "proxy__carrying_nadine__run__west__003",
+                  "proxy__carrying_nadine__run__west__004",
+                  "proxy__carrying_nadine__run__west__005",
+                  "proxy__carrying_nadine__run__west__006",
+                  "proxy__carrying_nadine__run__west__007",
+                  "proxy__carrying_nadine__run__west__008"
+                ],
+                "north-west": [
+                  "proxy__carrying_nadine__run__north-west__000",
+                  "proxy__carrying_nadine__run__north-west__001",
+                  "proxy__carrying_nadine__run__north-west__002",
+                  "proxy__carrying_nadine__run__north-west__003",
+                  "proxy__carrying_nadine__run__north-west__004",
+                  "proxy__carrying_nadine__run__north-west__005",
+                  "proxy__carrying_nadine__run__north-west__006",
+                  "proxy__carrying_nadine__run__north-west__007",
+                  "proxy__carrying_nadine__run__north-west__008"
+                ]
+              }
+            },
+            "walk": {
+              "fallback": "run"
+            }
+          }
+        },
+        "damage_1": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__damage_1__idle__north__000"
+                ],
+                "north-east": [
+                  "proxy__damage_1__idle__north-east__000"
+                ],
+                "east": [
+                  "proxy__damage_1__idle__east__000"
+                ],
+                "south-east": [
+                  "proxy__damage_1__idle__south-east__000"
+                ],
+                "south": [
+                  "proxy__damage_1__idle__south__000"
+                ],
+                "south-west": [
+                  "proxy__damage_1__idle__south-west__000"
+                ],
+                "west": [
+                  "proxy__damage_1__idle__west__000"
+                ],
+                "north-west": [
+                  "proxy__damage_1__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__damage_1__walk__north__000",
+                  "proxy__damage_1__walk__north__001",
+                  "proxy__damage_1__walk__north__002",
+                  "proxy__damage_1__walk__north__003",
+                  "proxy__damage_1__walk__north__004",
+                  "proxy__damage_1__walk__north__005",
+                  "proxy__damage_1__walk__north__006",
+                  "proxy__damage_1__walk__north__007"
+                ],
+                "north-east": [
+                  "proxy__damage_1__walk__north-east__000",
+                  "proxy__damage_1__walk__north-east__001",
+                  "proxy__damage_1__walk__north-east__002",
+                  "proxy__damage_1__walk__north-east__003",
+                  "proxy__damage_1__walk__north-east__004",
+                  "proxy__damage_1__walk__north-east__005",
+                  "proxy__damage_1__walk__north-east__006",
+                  "proxy__damage_1__walk__north-east__007"
+                ],
+                "east": [
+                  "proxy__damage_1__walk__east__000",
+                  "proxy__damage_1__walk__east__001",
+                  "proxy__damage_1__walk__east__002",
+                  "proxy__damage_1__walk__east__003",
+                  "proxy__damage_1__walk__east__004",
+                  "proxy__damage_1__walk__east__005",
+                  "proxy__damage_1__walk__east__006",
+                  "proxy__damage_1__walk__east__007"
+                ],
+                "south-east": [
+                  "proxy__damage_1__walk__south-east__000",
+                  "proxy__damage_1__walk__south-east__001",
+                  "proxy__damage_1__walk__south-east__002",
+                  "proxy__damage_1__walk__south-east__003",
+                  "proxy__damage_1__walk__south-east__004",
+                  "proxy__damage_1__walk__south-east__005",
+                  "proxy__damage_1__walk__south-east__006",
+                  "proxy__damage_1__walk__south-east__007"
+                ],
+                "south": [
+                  "proxy__damage_1__walk__south__000",
+                  "proxy__damage_1__walk__south__001",
+                  "proxy__damage_1__walk__south__002",
+                  "proxy__damage_1__walk__south__003",
+                  "proxy__damage_1__walk__south__004",
+                  "proxy__damage_1__walk__south__005",
+                  "proxy__damage_1__walk__south__006",
+                  "proxy__damage_1__walk__south__007"
+                ],
+                "south-west": [
+                  "proxy__damage_1__walk__south-west__000",
+                  "proxy__damage_1__walk__south-west__001",
+                  "proxy__damage_1__walk__south-west__002",
+                  "proxy__damage_1__walk__south-west__003",
+                  "proxy__damage_1__walk__south-west__004",
+                  "proxy__damage_1__walk__south-west__005",
+                  "proxy__damage_1__walk__south-west__006",
+                  "proxy__damage_1__walk__south-west__007"
+                ],
+                "west": [
+                  "proxy__damage_1__walk__west__000",
+                  "proxy__damage_1__walk__west__001",
+                  "proxy__damage_1__walk__west__002",
+                  "proxy__damage_1__walk__west__003",
+                  "proxy__damage_1__walk__west__004",
+                  "proxy__damage_1__walk__west__005",
+                  "proxy__damage_1__walk__west__006",
+                  "proxy__damage_1__walk__west__007"
+                ],
+                "north-west": [
+                  "proxy__damage_1__walk__north-west__000",
+                  "proxy__damage_1__walk__north-west__001",
+                  "proxy__damage_1__walk__north-west__002",
+                  "proxy__damage_1__walk__north-west__003",
+                  "proxy__damage_1__walk__north-west__004",
+                  "proxy__damage_1__walk__north-west__005",
+                  "proxy__damage_1__walk__north-west__006",
+                  "proxy__damage_1__walk__north-west__007"
+                ]
+              }
+            }
+          }
+        },
+        "damage_2": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__damage_2__idle__north__000"
+                ],
+                "north-east": [
+                  "proxy__damage_2__idle__north-east__000"
+                ],
+                "east": [
+                  "proxy__damage_2__idle__east__000"
+                ],
+                "south-east": [
+                  "proxy__damage_2__idle__south-east__000"
+                ],
+                "south": [
+                  "proxy__damage_2__idle__south__000"
+                ],
+                "south-west": [
+                  "proxy__damage_2__idle__south-west__000"
+                ],
+                "west": [
+                  "proxy__damage_2__idle__west__000"
+                ],
+                "north-west": [
+                  "proxy__damage_2__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__damage_2__walk__north__000",
+                  "proxy__damage_2__walk__north__001",
+                  "proxy__damage_2__walk__north__002",
+                  "proxy__damage_2__walk__north__003",
+                  "proxy__damage_2__walk__north__004",
+                  "proxy__damage_2__walk__north__005",
+                  "proxy__damage_2__walk__north__006",
+                  "proxy__damage_2__walk__north__007"
+                ],
+                "north-east": [
+                  "proxy__damage_2__walk__north-east__000",
+                  "proxy__damage_2__walk__north-east__001",
+                  "proxy__damage_2__walk__north-east__002",
+                  "proxy__damage_2__walk__north-east__003",
+                  "proxy__damage_2__walk__north-east__004",
+                  "proxy__damage_2__walk__north-east__005",
+                  "proxy__damage_2__walk__north-east__006",
+                  "proxy__damage_2__walk__north-east__007"
+                ],
+                "east": [
+                  "proxy__damage_2__walk__east__000",
+                  "proxy__damage_2__walk__east__001",
+                  "proxy__damage_2__walk__east__002",
+                  "proxy__damage_2__walk__east__003",
+                  "proxy__damage_2__walk__east__004",
+                  "proxy__damage_2__walk__east__005",
+                  "proxy__damage_2__walk__east__006",
+                  "proxy__damage_2__walk__east__007"
+                ],
+                "south-east": [
+                  "proxy__damage_2__walk__south-east__000",
+                  "proxy__damage_2__walk__south-east__001",
+                  "proxy__damage_2__walk__south-east__002",
+                  "proxy__damage_2__walk__south-east__003",
+                  "proxy__damage_2__walk__south-east__004",
+                  "proxy__damage_2__walk__south-east__005",
+                  "proxy__damage_2__walk__south-east__006",
+                  "proxy__damage_2__walk__south-east__007"
+                ],
+                "south": [
+                  "proxy__damage_2__walk__south__000",
+                  "proxy__damage_2__walk__south__001",
+                  "proxy__damage_2__walk__south__002",
+                  "proxy__damage_2__walk__south__003",
+                  "proxy__damage_2__walk__south__004",
+                  "proxy__damage_2__walk__south__005",
+                  "proxy__damage_2__walk__south__006",
+                  "proxy__damage_2__walk__south__007"
+                ],
+                "south-west": [
+                  "proxy__damage_2__walk__south-west__000",
+                  "proxy__damage_2__walk__south-west__001",
+                  "proxy__damage_2__walk__south-west__002",
+                  "proxy__damage_2__walk__south-west__003",
+                  "proxy__damage_2__walk__south-west__004",
+                  "proxy__damage_2__walk__south-west__005",
+                  "proxy__damage_2__walk__south-west__006",
+                  "proxy__damage_2__walk__south-west__007"
+                ],
+                "west": [
+                  "proxy__damage_2__walk__west__000",
+                  "proxy__damage_2__walk__west__001",
+                  "proxy__damage_2__walk__west__002",
+                  "proxy__damage_2__walk__west__003",
+                  "proxy__damage_2__walk__west__004",
+                  "proxy__damage_2__walk__west__005",
+                  "proxy__damage_2__walk__west__006",
+                  "proxy__damage_2__walk__west__007"
+                ],
+                "north-west": [
+                  "proxy__damage_2__walk__north-west__000",
+                  "proxy__damage_2__walk__north-west__001",
+                  "proxy__damage_2__walk__north-west__002",
+                  "proxy__damage_2__walk__north-west__003",
+                  "proxy__damage_2__walk__north-west__004",
+                  "proxy__damage_2__walk__north-west__005",
+                  "proxy__damage_2__walk__north-west__006",
+                  "proxy__damage_2__walk__north-west__007"
+                ]
+              }
+            }
+          }
+        },
+        "damage_3": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "proxy__damage_3__idle__north__000"
+                ],
+                "north-east": [
+                  "proxy__damage_3__idle__north-east__000"
+                ],
+                "east": [
+                  "proxy__damage_3__idle__east__000"
+                ],
+                "south-east": [
+                  "proxy__damage_3__idle__south-east__000"
+                ],
+                "south": [
+                  "proxy__damage_3__idle__south__000"
+                ],
+                "south-west": [
+                  "proxy__damage_3__idle__south-west__000"
+                ],
+                "west": [
+                  "proxy__damage_3__idle__west__000"
+                ],
+                "north-west": [
+                  "proxy__damage_3__idle__north-west__000"
+                ]
+              }
+            },
+            "collapse": {
+              "fps": 12,
+              "loop": false,
+              "directions": {
+                "south": [
+                  "proxy__damage_3__collapse__south__000",
+                  "proxy__damage_3__collapse__south__001",
+                  "proxy__damage_3__collapse__south__002",
+                  "proxy__damage_3__collapse__south__003",
+                  "proxy__damage_3__collapse__south__004",
+                  "proxy__damage_3__collapse__south__005",
+                  "proxy__damage_3__collapse__south__006",
+                  "proxy__damage_3__collapse__south__007",
+                  "proxy__damage_3__collapse__south__008"
+                ]
+              }
+            },
+            "walk": {
+              "fallback": "idle"
+            }
+          }
+        }
       },
-      "attack": {
-        "fps": 12,
-        "loop": true,
-        "directions": {
-          "north": [
-            "attack_north_000",
-            "attack_north_001",
-            "attack_north_002",
-            "attack_north_003",
-            "attack_north_004",
-            "attack_north_005",
-            "attack_north_006",
-            "attack_north_007"
-          ],
-          "north-east": [
-            "attack_north-east_000",
-            "attack_north-east_001",
-            "attack_north-east_002",
-            "attack_north-east_003",
-            "attack_north-east_004",
-            "attack_north-east_005",
-            "attack_north-east_006",
-            "attack_north-east_007"
-          ],
-          "east": [
-            "attack_east_000",
-            "attack_east_001",
-            "attack_east_002",
-            "attack_east_003",
-            "attack_east_004",
-            "attack_east_005",
-            "attack_east_006",
-            "attack_east_007"
-          ],
-          "south-east": [
-            "attack_south-east_000",
-            "attack_south-east_001",
-            "attack_south-east_002",
-            "attack_south-east_003",
-            "attack_south-east_004",
-            "attack_south-east_005",
-            "attack_south-east_006",
-            "attack_south-east_007"
-          ],
-          "south": [
-            "attack_south_000",
-            "attack_south_001",
-            "attack_south_002",
-            "attack_south_003",
-            "attack_south_004",
-            "attack_south_005",
-            "attack_south_006",
-            "attack_south_007"
-          ],
-          "south-west": [
-            "attack_south-west_000",
-            "attack_south-west_001",
-            "attack_south-west_002",
-            "attack_south-west_003",
-            "attack_south-west_004",
-            "attack_south-west_005",
-            "attack_south-west_006",
-            "attack_south-west_007"
-          ],
-          "west": [
-            "attack_west_000",
-            "attack_west_001",
-            "attack_west_002",
-            "attack_west_003",
-            "attack_west_004",
-            "attack_west_005",
-            "attack_west_006",
-            "attack_west_007"
-          ],
-          "north-west": [
-            "attack_north-west_000",
-            "attack_north-west_001",
-            "attack_north-west_002",
-            "attack_north-west_003",
-            "attack_north-west_004",
-            "attack_north-west_005",
-            "attack_north-west_006",
-            "attack_north-west_007"
-          ]
+      "maxSourceWidth": 92,
+      "maxSourceHeight": 92,
+      "groundOffset": 29,
+      "anchorX": 0.5,
+      "anchorY": 0.8152173913043478,
+      "pages": [
+        {
+          "image": "proxy/proxy_page_0.png",
+          "json": "proxy/proxy_page_0.json"
+        }
+      ]
+    },
+    "giant_boss": {
+      "id": "giant_boss",
+      "displayScale": 2,
+      "defaultState": "default",
+      "states": {
+        "default": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__default__idle__north__000"
+                ],
+                "north-east": [
+                  "giant_boss__default__idle__north-east__000"
+                ],
+                "east": [
+                  "giant_boss__default__idle__east__000"
+                ],
+                "south-east": [
+                  "giant_boss__default__idle__south-east__000"
+                ],
+                "south": [
+                  "giant_boss__default__idle__south__000"
+                ],
+                "south-west": [
+                  "giant_boss__default__idle__south-west__000"
+                ],
+                "west": [
+                  "giant_boss__default__idle__west__000"
+                ],
+                "north-west": [
+                  "giant_boss__default__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__default__walk__north__000",
+                  "giant_boss__default__walk__north__001",
+                  "giant_boss__default__walk__north__002",
+                  "giant_boss__default__walk__north__003",
+                  "giant_boss__default__walk__north__004",
+                  "giant_boss__default__walk__north__005",
+                  "giant_boss__default__walk__north__006",
+                  "giant_boss__default__walk__north__007"
+                ],
+                "north-east": [
+                  "giant_boss__default__walk__north-east__000",
+                  "giant_boss__default__walk__north-east__001",
+                  "giant_boss__default__walk__north-east__002",
+                  "giant_boss__default__walk__north-east__003",
+                  "giant_boss__default__walk__north-east__004",
+                  "giant_boss__default__walk__north-east__005",
+                  "giant_boss__default__walk__north-east__006",
+                  "giant_boss__default__walk__north-east__007"
+                ],
+                "east": [
+                  "giant_boss__default__walk__east__000",
+                  "giant_boss__default__walk__east__001",
+                  "giant_boss__default__walk__east__002",
+                  "giant_boss__default__walk__east__003",
+                  "giant_boss__default__walk__east__004",
+                  "giant_boss__default__walk__east__005",
+                  "giant_boss__default__walk__east__006",
+                  "giant_boss__default__walk__east__007"
+                ],
+                "south-east": [
+                  "giant_boss__default__walk__south-east__000",
+                  "giant_boss__default__walk__south-east__001",
+                  "giant_boss__default__walk__south-east__002",
+                  "giant_boss__default__walk__south-east__003",
+                  "giant_boss__default__walk__south-east__004",
+                  "giant_boss__default__walk__south-east__005",
+                  "giant_boss__default__walk__south-east__006",
+                  "giant_boss__default__walk__south-east__007"
+                ],
+                "south": [
+                  "giant_boss__default__walk__south__000",
+                  "giant_boss__default__walk__south__001",
+                  "giant_boss__default__walk__south__002",
+                  "giant_boss__default__walk__south__003",
+                  "giant_boss__default__walk__south__004",
+                  "giant_boss__default__walk__south__005",
+                  "giant_boss__default__walk__south__006",
+                  "giant_boss__default__walk__south__007"
+                ],
+                "south-west": [
+                  "giant_boss__default__walk__south-west__000",
+                  "giant_boss__default__walk__south-west__001",
+                  "giant_boss__default__walk__south-west__002",
+                  "giant_boss__default__walk__south-west__003",
+                  "giant_boss__default__walk__south-west__004",
+                  "giant_boss__default__walk__south-west__005",
+                  "giant_boss__default__walk__south-west__006",
+                  "giant_boss__default__walk__south-west__007"
+                ],
+                "west": [
+                  "giant_boss__default__walk__west__000",
+                  "giant_boss__default__walk__west__001",
+                  "giant_boss__default__walk__west__002",
+                  "giant_boss__default__walk__west__003",
+                  "giant_boss__default__walk__west__004",
+                  "giant_boss__default__walk__west__005",
+                  "giant_boss__default__walk__west__006",
+                  "giant_boss__default__walk__west__007"
+                ],
+                "north-west": [
+                  "giant_boss__default__walk__north-west__000",
+                  "giant_boss__default__walk__north-west__001",
+                  "giant_boss__default__walk__north-west__002",
+                  "giant_boss__default__walk__north-west__003",
+                  "giant_boss__default__walk__north-west__004",
+                  "giant_boss__default__walk__north-west__005",
+                  "giant_boss__default__walk__north-west__006",
+                  "giant_boss__default__walk__north-west__007"
+                ]
+              }
+            },
+            "swing": {
+              "fps": 12,
+              "loop": false,
+              "directions": {
+                "north": [
+                  "giant_boss__default__swing__north__000",
+                  "giant_boss__default__swing__north__001",
+                  "giant_boss__default__swing__north__002",
+                  "giant_boss__default__swing__north__003",
+                  "giant_boss__default__swing__north__004",
+                  "giant_boss__default__swing__north__005",
+                  "giant_boss__default__swing__north__006",
+                  "giant_boss__default__swing__north__007",
+                  "giant_boss__default__swing__north__008"
+                ],
+                "east": [
+                  "giant_boss__default__swing__east__000",
+                  "giant_boss__default__swing__east__001",
+                  "giant_boss__default__swing__east__002",
+                  "giant_boss__default__swing__east__003",
+                  "giant_boss__default__swing__east__004",
+                  "giant_boss__default__swing__east__005",
+                  "giant_boss__default__swing__east__006",
+                  "giant_boss__default__swing__east__007",
+                  "giant_boss__default__swing__east__008"
+                ],
+                "south": [
+                  "giant_boss__default__swing__south__000",
+                  "giant_boss__default__swing__south__001",
+                  "giant_boss__default__swing__south__002",
+                  "giant_boss__default__swing__south__003",
+                  "giant_boss__default__swing__south__004",
+                  "giant_boss__default__swing__south__005",
+                  "giant_boss__default__swing__south__006",
+                  "giant_boss__default__swing__south__007",
+                  "giant_boss__default__swing__south__008"
+                ],
+                "west": [
+                  "giant_boss__default__swing__west__000",
+                  "giant_boss__default__swing__west__001",
+                  "giant_boss__default__swing__west__002",
+                  "giant_boss__default__swing__west__003",
+                  "giant_boss__default__swing__west__004",
+                  "giant_boss__default__swing__west__005",
+                  "giant_boss__default__swing__west__006",
+                  "giant_boss__default__swing__west__007",
+                  "giant_boss__default__swing__west__008"
+                ]
+              }
+            }
+          }
         },
-        "width": 68,
-        "height": 68
-      }
-    }
-  },
-  "lorelei": {
-    "character": "lorelei",
-    "frameWidth": 48,
-    "frameHeight": 48,
-    "displayScale": 2,
-    "animations": {
-      "idle": {
-        "fps": 1,
-        "loop": true,
-        "directions": {
-          "north": [
-            "idle_north_000"
-          ],
-          "north-east": [
-            "idle_north-east_000"
-          ],
-          "east": [
-            "idle_east_000"
-          ],
-          "south-east": [
-            "idle_south-east_000"
-          ],
-          "south": [
-            "idle_south_000"
-          ],
-          "south-west": [
-            "idle_south-west_000"
-          ],
-          "west": [
-            "idle_west_000"
-          ],
-          "north-west": [
-            "idle_north-west_000"
-          ]
+        "damage_left": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__damage_left__idle__north__000"
+                ],
+                "north-east": [
+                  "giant_boss__damage_left__idle__north-east__000"
+                ],
+                "east": [
+                  "giant_boss__damage_left__idle__east__000"
+                ],
+                "south-east": [
+                  "giant_boss__damage_left__idle__south-east__000"
+                ],
+                "south": [
+                  "giant_boss__damage_left__idle__south__000"
+                ],
+                "south-west": [
+                  "giant_boss__damage_left__idle__south-west__000"
+                ],
+                "west": [
+                  "giant_boss__damage_left__idle__west__000"
+                ],
+                "north-west": [
+                  "giant_boss__damage_left__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__damage_left__walk__north__000",
+                  "giant_boss__damage_left__walk__north__001",
+                  "giant_boss__damage_left__walk__north__002",
+                  "giant_boss__damage_left__walk__north__003",
+                  "giant_boss__damage_left__walk__north__004",
+                  "giant_boss__damage_left__walk__north__005",
+                  "giant_boss__damage_left__walk__north__006",
+                  "giant_boss__damage_left__walk__north__007"
+                ],
+                "north-east": [
+                  "giant_boss__damage_left__walk__north-east__000",
+                  "giant_boss__damage_left__walk__north-east__001",
+                  "giant_boss__damage_left__walk__north-east__002",
+                  "giant_boss__damage_left__walk__north-east__003",
+                  "giant_boss__damage_left__walk__north-east__004",
+                  "giant_boss__damage_left__walk__north-east__005",
+                  "giant_boss__damage_left__walk__north-east__006",
+                  "giant_boss__damage_left__walk__north-east__007"
+                ],
+                "east": [
+                  "giant_boss__damage_left__walk__east__000",
+                  "giant_boss__damage_left__walk__east__001",
+                  "giant_boss__damage_left__walk__east__002",
+                  "giant_boss__damage_left__walk__east__003",
+                  "giant_boss__damage_left__walk__east__004",
+                  "giant_boss__damage_left__walk__east__005",
+                  "giant_boss__damage_left__walk__east__006",
+                  "giant_boss__damage_left__walk__east__007"
+                ],
+                "south-east": [
+                  "giant_boss__damage_left__walk__south-east__000",
+                  "giant_boss__damage_left__walk__south-east__001",
+                  "giant_boss__damage_left__walk__south-east__002",
+                  "giant_boss__damage_left__walk__south-east__003",
+                  "giant_boss__damage_left__walk__south-east__004",
+                  "giant_boss__damage_left__walk__south-east__005",
+                  "giant_boss__damage_left__walk__south-east__006",
+                  "giant_boss__damage_left__walk__south-east__007"
+                ],
+                "south": [
+                  "giant_boss__damage_left__walk__south__000",
+                  "giant_boss__damage_left__walk__south__001",
+                  "giant_boss__damage_left__walk__south__002",
+                  "giant_boss__damage_left__walk__south__003",
+                  "giant_boss__damage_left__walk__south__004",
+                  "giant_boss__damage_left__walk__south__005",
+                  "giant_boss__damage_left__walk__south__006",
+                  "giant_boss__damage_left__walk__south__007"
+                ],
+                "south-west": [
+                  "giant_boss__damage_left__walk__south-west__000",
+                  "giant_boss__damage_left__walk__south-west__001",
+                  "giant_boss__damage_left__walk__south-west__002",
+                  "giant_boss__damage_left__walk__south-west__003",
+                  "giant_boss__damage_left__walk__south-west__004",
+                  "giant_boss__damage_left__walk__south-west__005",
+                  "giant_boss__damage_left__walk__south-west__006",
+                  "giant_boss__damage_left__walk__south-west__007"
+                ],
+                "west": [
+                  "giant_boss__damage_left__walk__west__000",
+                  "giant_boss__damage_left__walk__west__001",
+                  "giant_boss__damage_left__walk__west__002",
+                  "giant_boss__damage_left__walk__west__003",
+                  "giant_boss__damage_left__walk__west__004",
+                  "giant_boss__damage_left__walk__west__005",
+                  "giant_boss__damage_left__walk__west__006",
+                  "giant_boss__damage_left__walk__west__007"
+                ],
+                "north-west": [
+                  "giant_boss__damage_left__walk__north-west__000",
+                  "giant_boss__damage_left__walk__north-west__001",
+                  "giant_boss__damage_left__walk__north-west__002",
+                  "giant_boss__damage_left__walk__north-west__003",
+                  "giant_boss__damage_left__walk__north-west__004",
+                  "giant_boss__damage_left__walk__north-west__005",
+                  "giant_boss__damage_left__walk__north-west__006",
+                  "giant_boss__damage_left__walk__north-west__007"
+                ]
+              }
+            }
+          }
         },
-        "width": 48,
-        "height": 48
+        "damage_left_right": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__damage_left_right__idle__north__000"
+                ],
+                "north-east": [
+                  "giant_boss__damage_left_right__idle__north-east__000"
+                ],
+                "east": [
+                  "giant_boss__damage_left_right__idle__east__000"
+                ],
+                "south-east": [
+                  "giant_boss__damage_left_right__idle__south-east__000"
+                ],
+                "south": [
+                  "giant_boss__damage_left_right__idle__south__000"
+                ],
+                "south-west": [
+                  "giant_boss__damage_left_right__idle__south-west__000"
+                ],
+                "west": [
+                  "giant_boss__damage_left_right__idle__west__000"
+                ],
+                "north-west": [
+                  "giant_boss__damage_left_right__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__damage_left_right__walk__north__000",
+                  "giant_boss__damage_left_right__walk__north__001",
+                  "giant_boss__damage_left_right__walk__north__002",
+                  "giant_boss__damage_left_right__walk__north__003",
+                  "giant_boss__damage_left_right__walk__north__004",
+                  "giant_boss__damage_left_right__walk__north__005",
+                  "giant_boss__damage_left_right__walk__north__006",
+                  "giant_boss__damage_left_right__walk__north__007"
+                ],
+                "north-east": [
+                  "giant_boss__damage_left_right__walk__north-east__000",
+                  "giant_boss__damage_left_right__walk__north-east__001",
+                  "giant_boss__damage_left_right__walk__north-east__002",
+                  "giant_boss__damage_left_right__walk__north-east__003",
+                  "giant_boss__damage_left_right__walk__north-east__004",
+                  "giant_boss__damage_left_right__walk__north-east__005",
+                  "giant_boss__damage_left_right__walk__north-east__006",
+                  "giant_boss__damage_left_right__walk__north-east__007"
+                ],
+                "east": [
+                  "giant_boss__damage_left_right__walk__east__000",
+                  "giant_boss__damage_left_right__walk__east__001",
+                  "giant_boss__damage_left_right__walk__east__002",
+                  "giant_boss__damage_left_right__walk__east__003",
+                  "giant_boss__damage_left_right__walk__east__004",
+                  "giant_boss__damage_left_right__walk__east__005",
+                  "giant_boss__damage_left_right__walk__east__006",
+                  "giant_boss__damage_left_right__walk__east__007"
+                ],
+                "south-east": [
+                  "giant_boss__damage_left_right__walk__south-east__000",
+                  "giant_boss__damage_left_right__walk__south-east__001",
+                  "giant_boss__damage_left_right__walk__south-east__002",
+                  "giant_boss__damage_left_right__walk__south-east__003",
+                  "giant_boss__damage_left_right__walk__south-east__004",
+                  "giant_boss__damage_left_right__walk__south-east__005",
+                  "giant_boss__damage_left_right__walk__south-east__006",
+                  "giant_boss__damage_left_right__walk__south-east__007"
+                ],
+                "south": [
+                  "giant_boss__damage_left_right__walk__south__000",
+                  "giant_boss__damage_left_right__walk__south__001",
+                  "giant_boss__damage_left_right__walk__south__002",
+                  "giant_boss__damage_left_right__walk__south__003",
+                  "giant_boss__damage_left_right__walk__south__004",
+                  "giant_boss__damage_left_right__walk__south__005",
+                  "giant_boss__damage_left_right__walk__south__006",
+                  "giant_boss__damage_left_right__walk__south__007"
+                ],
+                "south-west": [
+                  "giant_boss__damage_left_right__walk__south-west__000",
+                  "giant_boss__damage_left_right__walk__south-west__001",
+                  "giant_boss__damage_left_right__walk__south-west__002",
+                  "giant_boss__damage_left_right__walk__south-west__003",
+                  "giant_boss__damage_left_right__walk__south-west__004",
+                  "giant_boss__damage_left_right__walk__south-west__005",
+                  "giant_boss__damage_left_right__walk__south-west__006",
+                  "giant_boss__damage_left_right__walk__south-west__007"
+                ],
+                "west": [
+                  "giant_boss__damage_left_right__walk__west__000",
+                  "giant_boss__damage_left_right__walk__west__001",
+                  "giant_boss__damage_left_right__walk__west__002",
+                  "giant_boss__damage_left_right__walk__west__003",
+                  "giant_boss__damage_left_right__walk__west__004",
+                  "giant_boss__damage_left_right__walk__west__005",
+                  "giant_boss__damage_left_right__walk__west__006",
+                  "giant_boss__damage_left_right__walk__west__007"
+                ],
+                "north-west": [
+                  "giant_boss__damage_left_right__walk__north-west__000",
+                  "giant_boss__damage_left_right__walk__north-west__001",
+                  "giant_boss__damage_left_right__walk__north-west__002",
+                  "giant_boss__damage_left_right__walk__north-west__003",
+                  "giant_boss__damage_left_right__walk__north-west__004",
+                  "giant_boss__damage_left_right__walk__north-west__005",
+                  "giant_boss__damage_left_right__walk__north-west__006",
+                  "giant_boss__damage_left_right__walk__north-west__007"
+                ]
+              }
+            }
+          }
+        },
+        "damage_all": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__damage_all__idle__north__000"
+                ],
+                "north-east": [
+                  "giant_boss__damage_all__idle__north-east__000"
+                ],
+                "east": [
+                  "giant_boss__damage_all__idle__east__000"
+                ],
+                "south-east": [
+                  "giant_boss__damage_all__idle__south-east__000"
+                ],
+                "south": [
+                  "giant_boss__damage_all__idle__south__000"
+                ],
+                "south-west": [
+                  "giant_boss__damage_all__idle__south-west__000"
+                ],
+                "west": [
+                  "giant_boss__damage_all__idle__west__000"
+                ],
+                "north-west": [
+                  "giant_boss__damage_all__idle__north-west__000"
+                ]
+              }
+            },
+            "walk": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "north": [
+                  "giant_boss__damage_all__walk__north__000",
+                  "giant_boss__damage_all__walk__north__001",
+                  "giant_boss__damage_all__walk__north__002",
+                  "giant_boss__damage_all__walk__north__003",
+                  "giant_boss__damage_all__walk__north__004",
+                  "giant_boss__damage_all__walk__north__005",
+                  "giant_boss__damage_all__walk__north__006",
+                  "giant_boss__damage_all__walk__north__007"
+                ],
+                "north-east": [
+                  "giant_boss__damage_all__walk__north-east__000",
+                  "giant_boss__damage_all__walk__north-east__001",
+                  "giant_boss__damage_all__walk__north-east__002",
+                  "giant_boss__damage_all__walk__north-east__003",
+                  "giant_boss__damage_all__walk__north-east__004",
+                  "giant_boss__damage_all__walk__north-east__005",
+                  "giant_boss__damage_all__walk__north-east__006",
+                  "giant_boss__damage_all__walk__north-east__007"
+                ],
+                "east": [
+                  "giant_boss__damage_all__walk__east__000",
+                  "giant_boss__damage_all__walk__east__001",
+                  "giant_boss__damage_all__walk__east__002",
+                  "giant_boss__damage_all__walk__east__003",
+                  "giant_boss__damage_all__walk__east__004",
+                  "giant_boss__damage_all__walk__east__005",
+                  "giant_boss__damage_all__walk__east__006",
+                  "giant_boss__damage_all__walk__east__007"
+                ],
+                "south-east": [
+                  "giant_boss__damage_all__walk__south-east__000",
+                  "giant_boss__damage_all__walk__south-east__001",
+                  "giant_boss__damage_all__walk__south-east__002",
+                  "giant_boss__damage_all__walk__south-east__003",
+                  "giant_boss__damage_all__walk__south-east__004",
+                  "giant_boss__damage_all__walk__south-east__005",
+                  "giant_boss__damage_all__walk__south-east__006",
+                  "giant_boss__damage_all__walk__south-east__007"
+                ],
+                "south": [
+                  "giant_boss__damage_all__walk__south__000",
+                  "giant_boss__damage_all__walk__south__001",
+                  "giant_boss__damage_all__walk__south__002",
+                  "giant_boss__damage_all__walk__south__003",
+                  "giant_boss__damage_all__walk__south__004",
+                  "giant_boss__damage_all__walk__south__005",
+                  "giant_boss__damage_all__walk__south__006",
+                  "giant_boss__damage_all__walk__south__007"
+                ],
+                "south-west": [
+                  "giant_boss__damage_all__walk__south-west__000",
+                  "giant_boss__damage_all__walk__south-west__001",
+                  "giant_boss__damage_all__walk__south-west__002",
+                  "giant_boss__damage_all__walk__south-west__003",
+                  "giant_boss__damage_all__walk__south-west__004",
+                  "giant_boss__damage_all__walk__south-west__005",
+                  "giant_boss__damage_all__walk__south-west__006",
+                  "giant_boss__damage_all__walk__south-west__007"
+                ],
+                "west": [
+                  "giant_boss__damage_all__walk__west__000",
+                  "giant_boss__damage_all__walk__west__001",
+                  "giant_boss__damage_all__walk__west__002",
+                  "giant_boss__damage_all__walk__west__003",
+                  "giant_boss__damage_all__walk__west__004",
+                  "giant_boss__damage_all__walk__west__005",
+                  "giant_boss__damage_all__walk__west__006",
+                  "giant_boss__damage_all__walk__west__007"
+                ],
+                "north-west": [
+                  "giant_boss__damage_all__walk__north-west__000",
+                  "giant_boss__damage_all__walk__north-west__001",
+                  "giant_boss__damage_all__walk__north-west__002",
+                  "giant_boss__damage_all__walk__north-west__003",
+                  "giant_boss__damage_all__walk__north-west__004",
+                  "giant_boss__damage_all__walk__north-west__005",
+                  "giant_boss__damage_all__walk__north-west__006",
+                  "giant_boss__damage_all__walk__north-west__007"
+                ]
+              }
+            },
+            "collapse": {
+              "fps": 12,
+              "loop": false,
+              "directions": {
+                "south": [
+                  "giant_boss__damage_all__collapse__south__000",
+                  "giant_boss__damage_all__collapse__south__001",
+                  "giant_boss__damage_all__collapse__south__002",
+                  "giant_boss__damage_all__collapse__south__003",
+                  "giant_boss__damage_all__collapse__south__004",
+                  "giant_boss__damage_all__collapse__south__005",
+                  "giant_boss__damage_all__collapse__south__006",
+                  "giant_boss__damage_all__collapse__south__007",
+                  "giant_boss__damage_all__collapse__south__008",
+                  "giant_boss__damage_all__collapse__south__009",
+                  "giant_boss__damage_all__collapse__south__010",
+                  "giant_boss__damage_all__collapse__south__011",
+                  "giant_boss__damage_all__collapse__south__012",
+                  "giant_boss__damage_all__collapse__south__013",
+                  "giant_boss__damage_all__collapse__south__014",
+                  "giant_boss__damage_all__collapse__south__015",
+                  "giant_boss__damage_all__collapse__south__016"
+                ]
+              }
+            }
+          }
+        },
+        "destroyed": {
+          "animations": {
+            "idle": {
+              "fps": 1,
+              "loop": true,
+              "directions": {
+                "south": [
+                  "giant_boss__destroyed__idle__south__000"
+                ]
+              }
+            },
+            "burning": {
+              "fps": 8,
+              "loop": true,
+              "directions": {
+                "south": [
+                  "giant_boss__destroyed__burning__south__000",
+                  "giant_boss__destroyed__burning__south__001",
+                  "giant_boss__destroyed__burning__south__002",
+                  "giant_boss__destroyed__burning__south__003",
+                  "giant_boss__destroyed__burning__south__004",
+                  "giant_boss__destroyed__burning__south__005",
+                  "giant_boss__destroyed__burning__south__006",
+                  "giant_boss__destroyed__burning__south__007",
+                  "giant_boss__destroyed__burning__south__008",
+                  "giant_boss__destroyed__burning__south__009",
+                  "giant_boss__destroyed__burning__south__010",
+                  "giant_boss__destroyed__burning__south__011",
+                  "giant_boss__destroyed__burning__south__012",
+                  "giant_boss__destroyed__burning__south__013",
+                  "giant_boss__destroyed__burning__south__014",
+                  "giant_boss__destroyed__burning__south__015",
+                  "giant_boss__destroyed__burning__south__016"
+                ]
+              }
+            }
+          }
+        }
       },
-      "walk": {
-        "fps": 8,
-        "loop": true,
-        "directions": {
-          "north": [
-            "walk_north_000",
-            "walk_north_001",
-            "walk_north_002",
-            "walk_north_003",
-            "walk_north_004",
-            "walk_north_005",
-            "walk_north_006",
-            "walk_north_007"
-          ],
-          "north-east": [
-            "walk_north-east_000",
-            "walk_north-east_001",
-            "walk_north-east_002",
-            "walk_north-east_003",
-            "walk_north-east_004",
-            "walk_north-east_005",
-            "walk_north-east_006",
-            "walk_north-east_007"
-          ],
-          "east": [
-            "walk_east_000",
-            "walk_east_001",
-            "walk_east_002",
-            "walk_east_003",
-            "walk_east_004",
-            "walk_east_005",
-            "walk_east_006",
-            "walk_east_007"
-          ],
-          "south-east": [
-            "walk_south-east_000",
-            "walk_south-east_001",
-            "walk_south-east_002",
-            "walk_south-east_003",
-            "walk_south-east_004",
-            "walk_south-east_005",
-            "walk_south-east_006",
-            "walk_south-east_007"
-          ],
-          "south": [
-            "walk_south_000",
-            "walk_south_001",
-            "walk_south_002",
-            "walk_south_003",
-            "walk_south_004",
-            "walk_south_005",
-            "walk_south_006",
-            "walk_south_007"
-          ],
-          "south-west": [
-            "walk_south-west_000",
-            "walk_south-west_001",
-            "walk_south-west_002",
-            "walk_south-west_003",
-            "walk_south-west_004",
-            "walk_south-west_005",
-            "walk_south-west_006",
-            "walk_south-west_007"
-          ],
-          "west": [
-            "walk_west_000",
-            "walk_west_001",
-            "walk_west_002",
-            "walk_west_003",
-            "walk_west_004",
-            "walk_west_005",
-            "walk_west_006",
-            "walk_west_007"
-          ],
-          "north-west": [
-            "walk_north-west_000",
-            "walk_north-west_001",
-            "walk_north-west_002",
-            "walk_north-west_003",
-            "walk_north-west_004",
-            "walk_north-west_005",
-            "walk_north-west_006",
-            "walk_north-west_007"
-          ]
+      "maxSourceWidth": 192,
+      "maxSourceHeight": 192,
+      "groundOffset": 60,
+      "anchorX": 0.5,
+      "anchorY": 0.8125,
+      "pages": [
+        {
+          "image": "giant_boss/giant_boss_page_0.png",
+          "json": "giant_boss/giant_boss_page_0.json"
         },
-        "width": 64,
-        "height": 64
-      }
+        {
+          "image": "giant_boss/giant_boss_page_1.png",
+          "json": "giant_boss/giant_boss_page_1.json"
+        },
+        {
+          "image": "giant_boss/giant_boss_page_2.png",
+          "json": "giant_boss/giant_boss_page_2.json"
+        },
+        {
+          "image": "giant_boss/giant_boss_page_3.png",
+          "json": "giant_boss/giant_boss_page_3.json"
+        }
+      ]
     }
   }
 }

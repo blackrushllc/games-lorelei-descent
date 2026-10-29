@@ -35,6 +35,30 @@ export const COMBAT_CONFIG = {
         oneHeartWarnInterval: 2000, // ms
     },
 
+    // Lorelei Companion (Step 10.3)
+    lorelei: {
+        follow: {
+            followDistance: 120,
+            stopDistance: 60,
+            walkSpeed: 160,
+            runSpeed: 280,
+            catchUpDistance: 400,
+            maximumSupportDistance: 600,
+            acceleration: 800,
+            deceleration: 1200
+        },
+        defense: {
+            supportRadius: 300,
+            threatRadius: 150,
+            minimumThreatCount: 3,
+            telekinesisRadius: 250,
+            telekinesisCooldown: 8000, // 8 seconds
+            knockbackStrength: 850,
+            knockbackDuration: 1200, // ms
+            destructionChance: 0.5
+        }
+    },
+
     // Emergency Area-Clear Weapon (Step 9.6)
     nova: {
         heartCost: 1,
@@ -106,6 +130,35 @@ export const COMBAT_CONFIG = {
             armorColor: 0x808080,
             coreColor: 0xffa500,
             knockback: 100
+        }
+    },
+
+    // Geometry and Offsets (Step 10.2)
+    geometry: {
+        player: {
+            weaponOrigin: { x: 0, y: -45 },
+            targetCenter: { x: 0, y: -40 },
+            targetRadius: 22
+        },
+        PURSUER: {
+            weaponOrigin: { x: 0, y: -30 },
+            targetCenter: { x: 0, y: -30 },
+            targetRadius: 28
+        },
+        SENTINEL: {
+            weaponOrigin: { x: 0, y: -35 },
+            targetCenter: { x: 0, y: -35 },
+            targetRadius: 28
+        },
+        ARMORED_PURSUER: {
+            weaponOrigin: { x: 0, y: -40 },
+            targetCenter: { x: 0, y: -40 },
+            targetRadius: 35
+        },
+        lorelei: {
+            weaponOrigin: { x: 0, y: -40 },
+            targetCenter: { x: 0, y: -35 },
+            targetRadius: 20
         }
     }
 };

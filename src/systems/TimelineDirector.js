@@ -52,11 +52,9 @@ export default class TimelineDirector extends EventEmitter {
         this.passedEvents.clear();
         this.lastTime = startTime;
         
-        // If we start at a specific time, mark it as seeking so events aren't immediately fired 
-        // unless they are exactly at startTime. Actually, handleSeek(startTime) will clear them.
-        if (startTime > 0) {
-            this.handleSeek(startTime);
-        }
+        // Step 10.3.3: Ensure phase is set immediately for reconciliation
+        // handleSeek will set currentPhase and mark previous events as passed
+        this.handleSeek(startTime);
 
         this.audioDirector.play(
             track.id, 

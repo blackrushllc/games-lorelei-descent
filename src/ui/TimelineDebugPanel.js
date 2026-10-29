@@ -83,6 +83,7 @@ export default class TimelineDebugPanel {
             <div id="debug-diagnostics-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] TECHNICAL DIAGNOSTICS</div>
             <div id="debug-diagnostics" style="display: none; margin-top: 5px; font-size: 10px; color: #aaa; border-top: 1px solid #333; padding-top: 5px;">
                 <div class="debug-row">Active Scene: <span id="diag-active-scene">-</span></div>
+                <div class="debug-row">Mission Phase: <span id="diag-mission-phase">-</span></div>
                 <div class="debug-row">Physics: <span id="diag-physics">-</span></div>
                 <div class="debug-row">Scroll Y: <span id="diag-scroll-y">0</span></div>
                 <div class="debug-row">Scroll X: <span id="diag-scroll-x">0</span></div>
@@ -144,6 +145,7 @@ export default class TimelineDebugPanel {
                 <div class="debug-controls" style="margin-top: 5px;">
                     <button id="btn-toggle-invuln">TOGGLE INVULN</button>
                     <button id="btn-toggle-physics-debug">TOGGLE COLLISION</button>
+                    <button id="btn-toggle-geometry-debug">TOGGLE GEOMETRY</button>
                 </div>
                 <div style="margin-top: 5px; font-weight: bold;">SET HEARTS:</div>
                 <div class="debug-controls">
@@ -216,6 +218,26 @@ export default class TimelineDebugPanel {
                 <div class="debug-row">Blackrush Facing: <span id="diag-br-facing">-</span></div>
                 <div class="debug-controls" style="margin-top: 5px;">
                     <button id="btn-toggle-pixelart">TOGGLE PIXEL ART</button>
+                </div>
+            </div>
+
+            <div id="debug-lorelei-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] LORELEI TOOLS</div>
+            <div id="debug-lorelei" style="display: none; margin-top: 5px; font-size: 10px; color: #aaa; border-top: 1px solid #333; padding-top: 5px;">
+                <div class="debug-row">Lorelei Active: <span id="diag-lorelei-active">NO</span></div>
+                <div class="debug-row">Auto Spawn: <span id="diag-lorelei-autospawn">PENDING</span></div>
+                <div class="debug-row">Dist from BR: <span id="diag-lorelei-dist">0</span></div>
+                <div class="debug-row">Follow Mode: <span id="diag-lorelei-mode">-</span></div>
+                <div class="debug-row">Support: <span id="diag-lorelei-support">-</span></div>
+                <div class="debug-row">TK Pulses: <span id="diag-lorelei-tk-pulses">0</span></div>
+                <div class="debug-row">Last Affected: <span id="diag-lorelei-last-affected">0</span></div>
+                <div class="debug-row">Last Destroyed: <span id="diag-lorelei-last-destroyed">0</span></div>
+                <div class="debug-row">Last Disarmed: <span id="diag-lorelei-last-disarmed">0</span></div>
+                <div class="debug-row">TK Cooldown: <span id="diag-lorelei-tk-cooldown">0</span></div>
+                <div class="debug-row">Threats Near BR: <span id="diag-lorelei-threats">0</span></div>
+                
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-spawn-lorelei">SPAWN LORELEI</button>
+                    <button id="btn-trigger-tk">TRIGGER TK</button>
                 </div>
             </div>
         `;
@@ -355,6 +377,13 @@ export default class TimelineDebugPanel {
             $('#debug-sprites-toggle').textContent = isHidden ? '[-] SPRITE TOOLS' : '[+] SPRITE TOOLS';
         };
 
+        $('#debug-lorelei-toggle').onclick = () => {
+            const lorelei = $('#debug-lorelei');
+            const isHidden = lorelei.style.display === 'none';
+            lorelei.style.display = isHidden ? 'block' : 'none';
+            $('#debug-lorelei-toggle').textContent = isHidden ? '[-] LORELEI TOOLS' : '[+] LORELEI TOOLS';
+        };
+
         // Combat tool actions
         const getGameScene = () => this.game.scene.getScenes(true).find(s => s.scene.key === 'GameScene');
         
@@ -479,6 +508,14 @@ export default class TimelineDebugPanel {
             }
         };
 
+        $('#btn-toggle-geometry-debug').onclick = () => {
+            const gs = getGameScene();
+            if (gs) {
+                gs.debugGeometry = !gs.debugGeometry;
+                console.log(`[DEBUG] Combat Geometry: ${gs.debugGeometry ? 'ON' : 'OFF'}`);
+            }
+        };
+
         $('#btn-toggle-pixelart').onclick = () => {
             const gs = getGameScene();
             if (gs) {
@@ -502,6 +539,22 @@ export default class TimelineDebugPanel {
                 if (gs.germanSoldier && gs.germanSoldier.setPixelArtEnabled) {
                     gs.germanSoldier.setPixelArtEnabled(nextState);
                 }
+                if (gs.lorelei && gs.lorelei.setPixelArtEnabled) {
+                    gs.lorelei.setPixelArtEnabled(nextState);
+                }
+            }
+        };
+
+        // Lorelei tool actions
+        $('#btn-spawn-lorelei').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.spawnLorelei();
+        };
+
+        $('#btn-trigger-tk').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.lorelei && gs.player) {
+                gs.lorelei.triggerTelekinesis(gs.player);
             }
         };
 
@@ -664,6 +717,7 @@ export default class TimelineDebugPanel {
                 const state = this.timeline.getState();
                 
                 $('#diag-active-scene').textContent = 'GameScene';
+                $('#diag-mission-phase').textContent = state.phase?.id || '-';
                 const isPhysicsRunning = !gameScene.physics.world.isPaused;
                 $('#diag-physics').textContent = isPhysicsRunning ? 'RUNNING' : 'PAUSED';
                 $('#diag-scroll-y').textContent = Math.round(cam.scrollY);
@@ -749,6 +803,54 @@ export default class TimelineDebugPanel {
                     const statePart = animKey.split('_')[1] || '-';
                     $('#diag-br-state').textContent = statePart;
                     $('#diag-br-facing').textContent = p.currentFacing || '-';
+                }
+
+                // Lorelei diagnostics
+                if (gameScene.lorelei) {
+                    const l = gameScene.lorelei;
+                    $('#diag-lorelei-active').textContent = 'YES';
+                    
+                    const isSwarm = state.track === 'SYNTH' && state.phase?.id === 'ROBOT_SWARM';
+                    $('#diag-lorelei-autospawn').textContent = isSwarm ? 'ACTIVE' : 'COMPLETED';
+                    
+                    const distFromBR = Math.round(Phaser.Math.Distance.Between(l.x, l.y, p.x, p.y));
+                    $('#diag-lorelei-dist').textContent = distFromBR;
+                    $('#diag-lorelei-mode').textContent = l.followState;
+                    
+                    const canSupport = distFromBR <= l.followConfig.maximumSupportDistance;
+                    $('#diag-lorelei-support').textContent = canSupport ? 'READY' : 'TOO FAR';
+                    $('#diag-lorelei-support').style.color = canSupport ? '#00ff00' : '#ff0000';
+                    
+                    $('#diag-lorelei-tk-pulses').textContent = l.stats.totalPulses;
+                    $('#diag-lorelei-last-affected').textContent = l.stats.lastAffected;
+                    $('#diag-lorelei-last-destroyed').textContent = l.stats.lastDestroyed;
+                    $('#diag-lorelei-last-disarmed').textContent = l.stats.lastDisarmed;
+
+                    $('#diag-lorelei-tk-cooldown').textContent = (Math.max(0, l.telekinesisCooldownTimer) / 1000).toFixed(1) + 's';
+                    
+                    // Count threats near player
+                    const threats = gameScene.robotGroup.getChildren().filter(r => {
+                        if (!r.active || r.isDestroyed || r.aiState === 'RETREATING') return false;
+                        const tr = r.getTargetRegion ? r.getTargetRegion() : { x: r.x, y: r.y };
+                        const playerTR = p.getTargetRegion ? p.getTargetRegion() : { x: p.x, y: p.y };
+                        return Phaser.Math.Distance.Between(tr.x, tr.y, playerTR.x, playerTR.y) < l.defenseConfig.threatRadius;
+                    });
+                    $('#diag-lorelei-threats').textContent = threats.length;
+                } else {
+                    $('#diag-lorelei-active').textContent = 'NO';
+                    
+                    const isSwarm = state.track === 'SYNTH' && state.phase?.id === 'ROBOT_SWARM';
+                    $('#diag-lorelei-autospawn').textContent = isSwarm ? 'FAILED' : 'PENDING';
+                    
+                    $('#diag-lorelei-dist').textContent = '-';
+                    $('#diag-lorelei-mode').textContent = '-';
+                    $('#diag-lorelei-support').textContent = '-';
+                    $('#diag-lorelei-tk-pulses').textContent = '0';
+                    $('#diag-lorelei-last-affected').textContent = '0';
+                    $('#diag-lorelei-last-destroyed').textContent = '0';
+                    $('#diag-lorelei-last-disarmed').textContent = '0';
+                    $('#diag-lorelei-tk-cooldown').textContent = '-';
+                    $('#diag-lorelei-threats').textContent = '-';
                 }
 
                 // Encounter Diagnostics

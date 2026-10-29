@@ -17,10 +17,15 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         this.spriteRegistry = scene.registry.get('spriteAnimationRegistry');
         this.pixelArtEnabled = true;
 
-        // Sprite
-        this.sprite = scene.add.sprite(0, 0, 'blackrush');
-        this.sprite.setScale(2); // Configurable scale
-        this.sprite.setVisible(this.pixelArtEnabled);
+        if (scene.add && typeof scene.add.sprite === 'function') {
+            this.sprite = scene.add.sprite(0, 0, 'blackrush');
+            if (this.sprite) {
+                this.sprite.setScale(2); // Configurable scale
+                if (typeof this.sprite.setVisible === 'function') this.sprite.setVisible(this.pixelArtEnabled);
+                if (typeof this.sprite.setOriginFromFrame === 'function') this.sprite.setOriginFromFrame();
+                this.add(this.sprite);
+            }
+        }
 
         // Procedural Graphics (Legacy/Fallback)
         this.bodyGraphic = scene.add.graphics();
@@ -85,9 +90,34 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         this.axeInterruptionTimer = 0;
     }
 
+    /**
+     * Returns the world-space position from which weapons are fired.
+     */
+    getWeaponOrigin() {
+        const geo = COMBAT_CONFIG.geometry.player;
+        return {
+            x: this.x + geo.weaponOrigin.x,
+            y: this.y + geo.weaponOrigin.y
+        };
+    }
+
+    /**
+     * Returns the combat target region (center and radius).
+     */
+    getTargetRegion() {
+        const geo = COMBAT_CONFIG.geometry.player;
+        return {
+            x: this.x + geo.targetCenter.x,
+            y: this.y + geo.targetCenter.y,
+            radius: geo.targetRadius
+        };
+    }
+
     setPixelArtEnabled(enabled) {
         this.pixelArtEnabled = enabled;
-        this.sprite.setVisible(enabled);
+        if (this.sprite && typeof this.sprite.setVisible === 'function') {
+            this.sprite.setVisible(enabled);
+        }
         this.bodyGraphic.setVisible(!enabled);
         this.headGraphic.setVisible(!enabled);
         this.aimIndicator.setVisible(!enabled);
@@ -200,11 +230,11 @@ export default class Blackrush extends Phaser.GameObjects.Container {
 
         // 3. Firing
         if (inputState.isFiringPrimary) {
-            this.scene.weaponSystem.fireEnergy(this.x, this.y, this.aimAngle);
+            this.scene.weaponSystem.fireEnergy(this, this.aimAngle);
             this.forcePoseTimer = 350; // Configurable linger
         }
         if (inputState.isFiringSecondary) {
-            if (this.scene.weaponSystem.fireAxe(this.x, this.y, this.aimAngle)) {
+            if (this.scene.weaponSystem.fireAxe(this, this.aimAngle)) {
                 this.triggerAxeThrow();
             }
         }
@@ -278,6 +308,8 @@ export default class Blackrush extends Phaser.GameObjects.Container {
         const animKey = this.spriteRegistry.getAnimationKey('blackrush', state, this.currentFacing);
         if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
             this.sprite.play(animKey);
+            // Ensure stable anchoring from the new frame metadata
+            this.sprite.setOriginFromFrame();
         }
     }
 

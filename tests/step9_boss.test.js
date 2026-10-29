@@ -49,16 +49,38 @@ const ProxyBoss = global.ProxyBoss;
 // Mock Scene
 class MockScene {
     constructor() {
+        this.registry = {
+            get: () => ({
+                get8WayDirection: () => 'south',
+                getAnimationKey: () => 'anim'
+            })
+        };
         this.add = {
             existing: (obj) => obj,
-            graphics: () => ({
-                clear: () => {},
-                fillStyle: () => {},
-                fillCircle: () => {},
-                lineStyle: () => {},
-                strokeCircle: () => {},
-                alpha: 1
+            sprite: () => ({
+                setScale: () => {},
+                setVisible: () => {},
+                setOriginFromFrame: () => {},
+                play: () => {},
+                anims: { currentAnim: null }
             }),
+            graphics: () => {
+                const g = {
+                    clear: () => g,
+                    fillStyle: () => g,
+                    fillCircle: () => g,
+                    lineStyle: () => g,
+                    strokeCircle: () => g,
+                    moveTo: () => g,
+                    lineTo: () => g,
+                    strokePath: () => g,
+                    alpha: 1,
+                    setVisible: () => g,
+                    setPosition: () => g,
+                    setDepth: () => g
+                };
+                return g;
+            },
             text: () => ({ setOrigin: () => ({}) })
         };
         this.physics = {

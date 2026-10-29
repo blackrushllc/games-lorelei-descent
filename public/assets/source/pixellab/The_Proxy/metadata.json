@@ -1,0 +1,506 @@
+{
+  "group_id": "c7dbc87b-5836-48b0-835b-1ba765d03df9",
+  "states": [
+    {
+      "character": {
+        "id": "e5f0eca3-eebe-41ed-9506-a1257f920da2",
+        "name": "idle",
+        "prompt": "A top down sprite of a menacing 1980's sci-fi/horror robot sentry with an ape-like body, no head, the head is gone, replace the head with a small device with lights and one eye, the eye is damaged,  and long thin arms with sharp, oversized articulated claws, the digits on the claws splayed apart menacingly,  silver-gray but spattered with smears of red paint on it's body, and some battle damage",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-23T13:43:42.069680+00:00"
+      },
+      "folder": "idle",
+      "frames": {
+        "rotations": {
+          "south": "idle/rotations/south.png",
+          "south-east": "idle/rotations/south-east.png",
+          "east": "idle/rotations/east.png",
+          "north-east": "idle/rotations/north-east.png",
+          "north": "idle/rotations/north.png",
+          "north-west": "idle/rotations/north-west.png",
+          "west": "idle/rotations/west.png",
+          "south-west": "idle/rotations/south-west.png"
+        },
+        "animations": {
+          "Walking": {
+            "south": [
+              "idle/animations/Walking/south/frame_000.png",
+              "idle/animations/Walking/south/frame_001.png",
+              "idle/animations/Walking/south/frame_002.png",
+              "idle/animations/Walking/south/frame_003.png",
+              "idle/animations/Walking/south/frame_004.png",
+              "idle/animations/Walking/south/frame_005.png",
+              "idle/animations/Walking/south/frame_006.png",
+              "idle/animations/Walking/south/frame_007.png"
+            ],
+            "north-east": [
+              "idle/animations/Walking/north-east/frame_000.png",
+              "idle/animations/Walking/north-east/frame_001.png",
+              "idle/animations/Walking/north-east/frame_002.png",
+              "idle/animations/Walking/north-east/frame_003.png",
+              "idle/animations/Walking/north-east/frame_004.png",
+              "idle/animations/Walking/north-east/frame_005.png",
+              "idle/animations/Walking/north-east/frame_006.png",
+              "idle/animations/Walking/north-east/frame_007.png"
+            ],
+            "east": [
+              "idle/animations/Walking/east/frame_000.png",
+              "idle/animations/Walking/east/frame_001.png",
+              "idle/animations/Walking/east/frame_002.png",
+              "idle/animations/Walking/east/frame_003.png",
+              "idle/animations/Walking/east/frame_004.png",
+              "idle/animations/Walking/east/frame_005.png",
+              "idle/animations/Walking/east/frame_006.png",
+              "idle/animations/Walking/east/frame_007.png"
+            ],
+            "north": [
+              "idle/animations/Walking/north/frame_000.png",
+              "idle/animations/Walking/north/frame_001.png",
+              "idle/animations/Walking/north/frame_002.png",
+              "idle/animations/Walking/north/frame_003.png",
+              "idle/animations/Walking/north/frame_004.png",
+              "idle/animations/Walking/north/frame_005.png",
+              "idle/animations/Walking/north/frame_006.png",
+              "idle/animations/Walking/north/frame_007.png"
+            ],
+            "west": [
+              "idle/animations/Walking/west/frame_000.png",
+              "idle/animations/Walking/west/frame_001.png",
+              "idle/animations/Walking/west/frame_002.png",
+              "idle/animations/Walking/west/frame_003.png",
+              "idle/animations/Walking/west/frame_004.png",
+              "idle/animations/Walking/west/frame_005.png",
+              "idle/animations/Walking/west/frame_006.png",
+              "idle/animations/Walking/west/frame_007.png"
+            ],
+            "north-west": [
+              "idle/animations/Walking/north-west/frame_000.png",
+              "idle/animations/Walking/north-west/frame_001.png",
+              "idle/animations/Walking/north-west/frame_002.png",
+              "idle/animations/Walking/north-west/frame_003.png",
+              "idle/animations/Walking/north-west/frame_004.png",
+              "idle/animations/Walking/north-west/frame_005.png",
+              "idle/animations/Walking/north-west/frame_006.png",
+              "idle/animations/Walking/north-west/frame_007.png"
+            ],
+            "south-east": [
+              "idle/animations/Walking/south-east/frame_000.png",
+              "idle/animations/Walking/south-east/frame_001.png",
+              "idle/animations/Walking/south-east/frame_002.png",
+              "idle/animations/Walking/south-east/frame_003.png",
+              "idle/animations/Walking/south-east/frame_004.png",
+              "idle/animations/Walking/south-east/frame_005.png",
+              "idle/animations/Walking/south-east/frame_006.png",
+              "idle/animations/Walking/south-east/frame_007.png"
+            ],
+            "south-west": [
+              "idle/animations/Walking/south-west/frame_000.png",
+              "idle/animations/Walking/south-west/frame_001.png",
+              "idle/animations/Walking/south-west/frame_002.png",
+              "idle/animations/Walking/south-west/frame_003.png",
+              "idle/animations/Walking/south-west/frame_004.png",
+              "idle/animations/Walking/south-west/frame_005.png",
+              "idle/animations/Walking/south-west/frame_006.png",
+              "idle/animations/Walking/south-west/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "8464ec42-1c0b-439e-9ff1-8d3a8c685707",
+        "name": "Some battle damage,",
+        "prompt": "A top down sprite of a menacing 1980's sci-fi/horror robot sentry with an ape-like body, no head, the head is gone, damaged and dark,  and long thin arms with sharp, oversized articulated claws, the digits on the claws splayed apart menacingly,  silver-gray but spattered with smears of red paint on it's body, and some battle damage",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-23T13:47:15.186087+00:00"
+      },
+      "folder": "Some_battle_damage",
+      "frames": {
+        "rotations": {
+          "south": "Some_battle_damage/rotations/south.png",
+          "south-east": "Some_battle_damage/rotations/south-east.png",
+          "east": "Some_battle_damage/rotations/east.png",
+          "north-east": "Some_battle_damage/rotations/north-east.png",
+          "north": "Some_battle_damage/rotations/north.png",
+          "north-west": "Some_battle_damage/rotations/north-west.png",
+          "west": "Some_battle_damage/rotations/west.png",
+          "south-west": "Some_battle_damage/rotations/south-west.png"
+        },
+        "animations": {
+          "walking": {
+            "north": [
+              "Some_battle_damage/animations/walking/north/frame_000.png",
+              "Some_battle_damage/animations/walking/north/frame_001.png",
+              "Some_battle_damage/animations/walking/north/frame_002.png",
+              "Some_battle_damage/animations/walking/north/frame_003.png",
+              "Some_battle_damage/animations/walking/north/frame_004.png",
+              "Some_battle_damage/animations/walking/north/frame_005.png",
+              "Some_battle_damage/animations/walking/north/frame_006.png",
+              "Some_battle_damage/animations/walking/north/frame_007.png"
+            ],
+            "south-east": [
+              "Some_battle_damage/animations/walking/south-east/frame_000.png",
+              "Some_battle_damage/animations/walking/south-east/frame_001.png",
+              "Some_battle_damage/animations/walking/south-east/frame_002.png",
+              "Some_battle_damage/animations/walking/south-east/frame_003.png",
+              "Some_battle_damage/animations/walking/south-east/frame_004.png",
+              "Some_battle_damage/animations/walking/south-east/frame_005.png",
+              "Some_battle_damage/animations/walking/south-east/frame_006.png",
+              "Some_battle_damage/animations/walking/south-east/frame_007.png"
+            ],
+            "south": [
+              "Some_battle_damage/animations/walking/south/frame_000.png",
+              "Some_battle_damage/animations/walking/south/frame_001.png",
+              "Some_battle_damage/animations/walking/south/frame_002.png",
+              "Some_battle_damage/animations/walking/south/frame_003.png",
+              "Some_battle_damage/animations/walking/south/frame_004.png",
+              "Some_battle_damage/animations/walking/south/frame_005.png",
+              "Some_battle_damage/animations/walking/south/frame_006.png",
+              "Some_battle_damage/animations/walking/south/frame_007.png"
+            ],
+            "north-west": [
+              "Some_battle_damage/animations/walking/north-west/frame_000.png",
+              "Some_battle_damage/animations/walking/north-west/frame_001.png",
+              "Some_battle_damage/animations/walking/north-west/frame_002.png",
+              "Some_battle_damage/animations/walking/north-west/frame_003.png",
+              "Some_battle_damage/animations/walking/north-west/frame_004.png",
+              "Some_battle_damage/animations/walking/north-west/frame_005.png",
+              "Some_battle_damage/animations/walking/north-west/frame_006.png",
+              "Some_battle_damage/animations/walking/north-west/frame_007.png"
+            ],
+            "west": [
+              "Some_battle_damage/animations/walking/west/frame_000.png",
+              "Some_battle_damage/animations/walking/west/frame_001.png",
+              "Some_battle_damage/animations/walking/west/frame_002.png",
+              "Some_battle_damage/animations/walking/west/frame_003.png",
+              "Some_battle_damage/animations/walking/west/frame_004.png",
+              "Some_battle_damage/animations/walking/west/frame_005.png",
+              "Some_battle_damage/animations/walking/west/frame_006.png",
+              "Some_battle_damage/animations/walking/west/frame_007.png"
+            ],
+            "north-east": [
+              "Some_battle_damage/animations/walking/north-east/frame_000.png",
+              "Some_battle_damage/animations/walking/north-east/frame_001.png",
+              "Some_battle_damage/animations/walking/north-east/frame_002.png",
+              "Some_battle_damage/animations/walking/north-east/frame_003.png",
+              "Some_battle_damage/animations/walking/north-east/frame_004.png",
+              "Some_battle_damage/animations/walking/north-east/frame_005.png",
+              "Some_battle_damage/animations/walking/north-east/frame_006.png",
+              "Some_battle_damage/animations/walking/north-east/frame_007.png"
+            ],
+            "south-west": [
+              "Some_battle_damage/animations/walking/south-west/frame_000.png",
+              "Some_battle_damage/animations/walking/south-west/frame_001.png",
+              "Some_battle_damage/animations/walking/south-west/frame_002.png",
+              "Some_battle_damage/animations/walking/south-west/frame_003.png",
+              "Some_battle_damage/animations/walking/south-west/frame_004.png",
+              "Some_battle_damage/animations/walking/south-west/frame_005.png",
+              "Some_battle_damage/animations/walking/south-west/frame_006.png",
+              "Some_battle_damage/animations/walking/south-west/frame_007.png"
+            ],
+            "east": [
+              "Some_battle_damage/animations/walking/east/frame_000.png",
+              "Some_battle_damage/animations/walking/east/frame_001.png",
+              "Some_battle_damage/animations/walking/east/frame_002.png",
+              "Some_battle_damage/animations/walking/east/frame_003.png",
+              "Some_battle_damage/animations/walking/east/frame_004.png",
+              "Some_battle_damage/animations/walking/east/frame_005.png",
+              "Some_battle_damage/animations/walking/east/frame_006.png",
+              "Some_battle_damage/animations/walking/east/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "8cccd4d9-c481-4b9d-a7a3-28738a422b7e",
+        "name": "Excessive battle dam",
+        "prompt": "A top down sprite of a menacing 1980's sci-fi/horror robot sentry with an ape-like body, no head, the head is gone, damaged and dark,  and long thin arms with sharp, oversized articulated claws, the digits on the claws splayed apart menacingly,  silver-gray but spattered with smears of red paint on it's body, and some battle damage",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-23T13:50:55.236132+00:00"
+      },
+      "folder": "Excessive_battle_dam",
+      "frames": {
+        "rotations": {
+          "south": "Excessive_battle_dam/rotations/south.png",
+          "south-east": "Excessive_battle_dam/rotations/south-east.png",
+          "east": "Excessive_battle_dam/rotations/east.png",
+          "north-east": "Excessive_battle_dam/rotations/north-east.png",
+          "north": "Excessive_battle_dam/rotations/north.png",
+          "north-west": "Excessive_battle_dam/rotations/north-west.png",
+          "west": "Excessive_battle_dam/rotations/west.png",
+          "south-west": "Excessive_battle_dam/rotations/south-west.png"
+        },
+        "animations": {
+          "Walking": {
+            "west": [
+              "Excessive_battle_dam/animations/Walking/west/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/west/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/west/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/west/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/west/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/west/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/west/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/west/frame_007.png"
+            ],
+            "east": [
+              "Excessive_battle_dam/animations/Walking/east/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/east/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/east/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/east/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/east/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/east/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/east/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/east/frame_007.png"
+            ],
+            "south-east": [
+              "Excessive_battle_dam/animations/Walking/south-east/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/south-east/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/south-east/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/south-east/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/south-east/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/south-east/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/south-east/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/south-east/frame_007.png"
+            ],
+            "south-west": [
+              "Excessive_battle_dam/animations/Walking/south-west/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/south-west/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/south-west/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/south-west/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/south-west/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/south-west/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/south-west/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/south-west/frame_007.png"
+            ],
+            "north-east": [
+              "Excessive_battle_dam/animations/Walking/north-east/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/north-east/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/north-east/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/north-east/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/north-east/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/north-east/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/north-east/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/north-east/frame_007.png"
+            ],
+            "north-west": [
+              "Excessive_battle_dam/animations/Walking/north-west/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/north-west/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/north-west/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/north-west/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/north-west/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/north-west/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/north-west/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/north-west/frame_007.png"
+            ],
+            "south": [
+              "Excessive_battle_dam/animations/Walking/south/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/south/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/south/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/south/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/south/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/south/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/south/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/south/frame_007.png"
+            ],
+            "north": [
+              "Excessive_battle_dam/animations/Walking/north/frame_000.png",
+              "Excessive_battle_dam/animations/Walking/north/frame_001.png",
+              "Excessive_battle_dam/animations/Walking/north/frame_002.png",
+              "Excessive_battle_dam/animations/Walking/north/frame_003.png",
+              "Excessive_battle_dam/animations/Walking/north/frame_004.png",
+              "Excessive_battle_dam/animations/Walking/north/frame_005.png",
+              "Excessive_battle_dam/animations/Walking/north/frame_006.png",
+              "Excessive_battle_dam/animations/Walking/north/frame_007.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "ab93e4cf-180c-426c-92cb-b242a0f0592e",
+        "name": "Carrying the \"Nadine",
+        "prompt": "A top down sprite of a menacing 1980's sci-fi/horror robot sentry with an ape-like body, no head, the head is gone, replace the head with a small device with lights and one eye, the eye is damaged,  and long thin arms with sharp, oversized articulated claws, the digits on the claws splayed apart menacingly,  silver-gray but spattered with smears of red paint on it's body, and some battle damage",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-23T14:05:59.480156+00:00"
+      },
+      "folder": "Carrying_the_Nadine",
+      "frames": {
+        "rotations": {
+          "south": "Carrying_the_Nadine/rotations/south.png",
+          "south-east": "Carrying_the_Nadine/rotations/south-east.png",
+          "east": "Carrying_the_Nadine/rotations/east.png",
+          "north-east": "Carrying_the_Nadine/rotations/north-east.png",
+          "north": "Carrying_the_Nadine/rotations/north.png",
+          "north-west": "Carrying_the_Nadine/rotations/north-west.png",
+          "west": "Carrying_the_Nadine/rotations/west.png",
+          "south-west": "Carrying_the_Nadine/rotations/south-west.png"
+        },
+        "animations": {
+          "The_robot_is_running_and_carrying_the_woman._The_w": {
+            "east": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/east/frame_008.png"
+            ],
+            "west": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/west/frame_008.png"
+            ],
+            "north-east": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-east/frame_008.png"
+            ],
+            "south": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south/frame_008.png"
+            ],
+            "south-west": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-west/frame_008.png"
+            ],
+            "south-east": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/south-east/frame_008.png"
+            ],
+            "north-west": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north-west/frame_008.png"
+            ],
+            "north": [
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_000.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_001.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_002.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_003.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_004.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_005.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_006.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_007.png",
+              "Carrying_the_Nadine/animations/The_robot_is_running_and_carrying_the_woman._The_w/north/frame_008.png"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "character": {
+        "id": "7fb98617-355d-4406-8d73-bf0fd436d490",
+        "name": "Severe battle damage",
+        "prompt": "A top down sprite of a menacing 1980's sci-fi/horror robot sentry with an ape-like body, no head, the head is gone, damaged and dark,  and long thin arms with sharp, oversized articulated claws, the digits on the claws splayed apart menacingly,  silver-gray but spattered with smears of red paint on it's body, and some battle damage",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-10-23T16:07:23.769594+00:00"
+      },
+      "folder": "Severe_battle_damage",
+      "frames": {
+        "rotations": {
+          "south": "Severe_battle_damage/rotations/south.png",
+          "south-east": "Severe_battle_damage/rotations/south-east.png",
+          "east": "Severe_battle_damage/rotations/east.png",
+          "north-east": "Severe_battle_damage/rotations/north-east.png",
+          "north": "Severe_battle_damage/rotations/north.png",
+          "north-west": "Severe_battle_damage/rotations/north-west.png",
+          "west": "Severe_battle_damage/rotations/west.png",
+          "south-west": "Severe_battle_damage/rotations/south-west.png"
+        },
+        "animations": {
+          "Collapsing_to_the_ground_sparking_electricity_stea": {
+            "south": [
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_000.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_001.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_002.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_003.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_004.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_005.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_006.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_007.png",
+              "Severe_battle_damage/animations/Collapsing_to_the_ground_sparking_electricity_stea/south/frame_008.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-10-27T13:37:46.456486"
+}

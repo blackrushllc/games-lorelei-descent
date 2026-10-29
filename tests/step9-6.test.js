@@ -89,7 +89,7 @@ class MockScene {
     constructor() {
         this.time = { now: 0 };
         this.add = {
-            sprite: () => ({ setScale: () => {}, setVisible: () => {} }),
+            sprite: () => ({ setScale: () => {}, setVisible: () => {}, setOriginFromFrame: () => {} }),
             graphics: () => ({ 
                 fillStyle: () => {}, fillRect: () => {}, lineStyle: () => {}, strokeRect: () => {}, 
                 fillCircle: () => {}, fillTriangle: () => {}, clear: () => {}, setVisible: () => {},
@@ -126,7 +126,7 @@ class MockScene {
                 addKeys: () => ({
                     up: { isDown: false }, down: { isDown: false }, left: { isDown: false }, right: { isDown: false },
                     arrowUp: { isDown: false }, arrowDown: { isDown: false }, arrowLeft: { isDown: false }, arrowRight: { isDown: false },
-                    nova: { isDown: false }
+                    nova: { isDown: false }, esc: { isDown: false }
                 }),
                 resetKeys: () => {}
             },

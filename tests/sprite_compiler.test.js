@@ -45,17 +45,19 @@ test('Sprite Compiler: Basic functionality', async (t) => {
   // Create a temporary config
   const configContent = `
 export const DIRECTIONS = ${JSON.stringify(dirs)};
+export const CARDINAL_DIRECTIONS = ['north', 'east', 'south', 'west'];
 export const SPRITE_CONFIG = {
   testchar: {
-    sourceDir: '${TEMP_SOURCE}/testchar',
-    outputDir: '${TEMP_OUTPUT}/testchar',
-    atlasName: 'testchar',
-    frameWidth: 48,
-    frameHeight: 48,
+    source: 'testchar',
     displayScale: 2,
-    animations: {
-      idle: { fps: 1, loop: true, type: 'static' },
-      walk: { fps: 10, loop: true, type: 'animated' }
+    defaultState: 'default',
+    states: {
+      default: {
+        animations: {
+          idle: { fps: 1, loop: true, type: 'static', directions: 'eight' },
+          walk: { fps: 10, loop: true, type: 'animated', directions: 'eight' }
+        }
+      }
     }
   }
 };
@@ -63,31 +65,31 @@ export const SPRITE_CONFIG = {
   fs.writeFileSync('scripts/assets/sprite-config.test.mjs', configContent);
 
   // Run compiler (via node directly)
-  // We need to point the compiler to use our test config. 
-  // I'll modify compile-sprites.mjs slightly to allow overriding config via env var or similar if needed, 
-  // or just use search_replace to change the import.
-  // Actually, I'll just create a temporary compiler script that imports the test config.
   const compilerScript = fs.readFileSync('scripts/assets/compile-sprites.mjs', 'utf8')
     .replace('./sprite-config.mjs', './sprite-config.test.mjs')
-    .replace('public/assets/sprites', TEMP_OUTPUT);
+    .replace("const SOURCE_ROOT = 'public/assets/source/pixellab';", `const SOURCE_ROOT = '${TEMP_SOURCE}';`)
+    .replace("const OUTPUT_ROOT = 'public/assets/sprites';", `const OUTPUT_ROOT = '${TEMP_OUTPUT}';`);
   
   fs.writeFileSync('scripts/assets/compile-sprites.test.mjs', compilerScript);
 
   const result = spawnSync('node', ['scripts/assets/compile-sprites.test.mjs'], { encoding: 'utf8' });
   
-  // console.log(result.stdout);
-  // console.log(result.stderr);
+  if (result.status !== 0) {
+      console.error(result.stdout);
+      console.error(result.stderr);
+  }
 
   assert.strictEqual(result.status, 0, 'Compiler should exit with 0');
   
-  // Check output
-  assert.ok(fs.existsSync(path.join(TEMP_OUTPUT, 'testchar', 'testchar.png')), 'Atlas PNG should exist');
-  assert.ok(fs.existsSync(path.join(TEMP_OUTPUT, 'testchar', 'testchar.json')), 'Atlas JSON should exist');
+  // Check output - nested path for testchar
+  assert.ok(fs.existsSync(path.join(TEMP_OUTPUT, 'testchar', 'testchar_page_0.png')), 'Atlas PNG should exist');
+  assert.ok(fs.existsSync(path.join(TEMP_OUTPUT, 'testchar', 'testchar_page_0.json')), 'Atlas JSON should exist');
   assert.ok(fs.existsSync(path.join(TEMP_OUTPUT, 'manifest.json')), 'Manifest should exist');
 
   const manifest = JSON.parse(fs.readFileSync(path.join(TEMP_OUTPUT, 'manifest.json'), 'utf8'));
-  assert.ok(manifest.testchar, 'Manifest should contain testchar');
-  assert.ok(manifest.testchar.animations.walk.directions.north.includes('walk_north_000'), 'Manifest should have correct frame names');
+  assert.strictEqual(manifest.schemaVersion, 2);
+  assert.ok(manifest.entities.testchar, 'Manifest should contain testchar');
+  assert.ok(manifest.entities.testchar.states.default.animations.walk.directions.north.includes('testchar__default__walk__north__000'), 'Manifest should have correct frame names');
   
   cleanup();
   fs.unlinkSync('scripts/assets/sprite-config.test.mjs');
@@ -102,16 +104,18 @@ test('Sprite Compiler: Validation - Missing Direction', async (t) => {
 
   const configContent = `
 export const DIRECTIONS = ['north', 'south'];
+export const CARDINAL_DIRECTIONS = ['north', 'south'];
 export const SPRITE_CONFIG = {
   testchar: {
-    sourceDir: '${TEMP_SOURCE}/testchar',
-    outputDir: '${TEMP_OUTPUT}/testchar',
-    atlasName: 'testchar',
-    frameWidth: 48,
-    frameHeight: 48,
+    source: 'testchar',
     displayScale: 2,
-    animations: {
-      idle: { fps: 1, loop: true, type: 'static' }
+    defaultState: 'default',
+    states: {
+      default: {
+        animations: {
+          idle: { fps: 1, loop: true, type: 'static', directions: ['north', 'south'] }
+        }
+      }
     }
   }
 };
@@ -120,7 +124,8 @@ export const SPRITE_CONFIG = {
 
   const compilerScript = fs.readFileSync('scripts/assets/compile-sprites.mjs', 'utf8')
     .replace('./sprite-config.mjs', './sprite-config.test.mjs')
-    .replace('public/assets/sprites', TEMP_OUTPUT);
+    .replace("const SOURCE_ROOT = 'public/assets/source/pixellab';", `const SOURCE_ROOT = '${TEMP_SOURCE}';`)
+    .replace("const OUTPUT_ROOT = 'public/assets/sprites';", `const OUTPUT_ROOT = '${TEMP_OUTPUT}';`);
   fs.writeFileSync('scripts/assets/compile-sprites.test.mjs', compilerScript);
 
   const result = spawnSync('node', ['scripts/assets/compile-sprites.test.mjs'], { encoding: 'utf8' });
@@ -128,7 +133,93 @@ export const SPRITE_CONFIG = {
   // Should warn about missing south
   const output = result.stdout + result.stderr;
   assert.ok(output.includes('Warning: Missing direction "south"'), 'Should warn about missing direction');
+
+  cleanup();
+  fs.unlinkSync('scripts/assets/sprite-config.test.mjs');
+  fs.unlinkSync('scripts/assets/compile-sprites.test.mjs');
+});
+
+test('Sprite Compiler: Multi-state and Source Overrides', async (t) => {
+  cleanup();
   
+  // Create source for entity1 state default (directly under entity1)
+  await createTestImage(path.join(TEMP_SOURCE, 'entity1', 'idle', 'south.png'));
+  
+  // Create source for entity2 with explicit state subfolders
+  await createTestImage(path.join(TEMP_SOURCE, 'entity2', 'default', 'walk', 'south', 'frame_000.png'));
+  await createTestImage(path.join(TEMP_SOURCE, 'entity2', 'damaged', 'walk', 'south', 'frame_000.png'));
+  
+  // Create source for entity3 with absolute source override
+  const OVERRIDE_SOURCE = path.join(TEMP_SOURCE, 'override_dir');
+  await createTestImage(path.join(OVERRIDE_SOURCE, 'run', 'south', 'frame_000.png'));
+
+  const configContent = `
+export const DIRECTIONS = ['south'];
+export const CARDINAL_DIRECTIONS = ['south'];
+export const SPRITE_CONFIG = {
+  entity1: {
+    source: 'entity1',
+    displayScale: 2,
+    defaultState: 'default',
+    states: {
+      default: {
+        animations: {
+          idle: { fps: 1, loop: true, type: 'static', directions: ['south'] }
+        }
+      }
+    }
+  },
+  entity2: {
+    source: 'entity2',
+    displayScale: 2,
+    defaultState: 'default',
+    states: {
+      default: {
+        animations: {
+          walk: { fps: 10, loop: true, type: 'animated', directions: ['south'] }
+        }
+      },
+      damaged: {
+        animations: {
+          walk: { fps: 10, loop: true, type: 'animated', directions: ['south'] }
+        }
+      }
+    }
+  },
+  entity3: {
+    displayScale: 2,
+    states: {
+      default: {
+        source: 'override_dir',
+        animations: {
+          run: { fps: 14, loop: true, type: 'animated', directions: ['south'] }
+        }
+      }
+    }
+  }
+};
+  `;
+  fs.writeFileSync('scripts/assets/sprite-config.test.mjs', configContent);
+
+  const compilerScript = fs.readFileSync('scripts/assets/compile-sprites.mjs', 'utf8')
+    .replace('./sprite-config.mjs', './sprite-config.test.mjs')
+    .replace("const SOURCE_ROOT = 'public/assets/source/pixellab';", `const SOURCE_ROOT = '${TEMP_SOURCE}';`)
+    .replace("const OUTPUT_ROOT = 'public/assets/sprites';", `const OUTPUT_ROOT = '${TEMP_OUTPUT}';`);
+  fs.writeFileSync('scripts/assets/compile-sprites.test.mjs', compilerScript);
+
+  const result = spawnSync('node', ['scripts/assets/compile-sprites.test.mjs'], { encoding: 'utf8' });
+  assert.strictEqual(result.status, 0, 'Compiler should exit with 0');
+
+  const manifest = JSON.parse(fs.readFileSync(path.join(TEMP_OUTPUT, 'manifest.json'), 'utf8'));
+  
+  assert.ok(manifest.entities.entity1.states.default.animations.idle, 'entity1 idle exists');
+  assert.ok(manifest.entities.entity2.states.default.animations.walk, 'entity2 default walk exists');
+  assert.ok(manifest.entities.entity2.states.damaged.animations.walk, 'entity2 damaged walk exists');
+  assert.ok(manifest.entities.entity3.states.default.animations.run, 'entity3 run exists');
+  
+  // Check frame names to verify they picked up frames from correct locations
+  assert.ok(manifest.entities.entity3.states.default.animations.run.directions.south.includes('entity3__default__run__south__000'));
+
   cleanup();
   fs.unlinkSync('scripts/assets/sprite-config.test.mjs');
   fs.unlinkSync('scripts/assets/compile-sprites.test.mjs');

@@ -8,6 +8,7 @@ import ProxyBoss from '../entities/ProxyBoss.js';
 import SuperRobot from '../entities/SuperRobot.js';
 import GermanSoldier from '../entities/GermanSoldier.js';
 import Grenade from '../entities/Grenade.js';
+import Lorelei from '../entities/Lorelei.js';
 import Hud from '../ui/Hud.js';
 import DescentController from '../systems/DescentController.js';
 import DesktopControls from '../controls/DesktopControls.js';
@@ -35,6 +36,7 @@ export default class GameScene extends Phaser.Scene {
         this.timeline = this.game.timelineDirector;
         this.score = 0;
         this.isGameOver = false;
+        this.debugGeometry = false;
         this.playerHasGrenade = false;
         this.grenadeResolved = false;
 
@@ -72,12 +74,16 @@ export default class GameScene extends Phaser.Scene {
 
         this.bossComponentGroup = this.physics.add.group();
 
+        // 4.6 Combat Sensors Group (Step 10.2.1)
+        this.combatSensorGroup = this.physics.add.group();
+
         // 4.5 Opening Proxy (Scripted Escape)
         this.openingProxy = new Proxy(this, PROXY_CONFIG.opening);
         this.proxyBoss = null;
         this.superRobot = null;
         this.germanSoldier = null;
         this.grenade = null;
+        this.lorelei = null;
 
         // 5. Encounter Orchestration
         this.encounterDirector = new EncounterDirector(this);
@@ -109,8 +115,16 @@ export default class GameScene extends Phaser.Scene {
             .on('pointerdown', () => this.returnToTitle());
         }
 
+        // Direct Lorelei Spawn (Step 10.3.3)
+        // Ensure Lorelei is created immediately during normal mission start
+        // before any timeline events have been received.
+        this.updateLoreleiPresence();
+
         // Timeline Event Listeners
         this.setupTimelineListeners();
+
+        // 10. Pause Overlay (Step 10.2)
+        this.createPauseOverlay();
 
         // PART B: Handle resize and initial camera scale
         this.scale.on('resize', this.onResize, this);
@@ -159,6 +173,10 @@ export default class GameScene extends Phaser.Scene {
         if (this.hud) {
             this.hud.resize(logicalWidth, logicalHeight);
         }
+        
+        if (this.pauseOverlay) {
+            this.repositionPauseOverlay();
+        }
     }
 
     updateHorizontalCamera(delta) {
@@ -197,6 +215,36 @@ export default class GameScene extends Phaser.Scene {
         robot.cueID = cueID;
         this.robotGroup.add(robot);
         return robot;
+    }
+
+    spawnLorelei() {
+        if (this.lorelei) return;
+        
+        // Spawn Lorelei near the player (slightly behind)
+        this.lorelei = new Lorelei(this, this.player.x - 100, this.player.y);
+        this.lorelei.setPixelArtEnabled(this.player.pixelArtEnabled);
+        
+        // Setup Lorelei collisions (Obstacles)
+        this.physics.add.collider(this.lorelei, this.environment.obstacles);
+        this.physics.add.collider(this.lorelei, this.environment.walls);
+        
+        console.log(`[SESSION ${this.sessionID}] LORELEI_JOINED`);
+    }
+
+    updateLoreleiPresence(phase = null) {
+        if (!phase) phase = this.timeline.currentPhase;
+        if (!phase) return;
+
+        // Step 10.3.3: One clear, centralized rule for Lorelei's existence
+        const shouldExist = (phase.id === 'CHASE' || phase.id === 'ROBOT_SWARM');
+        
+        if (shouldExist) {
+            this.spawnLorelei();
+        } else if (this.lorelei) {
+            this.lorelei.destroy();
+            this.lorelei = null;
+            console.log(`[SESSION ${this.sessionID}] Lorelei departed (Phase: ${phase.id})`);
+        }
     }
 
     spawnHeartAt(x, y) {
@@ -263,9 +311,9 @@ export default class GameScene extends Phaser.Scene {
     }
 
     setupCollisions() {
-        // Projectiles vs Robots
-        this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.robotGroup, this.handleProjectileRobotCollision, null, this);
-        this.physics.add.overlap(this.weaponSystem.axes, this.robotGroup, this.handleProjectileRobotCollision, null, this);
+        // Projectiles vs Robots (Generous Hit Detection via Combat Sensors)
+        this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.combatSensorGroup, this.handleProjectileRobotCollision, null, this);
+        this.physics.add.overlap(this.weaponSystem.axes, this.combatSensorGroup, this.handleProjectileRobotCollision, null, this);
 
         // Projectiles vs Boss Components
         this.physics.add.overlap(this.weaponSystem.energyProjectiles, this.bossComponentGroup, this.handleProjectileBossCollision, null, this);
@@ -345,14 +393,32 @@ export default class GameScene extends Phaser.Scene {
         projectile.deactivate();
     }
 
-    handleProjectileRobotCollision(projectile, robot) {
-        if (robot.isDestroyed || !projectile.active || projectile.hitTargets.has(robot)) return;
+    handleProjectileRobotCollision(projectile, sensor) {
+        // sensor can be the Robot itself (legacy) or a Combat Sensor (new)
+        const robot = sensor.parentRobot || (sensor.isCombatSensor ? null : sensor);
+        if (!robot || robot.isDestroyed || !projectile.active || projectile.hitTargets.has(robot)) return;
         
-        // New: Check if robot is behind cover relative to the projectile's path
-        const ray = new Phaser.Geom.Line(projectile.x - projectile.body.deltaX(), projectile.y - projectile.body.deltaY(), projectile.x, projectile.y);
-        const hit = this.getNearestObstacleAlongRay(ray.x1, ray.y1, projectile.rotation - Math.PI / 2, 100);
-        if (hit && hit.distance < Phaser.Math.Distance.Between(ray.x1, ray.y1, robot.x, robot.y)) {
-            // Projectile hit an obstacle before the robot (Arcade overlap can be imprecise)
+        const targetRegion = robot.getTargetRegion();
+        const robotCircle = new Phaser.Geom.Circle(targetRegion.x, targetRegion.y, targetRegion.radius);
+
+        // Step 10.2.1: Swept collision check (Line from previous to current position)
+        const prevX = projectile.x - projectile.body.deltaX();
+        const prevY = projectile.y - projectile.body.deltaY();
+        const ray = new Phaser.Geom.Line(prevX, prevY, projectile.x, projectile.y);
+        
+        // Generous check: intersection with circle OR close proximity at current frame
+        const points = [];
+        const isHit = Phaser.Geom.Intersects.GetLineToCircle(ray, robotCircle, points) || 
+                     Phaser.Math.Distance.Between(projectile.x, projectile.y, targetRegion.x, targetRegion.y) <= targetRegion.radius + 2;
+
+        if (!isHit) return;
+
+        // Obstacle Cover Priority: Ensure no wall is between projectile start and robot target region
+        const distToRobot = Phaser.Math.Distance.Between(prevX, prevY, targetRegion.x, targetRegion.y);
+        const wallHit = this.getNearestObstacleAlongRay(prevX, prevY, projectile.rotation - Math.PI / 2, distToRobot + 50);
+        
+        // If wall is closer than the robot's front edge, it's blocked
+        if (wallHit && wallHit.distance < distToRobot - targetRegion.radius) {
             return;
         }
 
@@ -409,10 +475,13 @@ export default class GameScene extends Phaser.Scene {
     handlePlayerRobotCollision(player, robot) {
         if (robot.isDestroyed || player.isDestroyed || player.isInvulnerable()) return;
 
+        const playerTarget = player.getTargetRegion();
+        const robotTarget = robot.getTargetRegion();
+
         const attack = {
             type: COMBAT_CONFIG.types.CONTACT,
             damage: robot.combatConfig.contactDamage,
-            direction: Phaser.Math.Angle.Between(robot.x, robot.y, player.x, player.y),
+            direction: Phaser.Math.Angle.Between(robotTarget.x, robotTarget.y, playerTarget.x, playerTarget.y),
             knockback: 200
         };
 
@@ -516,6 +585,12 @@ export default class GameScene extends Phaser.Scene {
     handleProjectileBossCollision(projectile, component) {
         if (!projectile.active || projectile.hitTargets.has(component)) return;
         
+        // Step 10.2: Accurate component hit detection
+        const targetRegion = component.getTargetRegion();
+        const dist = Phaser.Math.Distance.Between(projectile.x, projectile.y, targetRegion.x, targetRegion.y);
+        
+        if (dist > targetRegion.radius + 5) return;
+
         const isAxe = projectile.texture.key === 'axe';
         const weaponCfg = isAxe ? COMBAT_CONFIG.weapons.axe : COMBAT_CONFIG.weapons.energy;
         
@@ -1109,6 +1184,9 @@ export default class GameScene extends Phaser.Scene {
             if (this.hud) {
                 this.hud.setPhaseLabel(phase.label);
             }
+            
+            // Step 10.3.3: Use centralized presence logic
+            this.updateLoreleiPresence(phase);
         };
 
         this.onTrackStart = (trackKey, startTime) => {
@@ -1125,6 +1203,10 @@ export default class GameScene extends Phaser.Scene {
             if (this.robotGroup && this.robotGroup.scene) {
                 this.robotGroup.clear(true, true);
             }
+            
+            // Reconcile Lorelei
+            this.updateLoreleiPresence();
+
             this.reconcilePlayerWithCamera();
             this.spawnTestEncounter();
             
@@ -1176,6 +1258,9 @@ export default class GameScene extends Phaser.Scene {
                 this.robotGroup.clear(true, true);
             }
 
+            // Reconcile Lorelei
+            this.updateLoreleiPresence();
+
             // PART F: Reconstruct Boss State based on time
             this.reconstructBossState(state.time);
             
@@ -1197,6 +1282,10 @@ export default class GameScene extends Phaser.Scene {
 
         this.onDebugReturnToTitle = () => {
             if (!this.scene.isActive()) return;
+            if (this.lorelei) {
+                this.lorelei.destroy();
+                this.lorelei = null;
+            }
             this.returnToTitle();
         };
 
@@ -1247,6 +1336,14 @@ export default class GameScene extends Phaser.Scene {
         this.timeline.on('event', this.onEvent);
         this.timeline.on('debugReturnToTitle', this.onDebugReturnToTitle);
         this.events.on('playSurvivalSound', this.onPlaySurvivalSound);
+
+        // Step 10.3.3: Initial reconciliation since we missed the events that created this scene
+        if (this.timeline.currentTrackKey) {
+            this.onTrackStart(this.timeline.currentTrackKey, this.timeline.audioDirector.getCurrentTime());
+        }
+        if (this.timeline.currentPhase) {
+            this.onPhaseChange(this.timeline.currentPhase);
+        }
     }
 
     cleanupTimelineListeners() {
@@ -1408,9 +1505,18 @@ export default class GameScene extends Phaser.Scene {
     }
 
     update(time, delta) {
-        // Authoritative clock is the music. If paused, don't update gameplay.
+        // 1. Update Controls and handle Pause Toggle (MUST happen even if paused)
+        this.controls.update();
+        const input = this.controls.getState();
+        
+        if (input.isPausedToggle && !this.isGameOver) {
+            this.togglePause();
+        }
+
         const state = this.timeline.getState();
-        if (!state.isPlaying) {
+        
+        // If paused, freeze simulation
+        if (state.isPaused || !state.isPlaying) {
             if (this.player.body) this.player.body.setAcceleration(0, 0).setVelocity(0, 0);
             this.robotGroup.getChildren().forEach(r => {
                 if (r.body) {
@@ -1421,7 +1527,7 @@ export default class GameScene extends Phaser.Scene {
             return;
         }
 
-        // 1. Update Camera Descent
+        // 2. Update Camera Descent
         const targetScrollY = this.descentController.getTargetScrollY();
         this.cameras.main.scrollY = targetScrollY;
         
@@ -1458,7 +1564,6 @@ export default class GameScene extends Phaser.Scene {
         }
 
         // 3. Update Player
-        const input = this.controls.getState();
         if (input.isFiringNova) {
             this.triggerNova();
         }
@@ -1469,6 +1574,11 @@ export default class GameScene extends Phaser.Scene {
 
         // 5. Update Robots (AI and depth cleanup)
         this.robotGroup.getChildren().forEach(r => r.update(time, delta));
+
+        // 5.0 Update Lorelei (Step 10.3)
+        if (this.lorelei) {
+            this.lorelei.update(time, delta);
+        }
 
         // 5.1 Update Encounters
         this.encounterDirector.update(time, delta);
@@ -1483,6 +1593,9 @@ export default class GameScene extends Phaser.Scene {
 
         // 7. Update Technical Diagnostics (if debug enabled)
         this.updateDiagnostics();
+
+        // 8. Update Geometry Debug (Step 10.2)
+        this.updateGeometryDebug();
     }
 
     updateSurvivalWarning(delta) {
@@ -1509,5 +1622,180 @@ export default class GameScene extends Phaser.Scene {
         if (this.game.timelineDebugPanel && this.game.timelineDebugPanel.isVisible) {
             // Already handled by debug panel reading scene state
         }
+    }
+
+    updateGeometryDebug() {
+        if (!this.debugGeometryGraphic) {
+            this.debugGeometryGraphic = this.add.graphics().setDepth(2000);
+        }
+
+        this.debugGeometryGraphic.clear();
+        if (!this.debugGeometry) return;
+
+        const drawEntity = (entity, color = 0x00ff00) => {
+            if (!entity || !entity.active || entity.isDestroyed) return;
+
+            // 1. Ground Position
+            this.debugGeometryGraphic.lineStyle(1, 0xffffff, 0.5);
+            this.debugGeometryGraphic.strokeCircle(entity.x, entity.y, 5);
+
+            // 2. Movement Physics Body
+            if (entity.body) {
+                this.debugGeometryGraphic.lineStyle(1, 0x00ff00, 0.5);
+                this.debugGeometryGraphic.strokeRect(
+                    entity.body.x,
+                    entity.body.y,
+                    entity.body.width,
+                    entity.body.height
+                );
+            }
+
+            // 3. Combat Target Region (or Sensor Body)
+            if (entity.combatSensor && entity.combatSensor.body) {
+                const cs = entity.combatSensor.body;
+                this.debugGeometryGraphic.lineStyle(2, color, 0.8);
+                this.debugGeometryGraphic.strokeCircle(cs.center.x, cs.center.y, cs.halfWidth);
+                this.debugGeometryGraphic.fillStyle(color, 0.2);
+                this.debugGeometryGraphic.fillCircle(cs.center.x, cs.center.y, cs.halfWidth);
+                
+                // Target Center dot
+                this.debugGeometryGraphic.fillStyle(0xffffff, 0.8);
+                this.debugGeometryGraphic.fillCircle(cs.center.x, cs.center.y, 2);
+            } else if (entity.getTargetRegion) {
+                const tr = entity.getTargetRegion();
+                this.debugGeometryGraphic.lineStyle(2, color, 0.8);
+                this.debugGeometryGraphic.strokeCircle(tr.x, tr.y, tr.radius);
+                this.debugGeometryGraphic.fillStyle(color, 0.2);
+                this.debugGeometryGraphic.fillCircle(tr.x, tr.y, tr.radius);
+            }
+
+            // 4. Weapon Origin
+            if (entity.getWeaponOrigin) {
+                const wo = entity.getWeaponOrigin();
+                this.debugGeometryGraphic.fillStyle(0xffff00, 1);
+                this.debugGeometryGraphic.fillCircle(wo.x, wo.y, 3);
+            }
+        };
+
+        // Draw Player
+        drawEntity(this.player, 0x00ffff);
+
+        // Draw Robots
+        this.robotGroup.getChildren().forEach(r => drawEntity(r, 0xff0000));
+
+        // Draw Lorelei
+        if (this.lorelei) drawEntity(this.lorelei, 0xcc99ff);
+
+        // Draw Boss Components
+        this.bossComponentGroup.getChildren().forEach(comp => {
+            if (comp.getTargetRegion) {
+                const tr = comp.getTargetRegion();
+                this.debugGeometryGraphic.lineStyle(2, 0xff00ff, 0.8);
+                this.debugGeometryGraphic.strokeCircle(tr.x, tr.y, tr.radius);
+                this.debugGeometryGraphic.fillStyle(0xff00ff, 0.2);
+                this.debugGeometryGraphic.fillCircle(tr.x, tr.y, tr.radius);
+            }
+        });
+    }
+
+    /**
+     * Toggles the game pause state.
+     */
+    togglePause() {
+        const state = this.timeline.getState();
+        const shouldPause = !state.isPaused;
+
+        if (shouldPause) {
+            this.timeline.pause();
+            this.physics.world.pause();
+            this.tweens.pauseAll();
+            this.time.paused = true;
+            this.pauseOverlay.setVisible(true);
+            
+            // Freeze all animations
+            this.player.sprite.anims.pause();
+            this.robotGroup.getChildren().forEach(r => {
+                if (r.sprite) r.sprite.anims.pause();
+            });
+            if (this.proxyBoss) this.proxyBoss.sprite.anims.pause();
+            if (this.superRobot) this.superRobot.sprite.anims.pause();
+            if (this.lorelei && this.lorelei.sprite) this.lorelei.sprite.anims.pause();
+        } else {
+            this.timeline.resume();
+            this.physics.world.resume();
+            this.tweens.resumeAll();
+            this.time.paused = false;
+            this.pauseOverlay.setVisible(false);
+            
+            // Resume all animations
+            this.player.sprite.anims.resume();
+            this.robotGroup.getChildren().forEach(r => {
+                if (r.sprite) r.sprite.anims.resume();
+            });
+            if (this.proxyBoss) this.proxyBoss.sprite.anims.resume();
+            if (this.superRobot) this.superRobot.sprite.anims.resume();
+            if (this.lorelei && this.lorelei.sprite) this.lorelei.sprite.anims.resume();
+            
+            // Clear input carry-over
+            this.controls.reset();
+        }
+        
+        console.log(`[SESSION ${this.sessionID}] Game ${shouldPause ? 'PAUSED' : 'RESUMED'}`);
+    }
+
+    createPauseOverlay() {
+        this.pauseOverlay = this.add.container(0, 0).setScrollFactor(0).setDepth(2000).setVisible(false);
+        
+        // Use class properties for elements that need repositioning
+        this.pauseBg = this.add.graphics();
+        this.pauseOverlay.add(this.pauseBg);
+        
+        this.pauseTitle = this.add.text(0, 0, 'PAUSED', {
+            fontSize: '64px',
+            fill: '#ffffff',
+            fontFamily: 'Arial',
+            fontWeight: 'bold'
+        }).setOrigin(0.5);
+        
+        this.pauseSubtitle = this.add.text(0, 0, 'Press ESC to resume', {
+            fontSize: '24px',
+            fill: '#aaaaaa',
+            fontFamily: 'Arial'
+        }).setOrigin(0.5);
+
+        this.pauseResumeBtn = this.add.text(0, 0, '[ RESUME GAME ]', {
+            fontSize: '32px',
+            fill: '#00ffff',
+            fontFamily: 'Arial',
+            fontWeight: 'bold'
+        })
+        .setOrigin(0.5)
+        .setInteractive({ useHandCursor: true })
+        .on('pointerdown', () => this.togglePause());
+        
+        this.pauseOverlay.add([this.pauseTitle, this.pauseSubtitle, this.pauseResumeBtn]);
+        
+        this.repositionPauseOverlay();
+    }
+
+    repositionPauseOverlay() {
+        if (!this.pauseOverlay) return;
+        
+        const cam = this.cameras.main;
+        const width = cam.width;
+        const height = cam.height;
+        const zoom = cam.zoom;
+        
+        // Logical dimensions for centering correctly even on wide viewports
+        const lw = width / zoom;
+        const lh = height / zoom;
+        
+        this.pauseBg.clear();
+        this.pauseBg.fillStyle(0x000000, 0.5);
+        this.pauseBg.fillRect(0, 0, lw, lh);
+        
+        this.pauseTitle.setPosition(lw / 2, lh / 2 - 20);
+        this.pauseSubtitle.setPosition(lw / 2, lh / 2 + 40);
+        this.pauseResumeBtn.setPosition(lw / 2, lh / 2 + 100);
     }
 }

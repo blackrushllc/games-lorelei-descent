@@ -1,0 +1,3415 @@
+{
+  "frames": [
+    {
+      "filename": "lorelei__default__idle__north__000",
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__idle__north-east__000",
+      "frame": {
+        "x": 72,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__idle__east__000",
+      "frame": {
+        "x": 142,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__idle__south-east__000",
+      "frame": {
+        "x": 212,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__idle__south__000",
+      "frame": {
+        "x": 282,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__idle__south-west__000",
+      "frame": {
+        "x": 352,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__idle__west__000",
+      "frame": {
+        "x": 422,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__idle__north-west__000",
+      "frame": {
+        "x": 492,
+        "y": 2,
+        "w": 48,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 10,
+        "w": 48,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__000",
+      "frame": {
+        "x": 562,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__001",
+      "frame": {
+        "x": 632,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__002",
+      "frame": {
+        "x": 702,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__003",
+      "frame": {
+        "x": 772,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__004",
+      "frame": {
+        "x": 842,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__005",
+      "frame": {
+        "x": 912,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__006",
+      "frame": {
+        "x": 982,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north__007",
+      "frame": {
+        "x": 1052,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__000",
+      "frame": {
+        "x": 1122,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__001",
+      "frame": {
+        "x": 1192,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__002",
+      "frame": {
+        "x": 1262,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__003",
+      "frame": {
+        "x": 1332,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__004",
+      "frame": {
+        "x": 1402,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__005",
+      "frame": {
+        "x": 1472,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__006",
+      "frame": {
+        "x": 1542,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-east__007",
+      "frame": {
+        "x": 1612,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__000",
+      "frame": {
+        "x": 1682,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__001",
+      "frame": {
+        "x": 1752,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__002",
+      "frame": {
+        "x": 1822,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__003",
+      "frame": {
+        "x": 1892,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__004",
+      "frame": {
+        "x": 1962,
+        "y": 2,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__005",
+      "frame": {
+        "x": 2,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__006",
+      "frame": {
+        "x": 72,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__east__007",
+      "frame": {
+        "x": 142,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__000",
+      "frame": {
+        "x": 212,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__001",
+      "frame": {
+        "x": 282,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__002",
+      "frame": {
+        "x": 352,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__003",
+      "frame": {
+        "x": 422,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__004",
+      "frame": {
+        "x": 492,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__005",
+      "frame": {
+        "x": 562,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__006",
+      "frame": {
+        "x": 632,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-east__007",
+      "frame": {
+        "x": 702,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__000",
+      "frame": {
+        "x": 772,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__001",
+      "frame": {
+        "x": 842,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__002",
+      "frame": {
+        "x": 912,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__003",
+      "frame": {
+        "x": 982,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__004",
+      "frame": {
+        "x": 1052,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__005",
+      "frame": {
+        "x": 1122,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__006",
+      "frame": {
+        "x": 1192,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south__007",
+      "frame": {
+        "x": 1262,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__000",
+      "frame": {
+        "x": 1332,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__001",
+      "frame": {
+        "x": 1402,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__002",
+      "frame": {
+        "x": 1472,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__003",
+      "frame": {
+        "x": 1542,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__004",
+      "frame": {
+        "x": 1612,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__005",
+      "frame": {
+        "x": 1682,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__006",
+      "frame": {
+        "x": 1752,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__south-west__007",
+      "frame": {
+        "x": 1822,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__000",
+      "frame": {
+        "x": 1892,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__001",
+      "frame": {
+        "x": 1962,
+        "y": 72,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__002",
+      "frame": {
+        "x": 2,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__003",
+      "frame": {
+        "x": 72,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__004",
+      "frame": {
+        "x": 142,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__005",
+      "frame": {
+        "x": 212,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__006",
+      "frame": {
+        "x": 282,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__west__007",
+      "frame": {
+        "x": 352,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__000",
+      "frame": {
+        "x": 422,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__001",
+      "frame": {
+        "x": 492,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__002",
+      "frame": {
+        "x": 562,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__003",
+      "frame": {
+        "x": 632,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__004",
+      "frame": {
+        "x": 702,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__005",
+      "frame": {
+        "x": 772,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__006",
+      "frame": {
+        "x": 842,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__walk__north-west__007",
+      "frame": {
+        "x": 912,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__000",
+      "frame": {
+        "x": 982,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__001",
+      "frame": {
+        "x": 1052,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__002",
+      "frame": {
+        "x": 1122,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__003",
+      "frame": {
+        "x": 1192,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__004",
+      "frame": {
+        "x": 1262,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__005",
+      "frame": {
+        "x": 1332,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__006",
+      "frame": {
+        "x": 1402,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north__007",
+      "frame": {
+        "x": 1472,
+        "y": 142,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__000",
+      "frame": {
+        "x": 1542,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__001",
+      "frame": {
+        "x": 1612,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__002",
+      "frame": {
+        "x": 1682,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__003",
+      "frame": {
+        "x": 1752,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__004",
+      "frame": {
+        "x": 1822,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__005",
+      "frame": {
+        "x": 1892,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__006",
+      "frame": {
+        "x": 1962,
+        "y": 142,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-east__007",
+      "frame": {
+        "x": 2,
+        "y": 212,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__000",
+      "frame": {
+        "x": 72,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__001",
+      "frame": {
+        "x": 142,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__002",
+      "frame": {
+        "x": 212,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__003",
+      "frame": {
+        "x": 282,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__004",
+      "frame": {
+        "x": 352,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__005",
+      "frame": {
+        "x": 422,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__006",
+      "frame": {
+        "x": 492,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__east__007",
+      "frame": {
+        "x": 562,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__000",
+      "frame": {
+        "x": 632,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__001",
+      "frame": {
+        "x": 702,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__002",
+      "frame": {
+        "x": 772,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__003",
+      "frame": {
+        "x": 842,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__004",
+      "frame": {
+        "x": 912,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__005",
+      "frame": {
+        "x": 982,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__006",
+      "frame": {
+        "x": 1052,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-east__007",
+      "frame": {
+        "x": 1122,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__000",
+      "frame": {
+        "x": 1192,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__001",
+      "frame": {
+        "x": 1262,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__002",
+      "frame": {
+        "x": 1332,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__003",
+      "frame": {
+        "x": 1402,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__004",
+      "frame": {
+        "x": 1472,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__005",
+      "frame": {
+        "x": 1542,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__006",
+      "frame": {
+        "x": 1612,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south__007",
+      "frame": {
+        "x": 1682,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__000",
+      "frame": {
+        "x": 1752,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__001",
+      "frame": {
+        "x": 1822,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__002",
+      "frame": {
+        "x": 1892,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__003",
+      "frame": {
+        "x": 1962,
+        "y": 212,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__004",
+      "frame": {
+        "x": 2,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__005",
+      "frame": {
+        "x": 72,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__006",
+      "frame": {
+        "x": 142,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__south-west__007",
+      "frame": {
+        "x": 212,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__000",
+      "frame": {
+        "x": 282,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__001",
+      "frame": {
+        "x": 352,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__002",
+      "frame": {
+        "x": 422,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__003",
+      "frame": {
+        "x": 492,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__004",
+      "frame": {
+        "x": 562,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__005",
+      "frame": {
+        "x": 632,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__006",
+      "frame": {
+        "x": 702,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__west__007",
+      "frame": {
+        "x": 772,
+        "y": 282,
+        "w": 68,
+        "h": 68
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 68,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__000",
+      "frame": {
+        "x": 842,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__001",
+      "frame": {
+        "x": 912,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__002",
+      "frame": {
+        "x": 982,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__003",
+      "frame": {
+        "x": 1052,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__004",
+      "frame": {
+        "x": 1122,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__005",
+      "frame": {
+        "x": 1192,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__006",
+      "frame": {
+        "x": 1262,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    },
+    {
+      "filename": "lorelei__default__run__north-west__007",
+      "frame": {
+        "x": 1332,
+        "y": 282,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 2,
+        "w": 64,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 68,
+        "h": 68
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8235294117647058
+      }
+    }
+  ],
+  "meta": {
+    "app": "Lorelei Sprite Compiler",
+    "version": "2.0",
+    "image": "lorelei_page_0.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2032,
+      "h": 352
+    },
+    "scale": "1"
+  }
+}

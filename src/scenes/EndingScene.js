@@ -79,7 +79,7 @@ export default class EndingScene extends Phaser.Scene {
         .on('pointerdown', () => {
             if (!this.inputActive) return;
             this.timeline.stop();
-            // EndingScene might be running parallel to something else if we are not careful
+            // EndingScene might be run parallel to something else if we are not careful
             // although main.js usually stops GameScene before starting EndingScene.
             this.scene.stop('GameScene');
             this.scene.start('TitleScene');

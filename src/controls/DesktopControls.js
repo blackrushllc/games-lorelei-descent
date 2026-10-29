@@ -23,7 +23,8 @@ export default class DesktopControls {
             arrowDown: Phaser.Input.Keyboard.KeyCodes.DOWN,
             arrowLeft: Phaser.Input.Keyboard.KeyCodes.LEFT,
             arrowRight: Phaser.Input.Keyboard.KeyCodes.RIGHT,
-            nova: Phaser.Input.Keyboard.KeyCodes.SPACE
+            nova: Phaser.Input.Keyboard.KeyCodes.SPACE,
+            esc: Phaser.Input.Keyboard.KeyCodes.ESC
         });
 
         // Aim and actions
@@ -105,8 +106,9 @@ export default class DesktopControls {
             this.isFiringSecondary = pointer.rightButtonDown();
         }
 
-        // 3. Nova (Fresh key press only)
+        // 3. Nova and Pause (Fresh key press only)
         this.isFiringNova = Phaser.Input.Keyboard.JustDown(this.keys.nova);
+        this.isPausedToggle = Phaser.Input.Keyboard.JustDown(this.keys.esc);
 
         // 4. Keyboard Movement (Priority)
         let kbMoveX = 0;
@@ -173,6 +175,7 @@ export default class DesktopControls {
             isFiringPrimary: this.isFiringPrimary,
             isFiringSecondary: this.isFiringSecondary,
             isFiringNova: this.isFiringNova,
+            isPausedToggle: this.isPausedToggle,
             controlMode: this.controlMode
         };
     }
