@@ -104,18 +104,8 @@ export default class GameScene extends Phaser.Scene {
         // 9. Survival Warning Timer
         this.survivalWarningTimer = 0;
 
-        // 9. Back to Title Button (Dev purposes) - Only show if debug enabled
-        if (window.location.search.includes('debug=1')) {
-            const backButton = this.add.text(20, height - 20, 'BACK TO TITLE', {
-                fontSize: '18px', fill: '#ffffff', fontFamily: 'Arial',
-                backgroundColor: '#333333', padding: { x: 10, y: 5 }
-            })
-            .setOrigin(0, 1)
-            .setInteractive({ useHandCursor: true })
-            .setScrollFactor(0)
-            .setDepth(1001)
-            .on('pointerdown', () => this.returnToTitle());
-        }
+        // 9. Back to Title Button (Dev purposes) - Removed as redundant and prone to accidental clicks
+        // Use the debug panel STOP/TITLE button instead.
 
         // Direct Lorelei Spawn (Step 10.3.3)
         // Ensure Lorelei is created immediately during normal mission start
@@ -1324,7 +1314,7 @@ export default class GameScene extends Phaser.Scene {
             if (this.eclipse) {
                 this.eclipse.destroy();
             }
-            this.returnToTitle();
+            this.returnToTitle('Debug Event from Panel');
         };
 
         this.onPlaySurvivalSound = (type) => {
@@ -1533,8 +1523,11 @@ export default class GameScene extends Phaser.Scene {
         }
     }
 
-    returnToTitle() {
-        console.log(`[SESSION ${this.sessionID}] SESSION_STOP`);
+    returnToTitle(reason = 'Unknown') {
+        console.log(`[SESSION ${this.sessionID}] SESSION_STOP. Reason: ${reason}`);
+        if (reason === 'Unknown') {
+            console.trace('returnToTitle called from:');
+        }
         if (this.timeline) {
             this.timeline.stop();
         }

@@ -204,10 +204,16 @@ export default class Eclipse extends Phaser.GameObjects.Container {
             const inViewport = robot.y > cam.scrollY && robot.y < cam.scrollY + cam.height;
             if (!inViewport) continue;
 
-            // Score based on threat and distance
+            // Score based on threat, distance, and periphery preference
             let score = 0;
             if (robot.type === 'SENTINEL') score += 100; // Priority
-            score += (1 - dist / this.interceptionConfig.radius) * 50; // Proximity
+            
+            // Periphery bonus: prefer robots at the horizontal edges of the 1280px world
+            const distFromCenter = Math.abs(robot.x - 640);
+            score += (distFromCenter / 640) * 150; 
+
+            // Smaller bonus for proximity to Eclipse to break ties
+            score += (1 - dist / this.interceptionConfig.radius) * 30; 
 
             // Avoid robots already inside Lorelei's threat radius if possible
             const lorelei = this.scene.lorelei;
@@ -233,6 +239,11 @@ export default class Eclipse extends Phaser.GameObjects.Container {
         this.stateTimer = this.interceptionConfig.preparationDuration;
         this.body.setVelocity(0, 0);
         this.body.setAcceleration(0, 0);
+        
+        const isDebug = window.location.search.includes('debug=1');
+        if (isDebug) {
+            console.log(`[ECLIPSE] Intercepting ${this.target.type} at periphery`);
+        }
         
         // Face target while preparing
         this.currentFacing = this.getFacingFromVelocity({
@@ -308,6 +319,10 @@ export default class Eclipse extends Phaser.GameObjects.Container {
             }, this.target);
             
             if (result === COMBAT_CONFIG.results.TARGET_DESTROYED) {
+                const isDebug = window.location.search.includes('debug=1');
+                if (isDebug) {
+                    console.log(`[ECLIPSE] Target eliminated: ${this.target.type}`);
+                }
                 this.stats.totalKills++;
                 this.target.die();
             } else if (this.target.onHit) {
@@ -395,7 +410,7 @@ export default class Eclipse extends Phaser.GameObjects.Container {
             }
         }
 
-        const animKey = this.spriteRegistry.resolve('eclipse', newState, facing);
+        const animKey = this.spriteRegistry.getAnimationKey('eclipse', newState, facing);
         if (animKey && this.sprite.anims.currentAnim?.key !== animKey) {
             this.sprite.play(animKey);
             this.currentFacing = facing;

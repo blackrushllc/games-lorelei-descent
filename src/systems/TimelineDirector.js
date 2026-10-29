@@ -246,6 +246,8 @@ export default class TimelineDirector extends EventEmitter {
     }
 
     stop() {
+        console.log('TimelineDirector: stop() called');
+        console.trace('TimelineDirector: stop() trace:');
         this.audioDirector.stop();
         this.currentTrackKey = null;
         this.currentPhase = null;

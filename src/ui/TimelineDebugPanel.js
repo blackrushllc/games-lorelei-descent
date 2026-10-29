@@ -31,13 +31,20 @@ export default class TimelineDebugPanel {
         const stopProp = (e) => e.stopPropagation();
         this.container.addEventListener('mousedown', stopProp);
         this.container.addEventListener('mouseup', stopProp);
-        this.container.addEventListener('click', stopProp);
+        this.container.addEventListener('click', (e) => {
+            stopProp(e);
+            if (e.target.tagName === 'BUTTON') {
+                e.target.blur();
+            }
+        });
         this.container.addEventListener('pointerdown', stopProp);
         this.container.addEventListener('pointerup', stopProp);
         this.container.addEventListener('touchstart', stopProp);
         this.container.addEventListener('touchend', stopProp);
         this.container.addEventListener('contextmenu', stopProp);
         this.container.addEventListener('wheel', stopProp);
+        this.container.addEventListener('keydown', stopProp);
+        this.container.addEventListener('keyup', stopProp);
         
         this.container.innerHTML = `
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #555; padding-bottom: 5px; margin-bottom: 5px;">

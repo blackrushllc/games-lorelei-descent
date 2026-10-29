@@ -74,7 +74,7 @@ export const COMBAT_CONFIG = {
             formationOffsetY: 40
         },
         interception: {
-            radius: 450,
+            radius: 800,
             burstSpeed: 1200,
             preparationDuration: 400, // ms (crouch)
             cooldown: 10000, // 10 seconds
