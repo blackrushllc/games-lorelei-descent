@@ -59,6 +59,32 @@ export const COMBAT_CONFIG = {
         }
     },
 
+    // Eclipse Companion (Step 10.4)
+    eclipse: {
+        follow: {
+            followDistance: 160,
+            stopDistance: 80,
+            walkSpeed: 180,
+            runSpeed: 300,
+            catchUpDistance: 450,
+            maximumSupportDistance: 700,
+            acceleration: 1000,
+            deceleration: 1400,
+            formationOffsetX: 120,
+            formationOffsetY: 40
+        },
+        interception: {
+            radius: 450,
+            burstSpeed: 1200,
+            preparationDuration: 400, // ms (crouch)
+            cooldown: 10000, // 10 seconds
+            maxBurstDuration: 2000, // failsafe
+            returnDistance: 60,
+            trailLifetime: 200,
+            trailFrequency: 30 // ms between afterimages
+        }
+    },
+
     // Emergency Area-Clear Weapon (Step 9.6)
     nova: {
         heartCost: 1,
@@ -159,6 +185,11 @@ export const COMBAT_CONFIG = {
             weaponOrigin: { x: 0, y: -40 },
             targetCenter: { x: 0, y: -35 },
             targetRadius: 20
+        },
+        eclipse: {
+            weaponOrigin: { x: 0, y: -45 },
+            targetCenter: { x: 0, y: -40 },
+            targetRadius: 22
         }
     }
 };

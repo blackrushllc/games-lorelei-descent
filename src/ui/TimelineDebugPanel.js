@@ -240,6 +240,22 @@ export default class TimelineDebugPanel {
                     <button id="btn-trigger-tk">TRIGGER TK</button>
                 </div>
             </div>
+
+            <div id="debug-eclipse-toggle" style="margin-top: 10px; cursor: pointer; text-decoration: underline; font-size: 10px;">[+] ECLIPSE TOOLS</div>
+            <div id="debug-eclipse" style="display: none; margin-top: 5px; font-size: 10px; color: #aaa; border-top: 1px solid #333; padding-top: 5px;">
+                <div class="debug-row">Eclipse Active: <span id="diag-eclipse-active">NO</span></div>
+                <div class="debug-row">Dist from BR: <span id="diag-eclipse-dist">0</span></div>
+                <div class="debug-row">AI State: <span id="diag-eclipse-state">-</span></div>
+                <div class="debug-row">Target: <span id="diag-eclipse-target">NONE</span></div>
+                <div class="debug-row">Cooldown: <span id="diag-eclipse-cooldown">0</span></div>
+                <div class="debug-row">Interceptions: <span id="diag-eclipse-interceptions">0</span></div>
+                <div class="debug-row">Kills: <span id="diag-eclipse-kills">0</span></div>
+                
+                <div class="debug-controls" style="margin-top: 5px;">
+                    <button id="btn-spawn-eclipse">SPAWN ECLIPSE</button>
+                    <button id="btn-trigger-interception">FORCE ATTACK</button>
+                </div>
+            </div>
         `;
         
         document.body.appendChild(this.container);
@@ -382,6 +398,13 @@ export default class TimelineDebugPanel {
             const isHidden = lorelei.style.display === 'none';
             lorelei.style.display = isHidden ? 'block' : 'none';
             $('#debug-lorelei-toggle').textContent = isHidden ? '[-] LORELEI TOOLS' : '[+] LORELEI TOOLS';
+        };
+
+        $('#debug-eclipse-toggle').onclick = () => {
+            const eclipse = $('#debug-eclipse');
+            const isHidden = eclipse.style.display === 'none';
+            eclipse.style.display = isHidden ? 'block' : 'none';
+            $('#debug-eclipse-toggle').textContent = isHidden ? '[-] ECLIPSE TOOLS' : '[+] ECLIPSE TOOLS';
         };
 
         // Combat tool actions
@@ -542,6 +565,9 @@ export default class TimelineDebugPanel {
                 if (gs.lorelei && gs.lorelei.setPixelArtEnabled) {
                     gs.lorelei.setPixelArtEnabled(nextState);
                 }
+                if (gs.eclipse && gs.eclipse.setPixelArtEnabled) {
+                    gs.eclipse.setPixelArtEnabled(nextState);
+                }
             }
         };
 
@@ -555,6 +581,21 @@ export default class TimelineDebugPanel {
             const gs = getGameScene();
             if (gs && gs.lorelei && gs.player) {
                 gs.lorelei.triggerTelekinesis(gs.player);
+            }
+        };
+
+        $('#btn-spawn-eclipse').onclick = () => {
+            const gs = getGameScene();
+            if (gs) gs.spawnEclipse();
+        };
+
+        $('#btn-trigger-interception').onclick = () => {
+            const gs = getGameScene();
+            if (gs && gs.eclipse) {
+                const target = gs.eclipse.acquireTarget();
+                if (target) {
+                    gs.eclipse.startInterception(target);
+                }
             }
         };
 
@@ -851,6 +892,27 @@ export default class TimelineDebugPanel {
                     $('#diag-lorelei-last-disarmed').textContent = '0';
                     $('#diag-lorelei-tk-cooldown').textContent = '-';
                     $('#diag-lorelei-threats').textContent = '-';
+                }
+
+                // Eclipse diagnostics (Step 10.4)
+                if (gameScene.eclipse) {
+                    const e = gameScene.eclipse;
+                    $('#diag-eclipse-active').textContent = 'YES';
+                    const distFromBR = Math.round(Phaser.Math.Distance.Between(e.x, e.y, p.x, p.y));
+                    $('#diag-eclipse-dist').textContent = distFromBR;
+                    $('#diag-eclipse-state').textContent = e.aiState;
+                    $('#diag-eclipse-target').textContent = e.target ? (e.target.type || 'ROBOT') : 'NONE';
+                    $('#diag-eclipse-cooldown').textContent = (Math.max(0, e.cooldownTimer) / 1000).toFixed(1) + 's';
+                    $('#diag-eclipse-interceptions').textContent = e.stats.totalInterceptions;
+                    $('#diag-eclipse-kills').textContent = e.stats.totalKills;
+                } else {
+                    $('#diag-eclipse-active').textContent = 'NO';
+                    $('#diag-eclipse-dist').textContent = '-';
+                    $('#diag-eclipse-state').textContent = '-';
+                    $('#diag-eclipse-target').textContent = '-';
+                    $('#diag-eclipse-cooldown').textContent = '-';
+                    $('#diag-eclipse-interceptions').textContent = '0';
+                    $('#diag-eclipse-kills').textContent = '0';
                 }
 
                 // Encounter Diagnostics

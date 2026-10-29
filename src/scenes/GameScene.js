@@ -9,6 +9,7 @@ import SuperRobot from '../entities/SuperRobot.js';
 import GermanSoldier from '../entities/GermanSoldier.js';
 import Grenade from '../entities/Grenade.js';
 import Lorelei from '../entities/Lorelei.js';
+import Eclipse from '../entities/Eclipse.js';
 import Hud from '../ui/Hud.js';
 import DescentController from '../systems/DescentController.js';
 import DesktopControls from '../controls/DesktopControls.js';
@@ -84,6 +85,7 @@ export default class GameScene extends Phaser.Scene {
         this.germanSoldier = null;
         this.grenade = null;
         this.lorelei = null;
+        this.eclipse = null;
 
         // 5. Encounter Orchestration
         this.encounterDirector = new EncounterDirector(this);
@@ -119,6 +121,7 @@ export default class GameScene extends Phaser.Scene {
         // Ensure Lorelei is created immediately during normal mission start
         // before any timeline events have been received.
         this.updateLoreleiPresence();
+        this.updateEclipsePresence();
 
         // Timeline Event Listeners
         this.setupTimelineListeners();
@@ -231,6 +234,20 @@ export default class GameScene extends Phaser.Scene {
         console.log(`[SESSION ${this.sessionID}] LORELEI_JOINED`);
     }
 
+    spawnEclipse() {
+        if (this.eclipse) return;
+
+        // Spawn slightly offset from player and Lorelei
+        this.eclipse = new Eclipse(this, this.player.x + 100, this.player.y);
+        this.eclipse.setPixelArtEnabled(this.player.pixelArtEnabled);
+        
+        // Setup Eclipse collisions (Obstacles)
+        this.physics.add.collider(this.eclipse, this.environment.obstacles);
+        this.physics.add.collider(this.eclipse, this.environment.walls);
+        
+        console.log(`[SESSION ${this.sessionID}] ECLIPSE_JOINED`);
+    }
+
     updateLoreleiPresence(phase = null) {
         if (!phase) phase = this.timeline.currentPhase;
         if (!phase) return;
@@ -244,6 +261,22 @@ export default class GameScene extends Phaser.Scene {
             this.lorelei.destroy();
             this.lorelei = null;
             console.log(`[SESSION ${this.sessionID}] Lorelei departed (Phase: ${phase.id})`);
+        }
+    }
+
+    updateEclipsePresence(phase = null) {
+        if (!phase) phase = this.timeline.currentPhase;
+        if (!phase) return;
+
+        // Eclipse accompanies from the start (CHASE and SWARM)
+        const shouldExist = (phase.id === 'CHASE' || phase.id === 'ROBOT_SWARM');
+        
+        if (shouldExist) {
+            this.spawnEclipse();
+        } else if (this.eclipse) {
+            this.eclipse.destroy();
+            this.eclipse = null;
+            console.log(`[SESSION ${this.sessionID}] Eclipse departed (Phase: ${phase.id})`);
         }
     }
 
@@ -1187,6 +1220,7 @@ export default class GameScene extends Phaser.Scene {
             
             // Step 10.3.3: Use centralized presence logic
             this.updateLoreleiPresence(phase);
+            this.updateEclipsePresence(phase);
         };
 
         this.onTrackStart = (trackKey, startTime) => {
@@ -1204,8 +1238,9 @@ export default class GameScene extends Phaser.Scene {
                 this.robotGroup.clear(true, true);
             }
             
-            // Reconcile Lorelei
+            // Reconcile Lorelei and Eclipse
             this.updateLoreleiPresence();
+            this.updateEclipsePresence();
 
             this.reconcilePlayerWithCamera();
             this.spawnTestEncounter();
@@ -1258,8 +1293,9 @@ export default class GameScene extends Phaser.Scene {
                 this.robotGroup.clear(true, true);
             }
 
-            // Reconcile Lorelei
+            // Reconcile Lorelei and Eclipse
             this.updateLoreleiPresence();
+            this.updateEclipsePresence();
 
             // PART F: Reconstruct Boss State based on time
             this.reconstructBossState(state.time);
@@ -1284,7 +1320,9 @@ export default class GameScene extends Phaser.Scene {
             if (!this.scene.isActive()) return;
             if (this.lorelei) {
                 this.lorelei.destroy();
-                this.lorelei = null;
+            }
+            if (this.eclipse) {
+                this.eclipse.destroy();
             }
             this.returnToTitle();
         };
@@ -1575,9 +1613,12 @@ export default class GameScene extends Phaser.Scene {
         // 5. Update Robots (AI and depth cleanup)
         this.robotGroup.getChildren().forEach(r => r.update(time, delta));
 
-        // 5.0 Update Lorelei (Step 10.3)
+        // 5.0 Update Companions
         if (this.lorelei) {
             this.lorelei.update(time, delta);
+        }
+        if (this.eclipse) {
+            this.eclipse.update(time, delta);
         }
 
         // 5.1 Update Encounters
